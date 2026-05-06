@@ -1,0 +1,73 @@
+<style>
+/* ════════════════════════════════════════════════
+   MRSI: GEOMETRIC BREAKOUT & 1-INCH MARGINS
+════════════════════════════════════════════════ */
+
+/* 1. SCROLLBAR OVERFLOW FIX */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+/* 2. SOLID NAVIGATIONAL HEADER (Exoasia Branding) */
+.xo-nav {
+    background-color: #0D0612 !important;
+ /* Solid dark background */
+    backdrop-filter: none !important;
+    border-bottom: 1px solid #4A1040 !important;
+    /* Geometric Breakout */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    /* 1-Inch Margins */
+    padding-left: 96px !important;
+    padding-right: 96px !important;
+    box-sizing: border-box !important;
+}
+
+/* Strip default padding from inner nav to prevent doubling */
+.xo-nav-inner {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* 3. STRETCH BACKGROUNDS & KILL BOUNDING BOXES */
+/* Targets every background wrapper in the MRSI HTML */
+.xo-hero, 
+.xo-section, 
+.xo-cta, 
+.xo-footer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* 4. PERFECT 1-INCH CONTENT MARGINS & CENTERING */
+/* Targets the inner content grids to pull text away from the edges */
+.xo-container {
+    width: 100% !important;
+    max-width: 1200px !important;
+ /* Prevents center dead space on wide monitors */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    /* Strict 1-Inch Margins on Desktop */
+    padding-left: 96px !important;
+    padding-right: 96px !important;
+    box-sizing: border-box !important;
+}
+
+/* 5. MOBILE & TABLET RESPONSIVENESS */
+@media (max-width: 1024px) {
+    .xo-nav,
+    .xo-container {
+        /* Scales to safe margins on smaller devices to prevent text crushing */
+        padding-left: 6vw !important;
+        padding-right: 6vw !important;
+    }
+}
+</style>

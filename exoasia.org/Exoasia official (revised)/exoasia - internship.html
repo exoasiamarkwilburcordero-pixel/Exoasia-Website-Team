@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Intern to Innovator in 12 Weeks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    .fullwidth-wrapper{
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+	}
+
+    :root {
+      --xo-deep-purple: #2D0A28;
+      --xo-maroon: #4A1040;
+      --xo-purple: #7B3FA0;
+      --xo-lavender: #B095C5;
+      --xo-lime: #C9E500;
+      --xo-lime-dim: rgba(201,229,0,0.12);
+      --xo-lime-border: rgba(201,229,0,0.3);
+      --xo-white: #F5F0F8;
+      --xo-white-dim: rgba(245,240,248,0.6);
+      --xo-white-faint: rgba(245,240,248,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--xo-deep-purple);
+      color: var(--xo-white);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: linear-gradient(to bottom, rgba(45,10,40,0.95), transparent);
+      backdrop-filter: blur(4px);
+    }
+
+    .xo-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--xo-white);
+    }
+    .xo-logo span { color: var(--xo-lime); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+    nav ul a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--xo-white-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--xo-lime); }
+
+    .xo-nav-cta {
+      background: var(--xo-lime);
+      color: var(--xo-deep-purple) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      font-weight: 700 !important;
+      letter-spacing: 0.1em;
+      transition: opacity 0.2s !important;
+    }
+    .xo-nav-cta:hover { opacity: 0.85; color: var(--xo-deep-purple) !important; }
+
+    /* ── HERO ── */
+    .xo-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 10rem 4rem 6rem;
+      overflow: hidden;
+    }
+
+    .xo-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(123,63,160,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(74,16,64,0.6) 0%, transparent 60%),
+        linear-gradient(135deg, var(--xo-deep-purple) 0%, #1a0516 100%);
+    }
+
+    .xo-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,229,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,229,0,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 60% 40%, black 0%, transparent 70%);
+    }
+
+    .xo-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .xo-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--xo-lime);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .xo-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--xo-lime);
+    }
+
+    .xo-hero-h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+
+    .xo-hero-h1 em {
+      font-style: normal;
+      color: var(--xo-lime);
+      display: block;
+    }
+
+    .xo-hero-sub {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-style: italic;
+      color: var(--xo-lavender);
+      margin-top: 1.8rem;
+      max-width: 540px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
+    }
+
+    .xo-hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2.8rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+
+    .xo-btn-primary {
+      background: var(--xo-lime);
+      color: var(--xo-deep-purple);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 1rem 2.4rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 0 rgba(201,229,0,0);
+    }
+    .xo-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,229,0,0.3);
+    }
+
+    .xo-btn-ghost {
+      background: transparent;
+      color: var(--xo-white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 1rem 2.4rem;
+      border: 1px solid rgba(245,240,248,0.25);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .xo-btn-ghost:hover {
+      border-color: var(--xo-lavender);
+      color: var(--xo-lavender);
+    }
+
+    .xo-hero-stat-row {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(245,240,248,0.08);
+      opacity: 0;
+      animation: fadeUp 0.9s 1s forwards;
+    }
+
+    .xo-stat-item {}
+    .xo-stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--xo-lime);
+      line-height: 1;
+    }
+    .xo-stat-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--xo-white-dim);
+      margin-top: 0.3rem;
+    }
+
+    /* Hero floating orb */
+    .xo-orb {
+      position: absolute;
+      right: -5%;
+      top: 15%;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,63,160,0.35) 0%, rgba(74,16,64,0.2) 50%, transparent 70%);
+      animation: pulse 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 7rem 4rem; }
+
+    .xo-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--xo-lime);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .xo-section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--xo-lime);
+    }
+
+    .xo-section-h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .xo-section-body {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--xo-white-dim);
+      max-width: 600px;
+    }
+
+    /* ── WHY EXOASIA ── */
+    .xo-why {
+      background: linear-gradient(180deg, var(--xo-deep-purple) 0%, #1e061a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .xo-why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .xo-why-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(245,240,248,0.06);
+    }
+
+    .xo-why-card {
+      background: rgba(45,10,40,0.9);
+      padding: 2rem;
+      transition: background 0.3s;
+    }
+    .xo-why-card:hover { background: rgba(74,16,64,0.9); }
+
+    .xo-why-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .xo-why-card h3 {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--xo-white);
+      margin-bottom: 0.6rem;
+    }
+    .xo-why-card p {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--xo-white-dim);
+      line-height: 1.6;
+    }
+
+    /* ── TRACKS ── */
+    .xo-tracks {
+      background: #1a0516;
+      position: relative;
+    }
+
+    .xo-tracks-header {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+    }
+
+    .xo-track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1px;
+      background: rgba(245,240,248,0.05);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .xo-track-card {
+      background: #1a0516;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s;
+      cursor: default;
+    }
+
+    .xo-track-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--xo-lime);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .xo-track-card:hover::before { transform: scaleX(1); }
+    .xo-track-card:hover { background: rgba(74,16,64,0.5); }
+
+    .xo-track-num {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: var(--xo-lime);
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .xo-track-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .xo-track-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--xo-white);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .xo-track-sub {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--xo-lavender);
+      margin-bottom: 1.2rem;
+    }
+
+    .xo-track-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      color: var(--xo-white-dim);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .xo-track-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .xo-skill-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--xo-lime-border);
+      color: var(--xo-lime);
+      border-radius: 1px;
+      background: var(--xo-lime-dim);
+    }
+
+    /* ── WHAT YOU GAIN ── */
+    .xo-gain {
+      background: var(--xo-deep-purple);
+      position: relative;
+    }
+
+    .xo-gain-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .xo-gain-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(245,240,248,0.05);
+      margin-top: 2rem;
+    }
+
+    .xo-gain-item {
+      background: rgba(45,10,40,0.9);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      transition: background 0.3s;
+    }
+    .xo-gain-item:hover { background: rgba(74,16,64,0.9); }
+
+    .xo-gain-num {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--xo-lime);
+      min-width: 28px;
+      padding-top: 0.15rem;
+    }
+
+    .xo-gain-text h4 {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--xo-white);
+      margin-bottom: 0.3rem;
+    }
+    .xo-gain-text p {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--xo-white-dim);
+      line-height: 1.6;
+    }
+
+    /* Profile card */
+    .xo-profile-card {
+      background: linear-gradient(145deg, rgba(74,16,64,0.6), rgba(45,10,40,0.9));
+      border: 1px solid rgba(201,229,0,0.15);
+      padding: 2.5rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .xo-profile-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle, rgba(201,229,0,0.15), transparent 70%);
+    }
+
+    .xo-profile-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--xo-lime);
+      margin-bottom: 1.5rem;
+    }
+
+    .xo-profile-traits {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .xo-trait {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--xo-white-dim);
+    }
+    .xo-trait::before {
+      content: '▸';
+      color: var(--xo-lime);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* ── TIMELINE ── */
+    .xo-timeline-section {
+      background: #1a0516;
+    }
+
+    .xo-timeline-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .xo-timeline-inner::before {
+      content: '';
+      position: absolute;
+      left: 120px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--xo-lime-border) 10%, var(--xo-lime-border) 90%, transparent);
+    }
+
+    .xo-tl-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2.5rem;
+      padding: 2rem 0;
+      align-items: start;
+      position: relative;
+    }
+
+    .xo-tl-item::before {
+      content: '';
+      position: absolute;
+      left: 116px;
+      top: 2.5rem;
+      width: 9px; height: 9px;
+      background: var(--xo-lime);
+      border-radius: 50%;
+    }
+
+    .xo-tl-phase {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--xo-lavender);
+      text-align: right;
+      padding-top: 0.2rem;
+      line-height: 1.4;
+    }
+
+    .xo-tl-content h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--xo-white);
+      margin-bottom: 0.4rem;
+    }
+    .xo-tl-content p {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      color: var(--xo-white-dim);
+      line-height: 1.6;
+    }
+
+    /* ── APPLY CTA ── */
+    .xo-apply {
+      background: linear-gradient(135deg, #1a0516 0%, var(--xo-maroon) 50%, #1a0516 100%);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .xo-apply::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,229,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,229,0,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .xo-apply-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .xo-apply-h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    .xo-apply-h2 span { color: var(--xo-lime); display: block; }
+
+    .xo-apply-body {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--xo-lavender);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .xo-apply-note {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,240,248,0.4);
+      margin-top: 1.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0e0410;
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(245,240,248,0.06);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .xo-footer-brand {
+      font-weight: 900;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .xo-footer-brand span { color: var(--xo-lime); }
+
+    .xo-footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .xo-footer-links a {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,240,248,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .xo-footer-links a:hover { color: var(--xo-lime); }
+
+    .xo-footer-copy {
+      font-size: 0.62rem;
+      color: rgba(245,240,248,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .xo-testimonials {
+      background: var(--xo-deep-purple);
+      padding: 7rem 4rem;
+    }
+
+    .xo-testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(245,240,248,0.05);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .xo-testi-card {
+      background: #200820;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .xo-testi-card:hover { background: rgba(74,16,64,0.7); }
+
+    .xo-testi-card::before {
+      content: '\201C';
+      font-family: 'EB Garamond', serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--xo-lime);
+      opacity: 0.3;
+      position: absolute;
+      top: 1.2rem;
+      left: 2rem;
+    }
+
+    .xo-testi-quote {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.08rem;
+      font-style: italic;
+      color: var(--xo-white-dim);
+      line-height: 1.75;
+      padding-top: 2.5rem;
+    }
+
+    .xo-testi-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(245,240,248,0.07);
+    }
+
+    .xo-testi-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid var(--xo-lime-border);
+    }
+    .xo-testi-avatar svg { width: 100%; height: 100%; display: block; }
+
+    .xo-testi-name {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--xo-white);
+    }
+    .xo-testi-detail {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--xo-lavender);
+      margin-top: 0.25rem;
+    }
+
+    /* ── PARTNER SCHOOLS ── */
+    .xo-partners {
+      background: #1a0516;
+      padding: 5rem 4rem;
+      text-align: center;
+    }
+
+    .xo-partners-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .xo-partners-sub {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--xo-white-dim);
+      margin-bottom: 3.5rem;
+      line-height: 1.6;
+    }
+
+    .xo-partner-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      background: rgba(245,240,248,0.03);
+      border: 1px solid rgba(245,240,248,0.06);
+    }
+
+    .xo-partner-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 2.5rem 3.5rem;
+      transition: background 0.3s;
+    }
+    .xo-partner-item:hover { background: rgba(74,16,64,0.4); }
+
+    .xo-partner-logo-box {
+      opacity: 0.75;
+      transition: opacity 0.3s;
+    }
+    .xo-partner-item:hover .xo-partner-logo-box { opacity: 1; }
+
+    .xo-partner-name {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,240,248,0.4);
+    }
+
+    .xo-partner-divider {
+      width: 1px;
+      height: 60px;
+      background: rgba(245,240,248,0.07);
+      flex-shrink: 0;
+    }
+
+    .xo-partners-cta {
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(245,240,248,0.4);
+    }
+    .xo-partners-cta a {
+      color: var(--xo-lime);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .xo-partners-cta a:hover { opacity: 0.75; }
+
+    @media (max-width: 900px) {
+      .xo-testi-grid { grid-template-columns: 1fr; }
+      .xo-partner-logos { flex-direction: column; }
+      .xo-partner-divider { width: 60px; height: 1px; }
+      .xo-testimonials { padding: 5rem 1.5rem; }
+      .xo-partners { padding: 5rem 1.5rem; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .xo-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .xo-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav ul { display: none; }
+      section { padding: 5rem 1.5rem; }
+      .xo-hero { padding: 8rem 1.5rem 4rem; }
+      .xo-why-inner,
+      .xo-gain-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .xo-hero-stat-row { flex-wrap: wrap; gap: 2rem; }
+      .xo-timeline-inner::before { left: 80px; }
+      .xo-tl-item { grid-template-columns: 80px 1fr; }
+      .xo-tl-item::before { left: 76px; }
+      footer { flex-direction: column; padding: 2.5rem 1.5rem; }
+      .xo-orb { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="fullwidth-wrapper">
+  <!-- NAV -->
+  <nav>
+    <!-- Changed from a static <div> to a clickable <a> tag pointing to the main site -->
+    <a href="https://exoasia.org" class="xo-logo" style="color: var(--xo-lime); text-decoration: none;">Exoasia</a>
+    <ul>
+      <li><a href="#tracks">Tracks</a></li>
+      <li><a href="#gain">Benefits</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#apply" class="xo-nav-cta">Apply Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="xo-hero">
+    <div class="xo-hero-bg"></div>
+    <div class="xo-hero-grid"></div>
+    <div class="xo-orb"></div>
+
+    <div class="xo-hero-content">
+      <div class="xo-eyebrow">Exoasia Internship Program 2025–2026</div>
+      <h1 class="xo-hero-h1">
+        From Intern<br>
+        <em>to Innovator</em>
+        in 12 Weeks
+      </h1>
+      <p class="xo-hero-sub">
+        A hands-on, high-impact internship inside one of Southeast Asia's most forward-thinking AI Innovation Hubs. Real work. Real mentors. Real stakes.
+      </p>
+      <div class="xo-hero-actions">
+        <a href="#apply" class="xo-btn-primary">Apply Now</a>
+        <a href="#tracks" class="xo-btn-ghost">Explore Tracks</a>
+      </div>
+      <div class="xo-hero-stat-row">
+        <div class="xo-stat-item">
+          <div class="xo-stat-num">7</div>
+          <div class="xo-stat-label">Internship Tracks</div>
+        </div>
+        <div class="xo-stat-item">
+          <div class="xo-stat-num">12</div>
+          <div class="xo-stat-label">Weeks</div>
+        </div>
+        <div class="xo-stat-item">
+          <div class="xo-stat-num">30K+</div>
+          <div class="xo-stat-label">Leaders in Our Network</div>
+        </div>
+        <div class="xo-stat-item">
+          <div class="xo-stat-num">GLOBAL</div>
+          <div class="xo-stat-label">Reach & Impact</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY EXOASIA -->
+  <section class="xo-why" id="why">
+    <div class="xo-why-inner">
+      <div class="xo-reveal">
+        <div class="xo-section-label">Why Exoasia</div>
+        <h2 class="xo-section-h2">Not Your Average<br>Internship</h2>
+        <p class="xo-section-body">
+          Exoasia is a Philippine-based AI-powered Innovation Hub operating across venture building, AI strategy, and human transformation. As an intern, you work directly on live projects — not case studies. You'll contribute to clients, communities, and platforms with real-world stakes.
+        </p>
+      </div>
+      <div class="xo-why-cards xo-reveal">
+        <div class="xo-why-card">
+          <span class="xo-why-card-icon">🧠</span>
+          <h3>Live Projects</h3>
+          <p>Work on active client engagements, not simulations or hypotheticals.</p>
+        </div>
+        <div class="xo-why-card">
+          <span class="xo-why-card-icon">🌏</span>
+          <h3>Global Network</h3>
+          <p>Tap into a growing ecosystem of founders, leaders, and change-makers.</p>
+        </div>
+        <div class="xo-why-card">
+          <span class="xo-why-card-icon">⚡</span>
+          <h3>EBELI Method</h3>
+          <p>Learn our proprietary AI company building methodology used across ventures.</p>
+        </div>
+        <div class="xo-why-card">
+          <span class="xo-why-card-icon">🏆</span>
+          <h3>Certification</h3>
+          <p>Earn an Exoasia Internship Certificate and priority recommendations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section class="xo-tracks" id="tracks">
+    <div class="xo-tracks-header xo-reveal">
+      <div class="xo-section-label">Internship Tracks</div>
+      <h2 class="xo-section-h2">Choose Your<br>Battlefield</h2>
+    </div>
+    <div class="xo-track-grid">
+
+      <!-- Track 1 -->
+      <div class="xo-track-card xo-reveal">
+        <div class="xo-track-num">Track 01</div>
+        <span class="xo-track-icon">🤖</span>
+        <div class="xo-track-title">AI Strategy<br>& Advisory</div>
+        <div class="xo-track-sub">Consulting · Research · Frameworks</div>
+        <p class="xo-track-desc">
+          Support enterprise AI transformation engagements. Build diagnostic tools, craft strategic roadmaps, and contribute to advisory deliverables for Exoasia clients navigating AI adoption.
+        </p>
+        <div class="xo-track-skills">
+          <span class="xo-skill-tag">AI Roadmapping</span>
+          <span class="xo-skill-tag">Stakeholder Decks</span>
+          <span class="xo-skill-tag">Gap Analysis</span>
+          <span class="xo-skill-tag">ASTRA™ Framework</span>
+        </div>
+      </div>
+
+      <!-- Track 2 -->
+      <div class="xo-track-card xo-reveal">
+        <div class="xo-track-num">Track 02</div>
+        <span class="xo-track-icon">🚀</span>
+        <div class="xo-track-title">EBELI Venture<br>Building</div>
+        <div class="xo-track-sub">Startup · Innovation · Ecosystem</div>
+        <p class="xo-track-desc">
+          Assist in building AI-powered ventures using the EBELI methodology — from ideation and TRL assessment through investor readiness. Work alongside founders and venture coaches on live EVODINE pipeline companies.
+        </p>
+        <div class="xo-track-skills">
+          <span class="xo-skill-tag">EBELI Methodology</span>
+          <span class="xo-skill-tag">TRL/BRL Assessments</span>
+          <span class="xo-skill-tag">Pitch Preparation</span>
+          <span class="xo-skill-tag">Venture Design</span>
+        </div>
+      </div>
+
+      <!-- Track 3 -->
+      <div class="xo-track-card xo-reveal">
+        <div class="xo-track-num">Track 03</div>
+        <span class="xo-track-icon">🎓</span>
+        <div class="xo-track-title">Learning &<br>Development</div>
+        <div class="xo-track-sub">Training · Content · Facilitation</div>
+        <p class="xo-track-desc">
+          Design and produce literacy programs, facilitation guides, and certification content. Support the development of learning journeys for MSMEs, corporations, and government institutions across the region.
+        </p>
+        <div class="xo-track-skills">
+          <span class="xo-skill-tag">Curriculum Design</span>
+          <span class="xo-skill-tag">EXCAL Content</span>
+          <span class="xo-skill-tag">Facilitation Kits</span>
+          <span class="xo-skill-tag">AI Literacy</span>
+        </div>
+      </div>
+
+      <!-- Track 4 -->
+      <div class="xo-track-card xo-reveal">
+        <div class="xo-track-num">Track 04</div>
+        <span class="xo-track-icon">🎪</span>
+        <div class="xo-track-title">Events &<br>Experiences</div>
+        <div class="xo-track-sub">Production · Community · Brand</div>
+        <p class="xo-track-desc">
+          Help plan and execute flagship events including the Founders Arena hackathon series, Cyber Security Council of the Philippines Events, Global AI Council Philippines Events, Etc. Manage logistics, speaker coordination, sponsor relations, and live storytelling.
+        </p>
+        <div class="xo-track-skills">
+          <span class="xo-skill-tag">Event Production</span>
+          <span class="xo-skill-tag">Community Building</span>
+          <span class="xo-skill-tag">Sponsor Management</span>
+          <span class="xo-skill-tag">Brand Activation</span>
+        </div>
+      </div>
+
+      <!-- Track 5 -->
+      <div class="xo-track-card xo-reveal">
+        <div class="xo-track-num">Track 05</div>
+        <span class="xo-track-icon">💻</span>
+        <div class="xo-track-title">AI-Native Software<br>Development</div>
+        <div class="xo-track-sub">Build · Automate · Deploy</div>
+        <p class="xo-track-desc">
+          Build AI-powered tools, automations, and platforms using modern stacks. Contribute to Exoasia's digital infrastructure — from GCF landing pages to AI-powered solutions for clients.
+        </p>
+        <div class="xo-track-skills">
+          <span class="xo-skill-tag">Web Dev</span>
+          <span class="xo-skill-tag">Game Changer Funnel</span>
+          <span class="xo-skill-tag">AI API Integration</span>
+          <span class="xo-skill-tag">AI-native Software Development</span>
+          <span class="xo-skill-tag">Automation Design</span>
+        </div>
+      </div>
+
+      <!-- Track 6 -->
+      <div class="xo-track-card xo-reveal">
+        <div class="xo-track-num">Track 06</div>
+        <span class="xo-track-icon">🔬</span>
+        <div class="xo-track-title">Research, Policy<br>& Insight</div>
+        <div class="xo-track-sub">Analysis · Policy · Intelligence</div>
+        <p class="xo-track-desc">
+          Produce policy briefs, landscape reports, and thought leadership content for Exoasia's advisory practice. Track regional industry governance developments and translate complex research into actionable insights for decision-makers.
+        </p>
+        <div class="xo-track-skills">
+          <span class="xo-skill-tag">Policy Analysis</span>
+          <span class="xo-skill-tag">Governance</span>
+          <span class="xo-skill-tag">Research Briefs</span>
+          <span class="xo-skill-tag">ASEAN/Global Landscape</span>
+          <span class="xo-skill-tag">Thought Leadership</span>
+        </div>
+      </div>
+
+      <!-- Track 7 -->
+      <div class="xo-track-card xo-reveal">
+        <div class="xo-track-num">Track 07</div>
+        <span class="xo-track-icon">📲</span>
+        <div class="xo-track-title">Social Media<br>Marketing</div>
+        <div class="xo-track-sub">Content · Community · Growth</div>
+        <p class="xo-track-desc">
+          Own and grow Exoasia's digital presence across LinkedIn, Instagram, TikTok, and Facebook. Create AI-powered content, manage community engagement, and run campaigns for programs, events, and brand-building initiatives across the ecosystem.
+        </p>
+        <div class="xo-track-skills">
+          <span class="xo-skill-tag">Content Strategy</span>
+          <span class="xo-skill-tag">AI-Assisted Creation</span>
+          <span class="xo-skill-tag">TikTok / Reels</span>
+          <span class="xo-skill-tag">LinkedIn Growth</span>
+          <span class="xo-skill-tag">Community Mgmt</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHAT YOU GAIN -->
+  <section class="xo-gain" id="gain">
+    <div class="xo-gain-inner">
+      <div>
+        <div class="xo-section-label xo-reveal">What You Gain</div>
+        <h2 class="xo-section-h2 xo-reveal">Growth That<br>Goes Beyond<br>a Certificate</h2>
+        <div class="xo-gain-list xo-reveal">
+          <div class="xo-gain-item">
+            <span class="xo-gain-num">01</span>
+            <div class="xo-gain-text">
+              <h4>Real Portfolio Work</h4>
+              <p>Deliverables you can proudly show — proposals, tools, events, and platforms that shipped.</p>
+            </div>
+          </div>
+          <div class="xo-gain-item">
+            <span class="xo-gain-num">02</span>
+            <div class="xo-gain-text">
+              <h4>C-Suite Mentorship</h4>
+              <p>Work directly with Exoasia leadership and rotating expert mentors across AI, strategy, and ventures.</p>
+            </div>
+          </div>
+          <div class="xo-gain-item">
+            <span class="xo-gain-num">03</span>
+            <div class="xo-gain-text">
+              <h4>EXCAL Fast Track</h4>
+              <p>Priority pathway to the Exoasia Certified AI Leader credential, co-developed with KKG and UP NCPAG CPED.</p>
+            </div>
+          </div>
+          <div class="xo-gain-item">
+            <span class="xo-gain-num">04</span>
+            <div class="xo-gain-text">
+              <h4>Ecosystem Access</h4>
+              <p>Introductions to Global AI Council Philippines, Cyber Security Council of the Philippines, Blockchain Council of the Philippines, Supply Chain Management Association of the Philippines, CIO Philippines, Growth Network, Founders Arena, and other partner communities.</p>
+            </div>
+          </div>
+          <div class="xo-gain-item">
+            <span class="xo-gain-num">05</span>
+            <div class="xo-gain-text">
+              <h4>Conversion Opportunity</h4>
+              <p>Top performers are considered for full-time roles, project retainers, or co-founder positions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="xo-reveal">
+        <div class="xo-section-label">Who We're Looking For</div>
+        <h2 class="xo-section-h2" style="font-size: clamp(1.6rem, 3vw, 2.2rem);">The Ideal<br>Exoasia Intern</h2>
+        <div class="xo-profile-card">
+          <h3>You Are a Game Changer If You Are…</h3>
+          <div class="xo-profile-traits">
+            <div class="xo-trait">A university student or fresh graduate in any field</div>
+            <div class="xo-trait">Curious about AI, innovation, and exponential technologies</div>
+            <div class="xo-trait">A builder at heart — you ship things, not just ideas</div>
+            <div class="xo-trait">Comfortable with ambiguity and moving fast</div>
+            <div class="xo-trait">Collaborative and coachable — ego-free, growth-first</div>
+            <div class="xo-trait">Based in or willing to work hybrid in Metro Manila</div>
+            <div class="xo-trait">Available for a minimum 12-week commitment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="xo-timeline-section" id="timeline">
+    <div class="xo-reveal" style="max-width: 900px; margin: 0 auto 4rem;">
+      <div class="xo-section-label">Program Structure</div>
+      <h2 class="xo-section-h2">12 Weeks.<br>Three Acts.</h2>
+    </div>
+    <div class="xo-timeline-inner">
+
+      <div class="xo-tl-item xo-reveal">
+        <div class="xo-tl-phase">Weeks 1–3<br>Orientation</div>
+        <div class="xo-tl-content">
+          <h4>Immersion & Onboarding</h4>
+          <p>Deep-dive into Exoasia's ecosystem, brand, tools, and methodology. Get assigned to your track, meet your mentor, and complete your first mini-project briefing.</p>
+        </div>
+      </div>
+
+      <div class="xo-tl-item xo-reveal">
+        <div class="xo-tl-phase">Weeks 4–9<br>Execution</div>
+        <div class="xo-tl-content">
+          <h4>Live Project Contribution</h4>
+          <p>Contribute to active Exoasia engagements in your chosen track. Weekly check-ins, co-working sessions, and milestone reviews keep momentum high.</p>
+        </div>
+      </div>
+
+      <div class="xo-tl-item xo-reveal">
+        <div class="xo-tl-phase">Weeks 10–11<br>Capstone</div>
+        <div class="xo-tl-content">
+          <h4>Capstone Project Build</h4>
+          <p>Develop and present a capstone deliverable that demonstrates your track expertise — a strategy report, product prototype, event plan, or AI tool.</p>
+        </div>
+      </div>
+
+      <div class="xo-tl-item xo-reveal">
+        <div class="xo-tl-phase">Week 12<br>Graduation</div>
+        <div class="xo-tl-content">
+          <h4>Demo Day & Certification</h4>
+          <p>Present your capstone to the Exoasia leadership team and network. Receive your certificate, feedback, and next-step guidance for your career or venture journey.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="xo-testimonials" id="testimonials">
+    <div class="xo-reveal" style="max-width: 1200px; margin: 0 auto 4rem;">
+      <div class="xo-section-label">Intern Stories</div>
+      <h2 class="xo-section-h2">Heard From the<br>People Who Did It</h2>
+    </div>
+    <div class="xo-testi-grid">
+
+      <div class="xo-testi-card xo-reveal">
+        <div class="xo-testi-quote">
+          "I came in as a marketing student with zero AI experience. I left with a live automation tool deployed to a real client. Exoasia doesn't let you sit on the sidelines."
+        </div>
+        <div class="xo-testi-author">
+          <div class="xo-testi-avatar">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="32" fill="#4A1040"/>
+              <circle cx="32" cy="24" r="10" fill="#7B3FA0"/>
+              <ellipse cx="32" cy="52" rx="18" ry="12" fill="#7B3FA0"/>
+            </svg>
+          </div>
+          <div>
+            <div class="xo-testi-name">Maria Santos</div>
+            <div class="xo-testi-detail">BS Marketing · Batch 2024 · Track: AI Strategy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="xo-testi-card xo-reveal">
+        <div class="xo-testi-quote">
+          "The EBELI methodology changed how I think about building. By week 6 I was already co-facilitating a workshop for a startup client. Nothing in my coursework prepared me for this — in the best way."
+        </div>
+        <div class="xo-testi-author">
+          <div class="xo-testi-avatar">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="32" fill="#3A0A35"/>
+              <circle cx="32" cy="24" r="10" fill="#B095C5"/>
+              <ellipse cx="32" cy="52" rx="18" ry="12" fill="#B095C5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="xo-testi-name">Jake Reyes</div>
+            <div class="xo-testi-detail">BS Computer Science · Batch 2024 · Track: Venture Building</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="xo-testi-card xo-reveal">
+        <div class="xo-testi-quote">
+          "I helped produce SONAI 2026 from logistics to on-ground ops. Seeing hundreds of leaders engage with AI policy content I helped shape — that's not something you get from a regular OJT."
+        </div>
+        <div class="xo-testi-author">
+          <div class="xo-testi-avatar">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="32" fill="#4A1040"/>
+              <circle cx="32" cy="24" r="10" fill="#C9E500" opacity="0.7"/>
+              <ellipse cx="32" cy="52" rx="18" ry="12" fill="#C9E500" opacity="0.7"/>
+            </svg>
+          </div>
+          <div>
+            <div class="xo-testi-name">Ana Villanueva</div>
+            <div class="xo-testi-detail">BS Communication · Batch 2025 · Track: Events & Experiences</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARTNER SCHOOLS -->
+  <section class="xo-partners" id="partners">
+    <div class="xo-partners-inner">
+      <div class="xo-section-label xo-reveal" style="justify-content: center;">Academic Partners</div>
+      <p class="xo-partners-sub xo-reveal">We work with leading Philippine universities to offer accredited OJT placement and co-curricular recognition.</p>
+      <div class="xo-partner-logos xo-reveal">
+
+        <div class="xo-partner-item">
+          <div class="xo-partner-logo-box">
+            <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" width="100" height="50">
+              <rect width="120" height="60" rx="4" fill="rgba(201,229,0,0.06)" stroke="rgba(201,229,0,0.2)" stroke-width="1"/>
+              <text x="60" y="26" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="900" font-size="13" fill="#C9E500" letter-spacing="1">CIIT</text>
+              <text x="60" y="42" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="400" font-size="6.5" fill="rgba(245,240,248,0.5)" letter-spacing="0.5">COLLEGE OF ARTS &amp; TECHNOLOGY</text>
+            </svg>
+          </div>
+          <div class="xo-partner-name">CIIT Philippines</div>
+        </div>
+
+        <div class="xo-partner-divider"></div>
+
+        <div class="xo-partner-item">
+          <div class="xo-partner-logo-box">
+            <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" width="100" height="50">
+              <rect width="120" height="60" rx="4" fill="rgba(201,229,0,0.06)" stroke="rgba(201,229,0,0.2)" stroke-width="1"/>
+              <text x="60" y="26" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="900" font-size="11" fill="#C9E500" letter-spacing="0.5">MAPÚA</text>
+              <text x="60" y="42" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="400" font-size="6.5" fill="rgba(245,240,248,0.5)" letter-spacing="0.5">UNIVERSITY</text>
+            </svg>
+          </div>
+          <div class="xo-partner-name">Mapúa University</div>
+        </div>
+
+        <div class="xo-partner-divider"></div>
+
+        <div class="xo-partner-item">
+          <div class="xo-partner-logo-box">
+            <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" width="100" height="50">
+              <rect width="120" height="60" rx="4" fill="rgba(201,229,0,0.06)" stroke="rgba(201,229,0,0.2)" stroke-width="1"/>
+              <text x="60" y="26" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="900" font-size="13" fill="#C9E500" letter-spacing="1">USTP</text>
+              <text x="60" y="42" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="400" font-size="6" fill="rgba(245,240,248,0.5)" letter-spacing="0.3">UNIV. OF SCIENCE &amp; TECHNOLOGY</text>
+            </svg>
+          </div>
+          <div class="xo-partner-name">USTP</div>
+        </div>
+
+      </div>
+      <p class="xo-partners-cta xo-reveal">Is your school not listed? <a href="mailto:officeoftheceo@exoasia.org">Contact us about becoming a partner institution →</a></p>
+    </div>
+  </section>
+
+  <!-- APPLY CTA -->
+  <section class="xo-apply" id="apply">
+    <div class="xo-apply-inner xo-reveal">
+      <div class="xo-section-label" style="justify-content: center;">Ready to Build?</div>
+      <h2 class="xo-apply-h2">
+        Don't Wait for<br>
+        <span>Permission to Lead.</span>
+      </h2>
+      <p class="xo-apply-body">
+        Applications are reviewed on a rolling basis. Cohort sizes are intentionally small to ensure every intern gets meaningful mentorship and real project ownership.
+      </p>
+      <!-- Replaced the target email in the mailto link -->
+      <a href="mailto:internship@exoasia.org?subject=Internship Application" class="xo-btn-primary" style="font-size: 0.82rem; padding: 1.2rem 3rem;">
+        Submit Your Application
+      </a>
+      <!-- Replaced the display text below the button -->
+      <p class="xo-apply-note">Send your CV + a short note on which track you want and why → internship@exoasia.org</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="xo-footer-brand" style="color: var(--xo-lime);">Exoasia Innovation Hub</div>
+    <ul class="xo-footer-links">
+      <li><a href="#tracks">Tracks</a></li>
+      <li><a href="#gain">Benefits</a></li>
+      <li><a href="#apply">Apply</a></li>
+      <li><a href="mailto:mackcomandante@exoasia.org">Contact</a></li>
+    </ul>
+    <div class="xo-footer-copy">© 2025 Exoasia Innovation Hub · Mandaluyong City, Metro Manila</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.xo-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger track cards
+    document.querySelectorAll('.xo-track-card').forEach((card, i) => {
+      card.style.transitionDelay = `${i * 80}ms`;
+    });
+  </script>
+</div>
+</body>
+</html>

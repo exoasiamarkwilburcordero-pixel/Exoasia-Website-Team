@@ -1,0 +1,1024 @@
+<!-- EXOASIA APP MARKETPLACE — GCF BODY PASTE v3 (xo-mkt- namespace) -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<style>
+/* ── SCOPED RESET ── */
+.xo-mkt-page, .xo-mkt-page *,
+.xo-mkt-page *::before, .xo-mkt-page *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.xo-mkt-page a { text-decoration: none; }
+.xo-mkt-page ul { list-style: none; }
+.xo-mkt-page button { cursor: pointer; border: none; outline: none; }
+
+/* ── TOKENS ── */
+.xo-mkt-page {
+  --dp: #2D0A28;
+  --maroon: #4A1040;
+  --purple: #7B3FA0;
+  --lav: #B095C5;
+  --gold: #C9E500;
+  --white: #FFFFFF;
+  --dim: rgba(255,255,255,0.62);
+  --muted: rgba(255,255,255,0.35);
+  --border: rgba(201,229,0,0.18);
+  --card: rgba(74,16,64,0.55);
+  --ff-head: 'Montserrat', sans-serif;
+  --ff-body: 'DM Sans', sans-serif;
+}
+
+/* ── PAGE SHELL — full-width breakout from GCF container ── */
+.xo-mkt-page {
+  font-family: var(--ff-body);
+  background: var(--dp);
+  color: var(--white);
+  overflow-x: clip;
+  line-height: 1.6;
+  position: relative;
+  /* Break out of any GCF wrapper to span 100% device width */
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+}
+
+/* ── DECORATIVE BG ── */
+.xo-mkt-bg {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.xo-mkt-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,229,0,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,229,0,0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.xo-mkt-orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+.xo-mkt-orb-1 { width: 700px; height: 700px; background: rgba(123,63,160,0.16); top: -260px; right: -180px; }
+.xo-mkt-orb-2 { width: 500px; height: 500px; background: rgba(201,229,0,0.05); top: 60%; left: -120px; }
+.xo-mkt-orb-3 { width: 360px; height: 360px; background: rgba(74,16,64,0.7); top: 40%; right: -80px; }
+
+/* ── CONTENT LAYER ── */
+.xo-mkt-content { position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════════ */
+.xo-mkt-nav {
+  padding: 0 clamp(16px, 4vw, 72px);
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(45,10,40,0.95);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  width: 100%;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Logo */
+.xo-mkt-nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; flex-shrink: 0;
+}
+.xo-mkt-nav-mark {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-head); font-weight: 900; font-size: 19px;
+  color: var(--dp); flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.xo-mkt-nav-logo:hover .xo-mkt-nav-mark { transform: scale(1.07); }
+.xo-mkt-nav-name {
+  font-family: var(--ff-head); font-weight: 900; font-size: 13px;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--white);
+  white-space: nowrap;
+}
+.xo-mkt-nav-name em { font-style: normal; color: var(--gold); }
+
+/* Nav links */
+.xo-mkt-nav-links {
+  display: flex; align-items: center; gap: 4px;
+  flex: 1; justify-content: center;
+}
+.xo-mkt-nav-link {
+  font-family: var(--ff-head); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--dim); padding: 8px 16px; border-radius: 6px;
+  transition: color 0.2s, background 0.2s; white-space: nowrap;
+}
+.xo-mkt-nav-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+.xo-mkt-nav-link.xo-nav-active { color: var(--gold); }
+
+/* Hamburger (mobile) */
+.xo-mkt-nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: transparent; padding: 6px;
+}
+.xo-mkt-nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--white); border-radius: 2px;
+  transition: all 0.25s;
+}
+
+/* CTA */
+.xo-mkt-nav-btn {
+  background: var(--gold); color: var(--dp);
+  font-family: var(--ff-head); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 10px 22px; border-radius: 7px;
+  transition: background 0.2s, transform 0.2s;
+  display: inline-block; flex-shrink: 0; white-space: nowrap;
+}
+.xo-mkt-nav-btn:hover { background: #d6f500; transform: translateY(-1px); }
+
+/* Mobile drawer */
+.xo-mkt-nav-drawer {
+  display: none;
+  flex-direction: column; gap: 2px;
+  background: rgba(45,10,40,0.98);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px 20px;
+}
+.xo-mkt-nav-drawer.xo-open { display: flex; }
+.xo-mkt-nav-drawer .xo-mkt-nav-link {
+  padding: 10px 14px; font-size: 12px;
+}
+.xo-mkt-nav-drawer .xo-mkt-nav-btn {
+  margin-top: 8px; text-align: center;
+}
+
+/* ── HERO ── */
+.xo-mkt-hero {
+  padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 80px) clamp(48px, 6vw, 80px);
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+}
+.xo-mkt-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,229,0,0.09); border: 1px solid rgba(201,229,0,0.28);
+  border-radius: 100px; padding: 8px 22px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 36px;
+}
+.xo-mkt-badge-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
+  animation: xo-pulse 2.2s ease-in-out infinite;
+}
+.xo-mkt-h1 {
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: clamp(44px, 6.5vw, 86px);
+  line-height: 1.04; letter-spacing: -0.025em;
+  max-width: 920px;
+}
+.xo-mkt-page .g { color: var(--gold); }
+.xo-mkt-page .o { -webkit-text-stroke: 2px var(--lav); color: transparent; }
+.xo-mkt-hero-sub {
+  font-size: clamp(15px, 1.6vw, 19px); font-weight: 300;
+  color: var(--dim); max-width: 620px;
+  margin: 28px 0 52px; line-height: 1.75;
+}
+.xo-mkt-hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.xo-btn-primary {
+  background: var(--gold); color: var(--dp);
+  font-family: var(--ff-head); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 15px 38px; border-radius: 8px;
+  box-shadow: 0 0 44px rgba(201,229,0,0.22);
+  transition: all 0.25s; display: inline-block;
+}
+.xo-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 64px rgba(201,229,0,0.38); }
+.xo-btn-outline {
+  background: transparent; color: var(--white);
+  font-family: var(--ff-head); font-weight: 600; font-size: 13px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 15px 38px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.22);
+  transition: all 0.25s; display: inline-block;
+}
+.xo-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── STATS BAR ── */
+.xo-mkt-stats {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  width: 100%; max-width: 940px; margin-top: 72px;
+}
+.xo-mkt-stat {
+  flex: 1; min-width: 150px; padding: 28px 24px; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.xo-mkt-stat:last-child { border-right: none; }
+.xo-mkt-stat-n {
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: 36px; color: var(--gold); line-height: 1;
+}
+.xo-mkt-stat-l {
+  font-size: 11px; color: var(--dim);
+  text-transform: uppercase; letter-spacing: 0.09em; margin-top: 6px;
+}
+
+/* ── SECTION SCAFFOLD ── */
+.xo-mkt-sec {
+  padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 80px);
+  max-width: 1400px; margin: 0 auto; width: 100%;
+}
+.xo-mkt-divider {
+  border: none; height: 1px; margin: 0;
+  background: linear-gradient(90deg, transparent, var(--border) 25%, var(--border) 75%, transparent);
+}
+.xo-mkt-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+}
+.xo-mkt-eyebrow::before {
+  content: ''; width: 22px; height: 2px; background: var(--gold); flex-shrink: 0;
+}
+.xo-mkt-sh {
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: clamp(30px, 3.8vw, 52px);
+  line-height: 1.1; letter-spacing: -0.02em;
+}
+.xo-mkt-sdesc {
+  font-size: 16px; color: var(--dim); font-weight: 300;
+  max-width: 540px; margin-top: 14px; line-height: 1.75;
+}
+
+/* ── APPS SECTION HEADER ── */
+.xo-mkt-apps-hd {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 52px; flex-wrap: wrap; gap: 24px;
+}
+.xo-mkt-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.xo-mkt-tab {
+  font-family: var(--ff-head); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 8px 20px; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--dim); background: transparent; transition: all 0.2s;
+}
+.xo-mkt-tab:hover, .xo-mkt-tab.xo-active {
+  background: var(--gold); color: var(--dp); border-color: var(--gold);
+}
+
+/* ── APP GRID ── */
+.xo-mkt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(284px, 1fr));
+  gap: 22px;
+}
+.xo-mkt-card {
+  background: var(--card);
+  border: 1px solid rgba(176,149,197,0.14);
+  border-radius: 16px; padding: 30px;
+  position: relative; overflow: hidden;
+  transition: transform 0.28s, border-color 0.28s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.xo-mkt-card::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(135deg, rgba(201,229,0,0.07) 0%, transparent 55%);
+  opacity: 0; transition: opacity 0.28s;
+}
+.xo-mkt-card:hover { transform: translateY(-5px); border-color: rgba(201,229,0,0.38); }
+.xo-mkt-card:hover::after { opacity: 1; }
+
+.xo-mkt-chip {
+  position: absolute; top: 18px; right: 18px;
+  font-family: var(--ff-head); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 11px; border-radius: 100px; z-index: 1;
+}
+.xo-chip-new  { background: rgba(201,229,0,0.13); color: var(--gold); border: 1px solid rgba(201,229,0,0.32); }
+.xo-chip-hot  { background: rgba(255,90,90,0.12); color: #ff7070; border: 1px solid rgba(255,90,90,0.28); }
+.xo-chip-pop  { background: rgba(123,63,160,0.28); color: var(--lav); border: 1px solid rgba(176,149,197,0.3); }
+
+/* FA Icon containers */
+.xo-mkt-app-icon {
+  width: 54px; height: 54px; border-radius: 13px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px; position: relative; z-index: 1;
+}
+.xo-mkt-app-icon i {
+  font-size: 22px; color: var(--gold);
+}
+.xo-mkt-app-nm {
+  font-family: var(--ff-head); font-weight: 700;
+  font-size: 16px; margin-bottom: 8px; position: relative; z-index: 1;
+}
+.xo-mkt-app-desc {
+  font-size: 13px; color: var(--dim);
+  line-height: 1.65; margin-bottom: 18px; position: relative; z-index: 1;
+}
+.xo-mkt-app-tags { display: flex; gap: 6px; flex-wrap: wrap; position: relative; z-index: 1; }
+.xo-mkt-app-tag {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 4px;
+  background: rgba(176,149,197,0.1); color: var(--lav);
+}
+.xo-mkt-app-rule {
+  height: 1px; background: rgba(255,255,255,0.07);
+  margin: 18px 0; position: relative; z-index: 1;
+}
+.xo-mkt-app-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  position: relative; z-index: 1;
+}
+.xo-mkt-app-lnk {
+  font-family: var(--ff-head); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+}
+.xo-mkt-app-arr { color: var(--gold); font-size: 14px; }
+
+/* ── CARD BUTTONS ── */
+.xo-mkt-app-btns {
+  display: flex; gap: 8px; position: relative; z-index: 1;
+}
+.xo-mkt-app-btn {
+  flex: 1; text-align: center;
+  font-family: var(--ff-head); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 9px 10px; border-radius: 6px;
+  transition: all 0.22s; display: inline-block;
+}
+.xo-mkt-app-btn-demo {
+  background: transparent;
+  border: 1px solid rgba(201,229,0,0.35);
+  color: var(--gold);
+}
+.xo-mkt-app-btn-demo:hover {
+  background: rgba(201,229,0,0.1);
+  border-color: var(--gold);
+}
+.xo-mkt-app-btn-order {
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  color: var(--dp);
+}
+.xo-mkt-app-btn-order:hover {
+  background: #d6f500;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(201,229,0,0.25);
+}
+
+/* ── VALUE PILLARS ── */
+.xo-mkt-pillars {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px; margin-top: 52px;
+}
+.xo-mkt-pillar {
+  padding: 38px 30px;
+  background: rgba(74,16,64,0.28);
+  border: 1px solid var(--border); border-radius: 16px;
+  position: relative; overflow: hidden;
+}
+.xo-mkt-pillar::after {
+  content: attr(data-n);
+  position: absolute; bottom: -24px; right: 14px;
+  font-family: var(--ff-head); font-weight: 900; font-size: 110px;
+  color: rgba(201,229,0,0.04); line-height: 1; pointer-events: none;
+}
+.xo-mkt-pillar-ico {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(201,229,0,0.08); border: 1px solid rgba(201,229,0,0.18);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.xo-mkt-pillar-ico i { font-size: 20px; color: var(--gold); }
+.xo-mkt-pillar-t {
+  font-family: var(--ff-head); font-weight: 700;
+  font-size: 17px; margin-bottom: 10px;
+}
+.xo-mkt-pillar-d { font-size: 13px; color: var(--dim); line-height: 1.72; }
+
+/* ── AUDIENCE ── */
+.xo-mkt-audience {
+  background: linear-gradient(135deg, rgba(74,16,64,0.72) 0%, #2D0A28 100%);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+.xo-mkt-aud-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+  gap: 22px; margin-top: 52px;
+}
+.xo-mkt-aud-card {
+  padding: 34px; border-radius: 16px;
+  border: 1px solid rgba(176,149,197,0.18);
+  transition: border-color 0.25s;
+}
+.xo-mkt-aud-card:hover { border-color: var(--gold); }
+.xo-mkt-aud-n {
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: 46px; color: rgba(201,229,0,0.14); line-height: 1; margin-bottom: 10px;
+}
+.xo-mkt-aud-t {
+  font-family: var(--ff-head); font-weight: 700;
+  font-size: 18px; margin-bottom: 10px;
+}
+.xo-mkt-aud-d { font-size: 13px; color: var(--dim); line-height: 1.72; }
+.xo-mkt-aud-list { margin-top: 14px; }
+.xo-mkt-aud-list li {
+  font-size: 13px; color: var(--dim);
+  padding: 5px 0; display: flex; align-items: center; gap: 8px;
+}
+.xo-mkt-aud-list li::before { content: '↗'; color: var(--gold); font-size: 11px; }
+
+/* ── HOW IT WORKS ── */
+.xo-mkt-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; margin-top: 64px; position: relative;
+}
+.xo-mkt-steps::before {
+  content: ''; position: absolute; top: 37px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 15%, var(--border) 85%, transparent);
+}
+.xo-mkt-step { padding: 0 24px; text-align: center; }
+.xo-mkt-step-circle {
+  width: 74px; height: 74px; border-radius: 50%;
+  background: var(--maroon); border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px;
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: 22px; color: var(--gold);
+  position: relative; z-index: 1;
+  box-shadow: 0 0 32px rgba(201,229,0,0.14);
+}
+.xo-mkt-step-t {
+  font-family: var(--ff-head); font-weight: 700;
+  font-size: 15px; margin-bottom: 8px;
+}
+.xo-mkt-step-d { font-size: 13px; color: var(--dim); line-height: 1.65; }
+
+/* ── CTA ── */
+.xo-mkt-cta {
+  padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 80px);
+  text-align: center; position: relative;
+}
+.xo-mkt-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 55% at 50% 50%, rgba(123,63,160,0.22) 0%, transparent 68%);
+}
+.xo-mkt-cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.xo-mkt-cta-t {
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05; letter-spacing: -0.022em; margin-bottom: 22px;
+}
+.xo-mkt-cta-sub {
+  font-size: 16px; color: var(--dim); font-weight: 300;
+  margin-bottom: 48px; line-height: 1.75;
+}
+.xo-mkt-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+.xo-mkt-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px clamp(16px, 4vw, 72px);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
+  width: 100%;
+}
+.xo-mkt-ft-logo {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+}
+.xo-mkt-ft-logo-mark {
+  width: 30px; height: 30px; border-radius: 7px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-head); font-weight: 900; font-size: 15px;
+  color: var(--dp); flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.xo-mkt-ft-logo:hover .xo-mkt-ft-logo-mark { transform: scale(1.07); }
+.xo-mkt-ft-brand {
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: 12px; letter-spacing: 0.07em; color: var(--lav);
+}
+.xo-mkt-ft-brand em { font-style: normal; color: var(--gold); }
+.xo-mkt-ft-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.xo-mkt-ft-copy { font-size: 11px; color: var(--muted); }
+.xo-mkt-ft-link {
+  font-size: 11px; color: var(--lav); transition: color 0.2s;
+}
+.xo-mkt-ft-link:hover { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes xo-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+/* ── RESPONSIVE ── */
+
+/* Large desktop */
+@media (min-width: 1600px) {
+  .xo-mkt-sec { max-width: 1600px; }
+  .xo-mkt-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Tablet landscape */
+@media (max-width: 1100px) {
+  .xo-mkt-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+}
+
+/* Tablet portrait — hide nav links, show hamburger */
+@media (max-width: 960px) {
+  .xo-mkt-nav-links { display: none; }
+  .xo-mkt-nav-hamburger { display: flex; }
+  .xo-mkt-steps { grid-template-columns: 1fr 1fr; gap: 48px 16px; }
+  .xo-mkt-steps::before { display: none; }
+  .xo-mkt-pillars { grid-template-columns: repeat(2, 1fr); }
+  .xo-mkt-aud-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Mobile large */
+@media (max-width: 640px) {
+  .xo-mkt-grid { grid-template-columns: 1fr; }
+  .xo-mkt-stats { flex-direction: row; flex-wrap: wrap; }
+  .xo-mkt-stat { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border); flex: 0 0 50%; padding: 20px 16px; }
+  .xo-mkt-stat:nth-child(odd) { border-right: 1px solid var(--border); }
+  .xo-mkt-stat:last-child, .xo-mkt-stat:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .xo-mkt-pillars { grid-template-columns: 1fr; }
+  .xo-mkt-aud-grid { grid-template-columns: 1fr; }
+  .xo-mkt-apps-hd { flex-direction: column; align-items: flex-start; }
+  .xo-mkt-ft-right { align-items: flex-start; }
+  .xo-mkt-nav-name { display: none; }
+}
+
+/* Mobile small */
+@media (max-width: 480px) {
+  .xo-mkt-steps { grid-template-columns: 1fr; }
+  .xo-mkt-hero-btns { flex-direction: column; align-items: center; }
+  .xo-mkt-hero-btns a { width: 100%; max-width: 320px; text-align: center; }
+  .xo-mkt-cta-btns { flex-direction: column; align-items: center; }
+  .xo-mkt-cta-btns a { width: 100%; max-width: 320px; text-align: center; }
+}
+</style>
+
+<div class="xo-mkt-page">
+
+  <!-- BG LAYER -->
+  <div class="xo-mkt-bg" aria-hidden="true">
+    <div class="xo-mkt-bg-grid"></div>
+    <div class="xo-mkt-orb xo-mkt-orb-1"></div>
+    <div class="xo-mkt-orb xo-mkt-orb-2"></div>
+    <div class="xo-mkt-orb xo-mkt-orb-3"></div>
+  </div>
+
+  <div class="xo-mkt-content">
+
+    <!-- ══ NAV ══ -->
+    <nav class="xo-mkt-nav">
+      <!-- Logo → links to main site -->
+      <a href="https://www.exoasia.org" target="_blank" rel="noopener" class="xo-mkt-nav-logo">
+        <div class="xo-mkt-nav-mark">X</div>
+        <div class="xo-mkt-nav-name">EXOASIA <em>APPS</em></div>
+      </a>
+
+      <!-- Nav links -->
+      <nav class="xo-mkt-nav-links" aria-label="Main navigation">
+        <a href="#xo-explore" class="xo-mkt-nav-link xo-nav-active">Browse Apps</a>
+        <a href="#xo-why" class="xo-mkt-nav-link">Why Exoasia</a>
+        <a href="#xo-for-who" class="xo-mkt-nav-link">Who It's For</a>
+        <a href="#xo-how" class="xo-mkt-nav-link">How It Works</a>
+        <a href="https://www.exoasia.org" target="_blank" rel="noopener" class="xo-mkt-nav-link">Main Site <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:9px; margin-left:4px;"></i></a>
+      </nav>
+
+      <!-- Hamburger (mobile) -->
+      <button class="xo-mkt-nav-hamburger" aria-label="Toggle menu" onclick="document.getElementById('xo-drawer').classList.toggle('xo-open'); this.classList.toggle('xo-open')">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- CTA -->
+      <a href="#xo-explore" class="xo-mkt-nav-btn">Explore Apps</a>
+    </nav>
+
+    <!-- Mobile drawer -->
+    <div class="xo-mkt-nav-drawer" id="xo-drawer">
+      <a href="#xo-explore" class="xo-mkt-nav-link" onclick="document.getElementById('xo-drawer').classList.remove('xo-open')">Browse Apps</a>
+      <a href="#xo-why" class="xo-mkt-nav-link" onclick="document.getElementById('xo-drawer').classList.remove('xo-open')">Why Exoasia</a>
+      <a href="#xo-for-who" class="xo-mkt-nav-link" onclick="document.getElementById('xo-drawer').classList.remove('xo-open')">Who It's For</a>
+      <a href="#xo-how" class="xo-mkt-nav-link" onclick="document.getElementById('xo-drawer').classList.remove('xo-open')">How It Works</a>
+      <a href="https://www.exoasia.org" target="_blank" rel="noopener" class="xo-mkt-nav-link">Main Site ↗</a>
+      <a href="#xo-explore" class="xo-mkt-nav-btn" onclick="document.getElementById('xo-drawer').classList.remove('xo-open')">Explore Apps</a>
+    </div>
+
+    <!-- ══ HERO ══ -->
+    <section class="xo-mkt-hero">
+      <div class="xo-mkt-badge">
+        <span class="xo-mkt-badge-dot"></span>
+        Powered by Devcrew &nbsp;·&nbsp; White-Label Ready
+      </div>
+      <h1 class="xo-mkt-h1">
+        <span class="o">AI-Native</span> Software Built to<br/>
+        <span class="g">Power Every</span> Business
+      </h1>
+      <p class="xo-mkt-hero-sub">
+        The Exoasia App Marketplace gives MSMEs, enterprises, and resellers access to battle-tested, white-label software — ready to deploy, rebrand, and scale.
+      </p>
+      <div class="xo-mkt-hero-btns">
+        <a href="#xo-explore" class="xo-btn-primary">Browse the Marketplace</a>
+        <a href="#xo-how" class="xo-btn-outline">How It Works</a>
+      </div>
+      <div class="xo-mkt-stats">
+        <div class="xo-mkt-stat">
+          <div class="xo-mkt-stat-n">12+</div>
+          <div class="xo-mkt-stat-l">App Categories</div>
+        </div>
+        <div class="xo-mkt-stat">
+          <div class="xo-mkt-stat-n">100%</div>
+          <div class="xo-mkt-stat-l">White-Label Ready</div>
+        </div>
+        <div class="xo-mkt-stat">
+          <div class="xo-mkt-stat-n">48h</div>
+          <div class="xo-mkt-stat-l">Avg. Deployment</div>
+        </div>
+        <div class="xo-mkt-stat">
+          <div class="xo-mkt-stat-n">SEA</div>
+          <div class="xo-mkt-stat-l">Market Ready</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="xo-mkt-divider"/>
+
+    <!-- ══ APP MARKETPLACE ══ -->
+    <section class="xo-mkt-sec" id="xo-explore">
+      <div class="xo-mkt-apps-hd">
+        <div>
+          <div class="xo-mkt-eyebrow">App Marketplace</div>
+          <h2 class="xo-mkt-sh">Your Stack,<br/><span class="g">Your Brand.</span></h2>
+        </div>
+        <div class="xo-mkt-tabs" style="position: relative; z-index: 99999; pointer-events: auto;">
+          <button type="button" class="xo-mkt-tab xo-active" onclick="xoFilterApps(event, 'All Apps', this)">All Apps</button>
+          <button type="button" class="xo-mkt-tab" onclick="xoFilterApps(event, 'Operations', this)">Operations</button>
+          <button type="button" class="xo-mkt-tab" onclick="xoFilterApps(event, 'Sales & CX', this)">Sales &amp; CX</button>
+          <button type="button" class="xo-mkt-tab" onclick="xoFilterApps(event, 'AI-Powered', this)">AI-Powered</button>
+        </div>
+      </div>
+
+      <div class="xo-mkt-grid">
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-new">Free</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-scroll"></i></div>
+          <div class="xo-mkt-app-nm">Teleprompter</div>
+          <div class="xo-mkt-app-desc">A clean, distraction-free AI-powered teleprompter for presentations, video recordings, and live speaking — runs right in your browser.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Productivity</span><span class="xo-mkt-app-tag">Free Tool</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://www.exoasia.org/teleprompter" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo"><i class="fa-solid fa-circle-play" style="margin-right:5px;font-size:9px;"></i>Access Now</a>
+            <a href="https://www.exoasia.org/teleprompter" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order" style="background:rgba(201,229,0,0.1);border:1px solid rgba(201,229,0,0.3);color:var(--gold);"><i class="fa-solid fa-gift" style="margin-right:5px;font-size:9px;"></i>Free</a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-hot">Hot</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-robot"></i></div>
+          <div class="xo-mkt-app-nm">AI Sales Assistant</div>
+          <div class="xo-mkt-app-desc">Automate lead nurturing, follow-ups, and pipeline management with a conversational AI engine your team can rebrand.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">AI-Powered</span><span class="xo-mkt-app-tag">Sales</span></div>
+          <div class="xo-mkt-app-rule"></div>
+         <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-pop">Popular</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-users"></i></div>
+          <div class="xo-mkt-app-nm">CRM Pro</div>
+          <div class="xo-mkt-app-desc">Full-featured customer relationship management — pipelines, contacts, deal tracking, and analytics in one white-label suite.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Sales</span><span class="xo-mkt-app-tag">CX</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-new">New</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <div class="xo-mkt-app-nm">AI HR &amp; Talent Suite</div>
+          <div class="xo-mkt-app-desc">AI-driven recruitment, onboarding workflows, payroll integration, and performance tracking for growing teams.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">HR</span><span class="xo-mkt-app-tag">AI-Powered</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-store"></i></div>
+          <div class="xo-mkt-app-nm">E-Commerce Engine</div>
+          <div class="xo-mkt-app-desc">Launch branded online stores with inventory management, payments, and logistics integration — yours in 48 hours.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Commerce</span><span class="xo-mkt-app-tag">Operations</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-pop">Popular</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="xo-mkt-app-nm">Smart Booking System</div>
+          <div class="xo-mkt-app-desc">Appointment scheduling, resource booking, and automated reminders — brandable for clinics, salons, and consultancies.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Scheduling</span><span class="xo-mkt-app-tag">CX</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-coins"></i></div>
+          <div class="xo-mkt-app-nm">Accounting &amp; Finance Hub</div>
+          <div class="xo-mkt-app-desc">Invoicing, expense tracking, financial reporting, and multi-currency support — enterprise-grade at MSME-friendly pricing.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Finance</span><span class="xo-mkt-app-tag">Operations</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-new">New</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="xo-mkt-app-nm">Learning Management System</div>
+          <div class="xo-mkt-app-desc">Build and monetize training academies — course builder, assessments, certificates, and learner analytics under your brand.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">L&amp;D</span><span class="xo-mkt-app-tag">Enterprise</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+          <div class="xo-mkt-app-nm">Inventory &amp; Supply Chain</div>
+          <div class="xo-mkt-app-desc">Real-time stock tracking, purchase orders, supplier management, and warehouse ops — built for Philippine logistics.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Logistics</span><span class="xo-mkt-app-tag">Operations</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-hot">Hot</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <div class="xo-mkt-app-nm">Marketing Automation Suite</div>
+          <div class="xo-mkt-app-desc">Multi-channel campaigns — email, SMS, social, and push — with AI-driven segmentation and real-time conversion analytics.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Marketing</span><span class="xo-mkt-app-tag">AI-Powered</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+          <div class="xo-mkt-app-nm">Project &amp; Team Hub</div>
+          <div class="xo-mkt-app-desc">Kanban boards, task assignments, time tracking, and collaboration tools — your team's command center, rebranded for your clients.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Productivity</span><span class="xo-mkt-app-tag">Operations</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-new">New</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-file-signature"></i></div>
+          <div class="xo-mkt-app-nm">Document &amp; e-Sign Platform</div>
+          <div class="xo-mkt-app-desc">Template management, contract generation, digital signatures, and audit trails — compliant across Philippine jurisdictions.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Legal</span><span class="xo-mkt-app-tag">Enterprise</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+
+        <div class="xo-mkt-card">
+          <span class="xo-mkt-chip xo-chip-hot">Hot</span>
+          <div class="xo-mkt-app-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="xo-mkt-app-nm">Business Intelligence Dashboard</div>
+          <div class="xo-mkt-app-desc">Unified data visualization across all systems — real-time KPIs, custom reports, and executive dashboards for every stakeholder.</div>
+          <div class="xo-mkt-app-tags"><span class="xo-mkt-app-tag">Analytics</span><span class="xo-mkt-app-tag">AI-Powered</span></div>
+          <div class="xo-mkt-app-rule"></div>
+          <div class="xo-mkt-app-btns">
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-demo">
+              <i class="fa-solid fa-play" style="margin-right:5px;font-size:9px;"></i>See Demo
+            </a>
+            <a href="https://app.gamechangerfunnel.com/v2/location/lI5jFa4YXaU0mDIDpmhr/integration" target="_blank" rel="noopener" class="xo-mkt-app-btn xo-mkt-app-btn-order">
+              <i class="fa-solid fa-cart-shopping" style="margin-right:5px;font-size:9px;"></i>Order
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="xo-mkt-divider"/>
+
+    <!-- ══ WHY ══ -->
+    <section class="xo-mkt-sec" id="xo-why">
+      <div class="xo-mkt-eyebrow">Why Exoasia Apps</div>
+      <h2 class="xo-mkt-sh">Software That Scales<br/><span class="g">With Your Ambition.</span></h2>
+      <p class="xo-mkt-sdesc">Every app is built by Devcrew and battle-tested across real businesses — deploy with confidence and grow without limits.</p>
+      <div class="xo-mkt-pillars">
+        <div class="xo-mkt-pillar" data-n="01">
+          <div class="xo-mkt-pillar-ico"><i class="fa-solid fa-tag"></i></div>
+          <div class="xo-mkt-pillar-t">Fully White-Label</div>
+          <div class="xo-mkt-pillar-d">Your brand, your domain, your colors. Every app ships with full white-labeling — no engineering required.</div>
+        </div>
+        <div class="xo-mkt-pillar" data-n="02">
+          <div class="xo-mkt-pillar-ico"><i class="fa-solid fa-bolt"></i></div>
+          <div class="xo-mkt-pillar-t">Deploy in 48 Hours</div>
+          <div class="xo-mkt-pillar-d">From selection to live in under 48 hours. Our implementation team handles setup end-to-end.</div>
+        </div>
+        <div class="xo-mkt-pillar" data-n="03">
+          <div class="xo-mkt-pillar-ico"><i class="fa-solid fa-plug"></i></div>
+          <div class="xo-mkt-pillar-t">Local-Native Integrations</div>
+          <div class="xo-mkt-pillar-d">Pre-built connectors for GCash, Maya, PH banks, and leading local logistics providers — out of the box.</div>
+        </div>
+        <div class="xo-mkt-pillar" data-n="04">
+          <div class="xo-mkt-pillar-ico"><i class="fa-solid fa-microchip"></i></div>
+          <div class="xo-mkt-pillar-t">AI at the Core</div>
+          <div class="xo-mkt-pillar-d">AI capabilities baked in — not bolted on. Intelligence is the default, not the upgrade.</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="xo-mkt-divider"/>
+
+    <!-- ══ AUDIENCE ══ -->
+    <div class="xo-mkt-audience">
+      <div class="xo-mkt-sec" id="xo-for-who">
+        <div class="xo-mkt-eyebrow">Built for Every Stage</div>
+        <h2 class="xo-mkt-sh">One Marketplace.<br/><span class="g">Four Paths to Value.</span></h2>
+        <div class="xo-mkt-aud-grid">
+          <div class="xo-mkt-aud-card">
+            <div class="xo-mkt-aud-n">01</div>
+            <div class="xo-mkt-aud-t">MSMEs &amp; Startups</div>
+            <div class="xo-mkt-aud-d">Enterprise-grade software at startup-friendly pricing — compete on capability, not budget.</div>
+            <ul class="xo-mkt-aud-list">
+              <li>No expensive custom builds</li>
+              <li>Month-to-month flexibility</li>
+              <li>Scales as you grow</li>
+            </ul>
+          </div>
+          <div class="xo-mkt-aud-card">
+            <div class="xo-mkt-aud-n">02</div>
+            <div class="xo-mkt-aud-t">Enterprise Clients</div>
+            <div class="xo-mkt-aud-d">Modular solutions that integrate with your existing stack — deploy across teams, subsidiaries, and regions.</div>
+            <ul class="xo-mkt-aud-list">
+              <li>Enterprise SLAs &amp; support</li>
+              <li>SSO &amp; security compliance</li>
+              <li>Custom workflows &amp; APIs</li>
+            </ul>
+          </div>
+          <div class="xo-mkt-aud-card">
+            <div class="xo-mkt-aud-n">03</div>
+            <div class="xo-mkt-aud-t">Resellers &amp; Partners</div>
+            <div class="xo-mkt-aud-d">License and resell under your own brand — build recurring revenue with zero development overhead.</div>
+            <ul class="xo-mkt-aud-list">
+              <li>Full white-label licensing</li>
+              <li>Partner revenue sharing</li>
+              <li>Dedicated partner success team</li>
+            </ul>
+          </div>
+          <div class="xo-mkt-aud-card">
+            <div class="xo-mkt-aud-n">04</div>
+            <div class="xo-mkt-aud-t">Investors &amp; Acquirers</div>
+            <div class="xo-mkt-aud-d">Deploy proven software into portfolio companies to accelerate transformation and unlock valuation uplifts.</div>
+            <ul class="xo-mkt-aud-list">
+              <li>Portfolio-wide licensing options</li>
+              <li>Transformation ROI reporting</li>
+              <li>Acquisition-ready tech stack</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ HOW IT WORKS ══ -->
+    <section class="xo-mkt-sec" id="xo-how" style="text-align:center;">
+      <div class="xo-mkt-eyebrow" style="justify-content:center;">How It Works</div>
+      <h2 class="xo-mkt-sh">From Discovery<br/><span class="g">to Deployed in Days.</span></h2>
+      <div class="xo-mkt-steps">
+        <div class="xo-mkt-step">
+          <div class="xo-mkt-step-circle">01</div>
+          <div class="xo-mkt-step-t">Browse &amp; Select</div>
+          <div class="xo-mkt-step-d">Explore the marketplace, request a demo, and choose the apps that fit your business.</div>
+        </div>
+        <div class="xo-mkt-step">
+          <div class="xo-mkt-step-circle">02</div>
+          <div class="xo-mkt-step-t">Brand It Yours</div>
+          <div class="xo-mkt-step-d">Our team applies your logo, colors, and domain — every app feels proprietary.</div>
+        </div>
+        <div class="xo-mkt-step">
+          <div class="xo-mkt-step-circle">03</div>
+          <div class="xo-mkt-step-t">Deploy &amp; Launch</div>
+          <div class="xo-mkt-step-d">Go live in 48 hours. We handle setup, integrations, and onboarding for your team.</div>
+        </div>
+        <div class="xo-mkt-step">
+          <div class="xo-mkt-step-circle">04</div>
+          <div class="xo-mkt-step-t">Scale &amp; Grow</div>
+          <div class="xo-mkt-step-d">Upgrade, add modules, and expand with continuous Devcrew engineering support.</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="xo-mkt-divider"/>
+
+    <!-- ══ CTA ══ -->
+    <section class="xo-mkt-cta">
+      <div class="xo-mkt-cta-inner">
+        <div class="xo-mkt-eyebrow" style="justify-content:center;">Get Started Today</div>
+        <h2 class="xo-mkt-cta-t">Your Business.<br/><span class="g">Your Software.</span><br/>Your Future.</h2>
+        <p class="xo-mkt-cta-sub">Join forward-thinking businesses across the Philippines already deploying Exoasia Apps to outpace their competition.</p>
+        <div class="xo-mkt-cta-btns">
+          <a href="https://link.gamechangerfunnel.com/widget/form/uYO7K3v5DuQOv2jLfl2j" target="_blank" rel="noopener" class="xo-btn-primary">Request a Demo</a>
+          <a href="https://link.gamechangerfunnel.com/widget/form/FqyOTm1eTw70xywQUe8X" target="_blank" rel="noopener" class="xo-btn-outline">Talk to a Specialist</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="xo-mkt-footer">
+      <!-- Logo → links to main site -->
+      <a href="https://www.exoasia.org" target="_blank" rel="noopener" class="xo-mkt-ft-logo">
+        <div class="xo-mkt-ft-logo-mark">X</div>
+        <div class="xo-mkt-ft-brand">EXOASIA <em>APP MARKETPLACE</em> · Powered by Devcrew</div>
+      </a>
+      <div class="xo-mkt-ft-right">
+        <span class="xo-mkt-ft-copy">© 2025 Exoasia Innovation Hub</span>
+        <a href="https://www.exoasia.org" target="_blank" rel="noopener" class="xo-mkt-ft-link">
+          www.exoasia.org <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:9px;"></i>
+        </a>
+      </div>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->

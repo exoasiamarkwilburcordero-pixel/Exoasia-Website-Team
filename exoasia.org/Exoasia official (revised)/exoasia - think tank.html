@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Think Tank as a Service | Exoasia Innovation Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+/* ─── RESET & TOKENS ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --xo-bg:#0D0612;
+  --xo-dp:#2D0A28;
+  --xo-maroon:#4A1040;
+  --xo-purple:#7B3FA0;
+  --xo-lavender:#B095C5;
+  --xo-gold:#C9E500;
+  --xo-gold2:#E8C840;
+  --xo-white:#F5F0FF;
+  --xo-muted:#8A7A9B;
+  --xo-card:#1A0A1E;
+  --xo-border:rgba(201,229,0,0.15);
+  --xo-glow:rgba(123,63,160,0.35);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--xo-bg);
+  color:var(--xo-white);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+/* ─── UTILITY ────────────────────────────────────────────────── */
+.xo-container{max-width:1140px;margin:0 auto;padding:0 28px}
+.xo-gold{color:var(--xo-gold)}
+.xo-lavender{color:var(--xo-lavender)}
+.xo-tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--xo-gold);
+  border:1px solid var(--xo-gold);border-radius:2px;
+  padding:4px 12px;margin-bottom:18px;
+}
+
+/* ─── NOISE OVERLAY ──────────────────────────────────────────── */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.4;
+}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+.xo-nav{
+  position: fixed !important; top: 0 !important; width: 100vw !important; left: 0 !important; margin: 0 !important;z-index: 9999 !important;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 40px;
+  background:linear-gradient(180deg,rgba(13,6,18,.98) 0%,rgba(13,6,18,0) 100%);
+  backdrop-filter:blur(8px);
+}
+.xo-nav-logo{
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--xo-white);
+  text-decoration:none;flex-shrink:0;
+}
+.xo-nav-logo span{color:var(--xo-gold)}
+.xo-nav-links{
+  display:flex;align-items:center;gap:6px;
+  list-style:none;
+}
+.xo-nav-item{position:relative}
+.xo-nav-link{
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--xo-muted);text-decoration:none;
+  padding:8px 14px;border-radius:2px;display:flex;align-items:center;gap:5px;
+  transition:color .2s,background .2s;white-space:nowrap;cursor:pointer;
+  background:none;border:none;font-family:'Inter',sans-serif;
+}
+.xo-nav-link:hover,.xo-nav-item:hover .xo-nav-link{color:var(--xo-white);background:rgba(255,255,255,.05)}
+.xo-nav-arrow{
+  width:10px;height:10px;display:inline-block;transition:transform .25s;
+  flex-shrink:0;
+}
+.xo-nav-item:hover .xo-nav-arrow{transform:rotate(180deg)}
+
+/* Sectors dropdown */
+.xo-dropdown{
+  position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  min-width:260px;
+  background:#1A0A20;border:1px solid rgba(201,229,0,.15);border-radius:4px;
+  padding:8px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateX(-50%) translateY(-6px);
+  transition:opacity .2s,transform .2s,visibility .2s;
+  z-index:200;
+  box-shadow:0 24px 48px rgba(0,0,0,.6);
+}
+.xo-nav-item:hover .xo-dropdown{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.xo-dropdown-header{
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--xo-gold);padding:8px 12px 6px;font-weight:700;
+  border-bottom:1px solid rgba(201,229,0,.1);margin-bottom:4px;
+}
+.xo-dropdown-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:3px;text-decoration:none;
+  transition:background .15s;cursor:pointer;
+}
+.xo-dropdown-item:hover{background:rgba(123,63,160,.2)}
+.xo-dropdown-dot{
+  width:6px;height:6px;border-radius:50%;flex-shrink:0;
+  background:var(--xo-purple);
+}
+.xo-dropdown-item:nth-child(2) .xo-dropdown-dot{background:var(--xo-gold)}
+.xo-dropdown-item:nth-child(3) .xo-dropdown-dot{background:#4A90D9}
+.xo-dropdown-item:nth-child(4) .xo-dropdown-dot{background:#50C878}
+.xo-dropdown-item:nth-child(5) .xo-dropdown-dot{background:#FF6B6B}
+.xo-dropdown-item:nth-child(6) .xo-dropdown-dot{background:#FFB347}
+.xo-dropdown-item:nth-child(7) .xo-dropdown-dot{background:#DA70D6}
+.xo-dropdown-item:nth-child(8) .xo-dropdown-dot{background:#87CEEB}
+.xo-dropdown-item:nth-child(9) .xo-dropdown-dot{background:#98FB98}
+.xo-dropdown-item:nth-child(10) .xo-dropdown-dot{background:#F0E68C}
+.xo-dropdown-item:nth-child(11) .xo-dropdown-dot{background:var(--xo-lavender)}
+.xo-dropdown-name{
+  font-size:12px;font-weight:500;color:var(--xo-white);
+  letter-spacing:.03em;
+}
+.xo-dropdown-badge{
+  margin-left:auto;font-size:8px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--xo-muted);
+  background:rgba(255,255,255,.05);border-radius:2px;padding:2px 6px;
+}
+
+.xo-nav-cta{
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--xo-bg);background:var(--xo-gold);
+  border:none;border-radius:2px;padding:10px 22px;cursor:pointer;
+  text-decoration:none;transition:opacity .2s;white-space:nowrap;flex-shrink:0;
+}
+.xo-nav-cta:hover{opacity:.85}
+
+/* ─── ADVISORY GROUP ─────────────────────────────────────────── */
+.xo-advisory{
+  background:linear-gradient(180deg,#0D0612 0%,#1A0630 40%,#120520 70%,#0D0612 100%);
+  position:relative;overflow:hidden;
+}
+.xo-advisory::before{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle,rgba(123,63,160,.12),transparent 65%);
+  pointer-events:none;
+}
+.xo-advisory-tier{margin-bottom:64px}
+.xo-advisory-tier:last-child{margin-bottom:0}
+
+.xo-tier-header{
+  display:flex;align-items:center;gap:20px;margin-bottom:36px;
+}
+.xo-tier-label{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  padding:6px 16px;border-radius:2px;white-space:nowrap;
+}
+.xo-tier-advisor .xo-tier-label{
+  background:var(--xo-gold);color:var(--xo-bg);
+}
+.xo-tier-senior .xo-tier-label{
+  background:transparent;color:var(--xo-lavender);
+  border:1px solid var(--xo-lavender);
+}
+.xo-tier-partner .xo-tier-label{
+  background:transparent;color:var(--xo-muted);
+  border:1px solid rgba(138,122,155,.4);
+}
+.xo-tier-line{
+  flex:1;height:1px;
+  background:linear-gradient(to right,rgba(201,229,0,.2),transparent);
+}
+.xo-tier-senior .xo-tier-line{
+  background:linear-gradient(to right,rgba(176,149,197,.2),transparent);
+}
+.xo-tier-partner .xo-tier-line{
+  background:linear-gradient(to right,rgba(138,122,155,.15),transparent);
+}
+
+/* Advisor cards — larger, more presence */
+.xo-advisor-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:16px;
+}
+.xo-advisor-card{
+  background:var(--xo-card);
+  border:1px solid rgba(201,229,0,.12);
+  border-radius:4px;padding:28px 24px;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.xo-advisor-card:hover{
+  border-color:rgba(201,229,0,.35);transform:translateY(-3px);
+}
+.xo-advisor-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--xo-gold);
+}
+.xo-advisor-initial{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--xo-maroon),var(--xo-purple));
+  border:1px solid rgba(201,229,0,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:16px;
+  color:var(--xo-gold);margin-bottom:16px;flex-shrink:0;
+}
+.xo-advisor-name{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:15px;color:var(--xo-white);margin-bottom:4px;letter-spacing:.01em;
+}
+.xo-advisor-domain{
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--xo-gold);
+}
+
+/* Senior Partner cards */
+.xo-senior-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;
+}
+.xo-senior-card{
+  background:rgba(26,10,30,.7);
+  border:1px solid rgba(176,149,197,.12);
+  border-radius:4px;padding:24px 20px;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.xo-senior-card:hover{
+  border-color:rgba(176,149,197,.35);transform:translateY(-3px);
+}
+.xo-senior-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--xo-lavender);opacity:.6;
+}
+.xo-senior-initial{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,#2A0840,#4A1F70);
+  border:1px solid rgba(176,149,197,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;
+  color:var(--xo-lavender);margin-bottom:14px;
+}
+.xo-senior-name{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:14px;color:var(--xo-white);margin-bottom:4px;
+}
+.xo-senior-domain{
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--xo-lavender);opacity:.8;
+}
+
+/* Partner cards — understated */
+.xo-partner-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px;
+}
+.xo-partner-card{
+  background:rgba(20,8,26,.6);
+  border:1px solid rgba(138,122,155,.1);
+  border-radius:3px;padding:20px 18px;
+  display:flex;align-items:center;gap:14px;
+  transition:border-color .3s,background .3s;
+}
+.xo-partner-card:hover{
+  border-color:rgba(138,122,155,.25);
+  background:rgba(30,12,38,.8);
+}
+.xo-partner-initial{
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(138,122,155,.1);
+  border:1px solid rgba(138,122,155,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:12px;
+  color:var(--xo-muted);flex-shrink:0;
+}
+.xo-partner-info{}
+.xo-partner-name{
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:13px;color:var(--xo-white);margin-bottom:2px;
+}
+.xo-partner-domain{
+  font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--xo-muted);
+}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.xo-hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,#3D1060 0%,var(--xo-bg) 70%);
+  padding:140px 28px 100px;
+}
+.xo-hero-orb{
+  position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
+}
+.xo-hero-orb-1{width:600px;height:600px;top:-200px;left:-200px;background:rgba(74,16,64,.5)}
+.xo-hero-orb-2{width:500px;height:500px;bottom:-150px;right:-150px;background:rgba(123,63,160,.35)}
+.xo-hero-orb-3{width:300px;height:300px;top:40%;left:55%;background:rgba(201,229,0,.06)}
+
+.xo-hero-inner{position:relative;z-index:2;max-width:860px}
+
+.xo-hero-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--xo-gold);margin-bottom:24px;display:block;
+  animation:xo-fadein .8s ease both;
+}
+.xo-hero-h1{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(48px,7vw,88px);line-height:.95;
+  letter-spacing:-.02em;margin-bottom:32px;
+  animation:xo-fadein .9s .1s ease both;
+}
+.xo-hero-h1 em{
+  font-style:italic;font-family:'Lora',serif;font-weight:400;
+  color:var(--xo-lavender);
+}
+.xo-hero-sub{
+  font-size:clamp(16px,2vw,20px);color:var(--xo-lavender);
+  max-width:600px;margin:0 auto 48px;line-height:1.7;font-weight:300;
+  animation:xo-fadein 1s .2s ease both;
+}
+.xo-hero-actions{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  animation:xo-fadein 1s .35s ease both;
+}
+.xo-btn-primary{
+  font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--xo-gold);color:var(--xo-bg);
+  border:none;border-radius:2px;padding:16px 36px;cursor:pointer;
+  text-decoration:none;transition:transform .2s,box-shadow .2s;
+  display:inline-block;
+}
+.xo-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,229,0,.3)}
+.xo-btn-ghost{
+  font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;color:var(--xo-white);
+  border:1px solid rgba(255,255,255,.25);border-radius:2px;
+  padding:16px 36px;cursor:pointer;text-decoration:none;
+  display:inline-block;transition:border-color .2s,color .2s;
+}
+.xo-btn-ghost:hover{border-color:var(--xo-lavender);color:var(--xo-lavender)}
+
+.xo-hero-scroll{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--xo-muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  animation:xo-fadein 1.2s .6s ease both;
+}
+.xo-scroll-line{
+  width:1px;height:40px;background:linear-gradient(to bottom,var(--xo-muted),transparent);
+  animation:xo-scrollpulse 2s infinite;
+}
+@keyframes xo-scrollpulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ─── STATS BAR ──────────────────────────────────────────────── */
+.xo-stats{
+  background:var(--xo-dp);
+  border-top:1px solid var(--xo-border);
+  border-bottom:1px solid var(--xo-border);
+  padding:36px 0;
+}
+.xo-stats-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1px;background:var(--xo-border);
+}
+.xo-stat{
+  background:var(--xo-dp);
+  padding:28px 32px;text-align:center;
+}
+.xo-stat-num{
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:42px;
+  color:var(--xo-gold);line-height:1;margin-bottom:6px;
+  letter-spacing:-.02em;
+}
+.xo-stat-label{
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--xo-muted);font-weight:500;
+}
+
+/* ─── SECTION BASE ───────────────────────────────────────────── */
+.xo-section{padding:100px 0}
+.xo-section-header{text-align:center;max-width:680px;margin:0 auto 70px}
+.xo-section-h2{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(32px,4.5vw,54px);line-height:1.05;
+  letter-spacing:-.02em;margin-bottom:18px;
+}
+.xo-section-lead{
+  font-size:17px;color:var(--xo-lavender);font-weight:300;line-height:1.75;
+}
+
+/* ─── WHAT IS TTaaS ──────────────────────────────────────────── */
+.xo-what{
+  background:linear-gradient(180deg,var(--xo-bg) 0%,#150820 50%,var(--xo-bg) 100%);
+}
+.xo-what-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  max-width:1000px;margin:0 auto;
+}
+.xo-what-text .xo-section-h2{text-align:left}
+.xo-what-text .xo-section-lead{text-align:left;margin-bottom:28px}
+.xo-feature-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.xo-feature-item{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:15px;color:var(--xo-white);font-weight:300;line-height:1.5;
+}
+.xo-feature-icon{
+  width:20px;height:20px;flex-shrink:0;margin-top:2px;
+  background:var(--xo-gold);border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--xo-bg);font-weight:900;
+}
+
+.xo-what-visual{
+  position:relative;background:var(--xo-card);
+  border:1px solid var(--xo-border);border-radius:4px;
+  padding:36px;min-height:360px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;
+}
+.xo-what-visual::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(123,63,160,.35),transparent 70%);
+  pointer-events:none;
+}
+.xo-visual-label{
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--xo-gold);font-weight:700;margin-bottom:24px;
+}
+.xo-visual-nodes{display:flex;flex-direction:column;gap:12px}
+.xo-node{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(123,63,160,.1);border:1px solid rgba(123,63,160,.2);
+  border-radius:3px;padding:12px 16px;
+  font-size:13px;color:var(--xo-white);font-weight:500;
+  position:relative;overflow:hidden;
+}
+.xo-node::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--xo-purple);
+}
+.xo-node:first-child::after{background:var(--xo-gold)}
+.xo-node-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--xo-purple);flex-shrink:0;
+}
+.xo-node:first-child .xo-node-dot{background:var(--xo-gold)}
+.xo-visual-output{
+  margin-top:20px;padding:16px;
+  background:rgba(201,229,0,.06);border:1px solid rgba(201,229,0,.2);
+  border-radius:3px;font-size:12px;color:var(--xo-gold);
+  letter-spacing:.05em;font-weight:500;
+  display:flex;align-items:center;gap:10px;
+}
+.xo-pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--xo-gold);
+  flex-shrink:0;animation:xo-pulse 1.5s ease-in-out infinite;
+}
+@keyframes xo-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+/* ─── HOW IT WORKS ───────────────────────────────────────────── */
+.xo-how{background:var(--xo-dp)}
+.xo-steps-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1px;background:var(--xo-border);
+}
+.xo-step{
+  background:var(--xo-dp);padding:40px 28px;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.xo-step:hover{background:var(--xo-maroon)}
+.xo-step-num{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:64px;color:rgba(201,229,0,.08);line-height:1;
+  margin-bottom:16px;letter-spacing:-.04em;
+  transition:color .3s;
+}
+.xo-step:hover .xo-step-num{color:rgba(201,229,0,.15)}
+.xo-step-title{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:16px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--xo-gold);margin-bottom:10px;
+}
+.xo-step-desc{font-size:14px;color:var(--xo-lavender);line-height:1.65;font-weight:300}
+
+/* ─── WHO IT'S FOR ───────────────────────────────────────────── */
+.xo-who{
+  background:linear-gradient(180deg,var(--xo-bg) 0%,#180D22 100%);
+}
+.xo-segments-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+}
+.xo-segment-card{
+  background:var(--xo-card);border:1px solid rgba(176,149,197,.12);
+  border-radius:4px;padding:40px 32px;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.xo-segment-card:hover{
+  border-color:rgba(201,229,0,.3);
+  transform:translateY(-4px);
+}
+.xo-segment-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--xo-purple);
+  transition:background .3s;
+}
+.xo-segment-card:nth-child(2)::before{background:var(--xo-gold)}
+.xo-segment-card:nth-child(3)::before{background:var(--xo-lavender)}
+.xo-segment-icon{
+  font-size:28px;margin-bottom:20px;display:block;
+  color:var(--xo-purple);
+}
+.xo-segment-card:nth-child(2) .xo-segment-icon{color:var(--xo-gold)}
+.xo-segment-card:nth-child(3) .xo-segment-icon{color:var(--xo-lavender)}
+.xo-segment-title{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:20px;letter-spacing:.02em;margin-bottom:12px;
+}
+.xo-segment-desc{
+  font-size:14px;color:var(--xo-lavender);line-height:1.7;
+  font-weight:300;margin-bottom:20px;
+}
+.xo-segment-outcomes{
+  list-style:none;display:flex;flex-direction:column;gap:8px;
+}
+.xo-segment-outcome{
+  font-size:13px;color:var(--xo-white);padding-left:16px;position:relative;
+  font-weight:400;
+}
+.xo-segment-outcome::before{
+  content:'→';position:absolute;left:0;color:var(--xo-gold);font-weight:700;
+}
+
+/* ─── PACKAGES ───────────────────────────────────────────────── */
+.xo-packages{background:var(--xo-dp)}
+.xo-pkg-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;align-items:start;
+}
+.xo-pkg-card{
+  background:var(--xo-card);border:1px solid rgba(176,149,197,.12);
+  border-radius:4px;padding:36px 28px;
+  display:flex;flex-direction:column;
+  transition:border-color .3s,transform .3s;
+  position:relative;overflow:hidden;
+}
+.xo-pkg-card:hover{
+  border-color:rgba(201,229,0,.25);
+  transform:translateY(-4px);
+}
+.xo-pkg-card.xo-featured{
+  border-color:var(--xo-gold);
+  background:linear-gradient(145deg,#1E0B2A,#150620);
+}
+.xo-featured-badge{
+  position:absolute;top:0;right:0;
+  background:var(--xo-gold);color:var(--xo-bg);
+  font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;
+  padding:6px 14px;border-radius:0 0 0 4px;
+}
+.xo-pkg-tier{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--xo-muted);margin-bottom:8px;
+}
+.xo-pkg-name{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:22px;letter-spacing:.02em;margin-bottom:6px;
+}
+.xo-pkg-tagline{
+  font-size:13px;color:var(--xo-lavender);font-style:italic;
+  font-family:'Lora',serif;margin-bottom:24px;line-height:1.5;
+}
+.xo-pkg-price{
+  margin-bottom:28px;padding-bottom:28px;
+  border-bottom:1px solid var(--xo-border);
+}
+.xo-pkg-amount{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:36px;color:var(--xo-gold);letter-spacing:-.02em;
+}
+.xo-pkg-unit{font-size:13px;color:var(--xo-muted);margin-top:4px}
+.xo-pkg-features{
+  list-style:none;display:flex;flex-direction:column;gap:10px;
+  margin-bottom:32px;flex:1;
+}
+.xo-pkg-feature{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:13px;color:var(--xo-white);line-height:1.5;font-weight:300;
+}
+.xo-pkg-check{
+  width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  background:rgba(201,229,0,.15);border:1px solid rgba(201,229,0,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;color:var(--xo-gold);font-weight:900;
+}
+.xo-pkg-cta{
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:14px 24px;border-radius:2px;cursor:pointer;
+  text-decoration:none;text-align:center;display:block;
+  transition:opacity .2s,transform .2s;
+}
+.xo-pkg-cta:hover{opacity:.85;transform:translateY(-1px)}
+.xo-pkg-cta-primary{background:var(--xo-gold);color:var(--xo-bg)}
+.xo-pkg-cta-ghost{
+  background:transparent;color:var(--xo-white);
+  border:1px solid rgba(255,255,255,.2);
+}
+
+/* ─── OUTPUT SHOWCASE ────────────────────────────────────────── */
+.xo-outputs{
+  background:linear-gradient(180deg,var(--xo-bg),#160C20 50%,var(--xo-bg));
+}
+.xo-outputs-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+.xo-output-item{
+  background:var(--xo-card);border:1px solid rgba(176,149,197,.1);
+  border-radius:3px;padding:24px 20px;
+  transition:border-color .3s;
+}
+.xo-output-item:hover{border-color:rgba(201,229,0,.2)}
+.xo-output-icon{font-size:22px;margin-bottom:12px;display:block;color:var(--xo-gold);opacity:.85}
+.xo-output-name{
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:14px;margin-bottom:6px;
+}
+.xo-output-desc{font-size:12px;color:var(--xo-muted);line-height:1.6}
+
+/* ─── SOCIAL PROOF ───────────────────────────────────────────── */
+.xo-proof{background:var(--xo-dp)}
+.xo-logos-row{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:32px 48px;
+}
+.xo-logo-item{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--xo-muted);opacity:.6;transition:opacity .2s;
+}
+.xo-logo-item:hover{opacity:1;color:var(--xo-lavender)}
+
+/* ─── CTA BAND ───────────────────────────────────────────────── */
+.xo-cta-band{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#3D1060 0%,#2D0A28 50%,#1A0635 100%);
+  padding:100px 0;text-align:center;
+}
+.xo-cta-band::before{
+  content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,229,0,.07),transparent 70%);
+  pointer-events:none;
+}
+.xo-cta-h2{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(32px,4vw,52px);line-height:1.1;
+  letter-spacing:-.02em;margin-bottom:20px;
+  position:relative;z-index:1;
+}
+.xo-cta-lead{
+  font-size:17px;color:var(--xo-lavender);font-weight:300;
+  max-width:520px;margin:0 auto 40px;line-height:1.7;
+  position:relative;z-index:1;
+}
+.xo-cta-band .xo-hero-actions{position:relative;z-index:1}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+.xo-footer{
+  background:var(--xo-bg);
+  border-top:1px solid var(--xo-border);
+  padding:48px 0 36px;
+}
+.xo-footer-inner{
+  display:flex;flex-wrap:wrap;justify-content:space-between;
+  align-items:center;gap:24px;
+}
+.xo-footer-brand{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--xo-muted);
+}
+.xo-footer-brand span{color:var(--xo-gold)}
+.xo-footer-links{
+  display:flex;gap:24px;flex-wrap:wrap;
+}
+.xo-footer-link{
+  font-size:12px;color:var(--xo-muted);text-decoration:none;
+  letter-spacing:.06em;transition:color .2s;
+}
+.xo-footer-link:hover{color:var(--xo-lavender)}
+.xo-footer-copy{
+  width:100%;text-align:center;font-size:11px;
+  color:var(--xo-muted);opacity:.5;margin-top:24px;
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes xo-fadein{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.xo-reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.xo-reveal.xo-visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:768px){
+  .xo-nav{padding:14px 20px}
+  .xo-nav-links{display:none}
+  .xo-what-grid{grid-template-columns:1fr}
+  .xo-what-visual{display:none}
+  .xo-section{padding:72px 0}
+  .xo-advisor-grid{grid-template-columns:repeat(2,1fr)}
+  .xo-senior-grid{grid-template-columns:repeat(2,1fr)}
+  .xo-partner-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="xo-nav">
+  <a href="https://www.exoasia.org" target="_blank" rel="noopener" class="xo-nav-logo">EXOASIA <span>Innovation Hub</span></a>
+  <ul class="xo-nav-links">
+    <li class="xo-nav-item"><a href="#what" class="xo-nav-link">About</a></li>
+    <li class="xo-nav-item">
+      <button class="xo-nav-link">Sectors <svg class="xo-nav-arrow" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="xo-dropdown">
+        <div class="xo-dropdown-header">Intelligence by Sector</div>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">Financial Services &amp; Fintech</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">AI &amp; Deep Tech</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">Healthcare &amp; Pharma</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">Government &amp; Public Sector</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">FMCG &amp; Retail</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">Supply Chain &amp; Logistics</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">Real Estate &amp; Infrastructure</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">Education &amp; Human Capital</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">Energy &amp; Sustainability</span><span class="xo-dropdown-badge">Soon</span></a>
+        <a href="#sectors" class="xo-dropdown-item"><div class="xo-dropdown-dot"></div><span class="xo-dropdown-name">MSME &amp; Entrepreneurship</span><span class="xo-dropdown-badge">Soon</span></a>
+      </div>
+    </li>
+    <li class="xo-nav-item"><a href="#advisory" class="xo-nav-link">Advisory Group</a></li>
+    <li class="xo-nav-item"><a href="#packages" class="xo-nav-link">Packages</a></li>
+  </ul>
+  <a href="#contact" class="xo-nav-cta">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section class="xo-hero">
+  <div class="xo-hero-orb xo-hero-orb-1"></div>
+  <div class="xo-hero-orb xo-hero-orb-2"></div>
+  <div class="xo-hero-orb xo-hero-orb-3"></div>
+  <div class="xo-hero-inner">
+    <span class="xo-hero-eyebrow">Exoasia Innovation Hub · Flagship Intelligence Service</span>
+    <h1 class="xo-hero-h1">Think Tank<br><em>as a Service</em></h1>
+    <p class="xo-hero-sub">On-demand strategic intelligence. World-class frameworks. AI-powered synthesis — delivered as a repeatable service your organization can access, activate, and act on.</p>
+    <div class="xo-hero-actions">
+      <a href="#packages" class="xo-btn-primary">View Packages</a>
+      <a href="#how" class="xo-btn-ghost">See How It Works</a>
+    </div>
+  </div>
+  <div class="xo-hero-scroll">
+    <div class="xo-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="xo-stats">
+  <div class="xo-container">
+    <div class="xo-stats-grid">
+      <div class="xo-stat">
+        <div class="xo-stat-num">30K+</div>
+        <div class="xo-stat-label">Leaders Coached</div>
+      </div>
+      <div class="xo-stat">
+        <div class="xo-stat-num">32</div>
+        <div class="xo-stat-label">Docs per Engagement</div>
+      </div>
+      <div class="xo-stat">
+        <div class="xo-stat-num">ASEAN</div>
+        <div class="xo-stat-label">Market Reach</div>
+      </div>
+      <div class="xo-stat">
+        <div class="xo-stat-num">17</div>
+        <div class="xo-stat-label">Intelligence Frameworks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS TTaaS -->
+<section class="xo-section xo-what" id="what">
+  <div class="xo-container">
+    <div class="xo-what-grid">
+      <div class="xo-what-text xo-reveal">
+        <div class="xo-tag">What Is TTaaS</div>
+        <h2 class="xo-section-h2">Your Dedicated<br>Intelligence Engine</h2>
+        <p class="xo-section-lead">Think Tank as a Service puts a battle-tested team of strategists, AI practitioners, and domain experts inside your decision-making process — without the overhead of building one yourself.</p>
+        <ul class="xo-feature-list">
+          <li class="xo-feature-item">
+            <div class="xo-feature-icon"><i class="fa-solid fa-check"></i></div>
+            <span>Structured research powered by 17 proprietary frameworks across strategy, market intelligence, and AI readiness</span>
+          </li>
+          <li class="xo-feature-item">
+            <div class="xo-feature-icon"><i class="fa-solid fa-check"></i></div>
+            <span>AI-augmented synthesis pipeline delivering board-ready outputs in 48–72 hours</span>
+          </li>
+          <li class="xo-feature-item">
+            <div class="xo-feature-icon"><i class="fa-solid fa-check"></i></div>
+            <span>Access to Exoasia's ASEAN intelligence network: GACPh, PSAC-DI, ASEAN-BAC, and sovereign partnerships</span>
+          </li>
+          <li class="xo-feature-item">
+            <div class="xo-feature-icon"><i class="fa-solid fa-check"></i></div>
+            <span>Modular and scalable — a single sprint or a long-term embedded intelligence retainer</span>
+          </li>
+        </ul>
+      </div>
+      <div class="xo-what-visual xo-reveal">
+        <div class="xo-visual-label">TTaaS Pipeline · Live Run</div>
+        <div class="xo-visual-nodes">
+          <div class="xo-node"><div class="xo-node-dot"></div>Strategic Question Intake &amp; Framing</div>
+          <div class="xo-node"><div class="xo-node-dot"></div>Framework Selection (Market / AI / Policy)</div>
+          <div class="xo-node"><div class="xo-node-dot"></div>AI-Augmented Research &amp; Synthesis</div>
+          <div class="xo-node"><div class="xo-node-dot"></div>Expert Review &amp; Pressure Test</div>
+          <div class="xo-node"><div class="xo-node-dot"></div>Executive Briefing Delivery</div>
+        </div>
+        <div class="xo-visual-output">
+          <div class="xo-pulse"></div>
+          Board-Ready Intelligence · Delivered in 48–72 hrs
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="xo-section xo-how" id="how">
+  <div class="xo-container">
+    <div class="xo-section-header xo-reveal">
+      <div class="xo-tag">How It Works</div>
+      <h2 class="xo-section-h2">From Question<br>to Decision in 5 Steps</h2>
+    </div>
+    <div class="xo-steps-grid">
+      <div class="xo-step xo-reveal">
+        <div class="xo-step-num">01</div>
+        <div class="xo-step-title">Brief</div>
+        <p class="xo-step-desc">You submit your strategic question, challenge, or intelligence need via a structured intake form. We clarify scope, depth, and format in 24 hours.</p>
+      </div>
+      <div class="xo-step xo-reveal">
+        <div class="xo-step-num">02</div>
+        <div class="xo-step-title">Frame</div>
+        <p class="xo-step-desc">Our team selects the right frameworks from our 17-prompt intelligence library and assigns dedicated analysts to your engagement.</p>
+      </div>
+      <div class="xo-step xo-reveal">
+        <div class="xo-step-num">03</div>
+        <div class="xo-step-title">Synthesize</div>
+        <p class="xo-step-desc">AI-augmented research pipelines process data across PH → ASEAN → Global lenses with expert human review at every stage.</p>
+      </div>
+      <div class="xo-step xo-reveal">
+        <div class="xo-step-num">04</div>
+        <div class="xo-step-title">Deliver</div>
+        <p class="xo-step-desc">You receive a board-ready briefing package — executive summary, structured tables, sensitivity analysis, and a 90-day action plan.</p>
+      </div>
+      <div class="xo-step xo-reveal">
+        <div class="xo-step-num">05</div>
+        <div class="xo-step-title">Activate</div>
+        <p class="xo-step-desc">Optional advisory session to walk leadership through findings, pressure-test decisions, and align your team on the path forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="xo-section xo-who" id="who">
+  <div class="xo-container">
+    <div class="xo-section-header xo-reveal">
+      <div class="xo-tag">Who It's For</div>
+      <h2 class="xo-section-h2">Built for Decision-Makers<br>Across Every Sector</h2>
+    </div>
+    <div class="xo-segments-grid">
+      <div class="xo-segment-card xo-reveal">
+        <span class="xo-segment-icon"><i class="fa-solid fa-rocket"></i></span>
+        <div class="xo-segment-title">MSMEs &amp; Startups</div>
+        <p class="xo-segment-desc">Enterprise-grade intelligence without the enterprise budget. Get the market clarity you need to raise, pitch, and scale.</p>
+        <ul class="xo-segment-outcomes">
+          <li class="xo-segment-outcome">Investor-ready market sizing &amp; TAM analysis</li>
+          <li class="xo-segment-outcome">Competitive landscape with Blue Ocean mapping</li>
+          <li class="xo-segment-outcome">AI readiness assessment &amp; ASTRA™ roadmap</li>
+          <li class="xo-segment-outcome">Go-to-market strategy with unit economics</li>
+        </ul>
+      </div>
+      <div class="xo-segment-card xo-reveal">
+        <span class="xo-segment-icon"><i class="fa-solid fa-building"></i></span>
+        <div class="xo-segment-title">Corporates &amp; Conglomerates</div>
+        <p class="xo-segment-desc">Transform strategic uncertainty into confident action. Pressure-tested intelligence for leadership teams navigating disruption.</p>
+        <ul class="xo-segment-outcomes">
+          <li class="xo-segment-outcome">C-suite AI &amp; digital transformation briefings</li>
+          <li class="xo-segment-outcome">Scenario planning with risk &amp; sensitivity models</li>
+          <li class="xo-segment-outcome">ASEAN market entry &amp; expansion intelligence</li>
+          <li class="xo-segment-outcome">Embedded innovation think tank retainer</li>
+        </ul>
+      </div>
+      <div class="xo-segment-card xo-reveal">
+        <span class="xo-segment-icon"><i class="fa-solid fa-landmark"></i></span>
+        <div class="xo-segment-title">Government &amp; NGOs</div>
+        <p class="xo-segment-desc">Policy-grade research with practitioner insight. Bridge the gap between mandate and implementation with actionable intelligence.</p>
+        <ul class="xo-segment-outcomes">
+          <li class="xo-segment-outcome">ASEAN AI &amp; digital policy workstream support</li>
+          <li class="xo-segment-outcome">Program design &amp; impact measurement frameworks</li>
+          <li class="xo-segment-outcome">Stakeholder ecosystem mapping</li>
+          <li class="xo-segment-outcome">Public-private partnership intelligence briefs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="xo-section xo-outputs" id="outputs">
+  <div class="xo-container">
+    <div class="xo-section-header xo-reveal">
+      <div class="xo-tag">What You Receive</div>
+      <h2 class="xo-section-h2">Intelligence You Can<br>Actually Use</h2>
+      <p class="xo-section-lead">Every TTaaS engagement produces a structured package of board-ready deliverables — designed to be shared, actioned, and built upon.</p>
+    </div>
+    <div class="xo-outputs-grid">
+      <div class="xo-output-item xo-reveal">
+        <span class="xo-output-icon"><i class="fa-solid fa-file-lines"></i></span>
+        <div class="xo-output-name">Executive Brief</div>
+        <div class="xo-output-desc">2-page summary for board or C-suite. Key findings, strategic implications, recommended decisions.</div>
+      </div>
+      <div class="xo-output-item xo-reveal">
+        <span class="xo-output-icon"><i class="fa-solid fa-chart-bar"></i></span>
+        <div class="xo-output-name">Intelligence Report</div>
+        <div class="xo-output-desc">Full research document with structured tables, evidence-based analysis, and source citations.</div>
+      </div>
+      <div class="xo-output-item xo-reveal">
+        <span class="xo-output-icon"><i class="fa-solid fa-chart-line"></i></span>
+        <div class="xo-output-name">Financial Model</div>
+        <div class="xo-output-desc">Base / Bull / Bear scenario modeling with explicit assumptions and phase-specific targets.</div>
+      </div>
+      <div class="xo-output-item xo-reveal">
+        <span class="xo-output-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+        <div class="xo-output-name">90-Day Action Plan</div>
+        <div class="xo-output-desc">Prioritized initiatives with owners, timelines, and success metrics — ready to execute.</div>
+      </div>
+      <div class="xo-output-item xo-reveal">
+        <span class="xo-output-icon"><i class="fa-solid fa-bullseye"></i></span>
+        <div class="xo-output-name">Presentation Deck</div>
+        <div class="xo-output-desc">Branded slide deck formatted for board, investor, or partner audience delivery.</div>
+      </div>
+      <div class="xo-output-item xo-reveal">
+        <span class="xo-output-icon"><i class="fa-solid fa-handshake"></i></span>
+        <div class="xo-output-name">Advisory Session</div>
+        <div class="xo-output-desc">Live walkthrough with Exoasia leadership to contextualize findings and align on next steps.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="xo-section xo-packages" id="packages">
+  <div class="xo-container">
+    <div class="xo-section-header xo-reveal">
+      <div class="xo-tag">Engagement Models</div>
+      <h2 class="xo-section-h2">Choose Your<br>Intelligence Level</h2>
+      <p class="xo-section-lead">Flexible packages designed for one-time sprints, recurring intelligence needs, and fully embedded think tank partnerships.</p>
+    </div>
+    <div class="xo-pkg-grid">
+
+      <!-- SPRINT -->
+      <div class="xo-pkg-card xo-reveal">
+        <div class="xo-pkg-tier">Tier 01</div>
+        <div class="xo-pkg-name">Intelligence Sprint</div>
+        <div class="xo-pkg-tagline">"One question. One week. One decisive answer."</div>
+        <div class="xo-pkg-price">
+          <div class="xo-pkg-amount" style="font-size:18px;color:var(--xo-lavender);font-weight:600;letter-spacing:.04em;">Pricing discussed on Strategy Call</div>
+          <div class="xo-pkg-unit">5–7 business days turnaround</div>
+        </div>
+        <ul class="xo-pkg-features">
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>1 focused strategic question or challenge</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>3 frameworks applied (market, competitive, AI/digital)</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Executive Brief + Intelligence Report</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>90-Day Action Plan</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>1-hour advisory debrief session</span></li>
+        </ul>
+        <a href="#contact" class="xo-pkg-cta xo-pkg-cta-ghost">Start a Sprint</a>
+      </div>
+
+      <!-- DEEP DIVE — FEATURED -->
+      <div class="xo-pkg-card xo-featured xo-reveal">
+        <div class="xo-featured-badge">Most Popular</div>
+        <div class="xo-pkg-tier">Tier 02</div>
+        <div class="xo-pkg-name">Deep Dive</div>
+        <div class="xo-pkg-tagline">"Total situational clarity before your next major move."</div>
+        <div class="xo-pkg-price">
+          <div class="xo-pkg-amount" style="font-size:18px;color:var(--xo-lavender);font-weight:600;letter-spacing:.04em;">Pricing discussed on Strategy Call</div>
+          <div class="xo-pkg-unit">3–4 weeks engagement</div>
+        </div>
+        <ul class="xo-pkg-features">
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Up to 3 strategic questions or workstreams</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Full 17-framework intelligence suite</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Executive Brief + Full Report + Financial Model</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Branded presentation deck (investor/board-ready)</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>2 advisory sessions + leadership Q&amp;A</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>ASEAN network intelligence access</span></li>
+        </ul>
+        <a href="#contact" class="xo-pkg-cta xo-pkg-cta-primary">Get Deep Dive</a>
+      </div>
+
+      <!-- RETAINER -->
+      <div class="xo-pkg-card xo-reveal">
+        <div class="xo-pkg-tier">Tier 03</div>
+        <div class="xo-pkg-name">Embedded Think Tank</div>
+        <div class="xo-pkg-tagline">"Your permanent intelligence advantage, always on."</div>
+        <div class="xo-pkg-price">
+          <div class="xo-pkg-amount" style="font-size:18px;color:var(--xo-lavender);font-weight:600;letter-spacing:.04em;">Pricing discussed on Strategy Call</div>
+          <div class="xo-pkg-unit">6-month minimum engagement</div>
+        </div>
+        <ul class="xo-pkg-features">
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Unlimited strategic question submissions</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>2 full Intelligence Sprints per month included</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Monthly strategic brief + competitive monitoring</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Priority access to Exoasia's ASEAN intelligence network</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Dedicated senior strategist + AI practitioner</span></li>
+          <li class="xo-pkg-feature"><div class="xo-pkg-check"><i class="fa-solid fa-check"></i></div><span>Quarterly executive offsite facilitation</span></li>
+        </ul>
+        <a href="#contact" class="xo-pkg-cta xo-pkg-cta-ghost">Inquire About Retainer</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ADVISORY GROUP -->
+<section class="xo-section xo-advisory" id="advisory">
+  <div class="xo-container">
+    <div class="xo-section-header xo-reveal">
+      <div class="xo-tag">Advisory Group</div>
+      <h2 class="xo-section-h2">The Minds Behind<br>the Intelligence</h2>
+      <p class="xo-section-lead">Our Advisory Group brings together domain authorities across policy, technology, economics, and governance — providing the intellectual firepower behind every TTaaS engagement.</p>
+    </div>
+
+    <!-- TIER 1: ADVISORS -->
+    <div class="xo-advisory-tier xo-tier-advisor xo-reveal">
+      <div class="xo-tier-header">
+        <span class="xo-tier-label">Advisor</span>
+        <div class="xo-tier-line"></div>
+      </div>
+      <div class="xo-advisor-grid">
+        <div class="xo-advisor-card">
+          <div class="xo-advisor-initial">EB</div>
+          <div class="xo-advisor-name">Enrico Basilio, PhD</div>
+          <div class="xo-advisor-domain">Policy</div>
+        </div>
+        <div class="xo-advisor-card">
+          <div class="xo-advisor-initial">AC</div>
+          <div class="xo-advisor-name">Engr. Allan Cabanlong</div>
+          <div class="xo-advisor-domain">Cyber Security</div>
+        </div>
+        <div class="xo-advisor-card">
+          <div class="xo-advisor-initial">RT</div>
+          <div class="xo-advisor-name">Ray Talimio Jr.</div>
+          <div class="xo-advisor-domain">LGU Relations</div>
+        </div>
+        <div class="xo-advisor-card">
+          <div class="xo-advisor-initial">AM</div>
+          <div class="xo-advisor-name">Arup Maity</div>
+          <div class="xo-advisor-domain">Digital Transformation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER 2: SENIOR PARTNERS -->
+    <div class="xo-advisory-tier xo-tier-senior xo-reveal">
+      <div class="xo-tier-header">
+        <span class="xo-tier-label">Senior Partner</span>
+        <div class="xo-tier-line"></div>
+      </div>
+      <div class="xo-senior-grid">
+        <div class="xo-senior-card">
+          <div class="xo-senior-initial">RB</div>
+          <div class="xo-senior-name">Ronilo Balbieran</div>
+          <div class="xo-senior-domain">Economics</div>
+        </div>
+        <div class="xo-senior-card">
+          <div class="xo-senior-initial">JR</div>
+          <div class="xo-senior-name">Jimbo Reverente</div>
+          <div class="xo-senior-domain">Exponential Principles</div>
+        </div>
+        <div class="xo-senior-card">
+          <div class="xo-senior-initial">CG</div>
+          <div class="xo-senior-name">Chenny Galano</div>
+          <div class="xo-senior-domain">Systemic Leadership</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER 3: PARTNERS -->
+    <div class="xo-advisory-tier xo-tier-partner xo-reveal">
+      <div class="xo-tier-header">
+        <span class="xo-tier-label">Partner</span>
+        <div class="xo-tier-line"></div>
+      </div>
+      <div class="xo-partner-grid">
+        <div class="xo-partner-card">
+          <div class="xo-partner-initial">GS</div>
+          <div class="xo-partner-info">
+            <div class="xo-partner-name">Gi Semilla</div>
+            <div class="xo-partner-domain">SDG</div>
+          </div>
+        </div>
+        <div class="xo-partner-card">
+          <div class="xo-partner-initial">RB</div>
+          <div class="xo-partner-info">
+            <div class="xo-partner-name">Rommel Bares</div>
+            <div class="xo-partner-domain">Taxation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="xo-section xo-proof">
+  <div class="xo-container">
+    <div class="xo-section-header xo-reveal">
+      <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--xo-muted);margin-bottom:36px">Intelligence Network &amp; Ecosystem Partners</p>
+    </div>
+    <div class="xo-logos-row xo-reveal">
+      <span class="xo-logo-item">Global AI Council PH</span>
+      <span class="xo-logo-item">ASEAN-BAC</span>
+      <span class="xo-logo-item">PSAC-DI</span>
+      <span class="xo-logo-item">Go Digital PH</span>
+      <span class="xo-logo-item">Cybersecurity Council PH</span>
+      <span class="xo-logo-item">wAIz</span>
+      <span class="xo-logo-item">SIKAP Capital</span>
+      <span class="xo-logo-item">AIM-Emeritus</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="xo-cta-band" id="contact">
+  <div class="xo-container">
+    <h2 class="xo-cta-h2 xo-reveal">Ready to Think<br><em style="font-family:'Lora',serif;font-weight:400;color:var(--xo-lavender)">at a Higher Level?</em></h2>
+    <p class="xo-cta-lead xo-reveal">Book a 30-minute discovery call with our team. We'll identify the right intelligence engagement for your organization — and have you briefed within the week.</p>
+    <div class="xo-hero-actions xo-reveal">
+      <a href="mailto:officeoftheceo@exoasia.org" class="xo-btn-primary">Book Discovery Call</a>
+      <a href="mailto:officeoftheceo@exoasia.org" class="xo-btn-ghost">Send an Inquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="xo-footer">
+  <div class="xo-container">
+    <div class="xo-footer-inner">
+      <a href="https://www.exoasia.org" target="_blank" rel="noopener" class="xo-footer-brand" style="text-decoration:none;">EXOASIA <span>Innovation Hub</span> · Think Tank as a Service</a>
+      <div class="xo-footer-links">
+        <a href="https://www.exoasia.org" class="xo-footer-link">exoasia.org</a>
+        <a href="https://malaysia.exoasia.org" class="xo-footer-link">Malaysia</a>
+        <a href="mailto:officeoftheceo@exoasia.org" class="xo-footer-link">Contact</a>
+      </div>
+    </div>
+    <div class="xo-footer-copy">© 2026 Exoasia Innovation Hub. All rights reserved. Philippines · Malaysia · ASEAN.</div>
+  </div>
+</footer>
+
+<script>
+// Scroll-reveal
+const revealEls = document.querySelectorAll('.xo-reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('xo-visible');
+      // stagger siblings
+      const siblings = e.target.parentElement.querySelectorAll('.xo-reveal');
+      siblings.forEach((s, i) => {
+        setTimeout(() => s.classList.add('xo-visible'), i * 80);
+      });
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>

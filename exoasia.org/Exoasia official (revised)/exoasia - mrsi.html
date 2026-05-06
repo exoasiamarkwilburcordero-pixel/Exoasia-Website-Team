@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Market Research & Strategic Insight — Exoasia Innovation Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<style>
+/* ── RESET & BASE ───────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#0D0610;color:#E8E0F0;line-height:1.7;overflow-x:hidden;width:100%;max-width:100vw}
+
+/* ── XO DESIGN TOKENS ───────────────────────────────────────────── */
+:root{
+  --xo-purple-deep:#2D0A28;
+  --xo-maroon:#4A1040;
+  --xo-purple:#7B3FA0;
+  --xo-lavender:#B095C5;
+  --xo-gold:#C9E500;
+  --xo-gold-dim:#9EAF00;
+  --xo-bg:#0D0610;
+  --xo-surface:#1A0A1C;
+  --xo-surface2:#261030;
+  --xo-border:rgba(176,149,197,0.15);
+  --xo-border-strong:rgba(176,149,197,0.3);
+  --xo-text:#E8E0F0;
+  --xo-text-muted:#B095C5;
+  --xo-text-dim:#7A6A8A;
+  --xo-radius:12px;
+  --xo-radius-lg:20px;
+  --xo-transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────────────────── */
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;line-height:1.2;letter-spacing:-0.02em}
+h1{font-size:clamp(2.4rem,6vw,4.5rem)}
+h2{font-size:clamp(1.8rem,4vw,3rem)}
+h3{font-size:clamp(1.2rem,2.5vw,1.6rem)}
+p{font-size:1rem;line-height:1.75;color:var(--xo-text-muted)}
+strong{color:var(--xo-text);font-weight:600}
+
+/* ── LAYOUT UTILITIES ───────────────────────────────────────────── */
+.xo-container{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+.xo-section{padding:100px 0}
+.xo-section-sm{padding:60px 0}
+.xo-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.xo-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.xo-grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+/* Tablet */
+@media(max-width:1024px){
+  .xo-container{padding:0 32px}
+  .xo-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .xo-grid-2,.xo-grid-3{grid-template-columns:minmax(0,1fr)}
+  .xo-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+/* Mobile */
+@media(max-width:600px){
+  .xo-container{padding:0 16px}
+  .xo-section{padding:60px 0}
+  .xo-grid-2,.xo-grid-3,.xo-grid-4{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ── GOLD ACCENT LINE ───────────────────────────────────────────── */
+.xo-eyebrow{font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--xo-gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.xo-eyebrow::before{content:'';display:block;width:32px;height:2px;background:var(--xo-gold)}
+
+/* ── NAV ────────────────────────────────────────────────────────── */
+.xo-nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:100;padding:18px 0;transition:var(--xo-transition);border-bottom:1px solid transparent}
+.xo-nav.scrolled{background:rgba(13,6,16,0.95);backdrop-filter:blur(12px);border-color:var(--xo-border)}
+.xo-nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+.xo-nav-logo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;color:var(--xo-gold);letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;flex-shrink:0}
+.xo-nav-links{display:flex;gap:24px;align-items:center;flex-wrap:nowrap}
+.xo-nav-links a{font-size:0.82rem;font-weight:500;color:var(--xo-text-muted);text-decoration:none;transition:var(--xo-transition);white-space:nowrap}
+.xo-nav-links a:hover{color:#fff}
+.xo-nav-cta{background:var(--xo-gold);color:#0D0610!important;padding:10px 18px;border-radius:6px;font-weight:700!important;font-size:0.78rem!important;letter-spacing:0.05em;text-transform:uppercase;white-space:nowrap}
+.xo-nav-cta:hover{background:#d4f010!important}
+.xo-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;flex-shrink:0}
+.xo-hamburger span{display:block;width:22px;height:2px;background:var(--xo-text-muted);border-radius:2px;transition:var(--xo-transition)}
+/* Tablet — compress gaps */
+@media(max-width:1024px){
+  .xo-nav-inner{padding:0 32px}
+  .xo-nav-links{gap:16px}
+  .xo-nav-links a{font-size:0.78rem}
+}
+/* Mobile — full-screen overlay menu */
+@media(max-width:860px){
+  .xo-nav-inner{padding:0 20px}
+  .xo-nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;background:rgba(13,6,16,0.98);flex-direction:column;justify-content:center;align-items:center;gap:36px;z-index:200}
+  .xo-nav-links.open{display:flex}
+  .xo-nav-links a{font-size:1.2rem}
+  .xo-hamburger{display:flex;z-index:201}
+}
+
+/* ── HERO ───────────────────────────────────────────────────────── */
+.xo-hero{min-height:100svh;width:100%;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px}
+.xo-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,#4A104055 0%,transparent 70%)}
+.xo-hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--xo-border) 1px,transparent 1px),linear-gradient(90deg,var(--xo-border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,black 20%,transparent 80%)}
+.xo-hero-content{position:relative;z-index:2;max-width:800px;width:100%}
+.xo-hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(201,229,0,0.1);border:1px solid rgba(201,229,0,0.3);color:var(--xo-gold);font-family:'Montserrat',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:8px 16px;border-radius:100px;margin-bottom:32px}
+.xo-hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--xo-gold);flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.xo-hero h1{color:#fff;margin-bottom:12px}
+.xo-hero h1 em{font-style:normal;color:var(--xo-gold)}
+.xo-hero-sub{font-size:1.2rem;color:var(--xo-lavender);margin:20px 0 16px;font-weight:300;letter-spacing:0.02em}
+.xo-hero-tagline{font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--xo-text-dim);margin-bottom:48px}
+.xo-hero-tagline span{color:var(--xo-lavender);margin:0 10px}
+.xo-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.xo-btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--xo-gold);color:#0D0610;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:8px;text-decoration:none;transition:var(--xo-transition);white-space:nowrap}
+.xo-btn-primary:hover{background:#d4f010;transform:translateY(-2px)}
+.xo-btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:8px;border:1px solid var(--xo-border-strong);text-decoration:none;transition:var(--xo-transition);white-space:nowrap}
+.xo-btn-secondary:hover{border-color:var(--xo-lavender);background:rgba(176,149,197,0.08)}
+.xo-hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--xo-text-dim);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase}
+.xo-hero-scroll::after{content:'';width:1px;height:48px;background:linear-gradient(var(--xo-border-strong),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:600px){
+  .xo-hero{padding-top:70px;min-height:100svh}
+  .xo-hero-sub{font-size:1rem}
+  .xo-hero-ctas{flex-direction:column;align-items:flex-start}
+  .xo-btn-primary,.xo-btn-secondary{width:100%;justify-content:center}
+  .xo-hero-scroll{display:none}
+}
+
+/* ── SERVE SECTION ──────────────────────────────────────────────── */
+.xo-serve-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:48px}
+.xo-serve-card{background:var(--xo-surface);border:1px solid var(--xo-border);border-radius:var(--xo-radius);padding:24px;transition:var(--xo-transition)}
+.xo-serve-card:hover{border-color:var(--xo-purple);background:var(--xo-surface2)}
+.xo-serve-icon{width:40px;height:40px;border-radius:10px;background:rgba(123,63,160,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:16px;color:var(--xo-lavender)}
+.xo-serve-card h4{font-family:'Montserrat',sans-serif;font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:6px}
+.xo-serve-card p{font-size:0.82rem;line-height:1.55}
+@media(max-width:600px){.xo-serve-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.xo-serve-grid{grid-template-columns:1fr}}
+
+/* ── ENGINE LAYERS ──────────────────────────────────────────────── */
+.xo-engine-track{display:flex;flex-direction:column;gap:2px;margin-top:60px}
+.xo-layer{display:grid;grid-template-columns:80px 1fr;gap:0;position:relative}
+.xo-layer-num{padding:36px 0 36px 0;display:flex;flex-direction:column;align-items:center;gap:0;position:relative}
+.xo-layer-num-inner{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:0.95rem;font-weight:800;flex-shrink:0;position:relative;z-index:2}
+.xo-layer-num::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--xo-border);transform:translateX(-50%)}
+.xo-layer:last-child .xo-layer-num::after{display:none}
+.xo-layer-body{background:var(--xo-surface);border:1px solid var(--xo-border);border-radius:var(--xo-radius-lg);padding:36px;margin:12px 0;transition:var(--xo-transition)}
+.xo-layer-body:hover{border-color:var(--xo-purple)}
+@media(max-width:860px){
+  .xo-layer{grid-template-columns:56px 1fr}
+  .xo-layer-num-inner{width:36px;height:36px;font-size:0.78rem}
+  .xo-layer-body{padding:24px 20px}
+}
+@media(max-width:600px){
+  .xo-layer{grid-template-columns:1fr;display:block}
+  .xo-layer-num{display:none}
+  .xo-layer-body{padding:22px 16px;margin:0 0 12px}
+}
+.xo-layer-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;gap:16px;flex-wrap:wrap}
+.xo-layer-title{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:700;color:#fff}
+.xo-layer-badge{font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px;white-space:nowrap}
+.xo-layer-desc{color:var(--xo-text-muted);font-size:0.95rem;margin-bottom:20px}
+.xo-layer-note{background:rgba(201,229,0,0.06);border:1px solid rgba(201,229,0,0.2);border-radius:8px;padding:14px 18px;font-size:0.85rem;color:var(--xo-gold);margin-top:16px}
+.xo-layer-note strong{color:var(--xo-gold)}
+.xo-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.xo-tag{font-size:0.78rem;padding:5px 12px;border-radius:100px;background:rgba(123,63,160,0.15);border:1px solid rgba(123,63,160,0.3);color:var(--xo-lavender)}
+
+/* Layer colors */
+.l1 .xo-layer-num-inner{background:rgba(123,63,160,0.2);border:1px solid rgba(123,63,160,0.5);color:#B095C5}
+.l2 .xo-layer-num-inner{background:rgba(29,158,117,0.2);border:1px solid rgba(29,158,117,0.5);color:#5DCAA5}
+.l3 .xo-layer-num-inner{background:rgba(216,90,48,0.2);border:1px solid rgba(216,90,48,0.5);color:#F0997B}
+.l4 .xo-layer-num-inner{background:rgba(186,117,23,0.2);border:1px solid rgba(186,117,23,0.5);color:#EF9F27}
+.l1 .xo-layer-badge{background:rgba(123,63,160,0.2);color:#B095C5;border:1px solid rgba(123,63,160,0.3)}
+.l2 .xo-layer-badge{background:rgba(29,158,117,0.2);color:#5DCAA5;border:1px solid rgba(29,158,117,0.3)}
+.l3 .xo-layer-badge{background:rgba(216,90,48,0.2);color:#F0997B;border:1px solid rgba(216,90,48,0.3)}
+.l4 .xo-layer-badge{background:rgba(186,117,23,0.2);color:#EF9F27;border:1px solid rgba(186,117,23,0.3)}
+
+/* Platform table */
+.xo-platform-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:0.85rem}
+.xo-platform-table th{text-align:left;padding:10px 14px;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--xo-text-dim);border-bottom:1px solid var(--xo-border)}
+.xo-platform-table td{padding:10px 14px;border-bottom:1px solid var(--xo-border);color:var(--xo-text-muted);vertical-align:top}
+.xo-platform-table td:first-child{color:#fff;font-weight:600;font-size:0.88rem}
+.xo-platform-table tr:last-child td{border-bottom:none}
+.xo-platform-table-wrap{overflow-x:auto;margin-top:20px}
+.xo-platform-table-wrap .xo-platform-table{margin-top:0}
+
+/* Newsletter bullets */
+.xo-list{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.xo-list li{display:flex;align-items:flex-start;gap:10px;font-size:0.9rem;color:var(--xo-text-muted)}
+.xo-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--xo-gold);flex-shrink:0;margin-top:9px}
+
+/* ── PRICING ────────────────────────────────────────────────────── */
+.xo-pricing-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:48px}
+@media(max-width:1024px){.xo-pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.xo-pricing-grid{grid-template-columns:minmax(0,1fr)}}
+.xo-price-card{background:var(--xo-surface);border:1px solid var(--xo-border);border-radius:var(--xo-radius-lg);padding:32px;display:flex;flex-direction:column;gap:12px;transition:var(--xo-transition);position:relative}
+.xo-price-card:hover{border-color:var(--xo-purple);transform:translateY(-4px)}
+.xo-price-card.featured{border-color:var(--xo-gold);background:linear-gradient(135deg,var(--xo-surface2),#1A0A1C)}
+.xo-price-card.featured::before{content:'Most Popular';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--xo-gold);color:#0D0610;font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:0 0 8px 8px}
+.xo-price-name{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+.xo-price-desc{font-size:0.82rem;color:var(--xo-text-dim);line-height:1.5}
+.xo-price-amount{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:800;color:var(--xo-gold);margin:4px 0}
+.xo-price-amount span{font-size:0.78rem;font-weight:500;color:var(--xo-text-dim)}
+.xo-price-incl{font-size:0.8rem;color:var(--xo-text-muted);padding-top:8px;border-top:1px solid var(--xo-border)}
+.xo-price-note{font-size:0.78rem;color:var(--xo-text-dim);font-style:italic;text-align:center;margin-top:24px}
+
+/* ── RESEARCH TIERS ─────────────────────────────────────────────── */
+.xo-tier-stack{display:flex;flex-direction:column;gap:16px;margin-top:48px}
+.xo-tier-row{display:grid;grid-template-columns:160px 1fr 140px 160px;gap:0;background:var(--xo-surface);border:1px solid var(--xo-border);border-radius:var(--xo-radius);overflow:hidden;transition:var(--xo-transition);align-items:stretch}
+.xo-tier-row:hover{border-color:var(--xo-purple)}
+.xo-tier-label{padding:28px 24px;background:var(--xo-surface2);display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--xo-border)}
+.xo-tier-num{font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--xo-text-dim);margin-bottom:6px}
+.xo-tier-name{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+.xo-tier-body{padding:28px 24px;font-size:0.88rem;color:var(--xo-text-muted);display:flex;align-items:center}
+.xo-tier-time{padding:28px 16px;display:flex;align-items:center;justify-content:center;border-left:1px solid var(--xo-border);text-align:center}
+.xo-tier-time span{font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:600;color:var(--xo-lavender)}
+.xo-tier-price{padding:28px 20px;background:var(--xo-maroon);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--xo-border)}
+.xo-tier-price-val{font-family:'Montserrat',sans-serif;font-size:0.95rem;font-weight:800;color:var(--xo-gold);text-align:center}
+@media(max-width:860px){
+  .xo-tier-row{grid-template-columns:120px 1fr}
+  .xo-tier-time,.xo-tier-price{display:none}
+  .xo-tier-body{padding:20px 20px}
+}
+@media(max-width:600px){
+  .xo-tier-row{grid-template-columns:1fr;display:block}
+  .xo-tier-label{border-right:none;border-bottom:1px solid var(--xo-border);padding:20px 18px}
+  .xo-tier-body{padding:16px 18px;display:block}
+  .xo-tier-time{display:flex;border-left:none;border-top:1px solid var(--xo-border);justify-content:flex-start;padding:12px 18px}
+  .xo-tier-price{display:flex;border-left:none;justify-content:flex-start;padding:12px 18px}
+}
+
+/* ── PR STUDIO ──────────────────────────────────────────────────── */
+.xo-pr-tier-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+@media(max-width:768px){.xo-pr-tier-cards{grid-template-columns:1fr}}
+.xo-pr-card{border-radius:var(--xo-radius);padding:28px;text-align:center}
+.xo-pr-card.vis{background:rgba(123,63,160,0.1);border:1px solid rgba(123,63,160,0.3)}
+.xo-pr-card.inf{background:rgba(123,63,160,0.2);border:1px solid rgba(123,63,160,0.5)}
+.xo-pr-card.eco{background:var(--xo-maroon);border:1px solid var(--xo-purple)}
+.xo-pr-card-name{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:8px}
+.xo-pr-card-price{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;margin-bottom:4px}
+.vis .xo-pr-card-price{color:var(--xo-lavender)}
+.inf .xo-pr-card-price{color:var(--xo-purple);}
+.eco .xo-pr-card-price{color:var(--xo-gold)}
+.xo-pr-card-min{font-size:0.8rem;color:var(--xo-text-dim)}
+
+/* Feature breakdown table */
+.xo-feat-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.xo-feat-table th{padding:12px 16px;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--xo-border)}
+.xo-feat-table th:first-child{text-align:left}
+.xo-feat-table th.h-vis{color:#B095C5}
+.xo-feat-table th.h-inf{color:#AFA9EC}
+.xo-feat-table th.h-eco{color:var(--xo-gold)}
+.xo-cat-row td{background:var(--xo-maroon);padding:10px 16px;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--xo-gold);border-top:2px solid var(--xo-border)}
+.xo-feat-table tr.xo-feat-row:nth-child(even) td{background:rgba(176,149,197,0.04)}
+.xo-feat-table tr.xo-feat-row td{padding:11px 16px;border-bottom:1px solid var(--xo-border);color:var(--xo-text-muted);vertical-align:middle}
+.xo-feat-table tr.xo-feat-row td:first-child{color:var(--xo-text);font-size:0.88rem}
+.xo-feat-table td.xo-check{text-align:center;color:var(--xo-lavender);font-weight:600}
+.xo-feat-table td.xo-check-strong{text-align:center;color:#AFA9EC;font-weight:600}
+.xo-feat-table td.xo-check-eco{text-align:center;color:var(--xo-gold);font-weight:700}
+.xo-feat-table td.xo-dash{text-align:center;color:var(--xo-text-dim);font-size:1rem}
+.xo-feat-table td.xo-val{text-align:center;font-weight:600}
+.xo-feat-table td.xo-val-vis{color:#B095C5}
+.xo-feat-table td.xo-val-inf{color:#AFA9EC}
+.xo-feat-table td.xo-val-eco{color:var(--xo-gold)}
+.xo-table-wrap{overflow-x:auto;border:1px solid var(--xo-border);border-radius:var(--xo-radius-lg)}
+
+/* ── WHY EXOASIA ────────────────────────────────────────────────── */
+.xo-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px;overflow:hidden;border-radius:var(--xo-radius-lg);border:1px solid var(--xo-border)}
+.xo-compare-header{padding:20px 28px;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+.xo-compare-header.old{background:var(--xo-surface2);color:var(--xo-text-dim)}
+.xo-compare-header.new{background:var(--xo-maroon);color:var(--xo-gold)}
+.xo-compare-row{display:contents}
+.xo-compare-row:hover .xo-compare-old,.xo-compare-row:hover .xo-compare-new{background:rgba(176,149,197,0.05)}
+.xo-compare-old{padding:18px 28px;font-size:0.88rem;color:var(--xo-text-dim);border-top:1px solid var(--xo-border);background:var(--xo-surface)}
+.xo-compare-new{padding:18px 28px;font-size:0.88rem;color:var(--xo-text-muted);border-top:1px solid var(--xo-border);background:var(--xo-surface);border-left:1px solid var(--xo-border)}
+.xo-compare-new strong{color:var(--xo-lavender)}
+@media(max-width:600px){
+  .xo-compare-grid{grid-template-columns:1fr}
+  .xo-compare-header.old,.xo-compare-old{display:none}
+  .xo-compare-new{border-left:none;border-left:3px solid var(--xo-purple);padding-left:20px}
+}
+
+/* ── CTA ────────────────────────────────────────────────────────── */
+.xo-cta{text-align:center;padding:120px 0;position:relative;overflow:hidden}
+.xo-cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(74,16,64,0.5) 0%,transparent 70%)}
+.xo-cta-content{position:relative;z-index:2}
+.xo-cta h2{color:#fff;margin-bottom:20px}
+.xo-cta p{font-size:1.1rem;color:var(--xo-lavender);max-width:520px;margin:0 auto 48px}
+.xo-cta-links{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+@media(max-width:600px){
+  .xo-cta{padding:80px 0}
+  .xo-cta p{font-size:0.95rem}
+  .xo-cta-links{flex-direction:column;align-items:stretch;padding:0 16px}
+  .xo-cta-links a{text-align:center;justify-content:center}
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────────── */
+.xo-footer{background:var(--xo-surface);border-top:1px solid var(--xo-border);padding:40px 0}
+.xo-footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.xo-footer-brand{font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;color:var(--xo-gold);letter-spacing:0.05em}
+.xo-footer-links{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+.xo-footer-links a{font-size:0.8rem;color:var(--xo-text-dim);text-decoration:none;transition:var(--xo-transition)}
+.xo-footer-links a:hover{color:var(--xo-lavender)}
+.xo-footer-copy{font-size:0.78rem;color:var(--xo-text-dim)}
+@media(max-width:600px){
+  .xo-footer-inner{flex-direction:column;align-items:flex-start;gap:16px}
+  .xo-footer-links{gap:12px}
+  .xo-footer-copy{margin-top:4px}
+}
+
+/* ── DIVIDER ────────────────────────────────────────────────────── */
+.xo-divider{width:60px;height:3px;background:var(--xo-gold);border-radius:2px;margin:20px 0 40px}
+
+/* ── FADE IN ─────────────────────────────────────────────────────── */
+.xo-fade{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.xo-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ── CHECK MARK SVG inline ───────────────────────────────────────── */
+.xo-chk{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%}
+
+/* ── CLICKABLE PRICE CARDS ───────────────────────────────────────── */
+a.xo-price-card{text-decoration:none;cursor:pointer}
+a.xo-price-card:hover{border-color:var(--xo-purple);transform:translateY(-6px);box-shadow:0 12px 40px rgba(123,63,160,0.18)}
+a.xo-price-card.featured:hover{border-color:var(--xo-gold);box-shadow:0 12px 40px rgba(201,229,0,0.15)}
+.xo-price-cta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:18px;border-top:1px solid var(--xo-border);font-family:'Montserrat',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--xo-lavender);transition:var(--xo-transition)}
+a.xo-price-card:hover .xo-price-cta{color:var(--xo-gold)}
+.xo-price-cta-arrow{width:28px;height:28px;border-radius:50%;border:1px solid var(--xo-border-strong);display:flex;align-items:center;justify-content:center;transition:var(--xo-transition);flex-shrink:0}
+a.xo-price-card:hover .xo-price-cta-arrow{background:var(--xo-gold);border-color:var(--xo-gold)}
+a.xo-price-card:hover .xo-price-cta-arrow i{color:#0D0610!important}
+a.xo-price-card.featured .xo-price-cta{color:var(--xo-gold)}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────────────── -->
+<nav class="xo-nav" id="xo-nav">
+  <div class="xo-nav-inner">
+    <a href="https://www.exoasia.org" class="xo-nav-logo" target="_blank" rel="noopener">Exoasia</a>
+    <div class="xo-nav-links" id="xo-nav-links">
+      <a href="#engine">The Engine</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#research">Research Tiers</a>
+      <a href="#pr-studio">PR Studio</a>
+      <a href="https://exoasia.org/mrsi/newsletter" target="_blank" rel="noopener"><i class="fa-regular fa-newspaper" style="font-size:12px;margin-right:4px"></i>Newsletter</a>
+      <!-- GHL Calendar link → replace YOUR_GHL_CALENDAR_BOOKING_LINK -->
+      <a href="YOUR_GHL_CALENDAR_BOOKING_LINK" class="xo-nav-cta" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+    <div class="xo-hamburger" id="xo-hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────────────── -->
+<section class="xo-hero">
+  <div class="xo-hero-bg"></div>
+  <div class="xo-hero-grid"></div>
+  <div class="xo-container">
+    <div class="xo-hero-content">
+      <div class="xo-hero-tag">Exoasia Innovation Hub · MRSI</div>
+      <h1>Market Research &amp;<br><em>Strategic Insight</em></h1>
+      <p class="xo-hero-sub">The Insight-to-Influence Engine™</p>
+      <p class="xo-hero-tagline">Fast <span>·</span> Focused <span>·</span> Actionable <span>·</span> Amplified</p>
+      <div class="xo-hero-ctas">
+        <a href="#cta" class="xo-btn-primary"><i class="fa-regular fa-calendar-check"></i> Book a Discovery Call</a>
+        <a href="#engine" class="xo-btn-secondary"><i class="fa-solid fa-circle-play"></i> See How It Works</a>
+      </div>
+    </div>
+  </div>
+  <div class="xo-hero-scroll">Scroll</div>
+</section>
+
+<!-- ── WHAT WE DO ───────────────────────────────────────────────────── -->
+<section class="xo-section" style="background:var(--xo-surface)">
+  <div class="xo-container">
+    <div class="xo-fade">
+      <div class="xo-eyebrow">What We Do</div>
+      <h2 style="color:#fff;max-width:640px">See the Philippine Market Clearly.<br>Move with Conviction.</h2>
+      <div class="xo-divider"></div>
+      <p style="max-width:680px;font-size:1rem">Exoasia's MRSI service delivers fast, lean, decision-grade intelligence on the Philippine and ASEAN market. We help founders, executives, and investors choose the right segments, products, and partners — and avoid expensive mistakes.</p>
+    </div>
+    <div class="xo-serve-grid xo-fade" style="margin-top:48px">
+      <div class="xo-serve-card">
+        <div class="xo-serve-icon"><i class="fa-solid fa-user-tie"></i></div>
+        <h4>Professionals &amp; Leaders</h4>
+        <p>Establish yourself as a credible, research-backed authority in your industry</p>
+      </div>
+      <div class="xo-serve-card">
+        <div class="xo-serve-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h4>Founders &amp; Startups</h4>
+        <p>Evaluating Philippine market entry or expanding into new verticals</p>
+      </div>
+      <div class="xo-serve-card">
+        <div class="xo-serve-icon"><i class="fa-solid fa-store"></i></div>
+        <h4>SMEs &amp; Family Businesses</h4>
+        <p>Exploring new business lines, digital ventures, and diversification</p>
+      </div>
+      <div class="xo-serve-card">
+        <div class="xo-serve-icon"><i class="fa-solid fa-building-columns"></i></div>
+        <h4>Corporate Innovators</h4>
+        <p>Needing local insight to back institutional ventures and innovation bets</p>
+      </div>
+      <div class="xo-serve-card">
+        <div class="xo-serve-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h4>Investors &amp; Funds</h4>
+        <p>Validating investment theses and portfolio expansion into PH/ASEAN</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ENGINE LAYERS ────────────────────────────────────────────────── -->
+<section class="xo-section" id="engine">
+  <div class="xo-container">
+    <div class="xo-fade">
+      <div class="xo-eyebrow">The System</div>
+      <h2 style="color:#fff">The Insight-to-Influence Engine™</h2>
+      <div class="xo-divider"></div>
+      <p style="max-width:640px">Four integrated layers that take you from raw market intelligence all the way to a fully published presence — across every platform that matters.</p>
+    </div>
+
+    <div class="xo-engine-track">
+
+      <!-- Layer 1 -->
+      <div class="xo-layer l1 xo-fade">
+        <div class="xo-layer-num">
+          <div class="xo-layer-num-inner">01</div>
+        </div>
+        <div class="xo-layer-body">
+          <div class="xo-layer-header">
+            <div class="xo-layer-title"><i class="fa-solid fa-magnifying-glass-chart" style="margin-right:10px;font-size:0.9em;opacity:0.7"></i>MRSI Research Foundation</div>
+            <div class="xo-layer-badge">Understand</div>
+          </div>
+          <p class="xo-layer-desc">The bedrock of everything. Rigorous, primary research on the Philippine and ASEAN market — designed to pay for itself 10× over.</p>
+          <div class="xo-tags">
+            <span class="xo-tag">Market &amp; ecosystem mapping</span>
+            <span class="xo-tag">Customer discovery &amp; JTBD</span>
+            <span class="xo-tag">Competition &amp; benchmarking</span>
+            <span class="xo-tag">GTM &amp; pricing insight</span>
+            <span class="xo-tag">Regulatory intelligence</span>
+            <span class="xo-tag">Venture thesis design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 2 -->
+      <div class="xo-layer l2 xo-fade">
+        <div class="xo-layer-num">
+          <div class="xo-layer-num-inner">02</div>
+        </div>
+        <div class="xo-layer-body">
+          <div class="xo-layer-header">
+            <div class="xo-layer-title"><i class="fa-solid fa-bolt" style="margin-right:10px;font-size:0.9em;opacity:0.7"></i>Daily Insight</div>
+            <div class="xo-layer-badge">Monitor</div>
+          </div>
+          <p class="xo-layer-desc">A curated daily briefing — PH &amp; ASEAN markets, AI &amp; tech, regulatory shifts, and industry signals — filtered through your sector lens.</p>
+          <div class="xo-tags">
+            <span class="xo-tag">Morning digest (5–7 bullets, &lt;3 min)</span>
+            <span class="xo-tag">Weekly deep-dive memo</span>
+            <span class="xo-tag">Sector-filtered: BFSI · Healthcare · Logistics · Tech · FMCG</span>
+          </div>
+          <div class="xo-layer-note">Exoasia also runs a public Daily Insight feed as a freemium lead magnet. Your paid tier is private, client-branded, and sector-specific.</div>
+        </div>
+      </div>
+
+      <!-- Layer 3 -->
+      <div class="xo-layer l3 xo-fade">
+        <div class="xo-layer-num">
+          <div class="xo-layer-num-inner">03</div>
+        </div>
+        <div class="xo-layer-body">
+          <div class="xo-layer-header">
+            <div class="xo-layer-title"><i class="fa-solid fa-pen-nib" style="margin-right:10px;font-size:0.9em;opacity:0.7"></i>Thought Leadership Pack</div>
+            <div class="xo-layer-badge">DFY Content Subscription</div>
+          </div>
+          <p class="xo-layer-desc">Research transforms into platform-ready, ready-to-post content — under your voice and brand. Every post is research-backed, making your authority durable and defensible.</p>
+          <div class="xo-platform-table-wrap"><table class="xo-platform-table">
+            <thead><tr><th>Platform</th><th>Content Types</th><th>Cadence</th></tr></thead>
+            <tbody>
+              <tr><td>LinkedIn</td><td>Long-form post, carousel (5–8 slides), poll</td><td>3–4×/week</td></tr>
+              <tr><td>Instagram</td><td>Carousel (7–10 slides, 1080×1080), Reel concept + caption</td><td>3×/week</td></tr>
+              <tr><td>Facebook</td><td>Community post, reshared carousel</td><td>3×/week</td></tr>
+              <tr><td>YouTube</td><td>Short script (60-sec) + long-form topic brief</td><td>2×/month</td></tr>
+              <tr><td>TikTok</td><td>Vertical video script (30–60 sec), hook + CTA</td><td>3×/week</td></tr>
+            </tbody>
+          </table></div>
+          <div class="xo-layer-note" style="margin-top:16px">Every client starts with a <strong>Voice Calibration Session</strong> — a 90-minute session to capture your tone, core beliefs, and POV framework. Content sounds like you, not AI.</div>
+        </div>
+      </div>
+
+      <!-- Layer 4 -->
+      <div class="xo-layer l4 xo-fade">
+        <div class="xo-layer-num">
+          <div class="xo-layer-num-inner">04</div>
+        </div>
+        <div class="xo-layer-body">
+          <div class="xo-layer-header">
+            <div class="xo-layer-title"><i class="fa-solid fa-envelope-open-text" style="margin-right:10px;font-size:0.9em;opacity:0.7"></i>DFY Newsletter</div>
+            <div class="xo-layer-badge">Ready to Ship</div>
+          </div>
+          <p class="xo-layer-desc">A fully written, designed, and ready-to-publish newsletter under your brand. Built from the week's Daily Insight. You review, approve, send. Zero writing required.</p>
+          <div class="xo-grid-2" style="gap:20px;margin-top:16px">
+            <div>
+              <p style="font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--xo-text-dim);margin-bottom:10px">Issue Structure</p>
+              <ul class="xo-list">
+                <li>Opening hook — the big idea of the week</li>
+                <li>3 research-backed insights with commentary</li>
+                <li>1 featured case study or market signal</li>
+                <li>CTA — book a call, join a community, download a report</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--xo-text-dim);margin-bottom:10px">Delivery Specs</p>
+              <ul class="xo-list">
+                <li>Branded HTML template in your color system</li>
+                <li>Mailchimp · Beehiiv · ConvertKit · GHL compatible</li>
+                <li>Weekly or biweekly cadence</li>
+                <li>Optional: Exoasia network distribution blast</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ──────────────────────────────────────────────────────── -->
+<section class="xo-section" id="pricing" style="background:var(--xo-surface)">
+  <div class="xo-container">
+    <div class="xo-fade">
+      <div class="xo-eyebrow">Pricing Architecture</div>
+      <h2 style="color:#fff">Choose Your Entry Point</h2>
+      <div class="xo-divider"></div>
+    </div>
+    <div class="xo-pricing-grid xo-fade">
+
+      <!-- ── GHL FORM LINK: Daily Insight ───────────────────────────────
+           Replace href below with your GHL funnel/form URL for Daily Insight
+           Example: href="https://app.gohighlevel.com/v2/preview/YOUR-FUNNEL-ID"
+      ─────────────────────────────────────────────────────────────────── -->
+      <a href="YOUR_GHL_FORM_LINK_DAILY_INSIGHT" class="xo-price-card" target="_blank" rel="noopener">
+        <div class="xo-price-name">Daily Insight</div>
+        <div class="xo-price-desc">Standalone sector-specific daily briefing</div>
+        <div class="xo-price-amount">₱15K–₱30K <span>/ month</span></div>
+        <div class="xo-price-incl">Morning digest + weekly deep-dive memo · 3-month minimum</div>
+        <div class="xo-price-cta">
+          Get Started
+          <div class="xo-price-cta-arrow"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;color:#B095C5"></i></div>
+        </div>
+      </a>
+
+      <!-- ── GHL FORM LINK: Content Subscription ────────────────────────
+           Replace href below with your GHL funnel/form URL for TL Pack
+           Example: href="https://app.gohighlevel.com/v2/preview/YOUR-FUNNEL-ID"
+      ─────────────────────────────────────────────────────────────────── -->
+      <a href="https://link.gamechangerfunnel.com/widget/form/22ccTUbVJnhoOyqxWtkK" class="xo-price-card" target="_blank" rel="noopener">
+        <div class="xo-price-name">Content Subscription</div>
+        <div class="xo-price-desc">DFY social content across all 5 platforms</div>
+        <div class="xo-price-amount">₱40K–₱80K <span>/ month</span></div>
+        <div class="xo-price-incl">TL Pack · Voice Calibration · 3-month minimum</div>
+        <div class="xo-price-cta">
+          Get Started
+          <div class="xo-price-cta-arrow"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;color:#B095C5"></i></div>
+        </div>
+      </a>
+
+      <!-- ── GHL FORM LINK: Insight + Influence Bundle (FEATURED) ───────
+           Replace href below with your GHL funnel/form URL for the Bundle
+           Example: href="https://app.gohighlevel.com/v2/preview/YOUR-FUNNEL-ID"
+      ─────────────────────────────────────────────────────────────────── -->
+      <a href="YOUR_GHL_FORM_LINK_INSIGHT_INFLUENCE_BUNDLE" class="xo-price-card featured" target="_blank" rel="noopener">
+        <div class="xo-price-name">Insight + Influence Bundle</div>
+        <div class="xo-price-desc">Daily Insight + TL Pack + DFY Newsletter</div>
+        <div class="xo-price-amount">₱75K–₱150K <span>/ month</span></div>
+        <div class="xo-price-incl">Full thought leadership stack · 3-month minimum</div>
+        <div class="xo-price-cta">
+          Get Started
+          <div class="xo-price-cta-arrow"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;color:#C9E500"></i></div>
+        </div>
+      </a>
+
+      <!-- ── GHL FORM LINK: Full Authority Stack ────────────────────────
+           Replace href below with your GHL funnel/form URL for Full Stack
+           Example: href="https://app.gohighlevel.com/v2/preview/YOUR-FUNNEL-ID"
+      ─────────────────────────────────────────────────────────────────── -->
+      <a href="YOUR_GHL_FORM_LINK_FULL_AUTHORITY_STACK" class="xo-price-card" target="_blank" rel="noopener">
+        <div class="xo-price-name">Full Authority Stack</div>
+        <div class="xo-price-desc">Blueprint + all 3 TL tiers + PR Retainer</div>
+        <div class="xo-price-amount">₱300K–₱600K <span>/ month</span></div>
+        <div class="xo-price-incl">Complete market-to-influence system · 6-month minimum</div>
+        <div class="xo-price-cta">
+          Get Started
+          <div class="xo-price-cta-arrow"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;color:#B095C5"></i></div>
+        </div>
+      </a>
+
+    </div>
+    <p class="xo-price-note xo-fade">All bundles begin with a Voice Calibration Session. Blueprint engagements are one-time, 4–10 weeks.</p>
+  </div>
+</section>
+
+<!-- ── RESEARCH TIERS ───────────────────────────────────────────────── -->
+<section class="xo-section" id="research">
+  <div class="xo-container">
+    <div class="xo-fade">
+      <div class="xo-eyebrow">Research Service Tiers</div>
+      <h2 style="color:#fff">One-Time Engagements</h2>
+      <div class="xo-divider"></div>
+      <p style="max-width:580px">Standalone research engagements that form the foundation for every business decision — market entry, product launch, or venture investment.</p>
+    </div>
+    <div class="xo-tier-stack xo-fade">
+      <div class="xo-tier-row">
+        <div class="xo-tier-label">
+          <div class="xo-tier-num">Tier 1</div>
+          <div class="xo-tier-name">Insight Spotlight</div>
+        </div>
+        <div class="xo-tier-body">Light PH market scan, 1–2 expert interviews, and a co-created case study featured in an Exoasia industry or thematic report.</div>
+        <div class="xo-tier-time"><span>2–4 weeks</span></div>
+        <div class="xo-tier-price"><div class="xo-tier-price-val">₱150K–₱350K</div></div>
+      </div>
+      <div class="xo-tier-row">
+        <div class="xo-tier-label">
+          <div class="xo-tier-num">Tier 2</div>
+          <div class="xo-tier-name">Deep Market Blueprint</div>
+        </div>
+        <div class="xo-tier-body">Full market survey (qual + quant), competition &amp; benchmarking, blue ocean insight, customer discovery, GTM &amp; positioning, with clear "Do / Don't / Test Next" outputs.</div>
+        <div class="xo-tier-time"><span>4–10 weeks</span></div>
+        <div class="xo-tier-price"><div class="xo-tier-price-val">₱1.2M–₱2.8M</div></div>
+      </div>
+      <div class="xo-tier-row">
+        <div class="xo-tier-label">
+          <div class="xo-tier-num">Tier 3</div>
+          <div class="xo-tier-name">Ecosystem Ambassador</div>
+        </div>
+        <div class="xo-tier-body">Starts with a Deep Market Blueprint, then ongoing market, competitor &amp; regulatory monitoring, insight memos, event representation, warm introductions, and quarterly strategy sessions.</div>
+        <div class="xo-tier-time"><span>Ongoing retainer</span></div>
+        <div class="xo-tier-price"><div class="xo-tier-price-val">₱250K–₱500K/mo</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PR STUDIO ────────────────────────────────────────────────────── -->
+<section class="xo-section" id="pr-studio" style="background:var(--xo-surface)">
+  <div class="xo-container">
+    <div class="xo-fade">
+      <div class="xo-eyebrow">Insight-Driven Communications</div>
+      <h2 style="color:#fff">PR Studio</h2>
+      <div class="xo-divider"></div>
+      <p style="max-width:620px;margin-bottom:48px">An optional add-on that turns research outputs into public visibility and institutional influence. Available standalone or bundled with any research tier.</p>
+    </div>
+
+    <div class="xo-pr-tier-cards xo-fade">
+      <div class="xo-pr-card vis">
+        <div class="xo-pr-card-name">Visibility</div>
+        <div class="xo-pr-card-price">₱150K–₱500K/mo</div>
+        <div class="xo-pr-card-min">3-month minimum</div>
+      </div>
+      <div class="xo-pr-card inf">
+        <div class="xo-pr-card-name">Influence</div>
+        <div class="xo-pr-card-price">₱400K–₱580K/mo</div>
+        <div class="xo-pr-card-min">6-month minimum</div>
+      </div>
+      <div class="xo-pr-card eco">
+        <div class="xo-pr-card-name">Ecosystem Voice</div>
+        <div class="xo-pr-card-price">₱700K–₱1.2M/mo</div>
+        <div class="xo-pr-card-min">12-month minimum</div>
+      </div>
+    </div>
+
+    <div class="xo-table-wrap xo-fade">
+      <table class="xo-feat-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;color:var(--xo-text-dim)">Feature</th>
+            <th class="h-vis">Visibility</th>
+            <th class="h-inf">Influence</th>
+            <th class="h-eco">Ecosystem Voice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="xo-cat-row"><td colspan="4">Press &amp; Media</td></tr>
+          <tr class="xo-feat-row"><td>Media monitoring &amp; alerts</td><td class="xo-check">✓</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Press release writing &amp; distribution</td><td class="xo-check">✓</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Media placements (online/print)</td><td class="xo-val xo-val-vis">Up to 2/mo</td><td class="xo-val xo-val-inf">Up to 5/mo</td><td class="xo-val xo-val-eco">Unlimited</td></tr>
+          <tr class="xo-feat-row"><td>Broadcast / TV / radio pitching</td><td class="xo-dash">—</td><td class="xo-dash">—</td><td class="xo-check-eco">✓</td></tr>
+
+          <tr class="xo-cat-row"><td colspan="4">Thought Leadership &amp; Executive Positioning</td></tr>
+          <tr class="xo-feat-row"><td>LinkedIn executive content (ghostwritten)</td><td class="xo-val xo-val-vis">2 posts/mo</td><td class="xo-val xo-val-inf">8 posts/mo</td><td class="xo-val xo-val-eco">16 posts/mo</td></tr>
+          <tr class="xo-feat-row"><td>Speaker bureau &amp; event pitching</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Awards &amp; recognition nominations</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Op-ed &amp; bylined article placement</td><td class="xo-dash">—</td><td class="xo-val xo-val-inf">1/mo</td><td class="xo-val xo-val-eco">3/mo</td></tr>
+
+          <tr class="xo-cat-row"><td colspan="4">Content Studio</td></tr>
+          <tr class="xo-feat-row"><td>Research-backed articles &amp; blog posts</td><td class="xo-dash">—</td><td class="xo-val xo-val-inf">2/mo</td><td class="xo-val xo-val-eco">4/mo</td></tr>
+          <tr class="xo-feat-row"><td>Social caption writing (all platforms)</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>DFY newsletter (ready to ship)</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+
+          <tr class="xo-cat-row"><td colspan="4">Corporate &amp; Government Communications</td></tr>
+          <tr class="xo-feat-row"><td>Stakeholder communication drafting</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Government &amp; regulatory body engagement</td><td class="xo-dash">—</td><td class="xo-dash">—</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Crisis communications support</td><td class="xo-dash">—</td><td class="xo-dash">—</td><td class="xo-check-eco">✓</td></tr>
+
+          <tr class="xo-cat-row"><td colspan="4">Event PR &amp; Documentation</td></tr>
+          <tr class="xo-feat-row"><td>Event coverage &amp; writeups</td><td class="xo-check">✓</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Exoasia ecosystem event representation</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Hosted private executive events</td><td class="xo-dash">—</td><td class="xo-dash">—</td><td class="xo-check-eco">✓</td></tr>
+
+          <tr class="xo-cat-row"><td colspan="4">Ecosystem &amp; Network</td></tr>
+          <tr class="xo-feat-row"><td>Exoasia network distribution blast</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>GACPh / PSAC / Founders Arena co-positioning</td><td class="xo-dash">—</td><td class="xo-dash">—</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Warm introductions to investors &amp; partners</td><td class="xo-dash">—</td><td class="xo-dash">—</td><td class="xo-check-eco">✓</td></tr>
+
+          <tr class="xo-cat-row"><td colspan="4">Support &amp; Reporting</td></tr>
+          <tr class="xo-feat-row"><td>Monthly performance report</td><td class="xo-check">✓</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Quarterly ROI audit &amp; strategy recalibration</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+          <tr class="xo-feat-row"><td>Dedicated account strategist</td><td class="xo-dash">—</td><td class="xo-check-strong">✓</td><td class="xo-check-eco">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY EXOASIA ──────────────────────────────────────────────────── -->
+<section class="xo-section" id="why">
+  <div class="xo-container">
+    <div class="xo-fade">
+      <div class="xo-eyebrow">Why Exoasia</div>
+      <h2 style="color:#fff">vs. Traditional Research Firms</h2>
+      <div class="xo-divider"></div>
+    </div>
+    <div class="xo-compare-grid xo-fade">
+      <div class="xo-compare-header old">Traditional Firms</div>
+      <div class="xo-compare-header new">Exoasia MRSI</div>
+      <div class="xo-compare-row">
+        <div class="xo-compare-old">3–6 month turnaround</div>
+        <div class="xo-compare-new"><strong>4–10 week delivery</strong></div>
+      </div>
+      <div class="xo-compare-row">
+        <div class="xo-compare-old">Heavy, descriptive decks</div>
+        <div class="xo-compare-new">Concise insight packs — clear <strong>"Do / Don't / Test Next"</strong> outputs</div>
+      </div>
+      <div class="xo-compare-row">
+        <div class="xo-compare-old">Generic desk research</div>
+        <div class="xo-compare-new"><strong>Curated Philippine expert network</strong> + primary interviews</div>
+      </div>
+      <div class="xo-compare-row">
+        <div class="xo-compare-old">Research stops at the report</div>
+        <div class="xo-compare-new">Research flows into <strong>content, newsletter, and PR</strong></div>
+      </div>
+      <div class="xo-compare-row">
+        <div class="xo-compare-old">Siloed engagement</div>
+        <div class="xo-compare-new">Integrated with <strong>Venture Building, Market Entry, and Events</strong></div>
+      </div>
+      <div class="xo-compare-row">
+        <div class="xo-compare-old">No distribution</div>
+        <div class="xo-compare-new">Exoasia ecosystem: <strong>PSAC · GACPh · Founders Arena · Growth Network</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ──────────────────────────────────────────────────────────── -->
+<section class="xo-cta" id="cta">
+  <div class="xo-cta-bg"></div>
+  <div class="xo-container xo-cta-content xo-fade">
+    <div class="xo-eyebrow" style="justify-content:center">Start Here</div>
+    <h2 style="color:#fff">Ready to See the Market Clearly?</h2>
+    <p>Start with a 30-minute Discovery Call. We'll identify the right entry point for your business — and show you exactly how the Insight-to-Influence Engine works for your goals.</p>
+    <div class="xo-cta-links">
+      <!-- ── GHL FORM LINK: Main Discovery Call CTA ─────────────────────
+           Replace href below with your primary GHL calendar/booking link
+      ─────────────────────────────────────────────────────────────────── -->
+      <a href="YOUR_GHL_CALENDAR_BOOKING_LINK" class="xo-btn-primary" target="_blank" rel="noopener"><i class="fa-regular fa-calendar-check"></i> Book a Discovery Call</a>
+      <a href="mailto:mackcomandante@exoasia.org" class="xo-btn-secondary"><i class="fa-regular fa-envelope"></i> Email Mack Directly</a>
+    </div>
+    <p style="margin-top:32px;font-size:0.82rem;color:var(--xo-text-dim)">
+      <i class="fa-solid fa-globe" style="margin-right:5px"></i>exoasia.org/mrsi
+      &nbsp;·&nbsp;
+      <i class="fa-regular fa-envelope" style="margin-right:5px"></i>mackcomandante@exoasia.org
+      &nbsp;·&nbsp;
+      <i class="fa-solid fa-phone" style="margin-right:5px"></i>+63 917 505 2409
+    </p>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+<footer class="xo-footer">
+  <div class="xo-container">
+    <div class="xo-footer-inner">
+      <a href="https://www.exoasia.org" class="xo-footer-brand" target="_blank" rel="noopener" style="text-decoration:none">Exoasia Innovation Hub</a>
+      <div class="xo-footer-links">
+        <a href="#engine"><i class="fa-solid fa-layer-group" style="font-size:11px;margin-right:5px"></i>The Engine</a>
+        <a href="#pricing"><i class="fa-solid fa-tags" style="font-size:11px;margin-right:5px"></i>Pricing</a>
+        <a href="#research"><i class="fa-solid fa-flask" style="font-size:11px;margin-right:5px"></i>Research Tiers</a>
+        <a href="#pr-studio"><i class="fa-solid fa-bullhorn" style="font-size:11px;margin-right:5px"></i>PR Studio</a>
+        <a href="https://exoasia.org/mrsi/newsletter" target="_blank" rel="noopener"><i class="fa-regular fa-newspaper" style="font-size:11px;margin-right:5px"></i>Newsletter</a>
+        <a href="#cta"><i class="fa-regular fa-calendar-check" style="font-size:11px;margin-right:5px"></i>Book a Call</a>
+      </div>
+      <div class="xo-footer-copy">© 2026 Exoasia Innovation Hub. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('xo-nav').classList.toggle('scrolled',window.scrollY>40);
+});
+
+function toggleNav(){
+  document.getElementById('xo-nav-links').classList.toggle('open');
+}
+
+document.querySelectorAll('#xo-nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('xo-nav-links').classList.remove('open'));
+});
+
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.xo-fade').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

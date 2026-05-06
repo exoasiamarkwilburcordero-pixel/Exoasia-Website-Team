@@ -1,0 +1,1068 @@
+<!-- ============================================================
+     EXOASIA SOFT LANDING & MARKET ENTRY — GCF-READY BODY HTML
+     Paste into GCF > HTML Element > Source / Code View
+     CSS namespace: xo-  |  No external JS dependencies
+     ============================================================ -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+  /* ── TOKENS ── */
+  .xo-sl-root {
+    --xo-deep:     #2D0A28;
+    --xo-maroon:   #4A1040;
+    --xo-purple:   #7B3FA0;
+    --xo-lavender: #B095C5;
+    --xo-gold:     #C9E500;
+    --xo-gold-lt:  #DFFE3A;
+    --xo-white:    #FAF7FF;
+    --xo-muted:    rgba(176,149,197,0.55);
+    --xo-border:   rgba(201,229,0,0.22);
+    --xo-radius:   14px;
+    --xo-font-h:   'Montserrat', sans-serif;
+    --xo-font-ser: 'Cormorant Garamond', serif;
+    --xo-font-b:   'Inter', sans-serif;
+    --xo-glow:     0 0 60px rgba(201,229,0,0.12);
+  }
+
+  /* ── RESET SCOPE ── */
+  .xo-sl-root *, .xo-sl-root *::before, .xo-sl-root *::after {
+    box-sizing: border-box; margin: 0; padding: 0;
+  }
+  .xo-sl-root {
+    background: var(--xo-deep);
+    color: var(--xo-white);
+    font-family: var(--xo-font-b);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .xo-sl-root a { color: var(--xo-gold); text-decoration: none; }
+
+  /* ── UTILITY ── */
+  .xo-sl-container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .xo-sl-gold { color: var(--xo-gold); }
+  .xo-sl-lav  { color: var(--xo-lavender); }
+  .xo-sl-muted { color: var(--xo-muted); }
+
+  /* ── NOISE OVERLAY ── */
+  .xo-sl-root::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  /* ─────────────────────────── NAVBAR ─────────────────────────── */
+  .xo-sl-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(45,10,40,0.85);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--xo-border);
+    padding: 16px 0;
+  }
+  .xo-sl-nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .xo-sl-nav-logo {
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: 1.25rem;
+    letter-spacing: 0.06em; color: var(--xo-white);
+  }
+  .xo-sl-nav-logo span { color: var(--xo-white); }
+  .xo-sl-nav-cta {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 10px 22px;
+    background: transparent;
+    color: var(--xo-gold);
+    border: 1.5px solid var(--xo-gold);
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+  .xo-sl-nav-cta:hover {
+    background: var(--xo-gold);
+    color: var(--xo-deep);
+    transform: translateY(-1px);
+  }
+
+  /* ─────────────────────────── HERO ─────────────────────────── */
+  .xo-sl-hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex; align-items: center;
+    padding: 100px 0 80px;
+    overflow: hidden;
+  }
+  .xo-sl-hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 80% 50%, rgba(123,63,160,0.28) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 60% at 10% 80%, rgba(74,16,64,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 90% 40% at 50% 0%, rgba(201,229,0,0.07) 0%, transparent 55%),
+      linear-gradient(160deg, #3A0D35 0%, var(--xo-deep) 45%, #1A0518 100%);
+  }
+  .xo-sl-hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(201,229,0,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,229,0,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+  .xo-sl-hero-content {
+    position: relative; z-index: 2;
+    max-width: 720px;
+  }
+  .xo-sl-hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--xo-gold);
+    border: 1px solid var(--xo-border);
+    padding: 7px 16px; border-radius: 50px;
+    margin-bottom: 28px;
+    background: rgba(201,229,0,0.07);
+    animation: xo-fadeup 0.7s ease both;
+  }
+  .xo-sl-hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--xo-gold); border-radius: 50%;
+    animation: xo-pulse 2s infinite;
+  }
+  .xo-sl-hero-h1 {
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    line-height: 1.08; letter-spacing: -0.02em;
+    color: var(--xo-white);
+    margin-bottom: 12px;
+    animation: xo-fadeup 0.8s 0.1s ease both;
+  }
+  .xo-sl-hero-h1 em {
+    font-style: normal;
+    background: linear-gradient(120deg, var(--xo-gold) 0%, var(--xo-gold-lt) 60%, var(--xo-lavender) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .xo-sl-hero-sub {
+    font-family: var(--xo-font-ser);
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    color: var(--xo-lavender); line-height: 1.55;
+    margin-bottom: 38px;
+    animation: xo-fadeup 0.8s 0.2s ease both;
+  }
+  .xo-sl-hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: xo-fadeup 0.8s 0.3s ease both;
+  }
+  .xo-sl-btn-primary {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 16px 36px;
+    background: transparent;
+    color: var(--xo-gold);
+    border: 1.5px solid var(--xo-gold);
+    border-radius: 4px;
+    transition: all 0.25s;
+  }
+  .xo-sl-btn-primary:hover {
+    background: var(--xo-gold);
+    color: var(--xo-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201,229,0,0.35);
+  }
+  .xo-sl-btn-ghost {
+    font-family: var(--xo-font-h);
+    font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--xo-lavender);
+    border: 1px solid rgba(176,149,197,0.4);
+    border-radius: 4px;
+    transition: all 0.25s;
+  }
+  .xo-sl-btn-ghost:hover {
+    background: var(--xo-gold);
+    color: var(--xo-deep);
+    border-color: var(--xo-gold);
+  }
+  .xo-sl-hero-stat-row {
+    position: relative; z-index: 2;
+    display: flex; gap: 48px; flex-wrap: wrap;
+    padding-top: 64px;
+    animation: xo-fadeup 0.8s 0.45s ease both;
+  }
+  .xo-sl-hero-stat h3 {
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: 2rem;
+    color: var(--xo-gold); letter-spacing: -0.02em;
+  }
+  .xo-sl-hero-stat p {
+    font-size: 0.8rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--xo-muted);
+    margin-top: 2px;
+  }
+  .xo-sl-hero-badge {
+    position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 340px;
+    background: rgba(74,16,64,0.55);
+    border: 1px solid var(--xo-border);
+    border-radius: var(--xo-radius);
+    padding: 32px 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--xo-glow);
+    animation: xo-fadein 1s 0.5s ease both;
+  }
+  .xo-sl-hero-badge-label {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.65rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--xo-gold); margin-bottom: 16px;
+  }
+  .xo-sl-hero-badge-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.88rem; color: var(--xo-lavender);
+    line-height: 1.45;
+  }
+  .xo-sl-hero-badge-item:last-child { margin-bottom: 0; }
+  .xo-sl-badge-icon {
+    width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px;
+    background: rgba(201,229,0,0.15);
+    border: 1px solid var(--xo-border);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--xo-gold); font-size: 0.7rem;
+  }
+  .xo-sl-badge-icon i { color: var(--xo-gold); }
+
+  /* ─────────────────────────── CHALLENGE ─────────────────────────── */
+  .xo-sl-section { padding: 100px 0; position: relative; z-index: 1; }
+  .xo-sl-section-label {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.68rem;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--xo-gold); margin-bottom: 16px;
+  }
+  .xo-sl-section-h2 {
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+    line-height: 1.12; letter-spacing: -0.02em;
+    color: var(--xo-white); margin-bottom: 18px;
+  }
+  .xo-sl-section-intro {
+    font-family: var(--xo-font-ser);
+    font-size: 1.2rem; color: var(--xo-lavender);
+    max-width: 620px; line-height: 1.6;
+    margin-bottom: 56px;
+  }
+
+  .xo-sl-challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    border: 1px solid var(--xo-border);
+    border-radius: var(--xo-radius);
+    overflow: hidden;
+  }
+  .xo-sl-challenge-card {
+    background: rgba(74,16,64,0.25);
+    padding: 36px 28px;
+    border-right: 1px solid var(--xo-border);
+    border-bottom: 1px solid var(--xo-border);
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .xo-sl-challenge-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--xo-gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .xo-sl-challenge-card:hover { background: rgba(123,63,160,0.2); }
+  .xo-sl-challenge-card:hover::before { opacity: 1; }
+  .xo-sl-challenge-num {
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: 2.8rem;
+    color: rgba(201,229,0,0.12); line-height: 1;
+    margin-bottom: 14px;
+  }
+  .xo-sl-challenge-card h4 {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.95rem;
+    letter-spacing: 0.04em; color: var(--xo-white);
+    margin-bottom: 10px;
+  }
+  .xo-sl-challenge-card p {
+    font-size: 0.88rem; color: var(--xo-muted); line-height: 1.6;
+  }
+
+  /* ─────────────────────────── PROGRAM ─────────────────────────── */
+  .xo-sl-program-bg {
+    background:
+      radial-gradient(ellipse 60% 70% at 90% 50%, rgba(123,63,160,0.18) 0%, transparent 60%),
+      rgba(74,16,64,0.2);
+    border-top: 1px solid var(--xo-border);
+    border-bottom: 1px solid var(--xo-border);
+  }
+  .xo-sl-program-layout {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start;
+  }
+  .xo-sl-program-sticky { position: sticky; top: 100px; }
+  .xo-sl-program-tagline {
+    font-family: var(--xo-font-ser);
+    font-style: italic; font-size: 1.5rem;
+    color: var(--xo-lavender); margin-bottom: 28px; line-height: 1.5;
+  }
+  .xo-sl-pillars { display: flex; flex-direction: column; gap: 3px; }
+  .xo-sl-pillar {
+    border: 1px solid var(--xo-border);
+    border-radius: var(--xo-radius);
+    overflow: hidden;
+    background: rgba(45,10,40,0.5);
+    transition: box-shadow 0.3s;
+  }
+  .xo-sl-pillar:hover { box-shadow: var(--xo-glow); }
+  .xo-sl-pillar-header {
+    display: flex; align-items: center; gap: 18px;
+    padding: 22px 24px; cursor: pointer;
+  }
+  .xo-sl-pillar-num {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border: 1px solid var(--xo-border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--xo-font-h); font-weight: 900;
+    font-size: 0.75rem; color: var(--xo-gold);
+    background: rgba(201,229,0,0.08);
+  }
+  .xo-sl-pillar-title {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--xo-white); flex: 1;
+    letter-spacing: 0.02em;
+  }
+  .xo-sl-pillar-icon { font-size: 1.1rem; color: var(--xo-gold); }
+  .xo-sl-pillar-icon i { color: var(--xo-gold); }
+  .xo-sl-why-card-icon { font-size: 3rem; margin-bottom: 20px; color: var(--xo-gold); }
+  .xo-sl-pillar-body {
+    padding: 0 24px 22px 78px;
+    font-size: 0.87rem; color: var(--xo-lavender); line-height: 1.65;
+    border-top: 1px solid rgba(201,229,0,0.1);
+    padding-top: 16px;
+  }
+  .xo-sl-pillar-tags {
+    display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px;
+  }
+  .xo-sl-tag {
+    font-family: var(--xo-font-h);
+    font-weight: 600; font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 11px; border-radius: 50px;
+    border: 1px solid var(--xo-border);
+    color: var(--xo-gold); background: rgba(201,229,0,0.07);
+  }
+
+  /* ─────────────────────────── PROCESS ─────────────────────────── */
+  .xo-sl-process-track {
+    position: relative;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .xo-sl-process-track::before {
+    content: '';
+    position: absolute; left: 21px; top: 32px; bottom: 32px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--xo-gold), var(--xo-purple), transparent);
+  }
+  .xo-sl-step {
+    display: flex; gap: 24px; padding: 28px 0;
+    border-bottom: 1px solid rgba(201,229,0,0.08);
+  }
+  .xo-sl-step:last-child { border-bottom: none; }
+  .xo-sl-step-dot {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border: 2px solid var(--xo-gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--xo-deep);
+    font-family: var(--xo-font-h); font-weight: 900;
+    font-size: 0.8rem; color: var(--xo-gold);
+    position: relative; z-index: 1;
+  }
+  .xo-sl-step-content h4 {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 1rem;
+    color: var(--xo-white); margin-bottom: 6px;
+  }
+  .xo-sl-step-content p {
+    font-size: 0.88rem; color: var(--xo-muted); line-height: 1.6;
+  }
+  .xo-sl-step-badge {
+    display: inline-block; margin-top: 8px;
+    font-size: 0.68rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--xo-gold);
+    font-family: var(--xo-font-h); font-weight: 700;
+  }
+
+  /* ─────────────────────────── WHO ─────────────────────────── */
+  .xo-sl-who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .xo-sl-who-card {
+    background: rgba(74,16,64,0.3);
+    border: 1px solid var(--xo-border);
+    border-radius: var(--xo-radius);
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .xo-sl-who-card:hover {
+    background: rgba(123,63,160,0.22);
+    border-color: rgba(201,229,0,0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3), var(--xo-glow);
+  }
+  .xo-sl-who-icon {
+    font-size: 2.2rem; margin-bottom: 14px; display: block;
+    color: var(--xo-gold);
+  }
+  .xo-sl-who-icon i { color: var(--xo-gold); }
+  .xo-sl-who-card h4 {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.9rem;
+    color: var(--xo-white); margin-bottom: 8px;
+  }
+  .xo-sl-who-card p {
+    font-size: 0.82rem; color: var(--xo-muted); line-height: 1.55;
+  }
+
+  /* ─────────────────────────── WHY EXOASIA ─────────────────────────── */
+  .xo-sl-why-bg {
+    background: linear-gradient(135deg, rgba(123,63,160,0.12) 0%, rgba(45,10,40,0.8) 100%);
+    border-top: 1px solid var(--xo-border);
+    border-bottom: 1px solid var(--xo-border);
+  }
+  .xo-sl-why-layout {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center;
+  }
+  .xo-sl-why-list { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .xo-sl-why-item {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .xo-sl-why-bullet {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--xo-gold); flex-shrink: 0; margin-top: 7px;
+  }
+  .xo-sl-why-item-text h5 {
+    font-family: var(--xo-font-h);
+    font-weight: 700; font-size: 0.9rem;
+    color: var(--xo-white); margin-bottom: 4px;
+  }
+  .xo-sl-why-item-text p {
+    font-size: 0.85rem; color: var(--xo-muted); line-height: 1.55;
+  }
+  .xo-sl-why-card {
+    background: rgba(74,16,64,0.45);
+    border: 1px solid var(--xo-border);
+    border-radius: var(--xo-radius);
+    padding: 42px 36px;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--xo-glow);
+    text-align: center;
+  }
+  .xo-sl-why-card-icon i { color: var(--xo-gold); }
+  .xo-sl-why-card h3 {
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: 1.5rem;
+    color: var(--xo-white); margin-bottom: 12px;
+  }
+  .xo-sl-why-card p {
+    font-size: 0.9rem; color: var(--xo-lavender); line-height: 1.6; margin-bottom: 24px;
+  }
+  .xo-sl-why-metrics {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px;
+  }
+  .xo-sl-metric {
+    background: rgba(45,10,40,0.6);
+    border: 1px solid var(--xo-border);
+    border-radius: 8px; padding: 16px 12px;
+  }
+  .xo-sl-metric strong {
+    display: block;
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: 1.5rem;
+    color: var(--xo-gold); letter-spacing: -0.02em;
+  }
+  .xo-sl-metric span {
+    font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--xo-muted);
+  }
+
+  /* ─────────────────────────── CTA ─────────────────────────── */
+  .xo-sl-cta-section {
+    padding: 120px 0;
+    background:
+      radial-gradient(ellipse 80% 80% at 50% 100%, rgba(123,63,160,0.25) 0%, transparent 70%),
+      linear-gradient(to bottom, var(--xo-deep), #1A0518);
+    text-align: center;
+  }
+  .xo-sl-cta-section h2 {
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1; letter-spacing: -0.02em;
+    color: var(--xo-white); margin-bottom: 20px;
+  }
+  .xo-sl-cta-section p {
+    font-family: var(--xo-font-ser);
+    font-size: 1.2rem; color: var(--xo-lavender);
+    max-width: 560px; margin: 0 auto 42px; line-height: 1.6;
+  }
+  .xo-sl-cta-actions {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+  }
+  .xo-sl-cta-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--xo-gold), transparent);
+    margin: 0 auto 40px;
+  }
+
+  /* ─────────────────────────── FOOTER ─────────────────────────── */
+  .xo-sl-footer {
+    border-top: 1px solid var(--xo-border);
+    padding: 40px 0;
+    background: rgba(20,5,18,0.8);
+  }
+  .xo-sl-footer-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .xo-sl-footer-brand {
+    font-family: var(--xo-font-h);
+    font-weight: 900; font-size: 0.9rem;
+    color: var(--xo-white); letter-spacing: 0.06em;
+  }
+  .xo-sl-footer-brand span { color: var(--xo-white); }
+  .xo-sl-footer-copy {
+    font-size: 0.78rem; color: var(--xo-muted);
+    text-align: right;
+  }
+  .xo-sl-footer-links {
+    display: flex; gap: 24px;
+  }
+  .xo-sl-footer-links a {
+    font-size: 0.78rem; color: var(--xo-muted);
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .xo-sl-footer-links a:hover { color: var(--xo-gold); }
+
+  /* ─────────────────────────── DIVIDER ─────────────────────────── */
+  .xo-sl-hr {
+    border: none;
+    border-top: 1px solid var(--xo-border);
+    margin: 0;
+  }
+
+  /* ─────────────────────────── ANIMATIONS ─────────────────────────── */
+  @keyframes xo-fadeup {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes xo-fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes xo-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.85); }
+  }
+  @keyframes xo-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+  .xo-sl-hero-badge { animation: xo-float 6s ease-in-out infinite, xo-fadein 1s 0.5s ease both; }
+
+  /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 900px) {
+    .xo-sl-hero-badge { display: none; }
+    .xo-sl-hero-content { max-width: 100%; }
+    .xo-sl-program-layout, .xo-sl-why-layout { grid-template-columns: 1fr; gap: 48px; }
+    .xo-sl-program-sticky { position: static; }
+  }
+  @media (max-width: 600px) {
+    .xo-sl-hero-stat-row { gap: 28px; }
+    .xo-sl-cta-actions { flex-direction: column; align-items: stretch; }
+    .xo-sl-btn-primary, .xo-sl-btn-ghost { text-align: center; }
+  }
+</style>
+
+<!-- ════════════════════ ROOT ════════════════════ -->
+<div class="xo-sl-root">
+
+  <!-- NAV -->
+  <nav class="xo-sl-nav">
+    <div class="xo-sl-container xo-sl-nav-inner">
+      <a href="https://www.exoasia.org" class="xo-sl-nav-logo" style="text-decoration:none;">EXOASIA</a>
+      <a href="#contact" class="xo-sl-nav-cta">Book a Discovery Call</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="xo-sl-hero">
+    <div class="xo-sl-hero-bg"></div>
+    <div class="xo-sl-hero-grid"></div>
+    <div class="xo-sl-container" style="position:relative;z-index:2;width:100%;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+        <div class="xo-sl-hero-content">
+          <div class="xo-sl-hero-eyebrow">Exoasia Soft Landing Program</div>
+          <h1 class="xo-sl-hero-h1">
+            Enter the Philippines<br>
+            <em>Confidently. Quickly.<br>Without the Guesswork.</em>
+          </h1>
+          <p class="xo-sl-hero-sub">
+            Your end-to-end market entry partner — from entity setup and regulatory compliance
+            to local partnerships, talent, and go-to-market execution.
+          </p>
+          <div class="xo-sl-hero-actions">
+            <a href="#contact" class="xo-sl-btn-primary">Start My Market Entry</a>
+            <a href="#program" class="xo-sl-btn-ghost">Explore the Program</a>
+          </div>
+        </div>
+        <div class="xo-sl-hero-badge">
+          <div class="xo-sl-hero-badge-label">What we handle for you</div>
+          <div class="xo-sl-hero-badge-item">
+            <div class="xo-sl-badge-icon"><i class="fa-solid fa-check"></i></div>
+            Legal entity registration & SEC / BIR compliance
+          </div>
+          <div class="xo-sl-hero-badge-item">
+            <div class="xo-sl-badge-icon"><i class="fa-solid fa-check"></i></div>
+            Local partner & talent ecosystem access
+          </div>
+          <div class="xo-sl-hero-badge-item">
+            <div class="xo-sl-badge-icon"><i class="fa-solid fa-check"></i></div>
+            Office setup & co-working space at Exoasia HQ
+          </div>
+          <div class="xo-sl-hero-badge-item">
+            <div class="xo-sl-badge-icon"><i class="fa-solid fa-check"></i></div>
+            Government & institutional introductions
+          </div>
+          <div class="xo-sl-hero-badge-item">
+            <div class="xo-sl-badge-icon"><i class="fa-solid fa-check"></i></div>
+            Go-to-market strategy & first-client pipeline
+          </div>
+        </div>
+      </div>
+      <div class="xo-sl-hero-stat-row">
+        <div class="xo-sl-hero-stat">
+          <h3>7,000+</h3>
+          <p>Leaders in our network</p>
+        </div>
+        <div class="xo-sl-hero-stat">
+          <h3>10+</h3>
+          <p>Industries served</p>
+        </div>
+        <div class="xo-sl-hero-stat">
+          <h3>4–12 wk</h3>
+          <p>Typical soft landing sprint</p>
+        </div>
+        <div class="xo-sl-hero-stat">
+          <h3>ASEAN</h3>
+          <p>Expansion pathway ready</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="xo-sl-hr">
+
+  <!-- CHALLENGE -->
+  <section class="xo-sl-section">
+    <div class="xo-sl-container">
+      <div class="xo-sl-section-label">The Market Entry Problem</div>
+      <h2 class="xo-sl-section-h2">Why Most Foreign<br>Entries Stall — or Fail</h2>
+      <p class="xo-sl-section-intro">
+        The Philippines is one of Southeast Asia's fastest-growing digital economies.
+        Yet foreign companies routinely lose 6–18 months to avoidable friction.
+      </p>
+      <div class="xo-sl-challenge-grid">
+        <div class="xo-sl-challenge-card">
+          <div class="xo-sl-challenge-num">01</div>
+          <h4>Regulatory Maze</h4>
+          <p>SEC, BIR, PEZA, BOI — navigating overlapping government agencies without a local guide adds months and legal exposure to any entry.</p>
+        </div>
+        <div class="xo-sl-challenge-card">
+          <div class="xo-sl-challenge-num">02</div>
+          <h4>No Trusted Network</h4>
+          <p>Business in the Philippines runs on relationships. Without warm introductions to the right decision-makers, pipeline-building stalls from day one.</p>
+        </div>
+        <div class="xo-sl-challenge-card">
+          <div class="xo-sl-challenge-num">03</div>
+          <h4>Talent Identification</h4>
+          <p>Finding senior, mission-aligned talent in a new market — without the institutional networks that took years to build locally — is extremely costly.</p>
+        </div>
+        <div class="xo-sl-challenge-card">
+          <div class="xo-sl-challenge-num">04</div>
+          <h4>Cultural Misalignment</h4>
+          <p>Filipino business culture rewards trust, face-saving, and long-term reciprocity. Transactional Western approaches consistently misfire in the early stages.</p>
+        </div>
+        <div class="xo-sl-challenge-card">
+          <div class="xo-sl-challenge-num">05</div>
+          <h4>Slow GTM Activation</h4>
+          <p>Without a tested playbook, most new entrants spend the first year learning what works — burning runway before generating any meaningful revenue.</p>
+        </div>
+        <div class="xo-sl-challenge-card">
+          <div class="xo-sl-challenge-num">06</div>
+          <h4>No Operational Base</h4>
+          <p>Physical presence signals seriousness to Philippine clients and regulators. A credible operational anchor accelerates trust and deal velocity dramatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM -->
+  <section class="xo-sl-section xo-sl-program-bg" id="program">
+    <div class="xo-sl-container">
+      <div class="xo-sl-program-layout">
+        <div class="xo-sl-program-sticky">
+          <div class="xo-sl-section-label">The Solution</div>
+          <h2 class="xo-sl-section-h2">The Exoasia<br>Soft Landing Program</h2>
+          <p class="xo-sl-program-tagline">
+            "A structured, high-touch market entry system — not just consulting, but co-execution."
+          </p>
+          <p style="font-size:0.9rem;color:var(--xo-muted);line-height:1.7;margin-bottom:28px;">
+            We've spent over a decade building institutional relationships across government, enterprise, and startup ecosystems in the Philippines and ASEAN. We put that entire network at your service from week one.
+          </p>
+          <a href="#contact" class="xo-sl-btn-primary">Request Program Details</a>
+        </div>
+        <div class="xo-sl-pillars">
+          <div class="xo-sl-pillar">
+            <div class="xo-sl-pillar-header">
+              <div class="xo-sl-pillar-num">01</div>
+              <div class="xo-sl-pillar-title">Legal & Regulatory Setup</div>
+              <div class="xo-sl-pillar-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            </div>
+            <div class="xo-sl-pillar-body">
+              We partner with top Philippine corporate law firms to handle SEC registration, BIR enrollment, PEZA/BOI incentive qualification, and ongoing statutory compliance — so your team focuses on business, not paperwork.
+              <div class="xo-sl-pillar-tags">
+                <span class="xo-sl-tag">SEC / BIR</span>
+                <span class="xo-sl-tag">PEZA / BOI</span>
+                <span class="xo-sl-tag">Corporate Law</span>
+                <span class="xo-sl-tag">IP Registration</span>
+              </div>
+            </div>
+          </div>
+          <div class="xo-sl-pillar">
+            <div class="xo-sl-pillar-header">
+              <div class="xo-sl-pillar-num">02</div>
+              <div class="xo-sl-pillar-title">Government & Institutional Access</div>
+              <div class="xo-sl-pillar-icon"><i class="fa-solid fa-landmark"></i></div>
+            </div>
+            <div class="xo-sl-pillar-body">
+              Through our active roles in DICT, DTI, and PSAC-aligned initiatives — including the ASEAN AI Workstream — we provide curated introductions to the decision-makers who accelerate regulatory approvals and public-sector partnerships.
+              <div class="xo-sl-pillar-tags">
+                <span class="xo-sl-tag">DICT / DTI</span>
+                <span class="xo-sl-tag">PSAC</span>
+                <span class="xo-sl-tag">ASEAN BAC</span>
+                <span class="xo-sl-tag">Institutional BD</span>
+              </div>
+            </div>
+          </div>
+          <div class="xo-sl-pillar">
+            <div class="xo-sl-pillar-header">
+              <div class="xo-sl-pillar-num">03</div>
+              <div class="xo-sl-pillar-title">Talent & Ecosystem Plug-In</div>
+              <div class="xo-sl-pillar-icon"><i class="fa-solid fa-handshake"></i></div>
+            </div>
+            <div class="xo-sl-pillar-body">
+              Access our Growth Network of 7,000+ business leaders, our EVODINE venture talent pool, and the Founders Arena startup community for senior hires, co-founders, and channel partners — from day one.
+              <div class="xo-sl-pillar-tags">
+                <span class="xo-sl-tag">Executive Search</span>
+                <span class="xo-sl-tag">Growth Network</span>
+                <span class="xo-sl-tag">Startup Partners</span>
+              </div>
+            </div>
+          </div>
+          <div class="xo-sl-pillar">
+            <div class="xo-sl-pillar-header">
+              <div class="xo-sl-pillar-num">04</div>
+              <div class="xo-sl-pillar-title">Operational Base & Presence</div>
+              <div class="xo-sl-pillar-icon"><i class="fa-solid fa-building"></i></div>
+            </div>
+            <div class="xo-sl-pillar-body">
+              Use Exoasia Innovation Hub as your registered business address and physical operations center. Premium co-working, meeting rooms, and a prestige address in Metro Manila — without the capital commitment of a full office setup.
+              <div class="xo-sl-pillar-tags">
+                <span class="xo-sl-tag">Business Address</span>
+                <span class="xo-sl-tag">Co-working</span>
+                <span class="xo-sl-tag">Meeting Facilities</span>
+              </div>
+            </div>
+          </div>
+          <div class="xo-sl-pillar">
+            <div class="xo-sl-pillar-header">
+              <div class="xo-sl-pillar-num">05</div>
+              <div class="xo-sl-pillar-title">Go-To-Market Activation</div>
+              <div class="xo-sl-pillar-icon"><i class="fa-solid fa-rocket"></i></div>
+            </div>
+            <div class="xo-sl-pillar-body">
+              We don't just introduce you to the market — we help you win it. Strategy sprints, client pipeline development, executive events, and co-branded launches designed to generate qualified pipeline in your first 90 days.
+              <div class="xo-sl-pillar-tags">
+                <span class="xo-sl-tag">GTM Strategy</span>
+                <span class="xo-sl-tag">Pipeline Dev</span>
+                <span class="xo-sl-tag">Executive Events</span>
+                <span class="xo-sl-tag">Brand Launch</span>
+              </div>
+            </div>
+          </div>
+          <div class="xo-sl-pillar">
+            <div class="xo-sl-pillar-header">
+              <div class="xo-sl-pillar-num">06</div>
+              <div class="xo-sl-pillar-title">ASEAN Expansion Pathway</div>
+              <div class="xo-sl-pillar-icon"><i class="fa-solid fa-earth-asia"></i></div>
+            </div>
+            <div class="xo-sl-pillar-body">
+              Once established in the Philippines, our Malaysia (Penang) and broader ASEAN network enables a structured next-market expansion — using the PH entry as a proven regional launchpad.
+              <div class="xo-sl-pillar-tags">
+                <span class="xo-sl-tag">Malaysia / Penang</span>
+                <span class="xo-sl-tag">ASEAN Strategy</span>
+                <span class="xo-sl-tag">Regional BD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="xo-sl-section">
+    <div class="xo-sl-container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;" class="xo-sl-two-col">
+        <div>
+          <div class="xo-sl-section-label">How It Works</div>
+          <h2 class="xo-sl-section-h2">Your 5-Phase<br>Soft Landing Journey</h2>
+          <p style="font-size:0.9rem;color:var(--xo-muted);line-height:1.7;margin-top:16px;">
+            A structured, milestone-driven engagement — tailored to your industry, entity structure, and market window. Most clients are operational and generating pipeline within 90 days.
+          </p>
+        </div>
+        <div class="xo-sl-process-track">
+          <div class="xo-sl-step">
+            <div class="xo-sl-step-dot">1</div>
+            <div class="xo-sl-step-content">
+              <h4>Discovery & Market Diagnostic</h4>
+              <p>We map the competitive landscape, regulatory requirements, and ideal entry vehicle for your business — and define success metrics together.</p>
+              <span class="xo-sl-step-badge">Week 1–2</span>
+            </div>
+          </div>
+          <div class="xo-sl-step">
+            <div class="xo-sl-step-dot">2</div>
+            <div class="xo-sl-step-content">
+              <h4>Entity & Compliance Setup</h4>
+              <p>Legal entity registration, BIR enrollment, bank account opening, and all statutory filings — handled in parallel with your operational planning.</p>
+              <span class="xo-sl-step-badge">Week 2–5</span>
+            </div>
+          </div>
+          <div class="xo-sl-step">
+            <div class="xo-sl-step-dot">3</div>
+            <div class="xo-sl-step-content">
+              <h4>Ecosystem Activation</h4>
+              <p>Curated introductions to strategic partners, government stakeholders, potential clients, and talent — through warm, context-rich introductions from our network.</p>
+              <span class="xo-sl-step-badge">Week 3–6</span>
+            </div>
+          </div>
+          <div class="xo-sl-step">
+            <div class="xo-sl-step-dot">4</div>
+            <div class="xo-sl-step-content">
+              <h4>GTM Sprint & Pipeline Build</h4>
+              <p>Co-execute your Philippine go-to-market: positioning, sales motion, first client outreach, and a market presence event that announces your arrival.</p>
+              <span class="xo-sl-step-badge">Week 5–10</span>
+            </div>
+          </div>
+          <div class="xo-sl-step">
+            <div class="xo-sl-step-dot">5</div>
+            <div class="xo-sl-step-content">
+              <h4>Stabilize & Scale</h4>
+              <p>Ongoing advisory, governance support, and optional ASEAN expansion scoping — ensuring your Philippine operation becomes a durable growth engine.</p>
+              <span class="xo-sl-step-badge">Month 3–12+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="xo-sl-hr">
+
+  <!-- WHO IS THIS FOR -->
+  <section class="xo-sl-section">
+    <div class="xo-sl-container">
+      <div style="text-align:center;margin-bottom:56px;">
+        <div class="xo-sl-section-label">Ideal Clients</div>
+        <h2 class="xo-sl-section-h2" style="margin:0 auto 16px;">Built For Companies<br>Serious About the Philippines</h2>
+        <p class="xo-sl-section-intro" style="margin:0 auto;">
+          We work with organizations that have done their homework — and need a trusted, senior-level partner to execute.
+        </p>
+      </div>
+      <div class="xo-sl-who-grid">
+        <div class="xo-sl-who-card">
+          <span class="xo-sl-who-icon"><i class="fa-solid fa-microchip"></i></span>
+          <h4>AI & Tech Companies</h4>
+          <p>SaaS, AI platforms, and deep-tech firms entering PH's fast-growing digital enterprise market.</p>
+        </div>
+        <div class="xo-sl-who-card">
+          <span class="xo-sl-who-icon"><i class="fa-solid fa-capsules"></i></span>
+          <h4>HealthTech & Pharma</h4>
+          <p>Companies navigating FDA-PH, DOH partnerships, and the country's fragmented health distribution landscape.</p>
+        </div>
+        <div class="xo-sl-who-card">
+          <span class="xo-sl-who-icon"><i class="fa-solid fa-landmark-dome"></i></span>
+          <h4>FinTech & Financial Services</h4>
+          <p>Players targeting PH's 70M+ unbanked population and BSP's progressive digital banking regulatory environment.</p>
+        </div>
+        <div class="xo-sl-who-card">
+          <span class="xo-sl-who-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+          <h4>EdTech & Learning</h4>
+          <p>Providers entering one of Asia's most English-proficient, digitally-hungry talent and consumer markets.</p>
+        </div>
+        <div class="xo-sl-who-card">
+          <span class="xo-sl-who-icon"><i class="fa-solid fa-shield-halved"></i></span>
+          <h4>Cybersecurity & GovTech</h4>
+          <p>Firms targeting government digital transformation, DICT procurement, and critical infrastructure modernization.</p>
+        </div>
+        <div class="xo-sl-who-card">
+          <span class="xo-sl-who-icon"><i class="fa-solid fa-leaf"></i></span>
+          <h4>Sustainability & ESG</h4>
+          <p>Climate, circular economy, and impact-focused ventures aligned with ASEAN's green transition commitments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY EXOASIA -->
+  <section class="xo-sl-section xo-sl-why-bg">
+    <div class="xo-sl-container">
+      <div class="xo-sl-why-layout">
+        <div>
+          <div class="xo-sl-section-label">Why Exoasia</div>
+          <h2 class="xo-sl-section-h2">More Than a Consultant.<br>A Strategic Co-Pilot.</h2>
+          <p style="font-size:0.9rem;color:var(--xo-muted);line-height:1.7;margin-top:16px;margin-bottom:8px;">
+            Exoasia is not a traditional advisory firm. We are an active venture studio and innovation hub — which means we have skin in the game, live institutional relationships, and real operating infrastructure you can leverage from day one.
+          </p>
+          <div class="xo-sl-why-list">
+            <div class="xo-sl-why-item">
+              <div class="xo-sl-why-bullet"></div>
+              <div class="xo-sl-why-item-text">
+                <h5>Institutional Network at Scale</h5>
+                <p>Active roles in GACPh, PSAC-DI, Cybersecurity Council PH, and the ASEAN AI Workstream — across government, enterprise, and multilateral bodies.</p>
+              </div>
+            </div>
+            <div class="xo-sl-why-item">
+              <div class="xo-sl-why-bullet"></div>
+              <div class="xo-sl-why-item-text">
+                <h5>Proven EBELI Methodology</h5>
+                <p>All market entry engagements are structured using evidence-based entrepreneurship and lean innovation principles — tested across 20+ industries over two decades.</p>
+              </div>
+            </div>
+            <div class="xo-sl-why-item">
+              <div class="xo-sl-why-bullet"></div>
+              <div class="xo-sl-why-item-text">
+                <h5>ASEAN-Ready from Day One</h5>
+                <p>With active hubs in Metro Manila and Penang, Malaysia — your Philippine soft landing can immediately connect to a broader ASEAN expansion strategy.</p>
+              </div>
+            </div>
+            <div class="xo-sl-why-item">
+              <div class="xo-sl-why-bullet"></div>
+              <div class="xo-sl-why-item-text">
+                <h5>CEO-Level Engagement</h5>
+                <p>You engage directly with Mack Comandante and the Exoasia leadership team — not junior consultants. Every commitment is backed at the principal level.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xo-sl-why-card">
+          <div class="xo-sl-why-card-icon"><i class="fa-solid fa-earth-asia"></i></div>
+          <h3>The Philippines Opportunity</h3>
+          <p>A USD 400B+ economy, 115M consumers, and one of ASEAN's fastest-growing digital infrastructure buildouts — with a government actively incentivizing foreign investment.</p>
+          <div class="xo-sl-why-metrics">
+            <div class="xo-sl-metric">
+              <strong>~7%</strong>
+              <span>GDP growth rate</span>
+            </div>
+            <div class="xo-sl-metric">
+              <strong>115M+</strong>
+              <span>consumers</span>
+            </div>
+            <div class="xo-sl-metric">
+              <strong>70M+</strong>
+              <span>internet users</span>
+            </div>
+            <div class="xo-sl-metric">
+              <strong>#1</strong>
+              <span>ASEAN BPO hub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="xo-sl-cta-section" id="contact">
+    <div class="xo-sl-container">
+      <div class="xo-sl-cta-divider"></div>
+      <h2>Ready to Land in the<br><em style="font-style:normal;background:linear-gradient(120deg,var(--xo-gold),var(--xo-gold-lt),var(--xo-lavender));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Philippines With Confidence?</em></h2>
+      <p>
+        Book a no-obligation Discovery Call with our team.
+        We'll assess your readiness, map the fastest path to market,
+        and show you exactly what a Soft Landing engagement looks like for your business.
+      </p>
+      <div class="xo-sl-cta-actions">
+        <a href="https://link.gamechangerfunnel.com/widget/form/AewjSKS0ovx1cxAFIQls" target="_blank" class="xo-sl-btn-primary">Book a Discovery Call →</a>
+        <a href="mailto:mackcomandante@exoasia.org" class="xo-sl-btn-ghost">Email Our Team</a>
+      </div>
+      <p style="margin-top:36px;font-size:0.8rem;color:var(--xo-muted);">
+        Exoasia Innovation Hub · Metro Manila, Philippines · Penang, Malaysia<br>
+        <a href="mailto:mackcomandante@exoasia.org" style="color:var(--xo-gold);">mackcomandante@exoasia.org</a> &nbsp;·&nbsp; +63 917 505 2409
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="xo-sl-footer">
+    <div class="xo-sl-container xo-sl-footer-inner">
+      <a href="https://www.exoasia.org" class="xo-sl-footer-brand" style="text-decoration:none;">EXOASIA Innovation Hub</a>
+      <div class="xo-sl-footer-links">
+        <a href="https://exoasia.org">exoasia.org</a>
+        <a href="https://malaysia.exoasia.org">Malaysia Hub</a>
+        <a href="mailto:officeoftheceo@exoasia.org">Contact</a>
+      </div>
+      <div class="xo-sl-footer-copy">
+        © 2025 Exoasia Innovation Hub. All rights reserved.<br>
+        Increasing Collective Uptake Towards a Sustainable Future.
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<style>
+  @media (max-width: 860px) {
+    .xo-sl-two-col {
+      grid-template-columns: 1fr !important;
+      gap: 48px !important;
+    }
+  }
+</style>

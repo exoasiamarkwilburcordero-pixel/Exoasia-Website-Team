@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ASTRA™ — MSME AI Transformation | Exoasia Innovation Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ── VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --dp: #2D0A28;
+  --maroon: #4A1040;
+  --purple: #7B3FA0;
+  --lav: #B095C5;
+  --gold: #C9E500;
+  --white: #FAF8FF;
+  --gray: #D4C8E0;
+  --dg: #6B5080;
+  --lgray: #F0EBF8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; width: 100%; }
+body { background: var(--dp); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; width: 100%; min-width: 100%; }
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dp); }
+::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 2px; }
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fade-up   { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+@keyframes orb-float { 0%,100% { transform:translateY(-50%) scale(1); } 50% { transform:translateY(-52%) scale(1.03); } }
+@keyframes blink     { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
+.reveal { opacity:0; transform:translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── NAV ────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 68px;
+  background: rgba(45,10,40,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,229,0,0.15);
+}
+.nav-logo { display:flex; flex-direction:column; gap:1px; text-decoration:none; }
+.nav-logo-main { font-family:'Montserrat',sans-serif; font-weight:900; font-size:15px; color:var(--gold); letter-spacing:2px; }
+.nav-logo-sub  { font-size:9px; color:var(--lav); letter-spacing:1.5px; }
+.nav-links { display:flex; gap:28px; list-style:none; }
+.nav-links a { color:var(--gray); text-decoration:none; font-size:12px; font-weight:500; letter-spacing:1px; text-transform:uppercase; transition:color .2s; }
+.nav-links a:hover, .nav-links a.active { color:var(--gold); }
+.nav-cta {
+  background:var(--gold); color:var(--dp); font-family:'Montserrat',sans-serif;
+  font-weight:700; font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+  text-decoration:none; padding:9px 18px; border-radius:3px; transition:all .2s; white-space:nowrap;
+}
+.nav-cta:hover { background:#d4f500; transform:translateY(-1px); }
+/* hamburger */
+.nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+.nav-hamburger span { display:block; width:22px; height:2px; background:var(--gold); border-radius:2px; transition:all .3s; }
+/* mobile menu */
+.nav-mobile {
+  display:none; position:fixed; top:68px; left:0; right:0; z-index:190;
+  background:rgba(45,10,40,0.98); backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(201,229,0,0.15);
+  flex-direction:column; padding:20px 5% 28px; gap:4px;
+}
+.nav-mobile.open { display:flex; }
+.nav-mobile a {
+  color:var(--gray); text-decoration:none; font-size:14px; font-weight:500;
+  letter-spacing:1px; text-transform:uppercase; padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05); transition:color .2s;
+}
+.nav-mobile a:last-child { border-bottom:none; }
+.nav-mobile a:hover { color:var(--gold); }
+.nav-mobile .mobile-assessment {
+  margin-top:16px; background:var(--gold); color:var(--dp);
+  font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;
+  letter-spacing:1px; text-transform:uppercase; text-align:center;
+  padding:14px; border-radius:4px; border-bottom:none !important;
+}
+
+/* ── HERO ────────────────────────────────────────────────────── */
+.hero {
+  position:relative; min-height:100vh; display:flex; align-items:center;
+  padding:120px 5% 80px; overflow:hidden; width:100%;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(123,63,160,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,229,0,.06) 0%, transparent 50%),
+    linear-gradient(160deg, var(--dp) 0%, #1a0520 50%, #0d0215 100%);
+}
+.hero-grid {
+  position:absolute; inset:0;
+  background-image: linear-gradient(rgba(201,229,0,.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(201,229,0,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 70% 50%, black 0%, transparent 80%);
+}
+.hero-orb {
+  position:absolute; right:8%; top:50%; transform:translateY(-50%);
+  width:380px; height:380px; border-radius:50%;
+  background:radial-gradient(circle at 40% 40%, rgba(201,229,0,.08), rgba(123,63,160,.15) 40%, transparent 70%);
+  border:1px solid rgba(201,229,0,.08);
+  animation:orb-float 6s ease-in-out infinite;
+}
+.hero-orb::before {
+  content:''; position:absolute; inset:20px; border-radius:50%;
+  border:1px solid rgba(201,229,0,.06); animation:orb-float 6s ease-in-out infinite reverse;
+}
+.hero-orb::after {
+  content:'ASTRA™'; position:absolute; inset:0; display:flex;
+  align-items:center; justify-content:center;
+  font-family:'Montserrat',sans-serif; font-weight:900; font-size:32px;
+  color:rgba(201,229,0,.15); letter-spacing:6px;
+}
+.hero-content { position:relative; z-index:2; max-width:660px; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(201,229,0,.1); border:1px solid rgba(201,229,0,.3);
+  color:var(--gold); font-family:'Montserrat',sans-serif; font-size:10px;
+  font-weight:700; letter-spacing:2.5px; padding:6px 14px; border-radius:2px;
+  margin-bottom:22px; animation:fade-up .6s ease forwards;
+}
+.hero-badge span { width:6px; height:6px; border-radius:50%; background:var(--gold); animation:blink 2s infinite; }
+.hero-eyebrow { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; color:var(--lav); letter-spacing:3px; margin-bottom:14px; animation:fade-up .6s .1s ease both; }
+.hero-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(26px,3.8vw,64px); line-height:.95; letter-spacing:-1.5px; margin-bottom:10px; animation:fade-up .7s .15s ease both; }
+.hero-title .line-1 { color:var(--white); display:block; }
+.hero-title .line-2 { color:var(--gold); display:block; }
+.hero-sub { font-family:'Cormorant Garamond',serif; font-size:21px; font-style:italic; color:var(--lav); margin-bottom:20px; animation:fade-up .7s .2s ease both; }
+.hero-desc { font-size:14px; color:var(--gray); line-height:1.75; max-width:500px; margin-bottom:32px; animation:fade-up .7s .25s ease both; }
+.hero-actions { display:flex; gap:14px; flex-wrap:wrap; animation:fade-up .7s .3s ease both; }
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn-primary {
+  background:var(--gold); color:var(--dp); font-family:'Montserrat',sans-serif;
+  font-weight:700; font-size:12px; letter-spacing:1.5px; text-transform:uppercase;
+  text-decoration:none; padding:15px 30px; border-radius:3px; transition:all .25s; display:inline-block;
+}
+.btn-primary:hover { background:#d4f500; transform:translateY(-2px); box-shadow:0 8px 28px rgba(201,229,0,.25); }
+.btn-secondary {
+  border:1px solid rgba(201,229,0,.4); color:var(--gold);
+  font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px;
+  letter-spacing:1.5px; text-transform:uppercase; text-decoration:none;
+  padding:15px 30px; border-radius:3px; transition:all .25s; display:inline-block;
+}
+.btn-secondary:hover { background:rgba(201,229,0,.08); transform:translateY(-2px); }
+
+/* Assessment button */
+.btn-assessment {
+  display:inline-flex; flex-direction:column; align-items:center; gap:5px;
+  background:linear-gradient(135deg, rgba(201,229,0,.1), rgba(201,229,0,.05));
+  border:2px solid var(--gold); color:var(--gold);
+  font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px;
+  letter-spacing:1.5px; text-transform:uppercase; text-decoration:none;
+  padding:16px 36px 12px; border-radius:4px; transition:all .3s;
+  position:relative; overflow:hidden;
+}
+.btn-assessment::before {
+  content:''; position:absolute; inset:0; background:var(--gold);
+  transform:scaleX(0); transform-origin:left; transition:transform .3s ease; z-index:0;
+}
+.btn-assessment:hover::before { transform:scaleX(1); }
+.btn-assessment:hover { color:var(--dp); transform:translateY(-2px); box-shadow:0 10px 36px rgba(201,229,0,.28); }
+.btn-assessment .btn-label { position:relative; z-index:1; }
+.btn-assessment .btn-sub {
+  position:relative; z-index:1; font-family:'DM Sans',sans-serif; font-size:10px;
+  font-weight:400; letter-spacing:.5px; text-transform:none; color:var(--lav);
+  transition:color .3s; text-align:center; line-height:1.4;
+}
+.btn-assessment:hover .btn-sub { color:rgba(45,10,40,.7); }
+.hero-assess { margin-top:20px; animation:fade-up .7s .38s ease both; }
+
+/* Stats */
+.hero-stats { display:flex; gap:36px; flex-wrap:wrap; margin-top:48px; padding-top:36px; border-top:1px solid rgba(255,255,255,.08); animation:fade-up .7s .45s ease both; }
+.stat-item { display:flex; flex-direction:column; gap:3px; }
+.stat-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:26px; color:var(--gold); letter-spacing:-1px; }
+.stat-label { font-size:11px; color:var(--lav); letter-spacing:1px; }
+
+/* ── SECTION BASE ────────────────────────────────────────────── */
+section { position:relative; z-index:1; padding:90px 5%; width:100%; }
+.section-label {
+  font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase; color:var(--gold);
+  margin-bottom:14px; display:flex; align-items:center; gap:12px;
+}
+.section-label::before { content:''; width:28px; height:2px; background:var(--gold); }
+.section-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(28px,4vw,48px); letter-spacing:-1.5px; line-height:1.05; color:var(--white); margin-bottom:16px; }
+.section-title .accent { color:var(--gold); }
+.section-sub { font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:var(--lav); margin-bottom:52px; max-width:580px; }
+
+/* ── WHAT SECTION ───────────────────────────────────────────── */
+.what-section {
+  background:linear-gradient(180deg, var(--dp) 0%, var(--maroon) 50%, var(--dp) 100%);
+  border-top:1px solid rgba(255,255,255,.05); border-bottom:1px solid rgba(255,255,255,.05);
+}
+.astra-acronym { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; margin-bottom:72px; }
+.astra-letter {
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06);
+  border-top:3px solid var(--gold); padding:26px 16px 22px; text-align:center;
+  transition:all .3s; cursor:default;
+}
+.astra-letter:hover { background:rgba(201,229,0,.06); border-color:rgba(201,229,0,.3); transform:translateY(-4px); }
+.astra-letter .big  { font-family:'Montserrat',sans-serif; font-weight:900; font-size:36px; color:var(--gold); line-height:1; }
+.astra-letter .word { font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:var(--white); margin-top:8px; letter-spacing:.5px; }
+.astra-letter .desc { font-size:11px; color:var(--lav); margin-top:5px; line-height:1.4; }
+.what-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+.what-text p { font-size:14px; color:var(--gray); line-height:1.8; margin-bottom:18px; }
+.delivers-list { list-style:none; display:flex; flex-direction:column; gap:11px; }
+.delivers-list li { display:flex; gap:10px; font-size:14px; color:var(--white); line-height:1.5; }
+.delivers-list li::before { content:'▸'; color:var(--gold); flex-shrink:0; margin-top:1px; }
+.what-visual { background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:32px; }
+.what-visual-title { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--gold); margin-bottom:20px; }
+.journey-step { display:flex; align-items:flex-start; gap:14px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.05); }
+.journey-step:last-child { border-bottom:none; }
+.step-num { width:30px; height:30px; border-radius:50%; background:var(--maroon); border:1px solid var(--purple); display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:var(--gold); flex-shrink:0; }
+.step-info .step-code { font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:var(--white); }
+.step-info .step-out  { font-size:11px; color:var(--lav); margin-top:2px; }
+.step-time { margin-left:auto; font-size:11px; color:var(--dg); white-space:nowrap; padding-top:7px; }
+
+/* ── STAGES ──────────────────────────────────────────────────── */
+.stages-section { background:var(--dp); }
+.stages-tabs { display:flex; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:48px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+.stages-tabs::-webkit-scrollbar { display:none; }
+.stage-tab {
+  padding:14px 24px; border-bottom:3px solid transparent; cursor:pointer;
+  font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;
+  letter-spacing:1.5px; color:var(--dg); transition:all .2s; white-space:nowrap;
+  background:none; border-left:none; border-right:none; border-top:none;
+}
+.stage-tab:hover { color:var(--lav); }
+.stage-tab.active { color:var(--gold); border-bottom-color:var(--gold); }
+.stage-panel { display:none; }
+.stage-panel.active { display:grid; grid-template-columns:1fr 1.2fr; gap:52px; align-items:start; animation:fade-up .4s ease forwards; }
+.stage-icon-row { display:flex; align-items:flex-start; gap:16px; margin-bottom:20px; }
+.stage-icon { width:60px; height:60px; border-radius:10px; background:var(--maroon); border:1px solid var(--purple); display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
+.stage-badge { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:var(--dp); background:var(--gold); padding:2px 9px; border-radius:2px; display:inline-block; margin-bottom:5px; }
+.stage-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:28px; color:var(--white); letter-spacing:-.5px; }
+.stage-label-text { font-size:12px; color:var(--lav); margin-top:2px; }
+.stage-tagline { font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:var(--gold); margin-bottom:16px; padding-left:14px; border-left:3px solid var(--gold); }
+.stage-desc { font-size:14px; color:var(--gray); line-height:1.8; margin-bottom:28px; }
+.stage-timeline { display:inline-flex; align-items:center; gap:7px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; color:var(--lav); background:rgba(255,255,255,.05); padding:6px 14px; border-radius:20px; border:1px solid rgba(255,255,255,.08); }
+.activities-box { background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.07); border-radius:10px; padding:26px; margin-bottom:18px; }
+.activities-title { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2.5px; color:var(--gold); margin-bottom:18px; }
+.activity-item { display:flex; align-items:flex-start; gap:9px; padding:9px 0; border-bottom:1px solid rgba(255,255,255,.04); font-size:13px; color:var(--white); line-height:1.5; }
+.activity-item:last-child { border-bottom:none; padding-bottom:0; }
+.activity-item::before { content:'◦'; color:var(--gold); flex-shrink:0; margin-top:1px; }
+.output-box { background:linear-gradient(135deg, rgba(201,229,0,.06), rgba(123,63,160,.06)); border:1px solid rgba(201,229,0,.2); border-radius:10px; padding:18px 22px; display:flex; align-items:center; gap:12px; }
+.output-icon { font-size:22px; flex-shrink:0; }
+.output-label { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--lav); margin-bottom:3px; }
+.output-text { font-size:13px; color:var(--white); font-weight:500; }
+
+/* ── PLAYBOOK ────────────────────────────────────────────────── */
+.playbook-section { background:linear-gradient(180deg, var(--dp) 0%, #1a0520 100%); border-top:1px solid rgba(255,255,255,.05); }
+.sprints-track { display:flex; flex-direction:column; gap:0; max-width:880px; }
+.sprint-row { display:grid; grid-template-columns:190px 1fr; gap:0; border-bottom:1px solid rgba(255,255,255,.05); }
+.sprint-row:last-child { border-bottom:none; }
+.sprint-header { padding:26px 28px 26px 0; border-right:1px solid rgba(255,255,255,.06); display:flex; flex-direction:column; gap:5px; }
+.sprint-phase { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--gold); }
+.sprint-name  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:15px; color:var(--white); }
+.sprint-weeks { font-size:11px; color:var(--dg); margin-top:2px; }
+.sprint-steps { padding:22px 0 22px 28px; display:flex; flex-direction:column; gap:11px; }
+.sprint-step  { display:flex; align-items:center; gap:11px; font-size:13px; color:var(--gray); }
+.sprint-step-num { width:22px; height:22px; border-radius:50%; background:var(--maroon); border:1px solid var(--purple); display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; color:var(--gold); flex-shrink:0; }
+.sprint-step-text { flex:1; }
+.sprint-step-tool { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; color:var(--purple); background:rgba(123,63,160,.15); padding:3px 8px; border-radius:2px; white-space:nowrap; }
+
+/* ── SOLUTION STACK ──────────────────────────────────────────── */
+.stack-section { background:var(--maroon); border-top:1px solid rgba(255,255,255,.05); border-bottom:1px solid rgba(255,255,255,.05); }
+.tier-legend { display:flex; gap:8px; margin-bottom:44px; flex-wrap:wrap; align-items:center; }
+.tier-badge { padding:5px 14px; border-radius:3px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; }
+.tier-core      { background:var(--dp);     color:var(--gold); border:1px solid var(--gold); }
+.tier-growth    { background:#3a0a35;        color:var(--lav);  border:1px solid var(--purple); }
+.tier-premium   { background:var(--purple);  color:#fff;        border:1px solid var(--lav); }
+.tier-scale     { background:#1a0a2e;        color:#888;        border:1px solid #444; }
+.tier-legend-label { font-size:11px; color:var(--dg); font-style:italic; }
+.stack-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.stack-card { background:rgba(45,10,40,.6); border:1px solid rgba(255,255,255,.07); border-radius:10px; overflow:hidden; transition:all .3s; }
+.stack-card:hover { border-color:rgba(201,229,0,.2); transform:translateY(-3px); box-shadow:0 12px 36px rgba(0,0,0,.3); }
+.stack-card-header { padding:16px 18px 12px; border-bottom:1px solid rgba(255,255,255,.06); display:flex; align-items:center; gap:10px; }
+.stack-fn-icon { font-size:19px; }
+.stack-fn-name { font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:var(--white); }
+.stack-tools { padding:6px 0; }
+.stack-tool { display:flex; align-items:center; justify-content:space-between; padding:9px 18px; border-bottom:1px solid rgba(255,255,255,.03); transition:background .2s; }
+.stack-tool:last-child { border-bottom:none; }
+.stack-tool:hover { background:rgba(255,255,255,.03); }
+.tool-name { font-size:12px; color:var(--white); font-weight:500; }
+.tool-type { font-size:11px; color:var(--dg); margin-top:1px; }
+.tool-tier-badge { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:1px; padding:3px 7px; border-radius:2px; flex-shrink:0; margin-left:7px; }
+.tbadge-core    { background:var(--dp);    color:var(--gold); }
+.tbadge-growth  { background:#3a0a35;      color:var(--lav);  }
+.tbadge-premium { background:var(--purple);color:#fff;        }
+.tbadge-scale   { background:#1a0a2e;      color:#888;        }
+
+/* ── ASSESSMENT BANNER ───────────────────────────────────────── */
+.assessment-banner {
+  background:linear-gradient(135deg, var(--maroon) 0%, #1a0520 50%, var(--maroon) 100%);
+  border-top:1px solid rgba(201,229,0,.15); border-bottom:1px solid rgba(201,229,0,.15);
+  padding:80px 5%; position:relative; overflow:hidden; z-index:1; width:100%;
+}
+.assessment-banner::before {
+  content:''; position:absolute; top:-100px; right:-100px; width:480px; height:480px;
+  border-radius:50%; background:radial-gradient(circle, rgba(201,229,0,.06) 0%, transparent 65%); pointer-events:none;
+}
+.assessment-banner::after {
+  content:''; position:absolute; bottom:-80px; left:-80px; width:320px; height:320px;
+  border-radius:50%; background:radial-gradient(circle, rgba(123,63,160,.1) 0%, transparent 65%); pointer-events:none;
+}
+.banner-inner { max-width:900px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:48px; flex-wrap:wrap; position:relative; z-index:2; }
+.banner-eyebrow { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:3px; color:var(--gold); margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+.banner-eyebrow::before { content:''; width:26px; height:2px; background:var(--gold); }
+.banner-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(24px,3.5vw,38px); color:var(--white); letter-spacing:-1px; line-height:1.1; margin-bottom:12px; }
+.banner-title .accent { color:var(--gold); }
+.banner-desc { font-size:14px; color:var(--gray); line-height:1.7; max-width:460px; }
+.banner-cta { flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.banner-note { font-size:11px; color:var(--dg); text-align:center; letter-spacing:.5px; }
+
+/* ── ABOUT ───────────────────────────────────────────────────── */
+.about-section { background:var(--dp); }
+.about-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:72px; align-items:start; }
+.about-text p { font-size:14px; color:var(--gray); line-height:1.8; margin-bottom:18px; }
+.services-list { margin-top:28px; display:flex; flex-direction:column; gap:9px; }
+.service-item { display:flex; gap:11px; align-items:center; padding:11px 15px; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06); border-radius:6px; font-size:13px; color:var(--white); transition:all .2s; }
+.service-item:hover { border-color:rgba(201,229,0,.2); background:rgba(201,229,0,.04); }
+.si-icon { font-size:15px; }
+.about-card { background:linear-gradient(135deg, var(--maroon), #1a0520); border:1px solid rgba(201,229,0,.2); border-radius:12px; padding:36px 32px; position:sticky; top:88px; }
+.about-card-tag { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--gold); margin-bottom:14px; }
+.about-card h3 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:var(--white); line-height:1.2; margin-bottom:12px; letter-spacing:-.5px; }
+.about-card p { font-size:13px; color:var(--lav); line-height:1.7; margin-bottom:24px; }
+.contact-lines { display:flex; flex-direction:column; gap:9px; margin-bottom:24px; }
+.contact-line { display:flex; align-items:center; gap:9px; font-size:13px; color:var(--gray); }
+.cl-label { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:1.5px; color:var(--lav); min-width:26px; }
+.contact-line a { color:var(--gold); text-decoration:none; transition:color .2s; word-break:break-all; }
+.contact-line a:hover { color:#d4f500; }
+.about-cta { display:block; border:1px solid rgba(255,255,255,.15); color:var(--lav); font-family:'Montserrat',sans-serif; font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; text-align:center; padding:12px; border-radius:4px; margin-top:10px; transition:all .2s; }
+.about-cta:hover { border-color:var(--gold); color:var(--gold); }
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+footer { background:#0d0210; border-top:1px solid rgba(255,255,255,.06); padding:44px 5% 28px; position:relative; z-index:1; width:100%; }
+.footer-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+.footer-logo .fl-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:17px; color:var(--gold); letter-spacing:2px; }
+.footer-logo .fl-sub  { font-size:10px; color:var(--dg); letter-spacing:1px; margin-top:3px; }
+.footer-links { display:flex; gap:24px; list-style:none; flex-wrap:wrap; }
+.footer-links a { font-size:12px; color:var(--dg); text-decoration:none; transition:color .2s; }
+.footer-links a:hover { color:var(--gold); }
+.footer-copy { font-size:11px; color:var(--dg); text-align:center; margin-top:28px; padding-top:20px; border-top:1px solid rgba(255,255,255,.05); max-width:1200px; margin-left:auto; margin-right:auto; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width:1024px) {
+  .stack-grid { grid-template-columns:repeat(2,1fr); }
+  .about-grid { grid-template-columns:1fr; gap:40px; }
+  .about-card { position:static; }
+  .hero-orb { width:280px; height:280px; right:4%; }
+}
+@media (max-width:768px) {
+  nav { padding:0 4%; }
+  .nav-links { display:none; }
+  .nav-cta { display:none; }
+  .nav-hamburger { display:flex; }
+
+  .hero { padding:100px 4% 60px; min-height:auto; padding-bottom:60px; }
+  .hero-orb { display:none; }
+  .hero-grid { display:none; }
+  .hero-actions { flex-direction:column; align-items:flex-start; }
+  .btn-primary, .btn-secondary { width:100%; text-align:center; }
+  .btn-assessment { width:100%; }
+  .hero-stats { gap:20px; }
+  .stat-num { font-size:22px; }
+
+  section { padding:64px 4%; }
+
+  .astra-acronym { grid-template-columns:repeat(3,1fr); }
+  .what-grid { grid-template-columns:1fr; gap:36px; }
+  .what-visual { display:none; }
+
+  .stages-tabs { gap:0; }
+  .stage-tab { padding:12px 16px; font-size:11px; letter-spacing:1px; }
+  .stage-panel.active { grid-template-columns:1fr; gap:28px; }
+
+  .sprint-row { grid-template-columns:1fr; }
+  .sprint-header { border-right:none; border-bottom:1px solid rgba(255,255,255,.06); padding:18px 0 14px; }
+  .sprint-steps { padding:16px 0; }
+  .sprint-step-tool { display:none; }
+
+  .stack-grid { grid-template-columns:1fr; }
+  .tier-legend { gap:6px; }
+
+  .banner-inner { flex-direction:column; gap:32px; text-align:center; }
+  .banner-eyebrow { justify-content:center; }
+  .banner-desc { max-width:100%; }
+  .banner-cta { width:100%; }
+  .banner-cta .btn-assessment { width:100%; }
+
+  .about-grid { grid-template-columns:1fr; }
+  .about-card { position:static; }
+
+  .footer-inner { flex-direction:column; align-items:flex-start; gap:16px; }
+  .footer-links { gap:16px; }
+}
+@media (max-width:480px) {
+  .astra-acronym { grid-template-columns:repeat(2,1fr); }
+  .hero-stats { gap:16px; }
+  .stage-tab { padding:10px 12px; font-size:10px; }
+  .hero-title { font-size:34px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <!-- Replaced href="#" with the absolute URL to the main site -->
+  <a href="https://exoasia.org" class="nav-logo">
+    <div class="nav-logo-main">EXOASIA</div>
+    <div class="nav-logo-sub">INNOVATION HUB</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what">Framework</a></li>
+    <li><a href="#stages">Stages</a></li>
+    <li><a href="#playbook">Playbook</a></li>
+    <li><a href="#stack">Solutions</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7RSvNTKPRg4plAe4KHup6oyQd0G8EdhpsrrGOEpxXCIF0WQ/viewform" target="_blank" class="nav-cta">🎯 Free Assessment</a>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile" id="mobileMenu">
+  <a href="#what"     onclick="closeMenu()">Framework</a>
+  <a href="#stages"   onclick="closeMenu()">Stages</a>
+  <a href="#playbook" onclick="closeMenu()">Playbook</a>
+  <a href="#stack"    onclick="closeMenu()">Solutions</a>
+  <a href="#about"    onclick="closeMenu()">About</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7RSvNTKPRg4plAe4KHup6oyQd0G8EdhpsrrGOEpxXCIF0WQ/viewform" target="_blank" class="mobile-assessment" onclick="closeMenu()">🎯 FREE AI Readiness Assessment</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span>PROPRIETARY MSME AI METHODOLOGY</div>
+    <div class="hero-eyebrow">Exoasia Innovation Hub</div>
+    <h1 class="hero-title">
+      <span class="line-1">MSME AI</span>
+      <span class="line-2">TRANSFORMATION</span>
+    </h1>
+    <p class="hero-sub">From AI-unaware to AI-powered — in 90 days.</p>
+    <p class="hero-desc">ASTRA™ is Exoasia's proprietary framework for guiding MSME founders through end-to-end AI transformation. Practical. Founder-friendly. Results-driven.</p>
+    <div class="hero-actions">
+      <a href="/cdn-cgi/l/email-protection#4f222e2c242c20222e212b2e213b2a0f2a37202e3c262e61203d28" class="btn-primary">Begin Discovery Sprint →</a>
+      <a href="#what" class="btn-secondary">Explore ASTRA™</a>
+    </div>
+    <div class="hero-assess">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7RSvNTKPRg4plAe4KHup6oyQd0G8EdhpsrrGOEpxXCIF0WQ/viewform" target="_blank" class="btn-assessment">
+        <span class="btn-label">🎯 FREE AI Readiness Assessment</span>
+        <span class="btn-sub">Evaluates your organization across 6 key business dimensions · Takes 10–12 minutes</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">5</span><span class="stat-label">Transformation Stages</span></div>
+      <div class="stat-item"><span class="stat-num">90</span><span class="stat-label">Days to AI-Powered Ops</span></div>
+      <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Business Functions</span></div>
+      <div class="stat-item"><span class="stat-num">24+</span><span class="stat-label">AI Tools Integrated</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS ASTRA -->
+<section class="what-section" id="what">
+  <div class="section-label reveal">The ASTRA™ Framework</div>
+  <h2 class="section-title reveal">Five Stages.<br><span class="accent">One Transformation.</span></h2>
+  <p class="section-sub reveal">AI-powered Strategy, Transformation, Readiness &amp; Amplification</p>
+  <div class="astra-acronym reveal">
+    <div class="astra-letter"><div class="big">A</div><div class="word">ASSESS</div><div class="desc">AI Readiness Diagnosis</div></div>
+    <div class="astra-letter"><div class="big">S</div><div class="word">STRATEGIZE</div><div class="desc">Transformation Roadmap</div></div>
+    <div class="astra-letter"><div class="big">T</div><div class="word">TRANSFORM</div><div class="desc">AI Solution Integration</div></div>
+    <div class="astra-letter"><div class="big">R</div><div class="word">REACH</div><div class="desc">Operationalize &amp; Train</div></div>
+    <div class="astra-letter"><div class="big">A</div><div class="word">AMPLIFY</div><div class="desc">Scale Exponentially</div></div>
+  </div>
+  <div class="what-grid">
+    <div class="what-text reveal">
+      <p>ASTRA™ is built for MSME founders who know they need AI — but don't know where to start, what to prioritize, or how to make it stick. No jargon. No wasted budget. No generic playbooks.</p>
+      <p>We start by diagnosing exactly where you are, then co-design a transformation roadmap tailored to your revenue goals and team capacity. From there, we build, deploy, and embed the right AI stack — and train your team to run it without us.</p>
+      <ul class="delivers-list">
+        <li>A clear AI Readiness diagnosis before any investment is made</li>
+        <li>A co-designed transformation roadmap aligned to your revenue goals</li>
+        <li>Hands-on deployment of the right AI tools for your business functions</li>
+        <li>Team training and AI-embedded Standard Operating Procedures</li>
+        <li>A scalable growth engine powered by AI data, automation, and EBELI principles</li>
+      </ul>
+    </div>
+    <div class="what-visual reveal">
+      <div class="what-visual-title">TRANSFORMATION JOURNEY</div>
+      <div class="journey-step"><div class="step-num">1</div><div class="step-info"><div class="step-code">ASSESS</div><div class="step-out">AI Readiness Report + Priority Heatmap</div></div><div class="step-time">Wk 1–2</div></div>
+      <div class="journey-step"><div class="step-num">2</div><div class="step-info"><div class="step-code">STRATEGIZE</div><div class="step-out">MSME AI Transformation Roadmap</div></div><div class="step-time">Wk 2–3</div></div>
+      <div class="journey-step"><div class="step-num">3</div><div class="step-info"><div class="step-code">TRANSFORM</div><div class="step-out">Deployed AI Stack + Automation Flows</div></div><div class="step-time">Wk 3–8</div></div>
+      <div class="journey-step"><div class="step-num">4</div><div class="step-info"><div class="step-code">REACH</div><div class="step-out">AI Operations Manual + Trained Team</div></div><div class="step-time">Wk 6–10</div></div>
+      <div class="journey-step"><div class="step-num">5</div><div class="step-info"><div class="step-code">AMPLIFY</div><div class="step-out">Scaled MSME + Growth Flywheel</div></div><div class="step-time">Mo 3–12+</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGES -->
+<section class="stages-section" id="stages">
+  <div class="section-label reveal">Deep Dive</div>
+  <h2 class="section-title reveal">The <span class="accent">Five Stages</span></h2>
+  <p class="section-sub reveal">Each stage has one clear deliverable. You never move forward without it.</p>
+  <div class="stages-tabs reveal">
+    <button class="stage-tab active" onclick="showStage(0)">◎ ASSESS</button>
+    <button class="stage-tab" onclick="showStage(1)">◈ STRATEGIZE</button>
+    <button class="stage-tab" onclick="showStage(2)">⬡ TRANSFORM</button>
+    <button class="stage-tab" onclick="showStage(3)">◬ REACH</button>
+    <button class="stage-tab" onclick="showStage(4)">✦ AMPLIFY</button>
+  </div>
+  <!-- Stage 0 -->
+  <div class="stage-panel active" id="stage-0">
+    <div class="stage-left">
+      <div class="stage-icon-row"><div class="stage-icon">◎</div><div class="stage-meta"><div class="stage-badge">STAGE 1</div><div class="stage-name">ASSESS</div><div class="stage-label-text">AI Readiness Assessment</div></div></div>
+      <div class="stage-tagline">"Know where you stand before you run."</div>
+      <p class="stage-desc">Conduct a full diagnostic of the MSME's current state: operations, technology, team, and business model. Identify AI adoption gaps, quick wins, and transformation priority zones.</p>
+      <div class="stage-timeline">⏱ Week 1–2</div>
+    </div>
+    <div class="stage-right">
+      <div class="activities-box"><div class="activities-title">KEY ACTIVITIES</div>
+        <div class="activity-item">Business Model Canvas review</div>
+        <div class="activity-item">Digital Maturity Audit (people, process, tools)</div>
+        <div class="activity-item">Pain Point &amp; Bottleneck Mapping</div>
+        <div class="activity-item">AI Opportunity Scoring Matrix</div>
+        <div class="activity-item">Data Readiness Check</div>
+        <div class="activity-item">Financial capacity for AI investment</div>
+      </div>
+      <div class="output-box"><div class="output-icon">🎯</div><div><div class="output-label">STAGE OUTPUT</div><div class="output-text">AI Readiness Report + Priority Heatmap</div></div></div>
+    </div>
+  </div>
+  <!-- Stage 1 -->
+  <div class="stage-panel" id="stage-1">
+    <div class="stage-left">
+      <div class="stage-icon-row"><div class="stage-icon">◈</div><div class="stage-meta"><div class="stage-badge">STAGE 2</div><div class="stage-name">STRATEGIZE</div><div class="stage-label-text">Transformation Roadmap</div></div></div>
+      <div class="stage-tagline">"Design the path before you walk it."</div>
+      <p class="stage-desc">Co-create a 90-day to 12-month AI transformation plan aligned to the MSME's revenue goals, team capacity, and industry context. Prioritize by impact vs. effort.</p>
+      <div class="stage-timeline">⏱ Week 2–3</div>
+    </div>
+    <div class="stage-right">
+      <div class="activities-box"><div class="activities-title">KEY ACTIVITIES</div>
+        <div class="activity-item">AI Use Case Prioritization (Impact–Effort Matrix)</div>
+        <div class="activity-item">90-Day Quick Wins Roadmap</div>
+        <div class="activity-item">12-Month Transformation Timeline</div>
+        <div class="activity-item">Budget &amp; Resource Planning</div>
+        <div class="activity-item">KPI Framework (AI-specific ROI metrics)</div>
+        <div class="activity-item">Change Management Plan</div>
+      </div>
+      <div class="output-box"><div class="output-icon">🎯</div><div><div class="output-label">STAGE OUTPUT</div><div class="output-text">MSME AI Transformation Roadmap (Board-ready)</div></div></div>
+    </div>
+  </div>
+  <!-- Stage 2 -->
+  <div class="stage-panel" id="stage-2">
+    <div class="stage-left">
+      <div class="stage-icon-row"><div class="stage-icon">⬡</div><div class="stage-meta"><div class="stage-badge">STAGE 3</div><div class="stage-name">TRANSFORM</div><div class="stage-label-text">AI Solution Integration</div></div></div>
+      <div class="stage-tagline">"Stack the right tools. Wire them right."</div>
+      <p class="stage-desc">Design and implement the MSME's AI-powered technology stack — from CRM automation and content AI to operations and customer service — using no-code, low-code, and AI-native tools.</p>
+      <div class="stage-timeline">⏱ Week 3–8</div>
+    </div>
+    <div class="stage-right">
+      <div class="activities-box"><div class="activities-title">KEY ACTIVITIES</div>
+        <div class="activity-item">AI Tool Selection by Business Function</div>
+        <div class="activity-item">Workflow Automation Design (Make.com / Zapier)</div>
+        <div class="activity-item">CRM &amp; Marketing Automation (GCF / HubSpot)</div>
+        <div class="activity-item">AI Content Engine Setup</div>
+        <div class="activity-item">AI Customer Service / Chatbot Deployment</div>
+        <div class="activity-item">Integration &amp; API Connections</div>
+      </div>
+      <div class="output-box"><div class="output-icon">🎯</div><div><div class="output-label">STAGE OUTPUT</div><div class="output-text">Deployed AI Stack + Automation Flows</div></div></div>
+    </div>
+  </div>
+  <!-- Stage 3 -->
+  <div class="stage-panel" id="stage-3">
+    <div class="stage-left">
+      <div class="stage-icon-row"><div class="stage-icon">◬</div><div class="stage-meta"><div class="stage-badge">STAGE 4</div><div class="stage-name">REACH</div><div class="stage-label-text">Operationalize &amp; Train</div></div></div>
+      <div class="stage-tagline">"AI only works if people work with it."</div>
+      <p class="stage-desc">Embed AI into the MSME's daily operations. Train the team on new workflows, establish Standard Operating Procedures (SOPs), and build a culture of AI-first execution.</p>
+      <div class="stage-timeline">⏱ Week 6–10</div>
+    </div>
+    <div class="stage-right">
+      <div class="activities-box"><div class="activities-title">KEY ACTIVITIES</div>
+        <div class="activity-item">AI Tool Training (by role)</div>
+        <div class="activity-item">SOP Documentation for AI Workflows</div>
+        <div class="activity-item">Weekly AI Sprint Cadence Setup</div>
+        <div class="activity-item">Prompt Library Creation</div>
+        <div class="activity-item">Data Hygiene &amp; Governance Basics</div>
+        <div class="activity-item">AI Champion Designation within team</div>
+      </div>
+      <div class="output-box"><div class="output-icon">🎯</div><div><div class="output-label">STAGE OUTPUT</div><div class="output-text">AI-Embedded Operations Manual + Trained Team</div></div></div>
+    </div>
+  </div>
+  <!-- Stage 4 -->
+  <div class="stage-panel" id="stage-4">
+    <div class="stage-left">
+      <div class="stage-icon-row"><div class="stage-icon">✦</div><div class="stage-meta"><div class="stage-badge">STAGE 5</div><div class="stage-name">AMPLIFY</div><div class="stage-label-text">Scale &amp; Grow Exponentially</div></div></div>
+      <div class="stage-tagline">"From surviving to leading your category."</div>
+      <p class="stage-desc">Measure, optimize, and scale. Use AI-generated insights to make faster decisions, expand to new markets, launch new products, and position the MSME as a digitally-transformed, AI-powered business.</p>
+      <div class="stage-timeline">⏱ Month 3–12+</div>
+    </div>
+    <div class="stage-right">
+      <div class="activities-box"><div class="activities-title">KEY ACTIVITIES</div>
+        <div class="activity-item">AI Performance Dashboard (KPI Tracking)</div>
+        <div class="activity-item">Monthly ROI Review &amp; Rebalancing</div>
+        <div class="activity-item">New Revenue Stream Identification via AI</div>
+        <div class="activity-item">Market Expansion Strategy (ASEAN-ready)</div>
+        <div class="activity-item">EBELI Growth Experiments (MTP activation)</div>
+        <div class="activity-item">Ecosystem &amp; Partnership Development</div>
+      </div>
+      <div class="output-box"><div class="output-icon">🎯</div><div><div class="output-label">STAGE OUTPUT</div><div class="output-text">Scaled AI-Powered MSME + Growth Flywheel</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAYBOOK -->
+<section class="playbook-section" id="playbook">
+  <div class="section-label reveal">Sprint-by-Sprint</div>
+  <h2 class="section-title reveal">The ASTRA™ <span class="accent">Playbook</span></h2>
+  <p class="section-sub reveal">Every stage translated into concrete weekly actions — who does what, with which tool, by when.</p>
+  <div class="sprints-track">
+    <div class="sprint-row reveal">
+      <div class="sprint-header"><div class="sprint-phase">PHASE 1</div><div class="sprint-name">Discovery Sprint</div><div class="sprint-weeks">Week 1–2</div></div>
+      <div class="sprint-steps">
+        <div class="sprint-step"><div class="sprint-step-num">1</div><div class="sprint-step-text">Conduct AI Readiness Interview</div><div class="sprint-step-tool">Questionnaire</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">2</div><div class="sprint-step-text">Map current tech stack &amp; tools</div><div class="sprint-step-tool">Digital Audit</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">3</div><div class="sprint-step-text">Identify Top 3 Pain Points</div><div class="sprint-step-tool">Pain Point Canvas</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">4</div><div class="sprint-step-text">Score AI Opportunities (1–10)</div><div class="sprint-step-tool">Opportunity Matrix</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">5</div><div class="sprint-step-text">Present AI Readiness Report</div><div class="sprint-step-tool">Slide Deck</div></div>
+      </div>
+    </div>
+    <div class="sprint-row reveal">
+      <div class="sprint-header"><div class="sprint-phase">PHASE 2</div><div class="sprint-name">Blueprint Sprint</div><div class="sprint-weeks">Week 2–3</div></div>
+      <div class="sprint-steps">
+        <div class="sprint-step"><div class="sprint-step-num">1</div><div class="sprint-step-text">Co-design 90-Day AI Roadmap</div><div class="sprint-step-tool">Miro / FigJam</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">2</div><div class="sprint-step-text">Define AI KPIs &amp; Success Metrics</div><div class="sprint-step-tool">KPI Framework</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">3</div><div class="sprint-step-text">Select AI Tools per Function</div><div class="sprint-step-tool">Stack Guide</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">4</div><div class="sprint-step-text">Build Budget &amp; ROI Projection</div><div class="sprint-step-tool">Google Sheets</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">5</div><div class="sprint-step-text">Align Stakeholders on Roadmap</div><div class="sprint-step-tool">Leadership Briefing</div></div>
+      </div>
+    </div>
+    <div class="sprint-row reveal">
+      <div class="sprint-header"><div class="sprint-phase">PHASE 3</div><div class="sprint-name">Build Sprint</div><div class="sprint-weeks">Week 3–8</div></div>
+      <div class="sprint-steps">
+        <div class="sprint-step"><div class="sprint-step-num">1</div><div class="sprint-step-text">Set up CRM &amp; Marketing Automation</div><div class="sprint-step-tool">GCF / HubSpot</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">2</div><div class="sprint-step-text">Build AI Content Engine</div><div class="sprint-step-tool">Claude AI + Canva</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">3</div><div class="sprint-step-text">Deploy Automation Workflows</div><div class="sprint-step-tool">Make.com / Zapier</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">4</div><div class="sprint-step-text">Install AI Customer Service Bot</div><div class="sprint-step-tool">GCF Chatbot</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">5</div><div class="sprint-step-text">Connect Integrations &amp; Test</div><div class="sprint-step-tool">API / Webhooks</div></div>
+      </div>
+    </div>
+    <div class="sprint-row reveal">
+      <div class="sprint-header"><div class="sprint-phase">PHASE 4</div><div class="sprint-name">Activation Sprint</div><div class="sprint-weeks">Week 6–10</div></div>
+      <div class="sprint-steps">
+        <div class="sprint-step"><div class="sprint-step-num">1</div><div class="sprint-step-text">Conduct Team AI Training (4 hrs)</div><div class="sprint-step-tool">Workshop + LMS</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">2</div><div class="sprint-step-text">Create Role-Based Prompt Libraries</div><div class="sprint-step-tool">Notion</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">3</div><div class="sprint-step-text">Document AI-Enhanced SOPs</div><div class="sprint-step-tool">SOP Template</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">4</div><div class="sprint-step-text">Designate Internal AI Champion</div><div class="sprint-step-tool">Role Definition</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">5</div><div class="sprint-step-text">Launch Weekly AI Sprint Cadence</div><div class="sprint-step-tool">Check-in Template</div></div>
+      </div>
+    </div>
+    <div class="sprint-row reveal">
+      <div class="sprint-header"><div class="sprint-phase">PHASE 5</div><div class="sprint-name">Growth Sprint</div><div class="sprint-weeks">Month 3–12+</div></div>
+      <div class="sprint-steps">
+        <div class="sprint-step"><div class="sprint-step-num">1</div><div class="sprint-step-text">Review AI KPI Dashboard Monthly</div><div class="sprint-step-tool">Analytics Dashboard</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">2</div><div class="sprint-step-text">Run Growth Experiments (EBELI style)</div><div class="sprint-step-tool">EBELI Canvas</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">3</div><div class="sprint-step-text">Identify New AI Revenue Streams</div><div class="sprint-step-tool">Revenue Map</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">4</div><div class="sprint-step-text">Expand to ASEAN Markets</div><div class="sprint-step-tool">Expansion Playbook</div></div>
+        <div class="sprint-step"><div class="sprint-step-num">5</div><div class="sprint-step-text">Quarterly Strategy Review</div><div class="sprint-step-tool">QBR Template</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION STACK -->
+<section class="stack-section" id="stack">
+  <div class="section-label reveal">Technology</div>
+  <h2 class="section-title reveal">Exoasia <span class="accent">AI Solution Stack</span></h2>
+  <p class="section-sub reveal">Curated AI-native tools mapped to every MSME business function. Start with Core. Scale as you grow.</p>
+  <div class="tier-legend reveal">
+    <div class="tier-badge tier-core">Core</div>
+    <div class="tier-badge tier-growth">Growth</div>
+    <div class="tier-badge tier-premium">Premium</div>
+    <div class="tier-badge tier-scale">Scale</div>
+    <span class="tier-legend-label">← Start here and expand your stack over time</span>
+  </div>
+  <div class="stack-grid">
+    <div class="stack-card reveal">
+      <div class="stack-card-header"><div class="stack-fn-icon">📣</div><div class="stack-fn-name">Marketing &amp; Lead Generation</div></div>
+      <div class="stack-tools">
+        <div class="stack-tool"><div><div class="tool-name">Game Changer Funnel (GCF)</div><div class="tool-type">CRM + Funnels + Email/SMS</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Claude AI / ChatGPT</div><div class="tool-type">AI Copywriting &amp; Content</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Canva AI</div><div class="tool-type">Visual Content Creation</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Meta Ads AI</div><div class="tool-type">Ad Optimization</div></div><div class="tool-tier-badge tbadge-growth">Growth</div></div>
+      </div>
+    </div>
+    <div class="stack-card reveal">
+      <div class="stack-card-header"><div class="stack-fn-icon">💼</div><div class="stack-fn-name">Sales &amp; CRM</div></div>
+      <div class="stack-tools">
+        <div class="stack-tool"><div><div class="tool-name">GCF CRM</div><div class="tool-type">Pipeline &amp; Contact Management</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">GCF AI Chatbot</div><div class="tool-type">Lead Qualification Bot</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">GCF Calendar</div><div class="tool-type">Appointment Automation</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Bespoke AI Assistant</div><div class="tool-type">AI Sales Assistant</div></div><div class="tool-tier-badge tbadge-premium">Premium</div></div>
+      </div>
+    </div>
+    <div class="stack-card reveal">
+      <div class="stack-card-header"><div class="stack-fn-icon">⚙️</div><div class="stack-fn-name">Operations &amp; Automation</div></div>
+      <div class="stack-tools">
+        <div class="stack-tool"><div><div class="tool-name">Make.com</div><div class="tool-type">Workflow Automation Hub</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Zapier</div><div class="tool-type">No-Code Integration Layer</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Notion AI</div><div class="tool-type">Knowledge Base + Ops Docs</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Google Workspace AI</div><div class="tool-type">Productivity Suite</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+      </div>
+    </div>
+    <div class="stack-card reveal">
+      <div class="stack-card-header"><div class="stack-fn-icon">🤝</div><div class="stack-fn-name">Customer Service</div></div>
+      <div class="stack-tools">
+        <div class="stack-tool"><div><div class="tool-name">GCF Chatbot / Voiceflow</div><div class="tool-type">AI-Powered Support Bot</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Tidio AI</div><div class="tool-type">Live Chat + AI Triage</div></div><div class="tool-tier-badge tbadge-growth">Growth</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Claude AI (custom)</div><div class="tool-type">Knowledge-Based Support AI</div></div><div class="tool-tier-badge tbadge-premium">Premium</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Intercom AI</div><div class="tool-type">Enterprise Support Suite</div></div><div class="tool-tier-badge tbadge-scale">Scale</div></div>
+      </div>
+    </div>
+    <div class="stack-card reveal">
+      <div class="stack-card-header"><div class="stack-fn-icon">📊</div><div class="stack-fn-name">Finance &amp; Analytics</div></div>
+      <div class="stack-tools">
+        <div class="stack-tool"><div><div class="tool-name">Google Looker Studio</div><div class="tool-type">Business Intelligence Dashboard</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">QuickBooks / Xero AI</div><div class="tool-type">AI-Assisted Bookkeeping</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Claude AI (data analysis)</div><div class="tool-type">Financial Insights &amp; Reports</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Fathom / Mosaic</div><div class="tool-type">AI Financial Planning</div></div><div class="tool-tier-badge tbadge-growth">Growth</div></div>
+      </div>
+    </div>
+    <div class="stack-card reveal">
+      <div class="stack-card-header"><div class="stack-fn-icon">👥</div><div class="stack-fn-name">HR &amp; Talent</div></div>
+      <div class="stack-tools">
+        <div class="stack-tool"><div><div class="tool-name">Workable AI</div><div class="tool-type">AI-Assisted Recruitment</div></div><div class="tool-tier-badge tbadge-growth">Growth</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Notion AI / Loom</div><div class="tool-type">Onboarding Automation</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">Claude AI</div><div class="tool-type">Training Material Generation</div></div><div class="tool-tier-badge tbadge-core">Core</div></div>
+        <div class="stack-tool"><div><div class="tool-name">15Five AI</div><div class="tool-type">Performance Management</div></div><div class="tool-tier-badge tbadge-scale">Scale</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSESSMENT BANNER -->
+<div class="assessment-banner">
+  <div class="banner-inner">
+    <div class="banner-text reveal">
+      <div class="banner-eyebrow">FREE DIAGNOSTIC TOOL</div>
+      <h2 class="banner-title">Where does your MSME<br>stand on <span class="accent">AI Readiness?</span></h2>
+      <p class="banner-desc">Find out in 10–12 minutes. Our free assessment evaluates your organization across 6 key business dimensions and gives you a personalized ASTRA™ transformation roadmap.</p>
+    </div>
+    <div class="banner-cta reveal">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7RSvNTKPRg4plAe4KHup6oyQd0G8EdhpsrrGOEpxXCIF0WQ/viewform" target="_blank" class="btn-assessment" style="padding:20px 40px 16px;">
+        <span class="btn-label" style="font-size:14px;">🎯 FREE AI Readiness Assessment</span>
+        <span class="btn-sub">This assessment evaluates your organization across 6 key<br>business dimensions. It takes about 10–12 minutes to complete.</span>
+      </a>
+      <div class="banner-note">100% free · No credit card required · Results in 2 business days</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-label reveal">The Team Behind ASTRA™</div>
+  <h2 class="section-title reveal">About <span class="accent">Exoasia</span></h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Exoasia Innovation Hub is a venture studio and innovation consultancy focused on building AI-powered businesses and transforming organizations across Southeast Asia and the ASEAN region.</p>
+      <p>Founded by Mack Comandante, Exoasia brings together EBELI methodology, Lean Startup principles, and AI-native tools to help founders and enterprises grow exponentially. We don't just advise — we build alongside you.</p>
+      <div class="services-list">
+        <div class="service-item"><span class="si-icon">🧭</span> AI Strategy &amp; Transformation (ASTRA™ Program)</div>
+        <div class="service-item"><span class="si-icon">🏗️</span> Venture Building &amp; Company Builder </div>
+        <div class="service-item"><span class="si-icon">🤖</span> AI Product Development </div>
+        <div class="service-item"><span class="si-icon">🎓</span> Executive Learning &amp; Development </div>
+        <div class="service-item"><span class="si-icon">🌏</span> Innovation Events &amp; Ecosystem Building</div>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <div class="about-card-tag">START YOUR TRANSFORMATION</div>
+      <h3>Ready to become an AI-powered MSME?</h3>
+      <p>Start with the free ASTRA™ AI Readiness Assessment — find out exactly where you stand and what to do next.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7RSvNTKPRg4plAe4KHup6oyQd0G8EdhpsrrGOEpxXCIF0WQ/viewform" target="_blank" class="btn-assessment" style="display:flex;flex-direction:column;align-items:center;width:100%;margin-bottom:16px;">
+        <span class="btn-label">🎯 FREE AI Readiness Assessment</span>
+        <span class="btn-sub">6 dimensions · 10–12 minutes · Personalized report</span>
+      </a>
+      <div class="contact-lines">
+        <div class="contact-line"><span class="cl-label">CEO</span><a href="/cdn-cgi/l/email-protection#7f121e1c141c10121e111b1e110b1a3f1a07101e0c161e51100d18"><span class="__cf_email__" data-cfemail="7e131f1d151d11131f101a1f100a1b3e1b06111f0d171f50110c19">[email&#160;protected]</span></a></div>
+        <div class="contact-line"><span class="cl-label">EA</span><a href="/cdn-cgi/l/email-protection#78171e1e111b1d171e0c101d1b1d17381d0017190b111956170a1f"><span class="__cf_email__" data-cfemail="ee818888878d8b81889a868b8d8b81ae8b96818f9d878fc0819c89">[email&#160;protected]</span></a></div>
+        <div class="contact-line"><span class="cl-label">PH</span><a href="https://www.exoasia.org" target="_blank">www.exoasia.org</a></div>
+        <div class="contact-line"><span class="cl-label">MY</span><a href="https://www.malaysia.exoasia.org" target="_blank">www.malaysia.exoasia.org</a></div>
+      </div>
+      <a href="/cdn-cgi/l/email-protection#2845494b434b474549464c49465c4d684d5047495b414906475a4f" class="about-cta">Begin ASTRA™ Discovery Sprint →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="fl-name">EXOASIA</div>
+      <div class="fl-sub">INNOVATION HUB · ASTRA™ FRAMEWORK</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#what">Framework</a></li>
+      <li><a href="#stages">Stages</a></li>
+      <li><a href="#playbook">Playbook</a></li>
+      <li><a href="#stack">Solutions</a></li>
+      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSc7RSvNTKPRg4plAe4KHup6oyQd0G8EdhpsrrGOEpxXCIF0WQ/viewform" target="_blank">Free Assessment</a></li>
+      <li><a href="https://www.exoasia.org" target="_blank">exoasia.org</a></li>
+      <li><a href="https://www.malaysia.exoasia.org" target="_blank">malaysia.exoasia.org</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">
+    ASTRA™ is a proprietary framework of Exoasia Innovation Hub. © 2026 All Rights Reserved. · Powered by EBELI Methodology &amp; AI-native Tools
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Stage tabs ────────────────────────────────────────────────
+function showStage(idx) {
+  document.querySelectorAll('.stage-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.stage-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+}
+
+// ── Mobile menu ───────────────────────────────────────────────
+function toggleMenu() {
+  const m = document.getElementById('mobileMenu');
+  const h = document.querySelector('.nav-hamburger');
+  const open = m.classList.toggle('open');
+  const spans = h.querySelectorAll('span');
+  if (open) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+}
+function closeMenu() {
+  const m = document.getElementById('mobileMenu');
+  const spans = document.querySelectorAll('.nav-hamburger span');
+  m.classList.remove('open');
+  spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+}
+
+// ── Scroll reveal ─────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 55);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Active nav on scroll ─────────────────────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+}, { passive: true });
+
+// ── GHL Parent Container Buster ───────────────────────────────
+// Walks up the DOM and strips any padding/margin injected by
+// the hosting platform (GoHighLevel, WordPress, etc.)
+(function() {
+  var node = document.body.parentElement;
+  var limit = 12;
+  while (node && node.tagName && node.tagName !== 'HTML' && limit-- > 0) {
+    node.style.setProperty('max-width', '100%', 'important');
+    node.style.setProperty('width', '100%', 'important');
+    node.style.setProperty('padding-left', '0', 'important');
+    node.style.setProperty('padding-right', '0', 'important');
+    node.style.setProperty('margin-left', '0', 'important');
+    node.style.setProperty('margin-right', '0', 'important');
+    node.style.setProperty('overflow-x', 'hidden', 'important');
+    node = node.parentElement;
+  }
+  // Also start from the body's direct parent (the GHL wrapper)
+  var wrapper = document.body.parentElement;
+  if (wrapper) {
+    wrapper.style.setProperty('padding', '0', 'important');
+    wrapper.style.setProperty('margin', '0', 'important');
+    wrapper.style.setProperty('max-width', 'none', 'important');
+    wrapper.style.setProperty('width', '100vw', 'important');
+  }
+  document.body.style.setProperty('margin', '0', 'important');
+  document.body.style.setProperty('padding', '0', 'important');
+  document.body.style.setProperty('max-width', 'none', 'important');
+  document.body.style.setProperty('width', '100vw', 'important');
+  document.body.style.setProperty('overflow-x', 'hidden', 'important');
+
+  // Find the actual GHL content wrapper (usually a div wrapping the custom HTML)
+  var body = document.body;
+  var directChildren = body.children;
+  for (var i = 0; i < directChildren.length; i++) {
+    var child = directChildren[i];
+    if (child.tagName && child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE') {
+      child.style.setProperty('max-width', 'none', 'important');
+      child.style.setProperty('width', '100%', 'important');
+      child.style.setProperty('padding-left', '0', 'important');
+      child.style.setProperty('padding-right', '0', 'important');
+      child.style.setProperty('margin-left', '0', 'important');
+      child.style.setProperty('margin-right', '0', 'important');
+    }
+  }
+})();
+</script>
+</body>
+</html>�

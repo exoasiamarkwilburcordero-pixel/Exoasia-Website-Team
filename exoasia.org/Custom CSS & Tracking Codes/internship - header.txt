@@ -1,0 +1,115 @@
+<style>
+/* ════════════════════════════════════════════════
+   INTERNSHIP: GEOMETRIC BREAKOUT & 1-INCH MARGINS
+════════════════════════════════════════════════ */
+
+/* 1. SCROLLBAR OVERFLOW FIX */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+/* 2. GCF ROOT BREAKOUT (KILLS BOUNDING BOXES) 
+   Forces the master wrapper to stretch 100vw from the true center */
+.fullwidth-wrapper {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    overflow-x: hidden !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* 3. SOLID NAVIGATIONAL HEADER (Fixed to Viewport) */
+nav {
+    background: rgba(45, 10, 40, 0.98) !important; /* Maroon glass aesthetic */
+    backdrop-filter: blur(18px) !important;
+    border-bottom: 1px solid rgba(201, 229, 0, 0.15) !important;
+
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; /* Safely anchors the fixed nav */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    
+    /* Base Mobile/Tablet safe flexible margin */
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+    padding-top: 1.4rem !important;
+    padding-bottom: 1.4rem !important;
+}
+
+/* 4. DYNAMIC SECTION HORIZONTAL PADDING */
+.xo-hero,
+section,
+footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    
+    /* Base Mobile/Tablet safe flexible margin */
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+}
+
+/* Preserve original vertical spacing */
+.xo-hero { 
+    padding-top: 10rem !important; 
+    padding-bottom: 6rem !important; 
+}
+section { 
+    padding-top: 7rem !important; 
+    padding-bottom: 7rem !important; 
+}
+footer { 
+    padding-top: 3rem !important; 
+    padding-bottom: 3rem !important; 
+}
+
+/* 5. EXACT 1-INCH MARGIN ON DESKTOP */
+@media (min-width: 1024px) {
+    nav,
+    .xo-hero,
+    section,
+    footer {
+        padding-left: 96px !important;
+        padding-right: 96px !important;
+    }
+}
+
+/* 6. WIDE DESKTOP (Above 1392px): Centers content at max 1200px */
+@media (min-width: 1392px) {
+    nav,
+    .xo-hero,
+    section,
+    footer {
+        /* Pushes content into a 1200px center alignment */
+        padding-left: calc(50vw - 600px) !important;
+        padding-right: calc(50vw - 600px) !important;
+    }
+}
+
+/* 7. PRESERVE MOBILE VERTICAL COMPRESSION */
+@media (max-width: 900px) {
+    nav { 
+        padding-top: 1.2rem !important; 
+        padding-bottom: 1.2rem !important; 
+    }
+    .xo-hero { 
+        padding-top: 8rem !important; 
+        padding-bottom: 4rem !important; 
+    }
+    section { 
+        padding-top: 5rem !important; 
+        padding-bottom: 5rem !important; 
+    }
+    footer { 
+        padding-top: 2.5rem !important; 
+        padding-bottom: 2.5rem !important; 
+    }
+}
+</style>

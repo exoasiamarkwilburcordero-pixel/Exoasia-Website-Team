@@ -1,0 +1,52 @@
+<style>
+/* ════════════════════════════════════════════════
+   MAIN PAGE: BULLETPROOF MARGIN & CENTERING FIX
+════════════════════════════════════════════════ */
+
+/* 1. Base (Mobile & Tablet): Safe flexible margins to prevent crushing */
+.announcement, nav, .hero, .clients, .why, .lifecycle, .services, .journey, .cta-section, footer {
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. Standard Desktop: Locks in the exact 1-inch (96px) margin */
+@media (min-width: 1024px) {
+    .announcement, nav, .hero, .clients, .why, .lifecycle, .services, .journey, .cta-section, footer {
+        padding-left: 96px !important;
+        padding-right: 96px !important;
+    }
+    
+    /* Center the Hero Section elements */
+    .hero {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 60px !important;
+    }
+    
+	/* Detach the visual stats and reset all lingering vertical offsets */
+    .hero-visual {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        margin-top: 0 !important;
+ /* Neutralizes old margins */
+        transform: none !important;
+ /* Kills the lingering upward float */
+        align-self: center !important;
+ /* Forces perfect vertical alignment */
+        flex-shrink: 0 !important;
+    }
+}
+
+/* 3. Wide Desktop Monitors (Above 1392px): Centers content at max 1200px */
+/* Screen width (1392px) = 1200px content + 96px left margin + 96px right margin */
+@media (min-width: 1392px) {
+    .announcement, nav, .hero, .clients, .why, .lifecycle, .services, .journey, .cta-section, footer {
+        /* Calculates 50% of the screen minus half of 1200px to perfectly center */
+        padding-left: calc(50vw - 600px) !important;
+        padding-right: calc(50vw - 600px) !important;
+    }
+}
+</style>

@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Executive Leadership Accelerator™ | Success Academy Learning Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600;1,700&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+/* ════════════════════════════════════════════════
+   GLOBAL RESET — zero margins, scrollable body
+════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+body {
+  background: #0D1B2A;
+  color: #F4F1EB;
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  width: 100%;
+  min-width: 320px;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ════════════════════════════════════════════════
+   CUSTOM CURSOR
+════════════════════════════════════════════════ */
+#ela-cursor {
+  position: fixed; width: 8px; height: 8px;
+  background: #C9A040; border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .18s, height .18s;
+  mix-blend-mode: screen;
+}
+#ela-cursor-ring {
+  position: fixed; width: 36px; height: 36px;
+  border: 1px solid rgba(201,160,64,.5); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: width .22s, height .22s, opacity .22s;
+}
+body.no-cursor #ela-cursor,
+body.no-cursor #ela-cursor-ring { display: none; }
+
+/* ════════════════════════════════════════════════
+   GLOBAL BG CANVAS — sits behind all sections
+════════════════════════════════════════════════ */
+#ela-bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;          /* behind everything */
+  pointer-events: none;
+}
+/* body bg color matches canvas clear color so seams don't show */
+body { background: #060E17 !important; }
+
+/* ════════════════════════════════════════════════
+   STICKY NAV — always solid
+════════════════════════════════════════════════ */
+#ela-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 8000;
+  padding: 0 56px;
+  background: rgba(13,27,42,1);
+  border-bottom: 1px solid rgba(201,160,64,.28);
+}
+#ela-nav.scrolled {
+  background: rgba(13,27,42,1) !important;
+  border-bottom-color: rgba(201,160,64,.40) !important;
+  box-shadow: 0 2px 32px rgba(0,0,0,.4);
+}
+.ela-nav-inner {
+  max-width: 1160px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; gap: 16px;
+}
+.ela-nav-logo { text-decoration: none; display: inline-block; line-height: 1; }
+.ela-nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.ela-nav-links a {
+  font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(244,241,235,.75); text-decoration: none; transition: color .2s;
+}
+.ela-nav-links a:hover { color: #C9A040; }
+.ela-nav-cta {
+  background: #C9A040 !important; color: #0D1B2A !important;
+  padding: 10px 22px; border-radius: 2px;
+  font-weight: 700 !important; letter-spacing: .12em !important;
+}
+.ela-nav-cta:hover { background: #E8C97A !important; color: #0D1B2A !important; }
+.ela-ham {
+  display: none; background: transparent; border: none;
+  color: #C9A040; font-size: 20px; cursor: none; padding: 4px;
+}
+#ela-mob {
+  display: none; position: fixed; inset: 68px 0 0;
+  background: rgba(13,27,42,.99); z-index: 7999;
+  flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+}
+#ela-mob.open { display: flex; }
+#ela-mob a {
+  font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: #F4F1EB; text-decoration: none; transition: color .2s;
+}
+#ela-mob a:hover { color: #C9A040; }
+#ela-mob .ela-mob-cta {
+  background: #C9A040; color: #0D1B2A !important;
+  padding: 14px 32px; border-radius: 2px; font-weight: 700 !important;
+}
+
+/* ════════════════════════════════════════════════
+   WORDMARK COMPONENT — CSS justify, no glyph distortion
+════════════════════════════════════════════════ */
+.wm { display: inline-block; line-height: 1; }
+.wm-line {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700; display: block;
+  text-align: justify; text-align-last: justify;
+  line-height: 1.0; white-space: nowrap;
+}
+.wm-rule {
+  display: block; width: 100%; border: none;
+  background: linear-gradient(90deg,#8A6820 0%,#C9A040 20%,#E8C97A 50%,#C9A040 80%,#8A6820 100%);
+}
+.wm-sub {
+  font-family: 'Montserrat', sans-serif; font-weight: 600;
+  display: block; width: 100%;
+  /* No justify — use letter-spacing to spread evenly, word-spacing:0 collapses inter-word gap */
+  text-align: left;
+  text-transform: uppercase; color: #C9A040;
+  word-spacing: 0;
+  white-space: nowrap;
+}
+/* nav size — letter-spacing tuned so "LEARNING SOLUTIONS" fills 118px container */
+.wm--nav .wm-line { font-size: 24px; color: #F4F1EB; }
+.wm--nav .wm-rule { height: 1px; margin: 4px 0 3px; }
+.wm--nav .wm-sub  { font-size: 4.5px; letter-spacing: .235em; word-spacing: -.3em; }
+/* footer size — letter-spacing tuned for 196px container */
+.wm--foot .wm-line { font-size: 32px; color: #F4F1EB; }
+.wm--foot .wm-rule { height: 1.5px; margin: 6px 0 5px; }
+.wm--foot .wm-sub  { font-size: 6px; letter-spacing: .235em; word-spacing: -.3em; }
+/* section card size — letter-spacing tuned for 240px container */
+.wm--card .wm-line { font-size: 42px; color: #F4F1EB; }
+.wm--card .wm-rule { height: 1.5px; margin: 8px 0 6px; }
+.wm--card .wm-sub  { font-size: 8px; letter-spacing: .235em; word-spacing: -.3em; }
+
+/* ════════════════════════════════════════════════
+   HERO — 100vh, 3D canvas inside it
+════════════════════════════════════════════════ */
+#ela-hero {
+  position: relative;
+  width: 100%; height: 100vh;
+  overflow: hidden;
+  background: #0D1B2A;
+  z-index: 1;
+}
+#ela-hero-canvas {
+  position: absolute; inset: 0;
+  width: 100% !important; height: 100% !important;
+  display: block; z-index: 1;
+}
+/* depth gradient over canvas */
+#ela-hero-overlay {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(to bottom,
+      rgba(13,27,42,.45) 0%,
+      rgba(13,27,42,.12) 30%,
+      rgba(13,27,42,.12) 62%,
+      rgba(13,27,42,.78) 84%,
+      rgba(13,27,42,1.0) 100%);
+}
+/* ripple flash */
+#ela-rflash {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: radial-gradient(circle at var(--rx,50%) var(--ry,50%),rgba(201,160,64,.09) 0%,transparent 60%);
+  opacity: 0; transition: opacity .1s;
+}
+#ela-rflash.active { opacity: 1; }
+/* hero content */
+#ela-hero-content {
+  position: absolute; inset: 0; z-index: 4;
+  display: flex; flex-direction: column; justify-content: space-between;
+  pointer-events: none;
+}
+.ela-hero-body {
+  flex: 1; display: flex; align-items: center;
+  padding: 0 56px;
+  pointer-events: all;
+}
+.ela-hero-text { max-width: 620px; }
+
+/* live badge */
+.ela-live-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(201,160,64,.35); padding: 7px 18px; border-radius: 2px;
+  font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase; color: #C9A040;
+  margin-bottom: 28px;
+  opacity: 0; animation: ela-up .8s .1s both;
+}
+.ela-pulse { width: 6px; height: 6px; border-radius: 50%; background: #C9A040; animation: ela-pls 2s ease-in-out infinite; display: inline-block; }
+@keyframes ela-pls { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+.ela-hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(52px, 7.2vw, 92px); font-weight: 700;
+  line-height: .91; color: #F4F1EB; letter-spacing: -.02em;
+  margin-bottom: 12px;
+  opacity: 0; animation: ela-up .9s .2s both;
+}
+.ela-hero-title em { font-style: italic; color: #C9A040; }
+.ela-hero-rule {
+  border: none; border-top: 1px solid rgba(201,160,64,.35); max-width: 440px;
+  margin: 16px 0 16px;
+  opacity: 0; animation: ela-up .8s .3s both;
+}
+.ela-hero-tag {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(16px,2vw,22px); font-style: italic; font-weight: 300;
+  color: #E8C97A; margin-bottom: 22px;
+  opacity: 0; animation: ela-up .8s .32s both;
+}
+.ela-hero-desc {
+  font-size: clamp(13px,1.4vw,15px); font-weight: 300;
+  color: rgba(244,241,235,.82); line-height: 1.8; max-width: 510px; margin-bottom: 34px;
+  opacity: 0; animation: ela-up .8s .38s both;
+}
+.ela-hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px;
+  opacity: 0; animation: ela-up .8s .46s both;
+}
+.ela-hero-stats {
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(201,160,64,.2); padding-top: 22px;
+  opacity: 0; animation: ela-up .8s .54s both;
+}
+.ela-hstat {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 0 26px 0 0; margin-right: 26px;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.ela-hstat:last-child { border-right: none; margin-right: 0; }
+.ela-hstat-v { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 30px; font-weight: 700; color: #C9A040; line-height: 1; }
+.ela-hstat-l { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(244,241,235,.5); }
+
+.ela-hero-bottom {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 0 56px 32px; pointer-events: all;
+}
+.ela-tagline-txt { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(12px,1.4vw,15px); color: rgba(232,200,122,.5); letter-spacing: .04em; }
+.ela-scroll-hint {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(201,160,64,.4);
+  display: flex; align-items: center; gap: 8px;
+  animation: ela-bounce 2s ease-in-out infinite;
+}
+@keyframes ela-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+@keyframes ela-up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+/* ════════════════════════════════════════════════
+   BUTTONS — shared
+════════════════════════════════════════════════ */
+.ela-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #C9A040; color: #0D1B2A; text-decoration: none;
+  font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 2px; border: none; cursor: none;
+  transition: background .2s, transform .15s;
+}
+.ela-btn:hover { background: #E8C97A; transform: translateY(-2px); }
+.ela-btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(201,160,64,.45); color: #C9A040; text-decoration: none;
+  font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  padding: 13px 26px; border-radius: 2px; background: transparent; cursor: none;
+  transition: background .2s, border-color .2s;
+}
+.ela-btn-ghost:hover { background: rgba(201,160,64,.1); border-color: #C9A040; }
+.ela-btn-ghost-dk {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(13,27,42,.35); color: #0D1B2A; text-decoration: none;
+  font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  padding: 13px 26px; border-radius: 2px; background: transparent; cursor: none;
+  transition: background .2s;
+}
+.ela-btn-ghost-dk:hover { background: rgba(13,27,42,.07); }
+
+/* ════════════════════════════════════════════════
+   SECTION SHARED — z-index:1 keeps above bg canvas
+════════════════════════════════════════════════ */
+.ela-sec { position: relative; width: 100%; z-index: 1; }
+/* Frosted glass — transparent enough to see the 3D canvas behind */
+.ela-sec-dark  {
+  background: rgba(6,14,23,0.72)  !important;
+  color: #F4F1EB !important;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.ela-sec-mid   {
+  background: rgba(13,27,42,0.75) !important;
+  color: #F4F1EB !important;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.ela-sec-light {
+  background: rgba(8,18,32,0.78) !important;
+  color: #D6D6EC !important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+/* Remap light-section text colours for dark-on-dark glass */
+.ela-sec-light .ela-h1         { color: #F4F1EB !important; }
+.ela-sec-light .ela-body-txt   { color: #C8C8DC !important; }
+.ela-sec-light .ela-pt-title   { color: #F4F1EB !important; }
+.ela-sec-light .ela-pt-desc    { color: #C0C0D4 !important; }
+.ela-sec-light .ela-pst-d      { color: #C0C0D4 !important; }
+.ela-sec-light .ela-ph-name    { color: #F4F1EB !important; }
+.ela-sec-light .ela-ph-daytag  { color: #E8C97A !important; }
+.ela-sec-light .ela-ph-ul li   { color: #C0C0D4 !important; }
+.ela-sec-light .ela-ms-tx      { color: #C8C8DC !important; }
+.ela-sec-light .ela-del-title  { color: #F4F1EB !important; }
+.ela-sec-light .ela-del-desc   { color: #C0C0D4 !important; }
+.ela-sec-light .ela-del-ico    { color: #C9A040 !important; border-color: rgba(201,160,64,.4) !important; }
+.ela-sec-light .ela-who-tx     { color: #C8C8DC !important; }
+.ela-sec-light .ela-pst        { background: rgba(13,27,42,0.55) !important; }
+.ela-sec-light .ela-pst-d      { color: #C0C0D4 !important; }
+.ela-sec-light .ela-ms         { background: rgba(13,27,42,0.55) !important; border-color: rgba(201,160,64,.2) !important; }
+.ela-sec-light .ela-who-item   { background: rgba(13,27,42,0.50) !important; border-color: rgba(201,160,64,.15) !important; }
+.ela-sec-light .ela-del-card   { background: rgba(13,27,42,0.55) !important; }
+.ela-sec-light .ela-tt         { background: rgba(13,27,42,0.55) !important; border-color: rgba(201,160,64,.2) !important; }
+.ela-sec-light .ela-tt-l       { color: #F4F1EB !important; border-right-color: rgba(255,255,255,.08) !important; }
+.ela-sec-light .ela-tt-r       { color: #C0C0D4 !important; }
+.ela-sec-light .ela-tt-row     { border-bottom-color: rgba(255,255,255,.06) !important; }
+.ela-sec-light .ela-phase      { background: rgba(13,27,42,0.55) !important; }
+.ela-ctr { max-width: 1160px; margin: 0 auto; padding: 0 56px; }
+.ela-pad { padding-top: 96px; padding-bottom: 96px; }
+
+.ela-eyebrow {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase; color: #C9A040;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.ela-h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(32px,4.8vw,56px); font-weight: 700; line-height: 1.06;
+  letter-spacing: -.01em; margin-bottom: 16px;
+}
+.ela-sec-dark  .ela-h1 { color: #F4F1EB; }
+.ela-sec-mid   .ela-h1 { color: #F4F1EB; }
+.ela-sec-light .ela-h1 { color: #0D1B2A; }
+.ela-h1 em { font-style: italic; color: #C9A040; }
+.ela-body-txt {
+  font-size: 15px; font-weight: 300; line-height: 1.8; max-width: 660px; margin-bottom: 0;
+}
+.ela-sec-dark  .ela-body-txt { color: #D6D6EC; }
+.ela-sec-mid   .ela-body-txt { color: #D6D6EC; }
+.ela-sec-light .ela-body-txt { color: #4A4A4A; }
+.ela-sec-hd { margin-bottom: 52px; }
+.ela-gold-rule { border: none; border-top: 1px solid rgba(201,160,64,.28); }
+
+/* 4px gold bar accent */
+.ela-gold-bar { width: 4px; flex-shrink: 0; background: transparent; transition: background .25s; }
+
+/* ════════════════════════════════════════════════
+   PROBLEM (light)
+════════════════════════════════════════════════ */
+.ela-prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.ela-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #E8E4DC; }
+.ela-pst { background: #F4F1EB; padding: 32px 26px; position: relative; overflow: hidden; transition: background .25s; }
+.ela-pst:hover { background: #fff; }
+.ela-pst::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:#C9A040; transform:scaleX(0); transform-origin:left; transition:transform .4s; }
+.ela-pst:hover::after { transform:scaleX(1); }
+.ela-pst-n { font-family:'Cormorant Garamond',Georgia,serif; font-size:52px; font-weight:700; color:#C9A040; line-height:1; margin-bottom:8px; }
+.ela-pst-d { font-size:13px; font-weight:400; color:#4A4A4A; line-height:1.65; }
+.ela-pts { display:flex; flex-direction:column; gap:24px; }
+.ela-pt { display:flex; gap:18px; align-items:flex-start; }
+.ela-pt-ico { width:44px; height:44px; flex-shrink:0; border:1px solid rgba(13,27,42,.2); border-radius:2px; display:flex; align-items:center; justify-content:center; color:#0D1B2A; font-size:16px; }
+.ela-pt-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-weight:700; color:#0D1B2A; margin-bottom:4px; }
+.ela-pt-desc { font-size:13px; font-weight:400; color:#4A4A4A; line-height:1.65; }
+
+/* ════════════════════════════════════════════════
+   WHAT IT IS (dark)
+════════════════════════════════════════════════ */
+.ela-feat-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
+.ela-feat-list { display:flex; flex-direction:column; gap:2px; }
+.ela-feat { display:flex; gap:0; align-items:stretch; background:#1B3A5C; transition:background .25s; }
+.ela-feat:hover { background:#20456e; }
+.ela-feat:hover .ela-gold-bar { background:#C9A040; }
+.ela-feat-inner { padding:20px 22px; }
+.ela-feat-num { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.15em; color:#C9A040; margin-bottom:4px; }
+.ela-feat-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-weight:700; color:#F4F1EB; margin-bottom:4px; }
+.ela-feat-desc { font-size:13px; font-weight:300; color:#D6D6EC; line-height:1.65; }
+.ela-pullquote { border-left:4px solid #C9A040; padding:24px 28px; background:#1B3A5C; margin-bottom:28px; }
+.ela-pq-text { font-family:'Cormorant Garamond',Georgia,serif; font-size:21px; font-style:italic; font-weight:600; color:#F4F1EB; line-height:1.6; margin-bottom:14px; }
+.ela-pq-attr { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#C9A040; }
+.ela-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.ela-pill { display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.05); border:1px solid rgba(201,160,64,.28); color:#E8C97A; padding:7px 12px; border-radius:2px; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:500; letter-spacing:.06em; }
+
+/* ════════════════════════════════════════════════
+   JOURNEY (light)
+════════════════════════════════════════════════ */
+.ela-phases { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#C9A040; margin:0 0 52px; }
+.ela-phase { background:#F4F1EB; padding:40px 32px; position:relative; overflow:hidden; transition:background .25s; }
+.ela-phase:hover { background:#fff; }
+.ela-phase::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:#C9A040; transform:scaleX(0); transform-origin:left; transition:transform .4s; }
+.ela-phase:hover::before { transform:scaleX(1); }
+.ela-ph-badge { display:inline-block; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#C9A040; background:rgba(201,160,64,.1); border:1px solid rgba(201,160,64,.3); padding:4px 10px; border-radius:2px; margin-bottom:16px; }
+.ela-ph-daytag { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#8A6820; margin-bottom:6px; }
+.ela-ph-name { font-family:'Cormorant Garamond',Georgia,serif; font-size:36px; font-weight:700; color:#0D1B2A; line-height:1; margin-bottom:4px; }
+.ela-ph-focus { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:#C9A040; margin-bottom:20px; }
+.ela-ph-ul { list-style:none; display:flex; flex-direction:column; gap:8px; padding:0; }
+.ela-ph-ul li { font-size:13px; font-weight:400; color:#4A4A4A; padding-left:16px; position:relative; line-height:1.5; }
+.ela-ph-ul li::before { content:'—'; position:absolute; left:0; color:#C9A040; font-size:11px; }
+.ela-ms-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; }
+.ela-ms { display:flex; gap:14px; align-items:flex-start; padding:16px; background:#fff; border:1px solid #E8E4DC; border-left:4px solid #C9A040; }
+.ela-ms-wk { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#C9A040; flex-shrink:0; white-space:nowrap; }
+.ela-ms-tx { font-size:13px; font-weight:400; color:#4A4A4A; line-height:1.5; }
+
+/* ════════════════════════════════════════════════
+   MODULES (dark)
+════════════════════════════════════════════════ */
+.ela-mod-stack { display:flex; flex-direction:column; gap:2px; margin-top:44px; }
+.ela-mod { background:#1B3A5C; border-left:4px solid transparent; overflow:hidden; transition:border-color .25s, background .25s; }
+.ela-mod:hover, .ela-mod.open { background:#20456e; border-left-color:#C9A040; }
+.ela-mod-head { display:grid; grid-template-columns:64px 1fr auto auto; align-items:center; gap:18px; padding:24px 28px; cursor:none; user-select:none; }
+.ela-mod-code { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:.12em; color:#C9A040; }
+.ela-mod-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:22px; font-weight:700; color:#F4F1EB; margin-bottom:2px; }
+.ela-mod-sub { font-size:12px; font-weight:400; color:#E8C97A; }
+.ela-mod-tag { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#C9A040; border:1px solid rgba(201,160,64,.35); padding:4px 12px; border-radius:2px; white-space:nowrap; }
+.ela-mod-chv { color:#E8C97A; font-size:12px; transition:transform .3s, color .2s; }
+.ela-mod.open .ela-mod-chv { transform:rotate(180deg); color:#C9A040; }
+.ela-mod-body { display:none; padding:0 28px 28px 110px; border-top:1px solid rgba(255,255,255,.07); }
+.ela-mod.open .ela-mod-body { display:block; }
+.ela-mod-inner { display:grid; grid-template-columns:1fr 1fr; gap:36px; padding-top:24px; }
+.ela-mb-lbl { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:#C9A040; margin-bottom:12px; }
+.ela-mb-ul { list-style:none; display:flex; flex-direction:column; gap:9px; padding:0; }
+.ela-mb-ul li { font-size:13px; font-weight:300; color:#D6D6EC; padding-left:18px; position:relative; line-height:1.5; }
+.ela-mb-ul li::before { content:'◆'; position:absolute; left:0; font-size:5px; color:#C9A040; top:6px; }
+.ela-otags { margin-top:16px; display:flex; flex-wrap:wrap; gap:6px; }
+.ela-otag { font-size:10px; font-weight:600; letter-spacing:.06em; color:#0D1B2A; background:#C9A040; padding:4px 12px; border-radius:2px; font-family:'Montserrat',sans-serif; }
+
+/* ════════════════════════════════════════════════
+   DELIVERY (light)
+════════════════════════════════════════════════ */
+.ela-del-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#E8E4DC; margin:0 0 52px; }
+.ela-del-card { background:#F4F1EB; padding:36px 28px; transition:background .25s, border-top-color .25s; border-top:3px solid transparent; }
+.ela-del-card:hover { background:#fff; border-top-color:#C9A040; }
+.ela-del-ico { width:48px; height:48px; border:1px solid rgba(13,27,42,.18); border-radius:2px; display:flex; align-items:center; justify-content:center; color:#0D1B2A; font-size:18px; margin-bottom:16px; }
+.ela-del-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-weight:700; color:#0D1B2A; margin-bottom:8px; }
+.ela-del-desc { font-size:13px; font-weight:400; color:#4A4A4A; line-height:1.7; }
+.ela-tt { background:#fff; border:1px solid #E8E4DC; border-left:4px solid #C9A040; overflow:hidden; }
+.ela-tt-row { display:grid; grid-template-columns:280px 1fr; border-bottom:1px solid #E8E4DC; }
+.ela-tt-row:last-child { border-bottom:none; }
+.ela-tt-row.tot { background:rgba(201,160,64,.08); border-top:1px solid rgba(201,160,64,.3); }
+.ela-tt-l, .ela-tt-r { padding:15px 24px; font-size:13px; font-weight:400; color:#4A4A4A; }
+.ela-tt-l { border-right:1px solid #E8E4DC; color:#0D1B2A; font-weight:600; }
+.ela-tt-row.tot .ela-tt-l, .ela-tt-row.tot .ela-tt-r { font-family:'Cormorant Garamond',Georgia,serif; font-size:16px; font-weight:700; color:#C9A040; }
+
+/* ════════════════════════════════════════════════
+   OUTCOMES (dark)
+════════════════════════════════════════════════ */
+.ela-out-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+.ela-out-hd { font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; font-weight:700; color:#F4F1EB; display:flex; align-items:center; gap:10px; padding-bottom:14px; border-bottom:1px solid rgba(201,160,64,.28); margin-bottom:20px; }
+.ela-out-item { display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+.ela-out-chk { color:#C9A040; font-size:11px; margin-top:4px; flex-shrink:0; }
+.ela-out-txt { font-size:14px; font-weight:300; color:#D6D6EC; line-height:1.65; }
+
+/* ════════════════════════════════════════════════
+   FOR WHO (light)
+════════════════════════════════════════════════ */
+.ela-who-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
+.ela-who-list { display:flex; flex-direction:column; gap:2px; }
+.ela-who-item { display:flex; gap:0; align-items:stretch; background:#fff; border:1px solid #E8E4DC; transition:border-color .25s, background .25s; }
+.ela-who-item:hover { border-color:#C9A040; background:#fdfcfa; }
+.ela-who-item:hover .ela-gold-bar { background:#C9A040; }
+.ela-who-inner { display:flex; gap:16px; align-items:center; padding:18px 20px; }
+.ela-who-ico { width:38px; height:38px; flex-shrink:0; border:1px solid rgba(13,27,42,.2); border-radius:2px; display:flex; align-items:center; justify-content:center; color:#0D1B2A; font-size:14px; }
+.ela-who-tx { font-size:14px; font-weight:400; color:#4A4A4A; line-height:1.55; }
+.ela-faculty-card { background:#0D1B2A; border:1px solid rgba(201,160,64,.28); padding:36px 32px; position:relative; }
+.ela-faculty-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#8A6820,#C9A040,#E8C97A,#C9A040,#8A6820); }
+.ela-fac-rule { border:none; border-top:1px solid rgba(201,160,64,.25); margin:16px 0; }
+.ela-fac-role { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#C9A040; margin-bottom:16px; }
+.ela-fac-bio { font-size:13px; font-weight:300; color:#D6D6EC; line-height:1.75; margin-bottom:20px; }
+.ela-fac-creds { display:flex; flex-direction:column; gap:8px; }
+.ela-fc { display:flex; gap:10px; align-items:center; font-size:13px; font-weight:300; color:#D6D6EC; }
+.ela-fc i { color:#C9A040; font-size:10px; }
+
+/* ════════════════════════════════════════════════
+   CTA (dark, dot-grid)
+════════════════════════════════════════════════ */
+#ela-cta {
+  background: rgba(6,14,23,0.75); padding:112px 56px;
+  position:relative; overflow:hidden; text-align:center;
+  width: 100%; z-index: 1;
+}
+#ela-cta::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(circle,rgba(201,160,64,.14) 1px,transparent 1px);
+  background-size:36px 36px; opacity:.35;
+}
+#ela-cta::after {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(201,160,64,.07) 0%,transparent 60%);
+}
+.ela-cta-inner { position:relative; z-index:2; max-width:700px; margin:0 auto; }
+.ela-cta-eyebrow { display:inline-flex; align-items:center; gap:10px; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#C9A040; border:1px solid rgba(201,160,64,.3); padding:7px 18px; border-radius:2px; margin-bottom:28px; }
+.ela-cta-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(38px,6.5vw,76px); font-weight:700; color:#F4F1EB; line-height:.95; letter-spacing:-.02em; margin-bottom:18px; }
+.ela-cta-title em { font-style:italic; color:#C9A040; }
+.ela-cta-rule { border:none; border-top:1px solid rgba(201,160,64,.28); max-width:200px; margin:0 auto 28px; }
+.ela-cta-sub { font-size:15px; font-weight:300; color:#D6D6EC; line-height:1.8; margin-bottom:44px; }
+.ela-cta-form { display:flex; max-width:500px; margin:0 auto 14px; }
+.ela-cta-email { flex:1; background:#1B3A5C; border:1px solid rgba(201,160,64,.3); border-right:none; color:#F4F1EB; font-family:'Montserrat',sans-serif; font-size:14px; padding:15px 18px; outline:none; border-radius:2px 0 0 2px; transition:border-color .2s; }
+.ela-cta-email::placeholder { color:rgba(232,200,122,.45); }
+.ela-cta-email:focus { border-color:#C9A040; }
+.ela-cta-submit { background:#C9A040; color:#0D1B2A; border:none; cursor:none; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; padding:15px 24px; border-radius:0 2px 2px 0; transition:background .2s; white-space:nowrap; }
+.ela-cta-submit:hover { background:#E8C97A; }
+.ela-cta-note { font-size:11px; color:rgba(232,200,122,.6); margin-top:10px; }
+.ela-or { display:flex; align-items:center; gap:14px; max-width:500px; margin:22px auto; }
+.ela-or::before, .ela-or::after { content:''; flex:1; height:1px; background:rgba(255,255,255,.09); }
+.ela-or span { font-size:10px; color:rgba(232,200,122,.5); letter-spacing:.1em; text-transform:uppercase; }
+.ela-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+/* ════════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════════ */
+#ela-footer { background: rgba(6,14,23,0.82); border-top:1px solid rgba(201,160,64,.25); padding:60px 56px 28px; width: 100%; position: relative; z-index: 1; }
+.ela-foot-inner { max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:56px; margin-bottom:44px; }
+.ela-foot-rule { border:none; border-top:1px solid rgba(201,160,64,.2); margin:18px 0; }
+.ela-foot-desc { font-size:12px; font-weight:300; color:#D6D6EC; line-height:1.8; }
+.ela-foot-tagline { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:14px; color:#E8C97A; margin-top:12px; }
+.ela-foot-hd { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#C9A040; margin-bottom:14px; }
+.ela-foot-ul { list-style:none; display:flex; flex-direction:column; gap:9px; padding:0; }
+.ela-foot-ul a { font-size:13px; font-weight:400; color:#D6D6EC; text-decoration:none; display:flex; align-items:center; gap:8px; transition:color .2s; }
+.ela-foot-ul a:hover { color:#C9A040; }
+.ela-foot-ul i { color:#C9A040; font-size:10px; }
+.ela-foot-btm { max-width:1160px; margin:0 auto; padding-top:20px; border-top:1px solid rgba(255,255,255,.07); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+.ela-foot-copy { font-size:11px; color:rgba(244,241,235,.45); }
+.ela-foot-copy a { color:rgba(244,241,235,.45); text-decoration:none; transition:color .2s; }
+.ela-foot-copy a:hover { color:#C9A040; }
+
+/* back to top */
+#ela-btt { position:fixed; bottom:28px; right:28px; width:40px; height:40px; background:#C9A040; color:#0D1B2A; border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:13px; text-decoration:none; cursor:none; opacity:0; pointer-events:none; transition:opacity .3s; z-index:7000; }
+#ela-btt.show { opacity:1; pointer-events:all; }
+#ela-btt:hover { background:#E8C97A; }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════ */
+@media (max-width:960px) {
+  #ela-nav, #ela-nav.scrolled { padding:0 28px; }
+  .ela-nav-links { display:none; }
+  .ela-ham { display:flex; }
+  .ela-hero-body { padding:0 28px; }
+  .ela-hero-bottom { padding:0 28px 28px; }
+  .ela-hero-desc { display:none; }
+  .ela-ctr { padding:0 28px; }
+  .ela-prob-grid, .ela-feat-grid, .ela-who-grid { grid-template-columns:1fr; gap:48px; }
+  .ela-phases { grid-template-columns:1fr; }
+  .ela-del-grid { grid-template-columns:1fr 1fr; }
+  .ela-out-grid { grid-template-columns:1fr; gap:40px; }
+  .ela-foot-inner { grid-template-columns:1fr; gap:36px; }
+  #ela-cta { padding:80px 28px; }
+  #ela-footer { padding:48px 28px 24px; }
+}
+@media (max-width:600px) {
+  .ela-hero-stats { display:none; }
+  .ela-hstat { padding:0 14px 0 0; margin-right:14px; }
+  .ela-del-grid { grid-template-columns:1fr; }
+  .ela-stat-grid { grid-template-columns:1fr; }
+  .ela-mod-head { grid-template-columns:44px 1fr auto; }
+  .ela-mod-tag { display:none; }
+  .ela-mod-body { padding-left:16px; }
+  .ela-mod-inner { grid-template-columns:1fr; gap:24px; }
+  .ela-ms-grid { grid-template-columns:1fr; }
+  .ela-tt-row { grid-template-columns:1fr; }
+  .ela-tt-l { border-right:none; border-bottom:1px solid #E8E4DC; }
+  .ela-cta-form { flex-direction:column; }
+  .ela-cta-email { border-right:1px solid rgba(201,160,64,.3); border-bottom:none; border-radius:2px 2px 0 0; }
+  .ela-cta-submit { border-radius:0 0 2px 2px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     GLOBAL 3D BG CANVAS — sits behind all sections
+═══════════════════════════════════════ -->
+<canvas id="ela-bg-canvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════════════════════════════════
+     CUSTOM CURSOR
+═══════════════════════════════════════ -->
+<div id="ela-cursor"></div>
+<div id="ela-cursor-ring"></div>
+
+<!-- ═══════════════════════════════════════
+     STICKY NAV
+═══════════════════════════════════════ -->
+<nav id="ela-nav">
+  <div class="ela-nav-inner">
+    <a class="ela-nav-logo" href="#ela-hero">
+      <div class="wm wm--nav" style="width:118px">
+        <span class="wm-line">SUCCESS</span>
+        <span class="wm-line">ACADEMY</span>
+        <span class="wm-rule"></span>
+        <span class="wm-sub">Learning&nbsp;Solutions</span>
+      </div>
+    </a>
+    <ul class="ela-nav-links">
+      <li><a href="#ela-problem">The Challenge</a></li>
+      <li><a href="#ela-journey">90-Day Journey</a></li>
+      <li><a href="#ela-modules">Modules</a></li>
+      <li><a href="#ela-delivery">Delivery</a></li>
+      <li><a href="#ela-outcomes">Outcomes</a></li>
+      <li><a href="#ela-cta" class="ela-nav-cta">Reserve a Seat</a></li>
+    </ul>
+    <button class="ela-ham" id="ela-ham-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+<div id="ela-mob">
+  <a href="#ela-problem"  onclick="elaMobClose()">The Challenge</a>
+  <a href="#ela-journey"  onclick="elaMobClose()">90-Day Journey</a>
+  <a href="#ela-modules"  onclick="elaMobClose()">Modules</a>
+  <a href="#ela-delivery" onclick="elaMobClose()">Delivery</a>
+  <a href="#ela-outcomes" onclick="elaMobClose()">Outcomes</a>
+  <a href="#ela-cta"      onclick="elaMobClose()" class="ela-mob-cta">Reserve a Seat</a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HERO — full viewport, 3D canvas inside
+═══════════════════════════════════════ -->
+<section id="ela-hero">
+  <canvas id="ela-hero-canvas" aria-hidden="true"></canvas>
+  <div id="ela-hero-overlay"></div>
+  <div id="ela-rflash"></div>
+  <div id="ela-hero-content">
+    <div class="ela-hero-body">
+      <div class="ela-hero-text">
+        <div class="ela-live-badge">
+          <span class="ela-pulse"></span>
+          Success Academy Learning Solutions &nbsp;·&nbsp; Flagship Program
+        </div>
+        <h1 class="ela-hero-title">Executive<br>Leadership<br><em>Accelerator™</em></h1>
+        <hr class="ela-hero-rule">
+        <p class="ela-hero-tag">Master the first 90 days at the next level.</p>
+        <p class="ela-hero-desc">A 90-day cohort program that installs the credibility, influence, coaching skills, and high-performance team cadence needed to lead at the next level from day one.</p>
+        <div class="ela-hero-btns">
+          <a href="#ela-cta"     class="ela-btn"><i class="fa-solid fa-arrow-right"></i> Reserve a Seat</a>
+          <a href="#ela-modules" class="ela-btn-ghost"><i class="fa-regular fa-file-lines"></i> View Curriculum</a>
+        </div>
+        <div class="ela-hero-stats">
+          <div class="ela-hstat"><span class="ela-hstat-v">90</span><span class="ela-hstat-l">Days</span></div>
+          <div class="ela-hstat"><span class="ela-hstat-v">7</span><span class="ela-hstat-l">Modules</span></div>
+          <div class="ela-hstat"><span class="ela-hstat-v">28+</span><span class="ela-hstat-l">Frameworks</span></div>
+          <div class="ela-hstat"><span class="ela-hstat-v">18</span><span class="ela-hstat-l">Max Cohort</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ela-hero-bottom">
+      <div class="ela-tagline-txt">"Where Success Becomes a Discipline."</div>
+      <div class="ela-scroll-hint"><i class="fa-solid fa-chevron-down"></i> Scroll to explore</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PROBLEM (light)
+═══════════════════════════════════════ -->
+<section id="ela-problem" class="ela-sec ela-sec-light">
+  <div class="ela-ctr ela-pad">
+    <div class="ela-sec-hd">
+      <div class="ela-eyebrow"><i class="fa-solid fa-triangle-exclamation"></i> The Challenge</div>
+      <h2 class="ela-h1">The First 90 Days Is the Highest-Stakes<br>Window in a Leader's Career.</h2>
+      <p class="ela-body-txt">Most leaders don't fail because of lack of competence. They fail because nobody prepared them for the invisible rules of leadership at the next level.</p>
+    </div>
+    <div class="ela-prob-grid">
+      <div class="ela-stat-grid">
+        <div class="ela-pst"><div class="ela-pst-n">60%</div><div class="ela-pst-d">of newly promoted leaders underperform in their first 18 months — not due to skill, but due to presence and influence gaps.</div></div>
+        <div class="ela-pst"><div class="ela-pst-n">40%</div><div class="ela-pst-d">of executive transitions result in perceived failure within two years, costing organizations 3–5× the leader's annual salary.</div></div>
+        <div class="ela-pst"><div class="ela-pst-n">90</div><div class="ela-pst-d">days is the window in which leaders set the relational and reputational foundation that shapes the next 3 years of their tenure.</div></div>
+        <div class="ela-pst"><div class="ela-pst-n">3×</div><div class="ela-pst-d">faster time-to-effectiveness for leaders who enter with a structured stakeholder engagement and credibility strategy.</div></div>
+      </div>
+      <div class="ela-pts">
+        <div class="ela-pt"><div class="ela-pt-ico"><i class="fa-solid fa-masks-theater"></i></div><div><div class="ela-pt-title">The Identity Trap</div><div class="ela-pt-desc">Most leaders carry their old role identity into the new one — remaining the brilliant contributor instead of becoming the strategic leader the role demands.</div></div></div>
+        <div class="ela-pt"><div class="ela-pt-ico"><i class="fa-solid fa-chess"></i></div><div><div class="ela-pt-title">The Influence Gap</div><div class="ela-pt-desc">Senior roles require results through alignment, not command. Without a deliberate influence strategy, leaders stall on even their highest-priority agendas.</div></div></div>
+        <div class="ela-pt"><div class="ela-pt-ico"><i class="fa-solid fa-users-slash"></i></div><div><div class="ela-pt-title">The Team Performance Lag</div><div class="ela-pt-desc">Without intentional team operating design, new leaders inherit broken rhythms — leading to missed targets, talent attrition, and lost credibility.</div></div></div>
+        <div class="ela-pt"><div class="ela-pt-ico"><i class="fa-solid fa-eye-slash"></i></div><div><div class="ela-pt-title">The Visibility Deficit</div><div class="ela-pt-desc">At higher levels, being competent in private is not enough. Leaders must claim authority publicly — in boardrooms, town halls, and executive conversations.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHAT IT IS (dark)
+═══════════════════════════════════════ -->
+<section id="ela-what" class="ela-sec ela-sec-dark">
+  <div class="ela-ctr ela-pad">
+    <div class="ela-sec-hd">
+      <div class="ela-eyebrow"><i class="fa-solid fa-star"></i> The Program</div>
+      <h2 class="ela-h1">Not a Workshop.<br><em>A Leadership Transformation.</em></h2>
+    </div>
+    <div class="ela-feat-grid">
+      <div class="ela-feat-list">
+        <div class="ela-feat"><div class="ela-gold-bar"></div><div class="ela-feat-inner"><div class="ela-feat-num">01</div><div class="ela-feat-title">Identity-First Design</div><div class="ela-feat-desc">We start with the shift from "high-performing contributor" to "senior leader." Competence alone will not cut it at the next level.</div></div></div>
+        <div class="ela-feat"><div class="ela-gold-bar"></div><div class="ela-feat-inner"><div class="ela-feat-num">02</div><div class="ela-feat-title">Structured Credibility-Building</div><div class="ela-feat-desc">From day one, you move with intention — listening tours, stakeholder mapping, and quick wins to build trust before you have a track record.</div></div></div>
+        <div class="ela-feat"><div class="ela-gold-bar"></div><div class="ela-feat-inner"><div class="ela-feat-num">03</div><div class="ela-feat-title">Influence Without Authority</div><div class="ela-feat-desc">Master the five influence currencies applied to your real stakeholder landscape. Build coalitions, manage upward, and align peers without a mandate.</div></div></div>
+        <div class="ela-feat"><div class="ela-gold-bar"></div><div class="ela-feat-inner"><div class="ela-feat-num">04</div><div class="ela-feat-title">Coaching as a Leadership Tool</div><div class="ela-feat-desc">Install the GROW + Accountability Bridge practice with every direct report. Develop talent while driving performance — simultaneously.</div></div></div>
+        <div class="ela-feat"><div class="ela-gold-bar"></div><div class="ela-feat-inner"><div class="ela-feat-num">05</div><div class="ela-feat-title">High-Performance Team Architecture</div><div class="ela-feat-desc">Design your team's operating cadence — the meetings, rituals, agreements, and accountability loops that make high performance repeatable.</div></div></div>
+        <div class="ela-feat"><div class="ela-gold-bar"></div><div class="ela-feat-inner"><div class="ela-feat-num">06</div><div class="ela-feat-title">Applied, Not Academic</div><div class="ela-feat-desc">Every module includes field assignments applied to your real stakeholders and team. You arrive at each session with work already done.</div></div></div>
+      </div>
+      <div>
+        <div class="ela-pullquote">
+          <div class="ela-pq-text">"The first 90 days is not a grace period. It is the highest-leverage window in a leader's career. What you establish then becomes the foundation everything else is built on."</div>
+          <div class="ela-pq-attr"><i class="fa-solid fa-quote-left" style="margin-right:6px"></i>ELA™ Design Principle · Success Academy Learning Solutions</div>
+        </div>
+        <div class="ela-pills">
+          <span class="ela-pill"><i class="fa-solid fa-check"></i> 90-Day Cohort</span>
+          <span class="ela-pill"><i class="fa-solid fa-check"></i> Live Sessions</span>
+          <span class="ela-pill"><i class="fa-solid fa-check"></i> 1:1 Executive Coaching</span>
+          <span class="ela-pill"><i class="fa-solid fa-check"></i> Peer Accountability Pods</span>
+          <span class="ela-pill"><i class="fa-solid fa-check"></i> 28+ Tools &amp; Templates</span>
+          <span class="ela-pill"><i class="fa-solid fa-check"></i> Field Assignments</span>
+          <span class="ela-pill"><i class="fa-solid fa-check"></i> Max 18 Participants</span>
+          <span class="ela-pill"><i class="fa-solid fa-check"></i> 90-Day Review Ceremony</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     JOURNEY (light)
+═══════════════════════════════════════ -->
+<section id="ela-journey" class="ela-sec ela-sec-light">
+  <div class="ela-ctr ela-pad">
+    <div class="ela-sec-hd">
+      <div class="ela-eyebrow"><i class="fa-solid fa-route"></i> The 90-Day Journey</div>
+      <h2 class="ela-h1">Three Phases.<br><em>One Transformation.</em></h2>
+      <p class="ela-body-txt">Each phase has a distinct mandate, a set of non-negotiable activities, and a measurable shift in your leadership posture.</p>
+    </div>
+    <div class="ela-phases">
+      <div class="ela-phase"><div class="ela-ph-badge">Phase 01</div><div class="ela-ph-daytag">Days 1 – 30</div><div class="ela-ph-name">Establish</div><div class="ela-ph-focus">Land with Authority</div><ul class="ela-ph-ul"><li>Complete stakeholder mapping &amp; listening tour</li><li>Decode organizational culture &amp; power dynamics</li><li>Surface quick wins to build early credibility</li><li>Define your leadership brand at the new level</li><li>Establish presence in critical leadership forums</li></ul></div>
+      <div class="ela-phase"><div class="ela-ph-badge">Phase 02</div><div class="ela-ph-daytag">Days 31 – 60</div><div class="ela-ph-name">Align</div><div class="ela-ph-focus">Build Strategic Momentum</div><ul class="ela-ph-ul"><li>Co-create team performance agreements</li><li>Launch coaching cadence with direct reports</li><li>Activate cross-functional influence agenda</li><li>Communicate a compelling 90-day narrative</li><li>Identify high-potential talent and build trust</li></ul></div>
+      <div class="ela-phase"><div class="ela-ph-badge">Phase 03</div><div class="ela-ph-daytag">Days 61 – 90</div><div class="ela-ph-name">Accelerate</div><div class="ela-ph-focus">Drive Visible Results</div><ul class="ela-ph-ul"><li>Deliver on first milestone commitments</li><li>Institutionalize team rhythm &amp; operating cadence</li><li>Present your strategic agenda to senior leaders</li><li>Cement authority as a thought leader in your domain</li><li>Build feedback loops for continuous performance</li></ul></div>
+    </div>
+    <div class="ela-eyebrow" style="margin-bottom:20px"><i class="fa-solid fa-calendar-days"></i> Week-by-Week Milestone Map</div>
+    <div class="ela-ms-grid">
+      <div class="ela-ms"><span class="ela-ms-wk">Wk 1</span><span class="ela-ms-tx">Orientation complete · Stakeholder Map drafted</span></div>
+      <div class="ela-ms"><span class="ela-ms-wk">Wk 2</span><span class="ela-ms-tx">Listening Tour launched · Leadership Identity Canvas signed</span></div>
+      <div class="ela-ms"><span class="ela-ms-wk">Wk 3–4</span><span class="ela-ms-tx">Influence Map activated · First credibility moments delivered</span></div>
+      <div class="ela-ms"><span class="ela-ms-wk">Wk 5–6</span><span class="ela-ms-tx">Coaching agreements with direct reports established</span></div>
+      <div class="ela-ms"><span class="ela-ms-wk">Wk 7–8</span><span class="ela-ms-tx">Team Operating Cadence launched · OKR Cascade shared</span></div>
+      <div class="ela-ms"><span class="ela-ms-wk">Wk 9–10</span><span class="ela-ms-tx">Authority platform built · Strategic visibility amplified</span></div>
+      <div class="ela-ms"><span class="ela-ms-wk">Wk 11–12</span><span class="ela-ms-tx">90-Day Review · Impact Narrative presented to senior leaders</span></div>
+      <div class="ela-ms"><span class="ela-ms-wk">Wk 13</span><span class="ela-ms-tx">6–12 Month Strategic Agenda locked · Development Charter signed</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MODULES (dark)
+═══════════════════════════════════════ -->
+<section id="ela-modules" class="ela-sec ela-sec-dark">
+  <div class="ela-ctr ela-pad">
+    <div class="ela-sec-hd">
+      <div class="ela-eyebrow"><i class="fa-solid fa-book-open"></i> Curriculum</div>
+      <h2 class="ela-h1">Seven Modules.<br><em>Seven Transformations.</em></h2>
+      <p class="ela-body-txt">Each module is a complete learning sprint: a live session, a field assignment, and tools you deploy in your real leadership environment before the next session begins. Click to expand.</p>
+    </div>
+    <div class="ela-mod-stack">
+      <div class="ela-mod" id="em0"><div class="ela-mod-head" onclick="elaTogMod(0)"><span class="ela-mod-code">M01</span><div><div class="ela-mod-title">The Transition Mandate</div><div class="ela-mod-sub">Making the identity shift from peer to leader</div></div><span class="ela-mod-tag">Days 1–10</span><i class="fa-solid fa-chevron-down ela-mod-chv"></i></div><div class="ela-mod-body"><div class="ela-mod-inner"><div><div class="ela-mb-lbl"><i class="fa-solid fa-list" style="margin-right:6px"></i>Session Topics</div><ul class="ela-mb-ul"><li>The leadership identity gap — why competence is not enough</li><li>The 4 cardinal mistakes leaders make in the first 90 days</li><li>Letting go of your old role: the "brilliant contributor" trap</li><li>Designing your leadership presence from day one</li><li>Clarity of role, scope, and stakeholder expectations</li></ul></div><div><div class="ela-mb-lbl"><i class="fa-solid fa-toolbox" style="margin-right:6px"></i>Tools &amp; Templates</div><ul class="ela-mb-ul"><li>Leadership Identity Canvas</li><li>Transition Risk Assessment</li><li>30-60-90 Intent Planner</li><li>Stakeholder Expectations Interview Guide</li></ul><div class="ela-otags"><span class="ela-otag">Clarity</span><span class="ela-otag">Presence</span><span class="ela-otag">Role Alignment</span></div></div></div></div></div>
+      <div class="ela-mod" id="em1"><div class="ela-mod-head" onclick="elaTogMod(1)"><span class="ela-mod-code">M02</span><div><div class="ela-mod-title">Credibility Architecture</div><div class="ela-mod-sub">Building trust before you have a track record</div></div><span class="ela-mod-tag">Days 1–20</span><i class="fa-solid fa-chevron-down ela-mod-chv"></i></div><div class="ela-mod-body"><div class="ela-mod-inner"><div><div class="ela-mb-lbl"><i class="fa-solid fa-list" style="margin-right:6px"></i>Session Topics</div><ul class="ela-mb-ul"><li>The 3 pillars of executive credibility: character, competence, consistency</li><li>Listening tours and stakeholder mapping methodology</li><li>How to ask powerful questions that signal leadership</li><li>First impressions at scale: town halls, all-hands, and 1:1s</li><li>Navigating skeptics, champions, and fence-sitters</li></ul></div><div><div class="ela-mb-lbl"><i class="fa-solid fa-toolbox" style="margin-right:6px"></i>Tools &amp; Templates</div><ul class="ela-mb-ul"><li>Stakeholder Influence Map</li><li>Listening Tour Protocol (15 questions)</li><li>Credibility Audit Scorecard</li><li>Champion Network Builder</li></ul><div class="ela-otags"><span class="ela-otag">Trust</span><span class="ela-otag">Visibility</span><span class="ela-otag">Influence Map</span></div></div></div></div></div>
+      <div class="ela-mod" id="em2"><div class="ela-mod-head" onclick="elaTogMod(2)"><span class="ela-mod-code">M03</span><div><div class="ela-mod-title">Stakeholder Influence Mastery</div><div class="ela-mod-sub">Engineering alignment without formal authority</div></div><span class="ela-mod-tag">Days 10–40</span><i class="fa-solid fa-chevron-down ela-mod-chv"></i></div><div class="ela-mod-body"><div class="ela-mod-inner"><div><div class="ela-mb-lbl"><i class="fa-solid fa-list" style="margin-right:6px"></i>Session Topics</div><ul class="ela-mb-ul"><li>Power mapping: formal vs. informal influence networks</li><li>The 5 influence currencies: expertise, reciprocity, vision, access, respect</li><li>Executive communication: adapting to boardroom, C-suite, and frontline</li><li>Managing upward: aligning your boss to your agenda</li><li>Coalition building and navigating organizational politics</li></ul></div><div><div class="ela-mb-lbl"><i class="fa-solid fa-toolbox" style="margin-right:6px"></i>Tools &amp; Templates</div><ul class="ela-mb-ul"><li>Influence Currency Matrix</li><li>Executive Communication Framework</li><li>Upward Management Playbook</li><li>Coalition-Building Sprint Plan</li></ul><div class="ela-otags"><span class="ela-otag">Alignment</span><span class="ela-otag">Boardroom Presence</span><span class="ela-otag">Political Intelligence</span></div></div></div></div></div>
+      <div class="ela-mod" id="em3"><div class="ela-mod-head" onclick="elaTogMod(3)"><span class="ela-mod-code">M04</span><div><div class="ela-mod-title">Authority by Design</div><div class="ela-mod-sub">Becoming the recognized expert in the room</div></div><span class="ela-mod-tag">Days 20–50</span><i class="fa-solid fa-chevron-down ela-mod-chv"></i></div><div class="ela-mod-body"><div class="ela-mod-inner"><div><div class="ela-mb-lbl"><i class="fa-solid fa-list" style="margin-right:6px"></i>Session Topics</div><ul class="ela-mb-ul"><li>The authority equation: narrative + evidence + consistency</li><li>Thought leadership within your domain and organization</li><li>Strategic visibility: speaking up in high-stakes meetings</li><li>Building your personal board of directors</li><li>Executive storytelling: making your perspective memorable</li></ul></div><div><div class="ela-mb-lbl"><i class="fa-solid fa-toolbox" style="margin-right:6px"></i>Tools &amp; Templates</div><ul class="ela-mb-ul"><li>Authority Statement Builder</li><li>Executive Storytelling Framework (Problem–Stakes–Path–Proof)</li><li>Meeting Influence Playbook</li><li>Personal Board of Directors Design</li></ul><div class="ela-otags"><span class="ela-otag">Domain Authority</span><span class="ela-otag">Thought Leadership</span><span class="ela-otag">Reputation</span></div></div></div></div></div>
+      <div class="ela-mod" id="em4"><div class="ela-mod-head" onclick="elaTogMod(4)"><span class="ela-mod-code">M05</span><div><div class="ela-mod-title">Coaching for Performance</div><div class="ela-mod-sub">Unlocking the potential in every direct report</div></div><span class="ela-mod-tag">Days 30–60</span><i class="fa-solid fa-chevron-down ela-mod-chv"></i></div><div class="ela-mod-body"><div class="ela-mod-inner"><div><div class="ela-mb-lbl"><i class="fa-solid fa-list" style="margin-right:6px"></i>Session Topics</div><ul class="ela-mb-ul"><li>The leader-as-coach operating model</li><li>The GROW + Accountability Bridge coaching model</li><li>Diagnosing performance: skill gap vs. will gap vs. system gap</li><li>Feedback conversations that create commitment, not compliance</li><li>Developing high-potentials and managing underperformers</li></ul></div><div><div class="ela-mb-lbl"><i class="fa-solid fa-toolbox" style="margin-right:6px"></i>Tools &amp; Templates</div><ul class="ela-mb-ul"><li>GROW Coaching Template</li><li>Performance Diagnosis Matrix</li><li>Feedback Conversation Planner (SBI+ Model)</li><li>Individual Development Plan (IDP) Template</li></ul><div class="ela-otags"><span class="ela-otag">Coaching Confidence</span><span class="ela-otag">Performance Clarity</span><span class="ela-otag">Talent Development</span></div></div></div></div></div>
+      <div class="ela-mod" id="em5"><div class="ela-mod-head" onclick="elaTogMod(5)"><span class="ela-mod-code">M06</span><div><div class="ela-mod-title">High-Performance Team Cadence</div><div class="ela-mod-sub">Building the rhythm that sustains results</div></div><span class="ela-mod-tag">Days 40–70</span><i class="fa-solid fa-chevron-down ela-mod-chv"></i></div><div class="ela-mod-body"><div class="ela-mod-inner"><div><div class="ela-mb-lbl"><i class="fa-solid fa-list" style="margin-right:6px"></i>Session Topics</div><ul class="ela-mb-ul"><li>Designing your team operating system: meetings, rituals, accountability structures</li><li>The 4 elements of psychological safety at the leadership level</li><li>Goal architecture: connecting OKRs to daily behavior</li><li>Velocity check-ins: weekly rhythm for course correction</li><li>Building a culture of direct communication and healthy conflict</li></ul></div><div><div class="ela-mb-lbl"><i class="fa-solid fa-toolbox" style="margin-right:6px"></i>Tools &amp; Templates</div><ul class="ela-mb-ul"><li>Team Operating Cadence Blueprint</li><li>Meeting Architecture Design (Weekly / Monthly / Quarterly)</li><li>Team Agreement Canvas</li><li>OKR-to-Action Cascade Template</li></ul><div class="ela-otags"><span class="ela-otag">Team Velocity</span><span class="ela-otag">Operating Rhythm</span><span class="ela-otag">Accountability Culture</span></div></div></div></div></div>
+      <div class="ela-mod" id="em6"><div class="ela-mod-head" onclick="elaTogMod(6)"><span class="ela-mod-code">M07</span><div><div class="ela-mod-title">The 90-Day Review &amp; Ongoing Strategy</div><div class="ela-mod-sub">Closing the sprint and accelerating beyond</div></div><span class="ela-mod-tag">Days 75–90</span><i class="fa-solid fa-chevron-down ela-mod-chv"></i></div><div class="ela-mod-body"><div class="ela-mod-inner"><div><div class="ela-mb-lbl"><i class="fa-solid fa-list" style="margin-right:6px"></i>Session Topics</div><ul class="ela-mb-ul"><li>Conducting your own 90-day after-action review</li><li>Presenting your leadership impact narrative to senior stakeholders</li><li>Setting the 6–12 month strategic agenda</li><li>Identifying blind spots and designing your leadership development plan</li><li>Sustaining momentum: habits of perpetual leadership growth</li></ul></div><div><div class="ela-mb-lbl"><i class="fa-solid fa-toolbox" style="margin-right:6px"></i>Tools &amp; Templates</div><ul class="ela-mb-ul"><li>90-Day Reflection Protocol</li><li>Senior Stakeholder Impact Presentation Template</li><li>6–12 Month Strategic Intent Map</li><li>Personal Leadership Development Charter</li></ul><div class="ela-otags"><span class="ela-otag">Measured Impact</span><span class="ela-otag">Forward Agenda</span><span class="ela-otag">Leadership Legacy</span></div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     DELIVERY (light)
+═══════════════════════════════════════ -->
+<section id="ela-delivery" class="ela-sec ela-sec-light">
+  <div class="ela-ctr ela-pad">
+    <div class="ela-sec-hd">
+      <div class="ela-eyebrow"><i class="fa-solid fa-diagram-project"></i> Program Architecture</div>
+      <h2 class="ela-h1">How the ELA™<br><em>Is Delivered</em></h2>
+      <p class="ela-body-txt">A seamless blend of live cohort learning, private coaching, and peer accountability — every element bridging insight with real-world leadership impact.</p>
+    </div>
+    <div class="ela-del-grid">
+      <div class="ela-del-card"><div class="ela-del-ico"><i class="fa-solid fa-video"></i></div><div class="ela-del-title">Live Cohort Sessions</div><div class="ela-del-desc">7 facilitated modules delivered bi-weekly via live video. Cohort capped at 18 for high-engagement dialogue and personalized interaction with every participant.</div></div>
+      <div class="ela-del-card"><div class="ela-del-ico"><i class="fa-solid fa-user-tie"></i></div><div class="ela-del-title">1:1 Executive Coaching</div><div class="ela-del-desc">3 private coaching sessions per participant — at Days 10, 45, and 85 — anchored to real-time transition challenges and personal leadership goals.</div></div>
+      <div class="ela-del-card"><div class="ela-del-ico"><i class="fa-solid fa-flask"></i></div><div class="ela-del-title">Field Assignments</div><div class="ela-del-desc">Between-session action labs applying each module directly to your real stakeholder environment. You arrive at each session with live work already done.</div></div>
+      <div class="ela-del-card"><div class="ela-del-ico"><i class="fa-solid fa-people-group"></i></div><div class="ela-del-title">Peer Accountability Pods</div><div class="ela-del-desc">Triads meeting weekly for 30-minute structured peer coaching using the GROW model. Accountability, challenge, and insight from true equals.</div></div>
+      <div class="ela-del-card"><div class="ela-del-ico"><i class="fa-solid fa-book-open-reader"></i></div><div class="ela-del-title">Digital Playbook Access</div><div class="ela-del-desc">All 28+ frameworks, templates, and tools in a branded digital workbook — yours to keep and apply long after Day 90.</div></div>
+      <div class="ela-del-card"><div class="ela-del-ico"><i class="fa-solid fa-trophy"></i></div><div class="ela-del-title">90-Day Review Ceremony</div><div class="ela-del-desc">Final group session where participants present their leadership impact narrative and receive structured feedback from peers and faculty.</div></div>
+    </div>
+    <div class="ela-eyebrow" style="margin-bottom:20px"><i class="fa-regular fa-clock"></i> Participant Time Commitment</div>
+    <div class="ela-tt">
+      <div class="ela-tt-row"><div class="ela-tt-l">Live Cohort Sessions</div><div class="ela-tt-r">7 sessions × 3 hours = 21 hours live learning</div></div>
+      <div class="ela-tt-row"><div class="ela-tt-l">1:1 Executive Coaching</div><div class="ela-tt-r">3 sessions × 90 minutes = 4.5 hours private coaching</div></div>
+      <div class="ela-tt-row"><div class="ela-tt-l">Peer Pod Meetings</div><div class="ela-tt-r">12 weeks × 30 minutes = 6 hours peer accountability</div></div>
+      <div class="ela-tt-row"><div class="ela-tt-l">Field Assignments</div><div class="ela-tt-r">7 modules × ~2.5 hours fieldwork = ~18 hours applied practice</div></div>
+      <div class="ela-tt-row"><div class="ela-tt-l">Self-Study &amp; Reflection</div><div class="ela-tt-r">~1 hour/week × 13 weeks = 13 hours personal development</div></div>
+      <div class="ela-tt-row tot"><div class="ela-tt-l">Total Commitment</div><div class="ela-tt-r">~63 hours over 90 days · Under 5 hours per week</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     OUTCOMES (dark)
+═══════════════════════════════════════ -->
+<section id="ela-outcomes" class="ela-sec ela-sec-dark">
+  <div class="ela-ctr ela-pad">
+    <div class="ela-sec-hd">
+      <div class="ela-eyebrow"><i class="fa-solid fa-chart-line"></i> Program Outcomes</div>
+      <h2 class="ela-h1">What You Walk Away With</h2>
+      <p class="ela-body-txt">Graduates leave with more than frameworks — a transformed leadership posture, an activated stakeholder network, and a team operating at a higher level of performance.</p>
+    </div>
+    <div class="ela-out-grid">
+      <div>
+        <div class="ela-out-hd"><i class="fa-solid fa-user" style="color:#C9A040;font-size:18px"></i> For Participants</div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">A structured authority-building strategy activated from day one in your new role</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">A fully mapped and activated stakeholder influence network ready to deploy</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">Confidence to communicate with clarity and presence at the executive level</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">A coaching relationship established with every direct report in your team</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">A sustainable, high-performance team operating cadence that runs without you</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">A personal board of directors and thought leadership foundation in your domain</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">Measurable results delivered and narrated to senior stakeholders in 90 days</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">A 6–12 month strategic agenda and personal leadership development charter</span></div>
+      </div>
+      <div>
+        <div class="ela-out-hd"><i class="fa-solid fa-building" style="color:#C9A040;font-size:18px"></i> For Organizations</div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">Faster time-to-productivity for newly promoted and incoming senior leaders</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">Significantly reduced first-year executive attrition and transition failure rates</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">A stronger internal succession pipeline and leadership bench strength</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">Higher team engagement scores under participating leaders within 90 days</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">Improved cross-functional collaboration, alignment, and strategic momentum</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">A measurable culture of coaching, feedback, and performance across teams</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">Senior leadership confidence in the organization's next generation of leaders</span></div>
+        <div class="ela-out-item"><span class="ela-out-chk"><i class="fa-solid fa-diamond"></i></span><span class="ela-out-txt">Accelerated execution of strategic priorities across business units</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOR WHO (light)
+═══════════════════════════════════════ -->
+<section id="ela-who" class="ela-sec ela-sec-light">
+  <div class="ela-ctr ela-pad">
+    <div class="ela-sec-hd">
+      <div class="ela-eyebrow"><i class="fa-solid fa-crosshairs"></i> Who This Is For</div>
+      <h2 class="ela-h1">Built for Leaders at the<br><em>Inflection Point</em></h2>
+    </div>
+    <div class="ela-who-grid">
+      <div class="ela-who-list">
+        <div class="ela-who-item"><div class="ela-gold-bar"></div><div class="ela-who-inner"><div class="ela-who-ico"><i class="fa-solid fa-arrow-up"></i></div><div class="ela-who-tx">First-time Directors, VPs, or C-suite leaders stepping into expanded scope and responsibility</div></div></div>
+        <div class="ela-who-item"><div class="ela-gold-bar"></div><div class="ela-who-inner"><div class="ela-who-ico"><i class="fa-solid fa-sitemap"></i></div><div class="ela-who-tx">Mid-level managers promoted into cross-functional or P&amp;L leadership roles</div></div></div>
+        <div class="ela-who-item"><div class="ela-gold-bar"></div><div class="ela-who-inner"><div class="ela-who-ico"><i class="fa-solid fa-person-walking-arrow-right"></i></div><div class="ela-who-tx">Leaders transitioning from individual contributor to people leader and team manager</div></div></div>
+        <div class="ela-who-item"><div class="ela-gold-bar"></div><div class="ela-who-inner"><div class="ela-who-ico"><i class="fa-solid fa-plane-arrival"></i></div><div class="ela-who-tx">Executives joining a new organization at a senior level with a legacy to build</div></div></div>
+        <div class="ela-who-item"><div class="ela-gold-bar"></div><div class="ela-who-inner"><div class="ela-who-ico"><i class="fa-solid fa-bolt"></i></div><div class="ela-who-tx">High-potential leaders in accelerated leadership pipelines and succession programs</div></div></div>
+      </div>
+      <div class="ela-faculty-card">
+        <div style="margin-bottom:20px">
+          <div class="wm wm--card" style="width:240px">
+            <span class="wm-line">SUCCESS</span>
+            <span class="wm-line">ACADEMY</span>
+            <span class="wm-rule"></span>
+            <span class="wm-sub">Learning&nbsp;Solutions</span>
+          </div>
+        </div>
+        <hr class="ela-fac-rule">
+        <div class="ela-fac-role"><i class="fa-solid fa-circle-dot" style="margin-right:6px"></i>Program Faculty &amp; Curriculum Design</div>
+        <div class="ela-fac-bio">The Executive Leadership Accelerator™ is designed and delivered by Success Academy Learning Solutions — a premium leadership development institution dedicated to equipping the next generation of high-performance leaders across the Philippines, ASEAN, and beyond. Faculty brings 20+ years of real-world executive experience across FMCG, healthcare, technology, and conglomerates.</div>
+        <div class="ela-fac-creds">
+          <div class="ela-fc"><i class="fa-solid fa-check-circle"></i> 30,000+ leaders coached globally across industries</div>
+          <div class="ela-fc"><i class="fa-solid fa-check-circle"></i> Deployed across Philippines, Malaysia, and ASEAN</div>
+          <div class="ela-fc"><i class="fa-solid fa-check-circle"></i> Frameworks tested in Fortune 500 and high-growth environments</div>
+          <div class="ela-fc"><i class="fa-solid fa-check-circle"></i> Cohort model continuously refined across program generations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA (dark)
+═══════════════════════════════════════ -->
+<section id="ela-cta">
+  <div class="ela-cta-inner">
+    <div class="ela-cta-eyebrow"><span class="ela-pulse"></span> Applications Now Open</div>
+    <h2 class="ela-cta-title">Your First 90 Days<br>Define the Next<br><em>3 Years.</em></h2>
+    <hr class="ela-cta-rule">
+    <p class="ela-cta-sub">Join the next cohort of the Executive Leadership Accelerator™ and enter your new role with a strategy, an activated network, and the authority to lead at the level you were built for.</p>
+    <form class="ela-cta-form" onsubmit="elaHandleSub(event)">
+      <input class="ela-cta-email" type="email" placeholder="Enter your email address" required>
+      <button class="ela-cta-submit" type="submit"><i class="fa-solid fa-paper-plane" style="margin-right:8px"></i>Reserve a Seat</button>
+    </form>
+    <p class="ela-cta-note"><i class="fa-solid fa-lock" style="margin-right:6px"></i>We respect your privacy. No spam, ever.</p>
+    <div class="ela-or"><span>or reach us directly</span></div>
+    <div class="ela-cta-btns">
+      <a href="/cdn-cgi/l/email-protection#315e57575852545e5745595452545e7154495e504258501f5e4356" class="ela-btn-ghost" style="font-size:10px"><i class="fa-solid fa-envelope"></i> <span class="__cf_email__" data-cfemail="0b646d6d62686e646d7f636e686e644b6e73646a78626a2564796c">[email&#160;protected]</span></a>
+      <a href="tel:+639175052409" class="ela-btn-ghost" style="font-size:10px"><i class="fa-solid fa-phone"></i> +63 917 505 2409</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer id="ela-footer">
+  <div class="ela-foot-inner">
+    <div>
+      <div class="wm wm--foot" style="width:196px">
+        <span class="wm-line">SUCCESS</span>
+        <span class="wm-line">ACADEMY</span>
+        <span class="wm-rule"></span>
+        <span class="wm-sub">Learning&nbsp;Solutions</span>
+      </div>
+      <hr class="ela-foot-rule">
+      <div class="ela-foot-desc">A flagship leadership development program for leaders transitioning to the next level. Designed to build credibility, influence, coaching capacity, and high-performance team cadence in the first 90 days.</div>
+      <div class="ela-foot-tagline">"Where Success Becomes a Discipline."</div>
+      <div style="margin-top:16px">
+        <div class="ela-foot-hd">An Exoasia Innovation Hub Company</div>
+        <div style="font-size:12px;color:#D6D6EC">Philippines &amp; Malaysia · <a href="https://www.exoasia.org" target="_blank" style="color:#C9A040;text-decoration:none">www.exoasia.org</a></div>
+      </div>
+    </div>
+    <div>
+      <div class="ela-foot-hd">Program Sections</div>
+      <ul class="ela-foot-ul">
+        <li><a href="#ela-what"><i class="fa-solid fa-chevron-right"></i>About the Program</a></li>
+        <li><a href="#ela-journey"><i class="fa-solid fa-chevron-right"></i>90-Day Journey</a></li>
+        <li><a href="#ela-modules"><i class="fa-solid fa-chevron-right"></i>Curriculum Modules</a></li>
+        <li><a href="#ela-delivery"><i class="fa-solid fa-chevron-right"></i>Delivery Format</a></li>
+        <li><a href="#ela-outcomes"><i class="fa-solid fa-chevron-right"></i>Outcomes</a></li>
+        <li><a href="#ela-who"><i class="fa-solid fa-chevron-right"></i>Who It's For</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ela-foot-hd">Contact &amp; Enquiries</div>
+      <ul class="ela-foot-ul">
+        <li><a href="/cdn-cgi/l/email-protection#3a555c5c53595f555c4e525f595f557a5f42555b49535b1455485d"><i class="fa-solid fa-envelope"></i><span class="__cf_email__" data-cfemail="fc939a9a959f99939a8894999f9993bc9984939d8f959dd2938e9b">[email&#160;protected]</span></a></li>
+        <li><a href="tel:+639175052409"><i class="fa-solid fa-phone"></i>+63 917 505 2409</a></li>
+        <li><a href="https://www.exoasia.org" target="_blank"><i class="fa-solid fa-globe"></i>www.exoasia.org</a></li>
+        <li><a href="#ela-cta"><i class="fa-solid fa-calendar-check"></i>Reserve a Seat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ela-foot-btm">
+    <div class="ela-foot-copy">© 2026 Success Academy Learning Solutions · An Exoasia Innovation Hub Company · Makati City, Philippines · All rights reserved. Executive Leadership Accelerator™ is a proprietary program.</div>
+    <div class="ela-foot-copy"><a href="#ela-hero">Back to top <i class="fa-solid fa-arrow-up" style="font-size:10px"></i></a></div>
+  </div>
+</footer>
+
+<!-- back to top -->
+<a href="#ela-hero" id="ela-btt" title="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+<!-- ════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function () {
+  'use strict';
+
+  /* ── NAV ── */
+  var nav = document.getElementById('ela-nav');
+  var btt = document.getElementById('ela-btt');
+  window.addEventListener('scroll', function () {
+    var s = window.scrollY;
+    if (nav) nav.classList.toggle('scrolled', s > 60);
+    if (btt) btt.classList.toggle('show', s > 500);
+  });
+
+  /* ── MOBILE MENU ── */
+  var mOpen = false;
+  var hamBtn = document.getElementById('ela-ham-btn');
+  if (hamBtn) {
+    hamBtn.addEventListener('click', function () {
+      mOpen = !mOpen;
+      var mob = document.getElementById('ela-mob');
+      if (mob) mob.classList.toggle('open', mOpen);
+      hamBtn.innerHTML = mOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+  }
+  window.elaMobClose = function () {
+    mOpen = false;
+    var mob = document.getElementById('ela-mob');
+    if (mob) mob.classList.remove('open');
+    var h = document.getElementById('ela-ham-btn');
+    if (h) h.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  };
+
+  /* ── MODULE ACCORDION ── */
+  window.elaTogMod = function (i) {
+    var el = document.getElementById('em' + i);
+    if (!el) return;
+    var wasOpen = el.classList.contains('open');
+    var all = document.querySelectorAll('.ela-mod');
+    for (var j = 0; j < all.length; j++) all[j].classList.remove('open');
+    if (!wasOpen) el.classList.add('open');
+  };
+
+  /* ── CTA FORM ── */
+  window.elaHandleSub = function (e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('.ela-cta-submit');
+    if (!btn) return;
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-check" style="margin-right:8px"></i>Received!';
+    btn.style.background = '#1B3A5C';
+    btn.style.color = '#C9A040';
+    setTimeout(function () {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+      e.target.reset();
+    }, 3200);
+  };
+
+  /* ── CURSOR ── */
+  var curDot  = document.getElementById('ela-cursor');
+  var curRing = document.getElementById('ela-cursor-ring');
+  var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+  var rx = cx, ry = cy;
+
+  /* detect touch — hide cursor on touch devices */
+  window.addEventListener('touchstart', function () {
+    document.body.classList.add('no-cursor');
+  }, { once: true, passive: true });
+
+  document.addEventListener('mousemove', function (e) {
+    cx = e.clientX; cy = e.clientY;
+    if (curDot) { curDot.style.left = cx + 'px'; curDot.style.top = cy + 'px'; }
+  });
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function updateRing() {
+    rx = lerp(rx, cx, 0.12);
+    ry = lerp(ry, cy, 0.12);
+    if (curRing) { curRing.style.left = rx + 'px'; curRing.style.top = ry + 'px'; }
+    requestAnimationFrame(updateRing);
+  }
+  updateRing();
+
+  /* cursor hover effect on interactive elements */
+  document.querySelectorAll('a, button, .ela-btn, .ela-btn-ghost, .ela-mod-head, .ela-pst, .ela-del-card, .ela-who-item, .ela-phase').forEach(function (el) {
+    el.addEventListener('mouseenter', function () {
+      if (curDot)  { curDot.style.width  = '14px'; curDot.style.height  = '14px'; }
+      if (curRing) { curRing.style.width = '50px'; curRing.style.height = '50px'; }
+    });
+    el.addEventListener('mouseleave', function () {
+      if (curDot)  { curDot.style.width  = '8px'; curDot.style.height  = '8px'; }
+      if (curRing) { curRing.style.width = '36px'; curRing.style.height = '36px'; }
+    });
+  });
+
+  /* cursor click pulse */
+  document.addEventListener('click', function () {
+    if (curDot)  { curDot.style.width  = '20px'; curDot.style.height  = '20px'; }
+    if (curRing) { curRing.style.width = '60px'; curRing.style.height = '60px'; curRing.style.opacity = '0'; }
+    setTimeout(function () {
+      if (curDot)  { curDot.style.width  = '8px';  curDot.style.height  = '8px'; }
+      if (curRing) { curRing.style.width = '36px'; curRing.style.height = '36px'; curRing.style.opacity = '1'; }
+    }, 280);
+  });
+
+  /* ════════════════════════════════════════════
+     THREE.JS — THE THREE RINGS OF ASCENT
+     Contained inside #ela-hero (position:absolute)
+     Mouse tilt only active while hero is in view
+  ════════════════════════════════════════════ */
+  if (typeof THREE === 'undefined') return;
+
+  var canvas  = document.getElementById('ela-hero-canvas');
+  var heroEl  = document.getElementById('ela-hero');
+  if (!canvas || !heroEl) return;
+
+  var W = heroEl.offsetWidth  || window.innerWidth;
+  var H = heroEl.offsetHeight || window.innerHeight;
+
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
+  renderer.setSize(W, H);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x0D1B2A, 1);
+
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0D1B2A);
+  scene.fog = new THREE.FogExp2(0x0D1B2A, 0.0022);
+
+  var camera = new THREE.PerspectiveCamera(56, W / H, 0.5, 3000);
+  camera.position.set(0, 40, 460);
+  camera.lookAt(0, 0, 0);
+
+  var G = new THREE.Group();
+  scene.add(G);
+
+  function rng(a, b) { return a + Math.random() * (b - a); }
+
+  /* ─ Lighting ─ */
+  scene.add(new THREE.AmbientLight(0x0A1520, 1.2));
+  var goldPt = new THREE.PointLight(0xC9A040, 4, 400);
+  goldPt.position.set(0, 0, 60); G.add(goldPt);
+  G.add(Object.assign(new THREE.PointLight(0x1B3A5C, 2.5, 600), { position: new THREE.Vector3(-200, 150, -80) }));
+  G.add(Object.assign(new THREE.PointLight(0x8A6820, 1.8, 500), { position: new THREE.Vector3(150, -100, 120) }));
+
+  /* ─ Stars ─ */
+  var sPos = new Float32Array(900 * 3);
+  for (var i = 0; i < 900; i++) { sPos[i*3]=rng(-1000,1000); sPos[i*3+1]=rng(-700,700); sPos[i*3+2]=rng(-800,-200); }
+  var sGeo = new THREE.BufferGeometry(); sGeo.setAttribute('position', new THREE.BufferAttribute(sPos, 3));
+  scene.add(new THREE.Points(sGeo, new THREE.PointsMaterial({ color:0xE8E4DC, size:0.9, transparent:true, opacity:0.22, sizeAttenuation:true })));
+
+  /* ─ Core ─ */
+  var coreMesh = new THREE.Mesh(new THREE.SphereGeometry(17, 48, 48), new THREE.MeshPhongMaterial({ color:0xC9A040, emissive:0x3A2200, emissiveIntensity:0.55, shininess:140, transparent:true, opacity:0.95 }));
+  G.add(coreMesh);
+  [[24,.10],[36,.05],[54,.025],[78,.012]].forEach(function(p){ G.add(new THREE.Mesh(new THREE.SphereGeometry(p[0],24,24), new THREE.MeshBasicMaterial({ color:0xC9A040, transparent:true, opacity:p[1], blending:THREE.AdditiveBlending, side:THREE.BackSide, depthWrite:false }))); });
+  G.add(new THREE.Mesh(new THREE.SphereGeometry(17,12,12), new THREE.MeshBasicMaterial({ color:0xE8C97A, wireframe:true, transparent:true, opacity:0.08 })));
+
+  /* ─ Rings ─ */
+  function mkRing(R, tb, seg, col, op, em) {
+    return new THREE.Mesh(new THREE.TorusGeometry(R, tb, 10, seg), new THREE.MeshPhongMaterial({ color:col, emissive:em||0x2A1800, emissiveIntensity:0.35, shininess:90, transparent:true, opacity:op }));
+  }
+  function mkGlowRing(R, tb, col, op) {
+    return new THREE.Mesh(new THREE.TorusGeometry(R, tb, 8, 90), new THREE.MeshBasicMaterial({ color:col, transparent:true, opacity:op, blending:THREE.AdditiveBlending, depthWrite:false }));
+  }
+  var ring1=mkRing(70,1.1,180,0xC9A040,0.80); ring1.rotation.z=0.35; G.add(ring1);
+  var rg1=mkGlowRing(70,4.0,0xE8C97A,0.06); rg1.rotation.z=0.35; G.add(rg1);
+  var ring2=mkRing(115,0.85,180,0xC9A040,0.60); ring2.rotation.x=0.22; G.add(ring2);
+  var rg2=mkGlowRing(115,3.5,0xE8C97A,0.045); rg2.rotation.x=0.22; G.add(rg2);
+  var ring3=mkRing(168,0.65,180,0xC9A040,0.42); ring3.rotation.x=-0.15; ring3.rotation.z=0.28; G.add(ring3);
+  var rg3=mkGlowRing(168,3.0,0xE8C97A,0.030); rg3.rotation.x=-0.15; rg3.rotation.z=0.28; G.add(rg3);
+
+  /* ─ Nodes ─ */
+  var nMatR = new THREE.MeshPhongMaterial({ color:0xC9A040, emissive:0x2A1800, emissiveIntensity:0.3, shininess:80 });
+  var nMatH = new THREE.MeshPhongMaterial({ color:0xF0D98A, emissive:0x4A2E00, emissiveIntensity:0.65, shininess:130 });
+  var nodes = [];
+  function addNodes(count, oR, yA, sp) {
+    for (var j=0; j<count; j++) {
+      var isH=(j%Math.ceil(count/3)===0); var sz=isH?rng(3,4.5):rng(1.4,2.6);
+      var m=new THREE.Mesh(new THREE.SphereGeometry(sz,12,12), isH?nMatH.clone():nMatR.clone());
+      m.userData={ baseAngle:(j/count)*Math.PI*2, phase:rng(0,Math.PI*2), radius:oR, yAmpl:yA, speed:sp*rng(.85,1.15), isHub:isH };
+      G.add(m); nodes.push(m);
+    }
+  }
+  addNodes(11,70,10,0.14); addNodes(14,115,8,0.09); addNodes(17,168,6,0.06);
+
+  var hubRings=[];
+  nodes.forEach(function(n){ if(!n.userData.isHub)return; var r=n.geometry.parameters.radius; var hr=new THREE.Mesh(new THREE.RingGeometry(r*2,r*2.7,32),new THREE.MeshBasicMaterial({color:0xC9A040,transparent:true,opacity:.14,side:THREE.DoubleSide,depthWrite:false})); G.add(hr); hubRings.push({mesh:hr,node:n}); });
+
+  /* ─ Lines ─ */
+  var ML=400;
+  function mkLS(col,op){ var a=new Float32Array(ML*2*3); var g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(a,3)); g.setDrawRange(0,0); var s=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:col,transparent:true,opacity:op,depthWrite:false})); G.add(s); return{arr:a,geo:g}; }
+  var lR=mkLS(0xC9A040,.09), lH=mkLS(0xE8C97A,.26);
+  function rebuildLines(){ var ir=0,ih=0; for(var a=0;a<nodes.length;a++){for(var b=a+1;b<nodes.length;b++){var dx=nodes[a].position.x-nodes[b].position.x,dy=nodes[a].position.y-nodes[b].position.y,dz=nodes[a].position.z-nodes[b].position.z,d=Math.sqrt(dx*dx+dy*dy+dz*dz),isH=nodes[a].userData.isHub||nodes[b].userData.isHub,thr=isH?118:82; if(d<thr){if(isH&&ih<ML){var o=ih*6;lH.arr[o]=nodes[a].position.x;lH.arr[o+1]=nodes[a].position.y;lH.arr[o+2]=nodes[a].position.z;lH.arr[o+3]=nodes[b].position.x;lH.arr[o+4]=nodes[b].position.y;lH.arr[o+5]=nodes[b].position.z;ih++;}else if(!isH&&ir<ML){var o=ir*6;lR.arr[o]=nodes[a].position.x;lR.arr[o+1]=nodes[a].position.y;lR.arr[o+2]=nodes[a].position.z;lR.arr[o+3]=nodes[b].position.x;lR.arr[o+4]=nodes[b].position.y;lR.arr[o+5]=nodes[b].position.z;ir++;}}}} lR.geo.attributes.position.needsUpdate=true;lR.geo.setDrawRange(0,ir*2); lH.geo.attributes.position.needsUpdate=true;lH.geo.setDrawRange(0,ih*2); }
+
+  /* ─ Particles ─ */
+  var PC=320, pPos=new Float32Array(PC*3), pSpd=new Float32Array(PC);
+  for(var i=0;i<PC;i++){pPos[i*3]=rng(-350,350);pPos[i*3+1]=rng(-300,300);pPos[i*3+2]=rng(-280,120);pSpd[i]=rng(.10,.28);}
+  var pGeo=new THREE.BufferGeometry(); pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+  G.add(new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xC9A040,size:1.5,transparent:true,opacity:.30,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true})));
+
+  /* ─ Ripples ─ */
+  var ripples=[];
+  function spawnRipple(ex,ey){ for(var k=0;k<3;k++){var rp=new THREE.Mesh(new THREE.RingGeometry(.5,1,64),new THREE.MeshBasicMaterial({color:0xC9A040,transparent:true,opacity:.5-k*.12,side:THREE.DoubleSide,depthWrite:false})); rp.rotation.x=Math.PI*.5; G.add(rp); ripples.push({mesh:rp,life:1.0,speed:1.4+k*.6,delay:k*.28,scale:0});} var fl=document.getElementById('ela-rflash'); if(fl){fl.style.setProperty('--rx',(ex/window.innerWidth*100)+'%');fl.style.setProperty('--ry',(ey/window.innerHeight*100)+'%');fl.classList.add('active');setTimeout(function(){fl.classList.remove('active');},180);} }
+
+  /* ripple only in hero zone */
+  heroEl.addEventListener('click', function(e){ spawnRipple(e.clientX, e.clientY); });
+  heroEl.addEventListener('touchstart', function(e){ if(e.touches.length) spawnRipple(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
+
+  /* ─ Resize ─ */
+  window.addEventListener('resize', function(){ W=heroEl.offsetWidth||window.innerWidth; H=heroEl.offsetHeight||window.innerHeight; renderer.setSize(W,H); camera.aspect=W/H; camera.updateProjectionMatrix(); });
+
+  /* ─ Mouse tilt — only when hero is visible ─ */
+  var mx=0,my=0,gx=0,gy=0;
+  document.addEventListener('mousemove',function(e){ var heroBottom=heroEl.getBoundingClientRect().bottom; if(heroBottom>0){mx=(e.clientX/window.innerWidth-.5);my=-(e.clientY/window.innerHeight-.5);}else{mx=0;my=0;} });
+
+  /* ─ Animate ─ */
+  var clock=new THREE.Clock(); var fr=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    var t=clock.elapsedTime; clock.getDelta(); fr++;
+    /* stop rendering when hero scrolled far out of view */
+    if(heroEl.getBoundingClientRect().bottom < -100) return;
+
+    ring1.rotation.y+=.0028; rg1.rotation.y=ring1.rotation.y; rg1.rotation.z=ring1.rotation.z;
+    ring2.rotation.x+=.0019; rg2.rotation.x=ring2.rotation.x;
+    ring3.rotation.z+=.0014; rg3.rotation.z=ring3.rotation.z; rg3.rotation.x=ring3.rotation.x;
+
+    coreMesh.rotation.y+=.007; coreMesh.rotation.z+=.003;
+    coreMesh.scale.setScalar(1+Math.sin(t*1.9)*.04);
+    goldPt.intensity=3.2+Math.sin(t*2.3)*.8;
+
+    for(var i=0;i<nodes.length;i++){var nd=nodes[i],ud=nd.userData,a=ud.baseAngle+t*ud.speed; nd.position.x=Math.cos(a)*ud.radius; nd.position.z=Math.sin(a)*ud.radius; nd.position.y=Math.sin(t*.4+ud.phase)*ud.yAmpl; nd.material.emissiveIntensity=.2+Math.sin(t*1.6+ud.phase)*.18;}
+    hubRings.forEach(function(hr){var phs=hr.node.userData.phase+t*.8,sc=1+Math.sin(phs)*.2; hr.mesh.position.copy(hr.node.position); hr.mesh.scale.setScalar(sc); hr.mesh.rotation.y=t*.5+hr.node.userData.phase; hr.mesh.rotation.x=t*.3+hr.node.userData.phase*.5; hr.mesh.material.opacity=.06+Math.sin(phs)*.08;});
+    if(fr%3===0) rebuildLines();
+    for(var i=0;i<PC;i++){pPos[i*3+1]+=pSpd[i];if(pPos[i*3+1]>310){pPos[i*3+1]=-310;pPos[i*3]=rng(-350,350);pPos[i*3+2]=rng(-280,120);}} pGeo.attributes.position.needsUpdate=true;
+    for(var i=ripples.length-1;i>=0;i--){var rp=ripples[i];if(rp.delay>0){rp.delay-=.016;continue;}rp.life-=.020;rp.scale+=rp.speed;rp.mesh.scale.setScalar(rp.scale);rp.mesh.material.opacity=Math.max(0,rp.life*.45);if(rp.life<=0){G.remove(rp.mesh);ripples.splice(i,1);}}
+    gx+=(my*.32-gx)*.04; gy+=(mx*.42-gy)*.04;
+    G.rotation.x=gx; G.rotation.y=gy+t*.016;
+    renderer.render(scene,camera);
+  }
+  animate();
+
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════
+     GLOBAL 3D BG — Leadership Tiers Network
+     Tier 0: individual contributors (dim, small, bottom)
+     Tier 1: direct reports (medium, mid)
+     Tier 2: executive stakeholders (bright, large, top)
+     Cross-tier influence lines. Rising particles. Mouse parallax.
+     Very low opacity — felt, not seen, behind all content.
+═══════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+  if (typeof THREE === 'undefined') return;
+  var bgCanvas = document.getElementById('ela-bg-canvas');
+  if (!bgCanvas) return;
+  var W = window.innerWidth, H = window.innerHeight;
+  var renderer = new THREE.WebGLRenderer({ canvas: bgCanvas, antialias: false, alpha: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setSize(W, H);
+  renderer.setClearColor(0x060E17, 1);   /* solid — canvas IS the page background */
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(60, W / H, 1, 4000);
+  camera.position.set(0, 80, 900);
+  camera.lookAt(0, 0, 0);
+  var BG = new THREE.Group();
+  scene.add(BG);
+  /* Ambient fog gives depth */
+  scene.fog = new THREE.FogExp2(0x060E17, 0.0008);
+  /* Large glowing core — the leader at the centre */
+  var coreSphere = new THREE.Mesh(
+    new THREE.SphereGeometry(28, 32, 32),
+    new THREE.MeshBasicMaterial({ color: 0xC9A040, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false })
+  );
+  BG.add(coreSphere);
+  [[38,.28],[55,.14],[80,.07],[120,.03]].forEach(function(p){
+    BG.add(new THREE.Mesh(new THREE.SphereGeometry(p[0],16,16),new THREE.MeshBasicMaterial({color:0xC9A040,transparent:true,opacity:p[1],blending:THREE.AdditiveBlending,side:THREE.BackSide,depthWrite:false})));
+  });
+  function rng(a,b){return a+Math.random()*(b-a);}
+  function lerp(a,b,t){return a+(b-a)*t;}
+  scene.add(new THREE.AmbientLight(0x0A1015,1.0));
+  var gPt=new THREE.PointLight(0xC9A040,2.5,800);
+  gPt.position.set(0,200,100); BG.add(gPt);
+
+  /* ─ Three tiers ─ */
+  var tiers=[
+    {y:-300,count:40,szMin:1.5,szMax:3.5, col:0x3A5C8A,opBase:0.55,spread:900},   /* tier 0 — contributors, navy-blue */
+    {y:  0, count:24,szMin:3.5,szMax:6.5, col:0xC9A040,opBase:0.75,spread:700},   /* tier 1 — direct reports, gold */
+    {y: 300,count:10,szMin:6.5,szMax:11.0,col:0xE8C97A,opBase:0.90,spread:460}    /* tier 2 — exec stakeholders, bright gold */
+  ];
+  var allNodes=[];
+  tiers.forEach(function(td,ti){
+    for(var j=0;j<td.count;j++){
+      var sz=rng(td.szMin,td.szMax);
+      var mat=new THREE.MeshBasicMaterial({color:td.col,transparent:true,opacity:rng(td.opBase*.6,td.opBase*1.4),blending:THREE.AdditiveBlending,depthWrite:false});
+      var mesh=new THREE.Mesh(new THREE.SphereGeometry(sz,8,8),mat);
+      var x0=rng(-td.spread/2,td.spread/2),z0=rng(-220,80);
+      mesh.position.set(x0,td.y+rng(-30,30),z0);
+      BG.add(mesh);
+      allNodes.push({mesh:mesh,tier:ti,phase:rng(0,Math.PI*2),floatSpd:rng(.3,.7),x0:x0,z0:z0,baseY:td.y+rng(-30,30),baseOp:mat.opacity});
+    }
+  });
+
+  /* ─ Cross-tier connection lines ─ */
+  var MAX_L=260,lineArr=new Float32Array(MAX_L*2*3),lineGeo=new THREE.BufferGeometry();
+  lineGeo.setAttribute('position',new THREE.BufferAttribute(lineArr,3));
+  lineGeo.setDrawRange(0,0);
+  BG.add(new THREE.LineSegments(lineGeo,new THREE.LineBasicMaterial({color:0xC9A040,transparent:true,opacity:0.22,depthWrite:false})));
+  function rebuildLines(){
+    var idx=0;
+    for(var a=0;a<allNodes.length;a++){for(var b=a+1;b<allNodes.length;b++){
+      if(Math.abs(allNodes[a].tier-allNodes[b].tier)!==1) continue;
+      var pa=allNodes[a].mesh.position,pb=allNodes[b].mesh.position;
+      var dx=pa.x-pb.x,dy=pa.y-pb.y,dz=pa.z-pb.z;
+      if(Math.sqrt(dx*dx+dy*dy+dz*dz)<380&&idx<MAX_L){var o=idx*6;lineArr[o]=pa.x;lineArr[o+1]=pa.y;lineArr[o+2]=pa.z;lineArr[o+3]=pb.x;lineArr[o+4]=pb.y;lineArr[o+5]=pb.z;idx++;}
+    }}
+    lineGeo.attributes.position.needsUpdate=true;
+    lineGeo.setDrawRange(0,idx*2);
+  }
+
+  /* ─ Rising particles ─ */
+  var PC=180,pPos=new Float32Array(PC*3),pSpd=new Float32Array(PC);
+  for(var i=0;i<PC;i++){pPos[i*3]=rng(-500,500);pPos[i*3+1]=rng(-280,280);pPos[i*3+2]=rng(-280,80);pSpd[i]=rng(.06,.18);}
+  var pGeo=new THREE.BufferGeometry(); pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+  BG.add(new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xC9A040,size:2.5,transparent:true,opacity:0.35,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true})));
+
+  /* ─ Background stars ─ */
+  var sSp=new Float32Array(600*3);
+  for(var i=0;i<600;i++){sSp[i*3]=rng(-1200,1200);sSp[i*3+1]=rng(-800,800);sSp[i*3+2]=rng(-1200,-300);}
+  var sG=new THREE.BufferGeometry(); sG.setAttribute('position',new THREE.BufferAttribute(sSp,3));
+  BG.add(new THREE.Points(sG,new THREE.PointsMaterial({color:0xE8E4DC,size:1.0,transparent:true,opacity:0.22,sizeAttenuation:true})));
+
+  /* ─ Resize ─ */
+  window.addEventListener('resize',function(){W=window.innerWidth;H=window.innerHeight;renderer.setSize(W,H);camera.aspect=W/H;camera.updateProjectionMatrix();});
+
+  /* ─ Mouse parallax ─ */
+  var pmx=0,pmy=0,pgx=0,pgy=0;
+  document.addEventListener('mousemove',function(e){pmx=(e.clientX/window.innerWidth-.5);pmy=-(e.clientY/window.innerHeight-.5);});
+  document.addEventListener('touchmove',function(e){if(!e.touches.length)return;pmx=(e.touches[0].clientX/window.innerWidth-.5);pmy=-(e.touches[0].clientY/window.innerHeight-.5);},{passive:true});
+
+  /* ─ Animate ─ */
+  var bgClock=new THREE.Clock(),bgFrame=0;
+  function bgAnimate(){
+    requestAnimationFrame(bgAnimate);
+    bgClock.getDelta(); var t=bgClock.elapsedTime; bgFrame++;
+    for(var i=0;i<allNodes.length;i++){var nd=allNodes[i],ft=t*nd.floatSpd+nd.phase;nd.mesh.position.y=nd.baseY+Math.sin(ft)*12;nd.mesh.position.x=nd.x0+Math.sin(ft*.4+nd.phase)*8;nd.mesh.material.opacity=nd.baseOp*(0.75+Math.sin(ft*.7)*0.25);}
+    if(bgFrame%6===0) rebuildLines();
+    for(var i=0;i<PC;i++){pPos[i*3+1]+=pSpd[i];if(pPos[i*3+1]>300){pPos[i*3+1]=-280;pPos[i*3]=rng(-500,500);pPos[i*3+2]=rng(-280,80);}} pGeo.attributes.position.needsUpdate=true;
+    /* Core pulse */
+    coreSphere.scale.setScalar(1+Math.sin(t*1.6)*0.08);
+    pgx=lerp(pgx,pmy*.10,.025); pgy=lerp(pgy,pmx*.14,.025);
+    BG.rotation.x=pgx; BG.rotation.y=pgy+t*.008;
+    renderer.render(scene,camera);
+  }
+  bgAnimate();
+})();
+</script>
+</body>
+</html>

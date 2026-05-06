@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Crucible of Generative Leaders™ | Success Academy Learning Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   FULL VIEWPORT ESCAPE — GCF / CMS CONTAINER NUCLEAR OPTION
+   Forces the page to 100vw regardless of any parent wrapper.
+═══════════════════════════════════════════════════════════════ */
+
+/* 1. Root elements */
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. GCF #page-root — fixed full-screen scroll container */
+#page-root {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  z-index: 99999 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 3. Nuke ALL common CMS wrapper patterns */
+body > div,
+body > main,
+body > article,
+#page-root > *,
+[id*="main"],
+[id*="content"],
+[id*="wrapper"],
+[id*="page"],
+[class*="container"],
+[class*="wrapper"],
+[class*="inner"],
+[class*="content"],
+[class*="page-"],
+[class*="-page"],
+[class*="col-"],
+[class*="col "],
+[class*=" col"],
+[class*="grid"],
+[class*="layout"],
+[class*="section"],
+[class*="element"],
+[class*="row"],
+[class*="block"] {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 4. Full-bleed technique — each section escapes any remaining parent */
+.sa-nav,
+.sa-hero,
+.sa-strip,
+.sec,
+.sa-q-sec,
+.sa-pillars-sec,
+.sa-founder-sec,
+.sa-cta-sec,
+.sa-footer {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* 5. Nav is fixed so needs different treatment */
+.sa-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  transform: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SUCCESS ACADEMY BRAND SYSTEM v1.0
+   SA_BrandGuide_v1.pdf — exact hex, type scale, graphic elements
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --navy:      #0D1B2A;
+  --gold:      #C9A040;
+  --navy-mid:  #1B3A5C;
+  --gold-lt:   #E8C97A;
+  --gold-dk:   #8A6820;
+  --off-white: #F4F1EB;
+  --mist:      #E8E4DC;
+  --gray:      #4A4A4A;
+  --white:     #FAFAF8;
+  --navy-deep: #060E16;
+  --navy-card: #0D1F33;
+  --gold-a20:  rgba(201,160,64,.20);
+  --gold-a12:  rgba(201,160,64,.12);
+  --gold-a08:  rgba(201,160,64,.08);
+  --f-serif: 'Cormorant Garamond', Georgia, serif;
+  --f-sans:  'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --nav-h: 70px;
+  --max:   1360px;  /* wider content well */
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--f-sans);
+  background: var(--navy);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.65;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.wrap     { max-width: var(--max); margin: 0 auto; }
+.wrap-sm  { max-width: 800px; margin: 0 auto; }
+.sec      { padding: 96px 6%; position: relative; z-index: 1; }
+.sec-off  { background: var(--off-white); color: var(--navy); }
+.sec-mid  { background: var(--navy-mid); }
+.sec-wh   { background: var(--white); color: var(--navy); }
+.c        { text-align: center; }
+
+/* ── SA TYPE SCALE ──────────────────────────────────────── */
+.sa-h0 { font-family:var(--f-serif); font-weight:700; font-size:clamp(56px,9vw,104px); line-height:.9; letter-spacing:-.01em; }
+.sa-h1 { font-family:var(--f-serif); font-weight:700; font-size:clamp(34px,4.8vw,52px); line-height:1.05; letter-spacing:-.01em; }
+.sa-h2 { font-family:var(--f-sans);  font-weight:700; font-size:clamp(16px,2vw,24px);  line-height:1.25; }
+.sa-eye {
+  font-family:var(--f-sans); font-weight:700;
+  font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold); display:block; margin-bottom:14px;
+}
+.sec-off .sa-eye, .sec-wh .sa-eye { color:var(--gold-dk); }
+.sa-pull { font-family:var(--f-serif); font-weight:600; font-style:italic; font-size:clamp(18px,2.4vw,26px); line-height:1.5; }
+
+/* SA Gold rule — 1pt, max 2 per layout */
+.sa-rule { display:block; width:48px; height:1px; background:var(--gold); margin:20px 0; }
+.sa-rule.c { margin:20px auto; }
+/* SA Gold bar accent — 4px vertical left-border */
+.sa-bar { border-left:4px solid var(--gold); padding-left:22px; }
+
+/* SA Dot grid — gold dots, 8-15% opacity */
+.sa-dots::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(circle, rgba(201,160,64,.1) 1px, transparent 1px);
+  background-size:28px 28px; z-index:0;
+}
+/* SA Diagonal lines — 15°, 5% opacity */
+.sa-diag::after {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:repeating-linear-gradient(15deg,transparent,transparent 22px,rgba(201,160,64,.04) 22px,rgba(201,160,64,.04) 23px);
+  z-index:0;
+}
+
+/* ── SA BUTTONS (Section 6.3) ───────────────────────────── */
+.sa-btn {
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--f-sans); font-weight:700;
+  font-size:11px; letter-spacing:.13em; text-transform:uppercase;
+  padding:15px 36px; border-radius:2px; cursor:pointer; transition:all .26s;
+}
+.sa-btn-pri   { background:var(--gold); color:var(--navy); border:2px solid var(--gold); }
+.sa-btn-pri:hover { background:var(--gold-lt); border-color:var(--gold-lt); transform:translateY(-2px); box-shadow:0 10px 28px rgba(201,160,64,.22); }
+.sa-btn-ghost { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,.24); }
+.sa-btn-ghost:hover { border-color:var(--gold-lt); color:var(--gold-lt); }
+
+/* Reveal */
+.rev { opacity:0; transform:translateY(22px); transition:opacity .65s ease,transform .65s ease; }
+.rev.in { opacity:1; transform:translateY(0); }
+
+/* ═══════════════════════════════════════════════════════════════
+   SA WORDMARK COMPONENT — from sa-wordmark-board.html
+   text-align:justify = inter-letter spacing, glyphs never distorted
+═══════════════════════════════════════════════════════════════ */
+.wm { display:inline-block; }
+.wm-line {
+  font-family:var(--f-serif); font-weight:700;
+  display:block; text-align:justify; text-align-last:justify;
+  line-height:1.0; white-space:nowrap;
+}
+.wm-rule {
+  display:block; width:100%;
+  background:linear-gradient(90deg,#8A6820 0%,#C9A040 20%,#E8C97A 50%,#C9A040 80%,#8A6820 100%);
+}
+.wm-sub {
+  font-family:var(--f-sans); font-weight:600;
+  display:block; width:100%;
+  text-align:left;
+  text-transform:uppercase; color:#C9A040;
+  word-spacing:.12em;
+}
+/* Sizes */
+.wm--xl .wm-line{font-size:88px}  .wm--xl .wm-rule{height:1.5px;margin:13px 0 9px}  .wm--xl .wm-sub{font-size:14px;letter-spacing:.18em}
+.wm--lg .wm-line{font-size:64px}  .wm--lg .wm-rule{height:1.5px;margin:10px 0 7px}  .wm--lg .wm-sub{font-size:10.5px;letter-spacing:.16em}
+.wm--md .wm-line{font-size:44px}  .wm--md .wm-rule{height:1px;margin:7px 0 5px}     .wm--md .wm-sub{font-size:7.5px;letter-spacing:.14em}
+.wm--sm .wm-line{font-size:30px}  .wm--sm .wm-rule{height:1px;margin:5px 0 4px}     .wm--sm .wm-sub{font-size:6px;letter-spacing:.12em}
+.wm--xs .wm-line{font-size:20px}  .wm--xs .wm-rule{height:.75px;margin:4px 0 3px}   .wm--xs .wm-sub{font-size:4.5px;letter-spacing:.10em}
+/* Color modes */
+.wm--on-light .wm-line{color:#0D1B2A} .wm--on-light .wm-sub{color:#C9A040}
+.wm--on-dark  .wm-line{color:#FAFAF8} .wm--on-dark  .wm-sub{color:#C9A040}
+.wm--on-gold  .wm-line{color:#0D1B2A} .wm--on-gold  .wm-rule{background:rgba(13,27,42,.28)} .wm--on-gold .wm-sub{color:rgba(13,27,42,.6)}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════════════ */
+.sa-nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  height:var(--nav-h);
+  background:rgba(13,27,42,.92);
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--gold-a20);
+  display:flex; align-items:center; padding:0 6%;
+  transition:background .3s,box-shadow .3s;
+}
+.sa-nav.scrolled { background:rgba(6,14,22,.97); box-shadow:0 2px 20px rgba(0,0,0,.5); border-bottom-color:rgba(201,160,64,.3); }
+.sa-nav-logo { display:flex; align-items:center; flex:1; }
+/* Nav-specific wordmark — compact horizontal lockup */
+.sa-nav-wm {
+  display:inline-flex; flex-direction:column; gap:0;
+}
+.sa-nav-wm-lines {
+  display:flex; align-items:baseline; gap:10px;
+}
+.sa-nav-wm-line {
+  font-family:var(--f-serif); font-weight:700;
+  font-size:22px; color:var(--white);
+  line-height:1; white-space:nowrap; letter-spacing:.01em;
+}
+.sa-nav-wm-rule {
+  display:block; width:100%; height:1px; margin:4px 0 3px;
+  background:linear-gradient(90deg,#8A6820 0%,#C9A040 20%,#E8C97A 50%,#C9A040 80%,#8A6820 100%);
+}
+.sa-nav-wm-sub {
+  font-family:var(--f-sans); font-weight:600;
+  font-size:8px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold); white-space:nowrap;
+}
+.sa-nav-links { display:flex; gap:26px; margin-right:24px; }
+.sa-nav-links a {
+  font-family:var(--f-sans); font-size:11px; font-weight:600;
+  letter-spacing:.09em; text-transform:uppercase;
+  color:rgba(255,255,255,.58); transition:color .2s;
+  display:flex; align-items:center; gap:5px;
+}
+.sa-nav-links a i { font-size:9px; }
+.sa-nav-links a:hover { color:var(--gold); }
+.sa-nav-cta {
+  background:var(--gold); color:var(--navy);
+  font-family:var(--f-sans); font-size:11px; font-weight:700;
+  letter-spacing:.13em; text-transform:uppercase;
+  padding:10px 22px; border-radius:2px; border:2px solid var(--gold);
+  transition:all .25s; display:flex; align-items:center; gap:7px;
+}
+.sa-nav-cta:hover { background:var(--gold-lt); border-color:var(--gold-lt); }
+.sa-ham { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; margin-left:8px; }
+.sa-ham span { width:21px; height:2px; background:var(--white); display:block; }
+.sa-mob {
+  display:none; position:fixed; top:var(--nav-h); left:0; right:0; z-index:999;
+  background:rgba(6,14,22,.98); padding:28px 6%; flex-direction:column; gap:18px;
+  border-bottom:1px solid var(--gold-a20);
+}
+.sa-mob.open { display:flex; }
+.sa-mob a {
+  font-family:var(--f-sans); font-size:13px; font-weight:600;
+  letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.75);
+  display:flex; align-items:center; gap:10px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO — Three.js canvas fills full section behind content
+═══════════════════════════════════════════════════════════════ */
+.sa-hero {
+  min-height:100vh; display:flex; align-items:center;
+  padding:calc(var(--nav-h) + 80px) 6% 100px;
+  position:relative; overflow:hidden;
+  background:var(--navy-deep);
+}
+#cvs {
+  position:absolute; inset:0; z-index:0;
+  width:100% !important; height:100% !important;
+  display:block; cursor:crosshair;
+}
+/* Layered vignette — heavy shield on text side, particles shine on the right */
+.sa-hero-vignette {
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    linear-gradient(to right, rgba(6,14,22,.97) 0%, rgba(6,14,22,.92) 32%, rgba(6,14,22,.65) 55%, rgba(6,14,22,.1) 100%),
+    linear-gradient(to bottom, rgba(6,14,22,.55) 0%, transparent 20%, transparent 78%, rgba(6,14,22,.75) 100%);
+}
+/* Text block gets its own frosted backdrop for max legibility */
+.sa-hero-inner {
+  max-width:860px; position:relative; z-index:2;
+}
+.sa-hero-inner::before {
+  content:'';
+  position:absolute;
+  inset:-48px -40px -48px -56px;
+  background:rgba(6,14,22,.42);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  pointer-events:none;
+  z-index:-1;
+}
+
+.sa-hero-badge {
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--gold-a08); border:1px solid var(--gold-a20);
+  padding:8px 18px; border-radius:2px; margin-bottom:32px;
+}
+.sa-hero-badge i { color:var(--gold); font-size:11px; }
+.sa-hero-badge span {
+  font-family:var(--f-sans); font-size:10px; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--gold);
+}
+.sa-hero-eyebrow {
+  font-family:var(--f-sans); font-size:11px; font-weight:600;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.72); margin-bottom:24px;
+  display:flex; align-items:center; gap:8px;
+}
+/* H0 — Cormorant Garamond 700 */
+.sa-hero-title { font-family:var(--f-serif); font-weight:700; line-height:.9; letter-spacing:-.01em; }
+.sa-hero-title .the  { display:block; font-size:clamp(22px,2.8vw,30px); font-weight:400; font-style:italic; color:rgba(255,255,255,.65); letter-spacing:.04em; margin-bottom:8px; text-shadow:0 2px 24px rgba(6,14,22,.9); }
+.sa-hero-title .l1   { display:block; font-size:clamp(58px,9vw,106px); color:var(--white); text-shadow:0 4px 32px rgba(6,14,22,.95), 0 2px 8px rgba(6,14,22,1); }
+.sa-hero-title .l2   { display:block; font-size:clamp(58px,9vw,106px); color:var(--gold); text-shadow:0 4px 32px rgba(6,14,22,.95), 0 0 40px rgba(201,160,64,.3); }
+.sa-hero-title sup   { font-size:.2em; vertical-align:super; font-family:var(--f-sans); font-weight:400; color:rgba(255,255,255,.38); }
+.sa-hero-tagline { font-family:var(--f-serif); font-weight:600; font-style:italic; font-size:clamp(18px,2.2vw,24px); color:rgba(255,255,255,.85); margin:28px 0 6px; text-shadow:0 2px 16px rgba(6,14,22,.9); }
+.sa-hero-body { font-family:var(--f-sans); font-weight:300; font-size:16px; line-height:1.8; color:rgba(255,255,255,.88); max-width:620px; margin:14px 0 40px; }
+.sa-hero-body strong { font-weight:600; color:var(--white); }
+.sa-hero-actions { display:flex; flex-wrap:wrap; gap:14px; }
+/* Mouse hint */
+.sa-hero-hint {
+  position:absolute; bottom:60px; right:5%; z-index:2;
+  font-family:var(--f-sans); font-size:10px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.22);
+  display:flex; flex-direction:column; align-items:flex-end; gap:6px;
+}
+.sa-hero-hint i { font-size:18px; color:rgba(201,160,64,.3); }
+
+/* Stats */
+.sa-stats { display:flex; flex-wrap:wrap; margin-top:56px; padding-top:32px; border-top:1px solid var(--gold-a20); }
+.sa-stat  { flex:1; min-width:90px; padding:0 28px; border-right:1px solid rgba(201,160,64,.1); }
+.sa-stat:first-child { padding-left:0; }
+.sa-stat:last-child  { border-right:none; }
+.sa-stat-n { font-family:var(--f-serif); font-weight:700; font-size:40px; color:var(--gold); line-height:1; }
+.sa-stat-l { font-family:var(--f-sans); font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.62); margin-top:5px; }
+
+.sa-scroll {
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%); z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  font-family:var(--f-sans); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.2);
+}
+.sa-scroll-line { width:1px; height:48px; background:linear-gradient(to bottom,var(--gold-a20),transparent); animation:pulse 2.2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:.3}50%{opacity:1} }
+
+/* ═══════════════════════════════════════════════════════════════
+   MARQUEE
+═══════════════════════════════════════════════════════════════ */
+.sa-strip { background:var(--gold); overflow:hidden; padding:13px 0; border-top:1px solid rgba(13,27,42,.12); border-bottom:1px solid rgba(13,27,42,.12); position:relative; z-index:1; }
+.mq-track { display:flex; animation:mq 32s linear infinite; white-space:nowrap; }
+.mq-item  { font-family:var(--f-sans); font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--navy); padding:0 30px; display:inline-flex; align-items:center; gap:10px; }
+.mq-item i { font-size:9px; opacity:.45; }
+@keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ═══════════════════════════════════════════════════════════════
+   SA FOUNDATION — Off-White
+═══════════════════════════════════════════════════════════════ */
+.sa-found-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; margin-top:52px; align-items:start; }
+.sa-found-wm { margin-bottom:24px; }
+.sa-values { display:flex; flex-direction:column; gap:12px; }
+.sa-val { display:flex; align-items:flex-start; gap:14px; padding:14px 16px; background:var(--white); border:1px solid var(--mist); transition:border-color .22s; }
+.sa-val:hover { border-color:var(--gold); }
+.sa-val-ico { width:36px; height:36px; flex-shrink:0; background:var(--off-white); border:1px solid var(--mist); display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--gold-dk); border-radius:2px; }
+.sa-val h4  { font-family:var(--f-sans); font-size:12px; font-weight:700; color:var(--navy); letter-spacing:.04em; margin-bottom:3px; }
+.sa-val p   { font-size:13px; color:var(--gray); line-height:1.6; }
+
+/* ═══════════════════════════════════════════════════════════════
+   GLANCE GRID — Navy
+═══════════════════════════════════════════════════════════════ */
+.sa-glance { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--gold-a20); border:1px solid var(--gold-a20); margin-top:56px; }
+.sa-gc     { background:var(--navy-card); padding:34px 20px; text-align:center; border-bottom:2px solid transparent; transition:all .28s; }
+.sa-gc:hover { background:rgba(27,58,92,.7); border-bottom-color:var(--gold); }
+.sa-gc i   { font-size:20px; color:var(--gold); display:block; margin-bottom:14px; }
+.sa-gc-n   { font-family:var(--f-serif); font-weight:700; font-size:40px; color:var(--white); line-height:1; }
+.sa-gc-u   { font-family:var(--f-sans); font-size:10px; font-weight:700; color:var(--gold); letter-spacing:.1em; text-transform:uppercase; margin-top:5px; }
+.sa-gc-d   { font-size:12px; color:rgba(255,255,255,.34); margin-top:7px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   QUOTE — Deep Navy
+═══════════════════════════════════════════════════════════════ */
+.sa-q-sec  { padding:104px 6%; background:var(--navy-deep); position:relative; overflow:hidden; z-index:1; text-align:center; }
+.sa-q-mark { font-family:var(--f-serif); font-style:italic; font-size:80px; line-height:.2; color:var(--gold); opacity:.45; display:block; margin-bottom:22px; }
+.sa-q-text { font-family:var(--f-serif); font-weight:600; font-style:italic; font-size:clamp(22px,3vw,36px); line-height:1.4; color:var(--white); max-width:860px; margin:0 auto 28px; }
+.sa-q-rule { width:48px; height:1px; background:var(--gold); margin:0 auto 20px; }
+.sa-q-attr { font-family:var(--f-sans); font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.38); }
+
+/* ═══════════════════════════════════════════════════════════════
+   FIVE PILLARS — Navy Mid
+═══════════════════════════════════════════════════════════════ */
+.sa-pillars { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:50px; }
+.sa-pillar  { background:rgba(13,27,42,.5); border:1px solid var(--gold-a20); border-top:2px solid var(--gold); padding:28px 20px 24px; transition:all .3s; }
+.sa-pillar:hover { background:rgba(13,27,42,.85); transform:translateY(-5px); box-shadow:0 18px 48px rgba(0,0,0,.3); }
+.sa-p-ico  { width:44px; height:44px; background:var(--gold-a08); border:1px solid var(--gold-a20); display:flex; align-items:center; justify-content:center; font-size:17px; color:var(--gold); margin-bottom:16px; border-radius:2px; }
+.sa-p-num  { font-family:var(--f-sans); font-size:10px; font-weight:700; letter-spacing:.18em; color:rgba(201,160,64,.42); text-transform:uppercase; margin-bottom:7px; }
+.sa-p-name { font-family:var(--f-sans); font-weight:700; font-size:13px; color:var(--white); line-height:1.25; margin-bottom:10px; }
+.sa-p-desc { font-size:13px; font-weight:300; color:rgba(255,255,255,.48); line-height:1.65; }
+
+/* ═══════════════════════════════════════════════════════════════
+   THREE PHASES — Navy
+═══════════════════════════════════════════════════════════════ */
+.sa-phases { display:flex; gap:0; margin-top:56px; position:relative; }
+.sa-phases::before { content:''; position:absolute; top:30px; left:calc(16.6% + 12px); right:calc(16.6% + 12px); height:1px; background:var(--gold-a20); }
+.sa-phase  { flex:1; padding:0 16px; text-align:center; }
+.sa-ph-dot { width:44px; height:44px; border-radius:50%; border:1px solid var(--gold); background:var(--navy); display:flex; align-items:center; justify-content:center; margin:0 auto 22px; position:relative; z-index:1; font-family:var(--f-serif); font-size:20px; font-weight:700; color:var(--gold); }
+.sa-ph-dot.b { border-color:var(--gold-lt); color:var(--gold-lt); }
+.sa-ph-dot.c { border-color:rgba(255,255,255,.28); color:rgba(255,255,255,.4); }
+.sa-ph-tag  { font-family:var(--f-sans); font-size:9px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:7px; }
+.sa-ph-name { font-family:var(--f-serif); font-size:26px; font-weight:700; color:var(--white); margin-bottom:7px; }
+.sa-ph-wks  { font-size:11px; font-weight:500; color:rgba(255,255,255,.36); margin-bottom:12px; }
+.sa-ph-desc { font-size:13px; font-weight:300; color:rgba(255,255,255,.46); line-height:1.65; }
+
+/* ═══════════════════════════════════════════════════════════════
+   MODULES — White bg
+═══════════════════════════════════════════════════════════════ */
+.sa-mods { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--mist); border:1px solid var(--mist); margin-top:56px; }
+.sa-mod  { background:var(--white); padding:26px 24px; border-left:4px solid transparent; transition:all .22s; }
+.sa-mod:hover { border-left-color:var(--gold); background:var(--off-white); }
+.sa-mod-top   { display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; }
+.sa-mod-ico   { width:40px; height:40px; flex-shrink:0; background:var(--off-white); border:1px solid var(--mist); display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--gold-dk); border-radius:2px; }
+.sa-mod-meta  {}
+.sa-mod-num   { font-family:var(--f-sans); font-size:10px; font-weight:700; color:var(--gold-dk); letter-spacing:.14em; text-transform:uppercase; margin-bottom:4px; }
+.sa-ptag      { display:inline-flex; align-items:center; gap:5px; background:var(--off-white); border:1px solid var(--mist); padding:3px 9px; border-radius:2px; }
+.sa-ptag i    { font-size:9px; color:var(--gold-dk); }
+.sa-ptag span { font-family:var(--f-sans); font-size:10px; font-weight:700; color:var(--gold-dk); }
+.sa-ptag.cap  { background:rgba(201,160,64,.07); border-color:rgba(201,160,64,.22); }
+.sa-mod-title   { font-family:var(--f-serif); font-size:19px; font-weight:700; color:var(--navy); line-height:1.2; margin:11px 0 6px; }
+.sa-mod-tagline { font-family:var(--f-serif); font-size:14px; font-weight:600; font-style:italic; color:var(--gray); margin-bottom:10px; }
+.sa-mod-desc    { font-size:14px; color:var(--gray); line-height:1.65; }
+.sa-mod-foot    { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px solid var(--mist); }
+.sa-mod-foot span { font-size:11px; font-weight:600; color:var(--gold-dk); display:flex; align-items:center; gap:4px; }
+.sa-mod.cap { border-left:4px solid var(--gold); }
+
+/* ═══════════════════════════════════════════════════════════════
+   CERTIFICATION — Navy Mid
+═══════════════════════════════════════════════════════════════ */
+.sa-cert-layout { display:grid; grid-template-columns:1fr 1fr; gap:52px; margin-top:56px; align-items:center; }
+.sa-cert-badge  { background:var(--navy); border:1px solid var(--gold-a20); padding:52px 34px; text-align:center; position:relative; overflow:hidden; }
+.sa-cert-badge::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(201,160,64,.09) 1px,transparent 1px); background-size:24px 24px; pointer-events:none; }
+.sa-cert-wm   { position:relative; z-index:1; margin:0 auto 24px; display:flex; justify-content:center; }
+.sa-cert-prog { font-family:var(--f-sans); font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:5px; position:relative; z-index:1; }
+.sa-cert-name { font-family:var(--f-serif); font-size:32px; font-weight:700; color:var(--white); line-height:1.15; margin-bottom:18px; position:relative; z-index:1; }
+.sa-cert-by   { font-size:12px; font-weight:300; color:rgba(255,255,255,.3); margin-top:8px; position:relative; z-index:1; }
+.sa-reqs { display:flex; flex-direction:column; gap:10px; }
+.sa-req  { display:flex; gap:14px; align-items:flex-start; padding:13px 16px; background:rgba(13,27,42,.35); border-left:3px solid var(--gold); transition:background .2s; }
+.sa-req:hover { background:rgba(13,27,42,.6); }
+.sa-req i  { color:var(--gold); font-size:14px; margin-top:2px; flex-shrink:0; }
+.sa-req h4 { font-family:var(--f-sans); font-size:12px; font-weight:700; color:var(--white); margin-bottom:3px; }
+.sa-req p  { font-size:12px; font-weight:300; color:rgba(255,255,255,.4); }
+
+/* ═══════════════════════════════════════════════════════════════
+   FOUNDER — Deep Navy
+═══════════════════════════════════════════════════════════════ */
+.sa-founder-sec    { padding:84px 6%; background:var(--navy-deep); position:relative; overflow:hidden; z-index:1; }
+.sa-founder-layout { display:grid; grid-template-columns:auto 1fr; gap:48px; align-items:center; max-width:840px; margin:0 auto; }
+.sa-founder-avatar { width:96px; height:96px; border-radius:50%; border:1px solid var(--gold-a20); background:var(--gold-a08); display:flex; align-items:center; justify-content:center; font-size:34px; color:var(--gold); flex-shrink:0; position:relative; z-index:1; }
+.sa-founder-q    { font-family:var(--f-serif); font-weight:600; font-style:italic; font-size:clamp(18px,2.4vw,25px); line-height:1.5; color:var(--white); border-left:4px solid var(--gold); padding-left:22px; margin-bottom:18px; position:relative; z-index:1; }
+.sa-founder-name { font-family:var(--f-sans); font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); position:relative; z-index:1; }
+.sa-founder-sub  { font-size:12px; font-weight:300; color:rgba(255,255,255,.35); margin-top:6px; position:relative; z-index:1; }
+
+/* ═══════════════════════════════════════════════════════════════
+   WHO IS THIS FOR — Off-White
+═══════════════════════════════════════════════════════════════ */
+.sa-for-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px; }
+.sa-for-card { padding:26px 22px; background:var(--white); border:1px solid var(--mist); transition:all .26s; }
+.sa-for-card:hover { border-color:var(--gold); transform:translateY(-3px); box-shadow:0 12px 36px rgba(13,27,42,.1); }
+.sa-for-ico  { width:42px; height:42px; background:var(--off-white); border:1px solid var(--mist); display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--gold-dk); margin-bottom:16px; border-radius:2px; }
+.sa-for-title{ font-family:var(--f-sans); font-size:13px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.sa-for-desc { font-size:13px; color:var(--gray); line-height:1.65; }
+
+/* ═══════════════════════════════════════════════════════════════
+   CTA — Deep Navy
+═══════════════════════════════════════════════════════════════ */
+.sa-cta-sec { padding:112px 6%; text-align:center; background:var(--navy-deep); border-top:1px solid var(--gold-a20); position:relative; overflow:hidden; z-index:1; }
+.sa-cta-eyebrow { font-family:var(--f-sans); font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:36px; display:flex; align-items:center; justify-content:center; gap:14px; position:relative; z-index:1; }
+.sa-cta-eyebrow::before,.sa-cta-eyebrow::after { content:''; width:56px; height:1px; background:var(--gold-a20); }
+.sa-cta-h    { font-family:var(--f-serif); font-weight:700; font-size:clamp(50px,8.5vw,92px); line-height:.9; letter-spacing:-.01em; margin-bottom:18px; position:relative; z-index:1; }
+.sa-cta-h .w { color:var(--white); }
+.sa-cta-h .g { color:var(--gold); }
+.sa-cta-line { width:1px; height:56px; background:linear-gradient(to bottom,transparent,var(--gold),transparent); margin:42px auto; position:relative; z-index:1; }
+.sa-cta-pull { font-family:var(--f-serif); font-weight:600; font-style:italic; font-size:clamp(18px,2.2vw,24px); color:rgba(255,255,255,.5); margin-bottom:48px; position:relative; z-index:1; }
+.sa-cta-btns { display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-bottom:36px; position:relative; z-index:1; }
+.sa-cta-note { font-size:12px; color:rgba(255,255,255,.24); letter-spacing:.04em; position:relative; z-index:1; }
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════════ */
+.sa-footer { background:rgba(6,14,22,.92); border-top:1px solid rgba(201,160,64,.12); padding:36px 6%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; position:relative; z-index:1; }
+.sa-footer-left { display:flex; flex-direction:column; gap:8px; }
+.sa-footer-tagline { font-family:var(--f-serif); font-style:italic; font-size:13px; color:rgba(255,255,255,.3); }
+.sa-footer-links { display:flex; gap:20px; flex-wrap:wrap; }
+.sa-footer-links a { font-family:var(--f-sans); font-size:11px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.26); transition:color .2s; display:flex; align-items:center; gap:5px; }
+.sa-footer-links a:hover { color:var(--gold); }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .sa-pillars{grid-template-columns:repeat(3,1fr)}
+  .sa-glance{grid-template-columns:repeat(2,1fr)}
+  .sa-for-grid{grid-template-columns:repeat(2,1fr)}
+  .sa-found-grid{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:768px){
+  .sa-nav-links,.sa-nav-cta{display:none}
+  .sa-ham{display:flex}
+  .sa-hero-title .l1,.sa-hero-title .l2{font-size:clamp(48px,14vw,72px)}
+  .sa-pillars{grid-template-columns:1fr 1fr}
+  .sa-phases{flex-direction:column;gap:36px}
+  .sa-phases::before{display:none}
+  .sa-mods{grid-template-columns:1fr}
+  .sa-cert-layout{grid-template-columns:1fr}
+  .sa-for-grid{grid-template-columns:1fr}
+  .sa-founder-layout{grid-template-columns:1fr;text-align:center}
+  .sa-founder-avatar{margin:0 auto}
+  .sa-founder-q{border-left:none;padding-left:0;border-top:2px solid var(--gold);padding-top:16px}
+  .sa-stats{flex-direction:column;gap:16px}
+  .sa-stat{border-right:none;border-bottom:1px solid var(--gold-a20);padding-bottom:14px;padding-left:0}
+  .sa-stat:last-child{border-bottom:none}
+  .sa-hero-hint{display:none}
+}
+@media(max-width:480px){
+  .sa-pillars{grid-template-columns:1fr}
+  .sa-glance{grid-template-columns:1fr 1fr}
+  .sec{padding:72px 5%}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────────── -->
+<nav class="sa-nav" id="saNav">
+  <div class="sa-nav-logo">
+    <div class="sa-nav-wm">
+      <div class="sa-nav-wm-lines">
+        <span class="sa-nav-wm-line">SUCCESS</span>
+        <span class="sa-nav-wm-line">ACADEMY</span>
+      </div>
+      <span class="sa-nav-wm-rule"></span>
+      <span class="sa-nav-wm-sub">Learning Solutions</span>
+    </div>
+  </div>
+  <div class="sa-nav-links">
+    <a href="#foundation"><i class="fa-solid fa-star"></i>About SALS</a>
+    <a href="#pillars"><i class="fa-solid fa-layer-group"></i>Pillars</a>
+    <a href="#modules"><i class="fa-solid fa-book-open"></i>Modules</a>
+    <a href="#certification"><i class="fa-solid fa-award"></i>Certification</a>
+    <a href="#audience"><i class="fa-solid fa-users"></i>Who It's For</a>
+  </div>
+  <a href="#enroll" class="sa-nav-cta"><i class="fa-solid fa-fire-flame-curved"></i> Apply Now</a>
+  <div class="sa-ham" id="saHam" onclick="saMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="sa-mob" id="saMob">
+  <a href="#foundation"    onclick="saMenu()"><i class="fa-solid fa-star"></i>About SALS</a>
+  <a href="#pillars"       onclick="saMenu()"><i class="fa-solid fa-layer-group"></i>Pillars</a>
+  <a href="#modules"       onclick="saMenu()"><i class="fa-solid fa-book-open"></i>Modules</a>
+  <a href="#certification" onclick="saMenu()"><i class="fa-solid fa-award"></i>Certification</a>
+  <a href="#audience"      onclick="saMenu()"><i class="fa-solid fa-users"></i>Who It's For</a>
+  <a href="#enroll"        onclick="saMenu()" style="color:var(--gold);"><i class="fa-solid fa-fire-flame-curved"></i>Apply Now</a>
+</div>
+
+<!-- ── HERO — Three.js forge canvas fills this section ──────── -->
+<section class="sa-hero" id="top">
+  <canvas id="cvs"></canvas>
+  <div class="sa-hero-vignette"></div>
+
+  <div class="sa-hero-inner rev">
+    <div class="sa-hero-badge">
+      <i class="fa-solid fa-certificate"></i>
+      <span>Xertification Program &nbsp;·&nbsp; CGL-CC Credential</span>
+    </div>
+    <p class="sa-hero-eyebrow">
+      <i class="fa-solid fa-graduation-cap"></i>
+      Success Academy Learning Solutions
+    </p>
+    <h1 class="sa-hero-title">
+      <span class="the">The</span>
+      <span class="l1">Crucible of</span>
+      <span class="l2">Generative Leaders<sup>™</sup></span>
+    </h1>
+    <p class="sa-hero-tagline">Where Leaders Are Forged to Generate Greatness in Others</p>
+    <span class="sa-rule"></span>
+    <p class="sa-hero-body">A rigorous, transformative coaching certification that develops leaders into <strong>Generative Leader-Coaches™</strong> — equipped with the inner mastery, bias to action, experimental courage, grit, and generative power to unlock extraordinary potential in everyone they lead.</p>
+    <div class="sa-hero-actions">
+      <a href="#enroll" class="sa-btn sa-btn-pri"><i class="fa-solid fa-fire-flame-curved"></i> Enter the Crucible</a>
+      <a href="#modules" class="sa-btn sa-btn-ghost"><i class="fa-solid fa-book-open"></i> Explore the Curriculum</a>
+    </div>
+    <div class="sa-stats">
+      <div class="sa-stat"><div class="sa-stat-n">12</div><div class="sa-stat-l"><i class="fa-regular fa-calendar" style="margin-right:3px;"></i>Weeks</div></div>
+      <div class="sa-stat"><div class="sa-stat-n">10</div><div class="sa-stat-l"><i class="fa-solid fa-layer-group" style="margin-right:3px;"></i>Modules</div></div>
+      <div class="sa-stat"><div class="sa-stat-n">60+</div><div class="sa-stat-l"><i class="fa-regular fa-clock" style="margin-right:3px;"></i>Learning Hours</div></div>
+      <div class="sa-stat"><div class="sa-stat-n">GLC</div><div class="sa-stat-l"><i class="fa-solid fa-award" style="margin-right:3px;"></i>Credential</div></div>
+    </div>
+  </div>
+
+  <div class="sa-hero-hint">
+    <i class="fa-solid fa-computer-mouse"></i>
+    <span>Move to forge · Click to ignite</span>
+  </div>
+  <div class="sa-scroll"><div class="sa-scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- ── MARQUEE ───────────────────────────────────────────────── -->
+<div class="sa-strip">
+  <div class="mq-track">
+    <span class="mq-item"><i class="fa-solid fa-fire-flame-curved"></i>Self Mastery</span>
+    <span class="mq-item"><i class="fa-solid fa-bolt"></i>Bias Towards Action</span>
+    <span class="mq-item"><i class="fa-solid fa-flask-vial"></i>Experiments</span>
+    <span class="mq-item"><i class="fa-solid fa-gem"></i>Grit</span>
+    <span class="mq-item"><i class="fa-solid fa-seedling"></i>Facilitating Self Efficacy</span>
+    <span class="mq-item"><i class="fa-solid fa-certificate"></i>Xertification Program</span>
+    <span class="mq-item"><i class="fa-solid fa-award"></i>CGL-CC Certified</span>
+    <span class="mq-item"><i class="fa-solid fa-graduation-cap"></i>Success Academy Learning Solutions</span>
+    <span class="mq-item"><i class="fa-solid fa-fire"></i>Enter the Crucible</span>
+    <span class="mq-item"><i class="fa-solid fa-star"></i>Where Success Becomes a Discipline.</span>
+    <span class="mq-item"><i class="fa-solid fa-fire-flame-curved"></i>Self Mastery</span>
+    <span class="mq-item"><i class="fa-solid fa-bolt"></i>Bias Towards Action</span>
+    <span class="mq-item"><i class="fa-solid fa-flask-vial"></i>Experiments</span>
+    <span class="mq-item"><i class="fa-solid fa-gem"></i>Grit</span>
+    <span class="mq-item"><i class="fa-solid fa-seedling"></i>Facilitating Self Efficacy</span>
+    <span class="mq-item"><i class="fa-solid fa-certificate"></i>Xertification Program</span>
+    <span class="mq-item"><i class="fa-solid fa-award"></i>CGL-CC Certified</span>
+    <span class="mq-item"><i class="fa-solid fa-graduation-cap"></i>Success Academy Learning Solutions</span>
+    <span class="mq-item"><i class="fa-solid fa-fire"></i>Enter the Crucible</span>
+    <span class="mq-item"><i class="fa-solid fa-star"></i>Where Success Becomes a Discipline.</span>
+  </div>
+</div>
+
+<!-- ── SA FOUNDATION — Off-White ─────────────────────────────── -->
+<section class="sec sec-off" id="foundation">
+  <div class="wrap">
+    <div class="rev">
+      <span class="sa-eye"><i class="fa-solid fa-building-columns" style="margin-right:6px;"></i>Success Academy Learning Solutions</span>
+      <div class="sa-found-wm">
+        <div class="wm wm--lg wm--on-light" style="width:300px;">
+          <span class="wm-line">SUCCESS</span>
+          <span class="wm-line">ACADEMY</span>
+          <span class="wm-rule"></span>
+          <span class="wm-sub">Learning Solutions</span>
+        </div>
+      </div>
+      <h2 class="sa-h1" style="color:var(--navy);">Where Success<br><em style="color:var(--gold-dk);">Becomes a Discipline.</em></h2>
+    </div>
+    <div class="sa-found-grid rev">
+      <div>
+        <div class="sa-bar">
+          <p class="sa-pull" style="color:var(--navy);">"To engineer success at scale — transforming how individuals and organizations learn, grow, and lead."</p>
+        </div>
+        <p style="font-size:15px;font-weight:400;color:var(--gray);margin-top:22px;line-height:1.78;">Success Academy Learning Solutions is the premium learning institution of Exoasia Innovation Hub — developing extraordinary people through evidence-based education, immersive coaching, and a community of ambitious peers. The CGL Certification is our flagship <strong style="color:var(--navy);">Xertification</strong> program.</p>
+        <span class="sa-rule" style="margin-top:26px;"></span>
+        <p style="font-family:var(--f-sans);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;">
+          <i class="fa-solid fa-location-dot" style="color:var(--gold-dk);margin-right:6px;"></i>Makati City, Philippines &nbsp;·&nbsp; ASEAN
+        </p>
+      </div>
+      <div class="sa-values">
+        <div class="sa-val"><div class="sa-val-ico"><i class="fa-solid fa-flask"></i></div><div><h4>Evidence-Based</h4><p>Every program is grounded in proven frameworks, real-world case studies, and measurable outcomes.</p></div></div>
+        <div class="sa-val"><div class="sa-val-ico"><i class="fa-solid fa-people-group"></i></div><div><h4>Community-Powered</h4><p>Growth accelerates inside the right network. We build cohorts, not classrooms.</p></div></div>
+        <div class="sa-val"><div class="sa-val-ico"><i class="fa-solid fa-bullseye"></i></div><div><h4>Outcome-First</h4><p>We measure success by what graduates achieve — not by hours in a seat.</p></div></div>
+        <div class="sa-val"><div class="sa-val-ico"><i class="fa-solid fa-gem"></i></div><div><h4>Premium Standards</h4><p>Excellence in everything: curriculum, facilitation, and the learning experience.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GLANCE — Navy ─────────────────────────────────────────── -->
+<section class="sec" style="background:var(--navy);">
+  <div class="wrap c rev">
+    <span class="sa-eye"><i class="fa-solid fa-circle-info" style="margin-right:5px;"></i>Program at a Glance</span>
+    <h2 class="sa-h1" style="color:var(--white);">The Complete Xertification<br><span style="color:var(--gold);">for Coaching Leaders to Lead</span></h2>
+  </div>
+  <div class="wrap">
+    <div class="sa-glance rev">
+      <div class="sa-gc"><i class="fa-regular fa-calendar-days"></i><div class="sa-gc-n">12</div><div class="sa-gc-u">Weeks</div><div class="sa-gc-d">Forge · Fire · Form</div></div>
+      <div class="sa-gc"><i class="fa-solid fa-layer-group"></i><div class="sa-gc-n">10</div><div class="sa-gc-u">Modules</div><div class="sa-gc-d">Across 5 pillars</div></div>
+      <div class="sa-gc"><i class="fa-regular fa-clock"></i><div class="sa-gc-n">60+</div><div class="sa-gc-u">Learning Hours</div><div class="sa-gc-d">Live + labs</div></div>
+      <div class="sa-gc"><i class="fa-solid fa-users"></i><div class="sa-gc-n">24+</div><div class="sa-gc-u">Coaching Hours</div><div class="sa-gc-d">Real leaders</div></div>
+      <div class="sa-gc"><i class="fa-solid fa-toolbox"></i><div class="sa-gc-n">20+</div><div class="sa-gc-u">Frameworks</div><div class="sa-gc-d">Deploy immediately</div></div>
+      <div class="sa-gc"><i class="fa-solid fa-video"></i><div class="sa-gc-n">2×</div><div class="sa-gc-u">Per Week</div><div class="sa-gc-d">90-min live sessions</div></div>
+      <div class="sa-gc"><i class="fa-solid fa-award"></i><div class="sa-gc-n">GLC</div><div class="sa-gc-u">Credential</div><div class="sa-gc-d">Leader-Coach™</div></div>
+      <div class="sa-gc"><i class="fa-solid fa-earth-asia"></i><div class="sa-gc-n">Live</div><div class="sa-gc-u">Virtual · ASEAN</div><div class="sa-gc-d">Open to all ASEAN</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUOTE — Deep Navy ─────────────────────────────────────── -->
+<section class="sa-q-sec sa-dots">
+  <div class="wrap-sm rev">
+    <span class="sa-eye" style="display:block;text-align:center;"><i class="fa-solid fa-quote-left" style="margin-right:6px;"></i>The CGL Philosophy</span>
+    <span class="sa-q-mark">"</span>
+    <p class="sa-q-text">A crucible doesn't just apply heat. It generates something entirely new from what goes in. Every Generative Leader-Coach™ emerges not just with skills — but with a completely upgraded identity as a leader who builds leaders.</p>
+    <div class="sa-q-rule"></div>
+    <p class="sa-q-attr">The Crucible of Generative Leaders™ &nbsp;·&nbsp; Core Philosophy</p>
+  </div>
+</section>
+
+<!-- ── FIVE PILLARS — Navy Mid ──────────────────────────────── -->
+<section class="sec sec-mid" id="pillars">
+  <div class="wrap">
+    <div class="rev">
+      <span class="sa-eye"><i class="fa-solid fa-layer-group" style="margin-right:6px;"></i>The Five Pillars</span>
+      <h2 class="sa-h1" style="color:var(--white);">The Architecture of a<br><span style="color:var(--gold);">Generative Leader-Coach™</span></h2>
+      <p style="font-size:15px;font-weight:300;color:rgba(255,255,255,.6);margin-top:10px;max-width:580px;line-height:1.78;">Every module, session, and tool in CGL is grounded in five uncompromising convictions about what it takes to truly coach a leader.</p>
+    </div>
+    <div class="sa-pillars rev">
+      <div class="sa-pillar"><div class="sa-p-ico"><i class="fa-solid fa-fire-flame-curved"></i></div><div class="sa-p-num">Pillar 01 · Modules 1–2</div><div class="sa-p-name">Self Mastery</div><div class="sa-p-desc">You cannot take a leader any deeper than you have gone yourself. The Crucible begins with your own interior work — fortitude, presence, and emotional regulation.</div></div>
+      <div class="sa-pillar"><div class="sa-p-ico"><i class="fa-solid fa-bolt"></i></div><div class="sa-p-num">Pillar 02 · Modules 3–4</div><div class="sa-p-name">Bias Towards Action</div><div class="sa-p-desc">Coaching that moves. Every session must generate momentum, decision, and committed next steps — not just insight with no follow-through.</div></div>
+      <div class="sa-pillar"><div class="sa-p-ico"><i class="fa-solid fa-flask-vial"></i></div><div class="sa-p-num">Pillar 03 · Modules 5–6</div><div class="sa-p-name">Experiments</div><div class="sa-p-desc">Leaders learn by doing. Generative coaches design laboratories — safe, bounded experiments where real growth happens through action, not theory.</div></div>
+      <div class="sa-pillar"><div class="sa-p-ico"><i class="fa-solid fa-gem"></i></div><div class="sa-p-num">Pillar 04 · Modules 7–8</div><div class="sa-p-name">Grit</div><div class="sa-p-desc">Real transformation is non-linear. The generative coach holds space through resistance, regression, and the messy middle — without rescuing.</div></div>
+      <div class="sa-pillar"><div class="sa-p-ico"><i class="fa-solid fa-seedling"></i></div><div class="sa-p-num">Pillar 05 · Modules 9–10</div><div class="sa-p-name">Facilitating Self Efficacy &amp; Generation</div><div class="sa-p-desc">The ultimate outcome: leaders who believe in themselves and generate growth, belief, and capability in everyone around them.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THREE PHASES — Navy ───────────────────────────────────── -->
+<section class="sec" style="background:var(--navy);">
+  <div class="wrap">
+    <div class="c rev">
+      <span class="sa-eye"><i class="fa-solid fa-route" style="margin-right:6px;"></i>The Three Phases</span>
+      <h2 class="sa-h1" style="color:var(--white);">Your Journey Through <span style="color:var(--gold);">The Crucible</span></h2>
+    </div>
+    <div class="sa-phases rev">
+      <div class="sa-phase"><div class="sa-ph-dot">I</div><div class="sa-ph-tag"><i class="fa-solid fa-hammer" style="margin-right:4px;"></i>Phase One</div><div class="sa-ph-name">Forge</div><div class="sa-ph-wks">Weeks 1–4 · Modules 1–4</div><div class="sa-ph-desc">The coach enters the crucible. Interior work, self-mastery, and the architecture of intentional coaching. You go in raw. You come out purposeful.</div></div>
+      <div class="sa-phase"><div class="sa-ph-dot b">II</div><div class="sa-ph-tag"><i class="fa-solid fa-fire" style="margin-right:4px;"></i>Phase Two</div><div class="sa-ph-name">Fire</div><div class="sa-ph-wks">Weeks 5–8 · Modules 5–8</div><div class="sa-ph-desc">Real coaching labs begin. You coach actual leaders. Field experiments. Fail forward. Build resilience under the heat of real-world practice.</div></div>
+      <div class="sa-phase"><div class="sa-ph-dot c">III</div><div class="sa-ph-tag"><i class="fa-solid fa-star" style="margin-right:4px;"></i>Phase Three</div><div class="sa-ph-name">Form</div><div class="sa-ph-wks">Weeks 9–12 · Modules 9–10</div><div class="sa-ph-desc">You demonstrate mastery. The capstone assessment. The certification panel. You emerge as a credentialed Generative Leader-Coach™.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MODULES — White ───────────────────────────────────────── -->
+<section class="sec sec-wh" id="modules">
+  <div class="wrap">
+    <div class="rev">
+      <span class="sa-eye"><i class="fa-solid fa-book-open" style="margin-right:6px;"></i>The 10 Modules</span>
+      <h2 class="sa-h1" style="color:var(--navy);">A Rigorous Curriculum.<br><span style="color:var(--gold-dk);">Immediately Deployable Skills.</span></h2>
+      <p style="font-size:15px;color:var(--gray);margin-top:10px;max-width:580px;line-height:1.75;">Each module develops you across Being (who you are as a coach), Knowing (what you understand), and Doing (what you execute immediately).</p>
+    </div>
+    <div class="sa-mods rev">
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-id-badge"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 01</div><div class="sa-ptag"><i class="fa-solid fa-fire-flame-curved"></i><span>Self Mastery</span></div></div></div><div class="sa-mod-title">The Generative Leader-Coach Identity</div><div class="sa-mod-tagline">"Before you can coach anyone, you must know who you are as a coach."</div><div class="sa-mod-desc">Radical examination of your coaching identity, calling, and deeply personal motivations. Establish your Coaching Identity Statement and personal coaching philosophy.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Week 1 · 3 Sessions</span><span><i class="fa-solid fa-wrench"></i>CIS Framework</span></div></div>
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-brain"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 02</div><div class="sa-ptag"><i class="fa-solid fa-fire-flame-curved"></i><span>Self Mastery</span></div></div></div><div class="sa-mod-title">The Interior Condition</div><div class="sa-mod-tagline">"The quality of your coaching is limited by the quality of your inner life."</div><div class="sa-mod-desc">Deep dive into the BEINGness of the coach — fortitude, presence, and emotional regulation. Develop your daily Interior Condition Practice.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Week 2 · 3 Sessions</span><span><i class="fa-solid fa-wrench"></i>Presence Dial™</span></div></div>
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-compass-drafting"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 03</div><div class="sa-ptag"><i class="fa-solid fa-bolt"></i><span>Bias Towards Action</span></div></div></div><div class="sa-mod-title">Radical Intentionality &amp; Coaching Architecture</div><div class="sa-mod-tagline">"Great coaching isn't accidental — it's designed with radical intent."</div><div class="sa-mod-desc">Design coaching engagements with radical intentionality. Set contracts and architect relationships that consistently generate results from first session to final milestone.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Week 3 · 3 Sessions</span><span><i class="fa-solid fa-wrench"></i>Session Design Canvas™</span></div></div>
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-rocket"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 04</div><div class="sa-ptag"><i class="fa-solid fa-bolt"></i><span>Bias Towards Action</span></div></div></div><div class="sa-mod-title">Coaching for Momentum &amp; Decision Mastery</div><div class="sa-mod-tagline">"The measure of a session is not the insight — it is the action it generates."</div><div class="sa-mod-desc">Master momentum-creation tools and decision acceleration techniques. Every engagement produces measurable behavioral change — not just insightful conversation.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Week 4 · 3 Sessions</span><span><i class="fa-solid fa-wrench"></i>Momentum Map</span></div></div>
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-flask-vial"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 05</div><div class="sa-ptag"><i class="fa-solid fa-flask-vial"></i><span>Experiments</span></div></div></div><div class="sa-mod-title">The Experimental Coaching Lab</div><div class="sa-mod-tagline">"Coaching is a laboratory. Leaders learn by doing — not by watching."</div><div class="sa-mod-desc">First live coaching lab. Participants placed in triads — coach, coachee, observer — to practice with actual leaders. Field experiments begin. Fail forward. Learn faster.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Weeks 5–6 · 4 Sessions</span><span><i class="fa-solid fa-wrench"></i>CGL Lab Protocol</span></div></div>
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-comments"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 06</div><div class="sa-ptag"><i class="fa-solid fa-flask-vial"></i><span>Experiments</span></div></div></div><div class="sa-mod-title">Narrative Coaching &amp; Generative Questioning</div><div class="sa-mod-tagline">"Stories are how leaders make sense of their world. Generative coaches rewrite them."</div><div class="sa-mod-desc">Drawing from Dr. David Drake's Narrative Coaching — use a leader's stories, metaphors, and language as primary coaching material to generate new possibilities.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Week 7 · 3 Sessions</span><span><i class="fa-solid fa-wrench"></i>Generative Question Bank</span></div></div>
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-arrows-spin"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 07</div><div class="sa-ptag"><i class="fa-solid fa-gem"></i><span>Grit</span></div></div></div><div class="sa-mod-title">The TERC Transformation Model</div><div class="sa-mod-tagline">"Real transformation is not comfortable. And it rarely happens in a straight line."</div><div class="sa-mod-desc">Mack Comandante's proprietary TERC Model — Think, Emote, Respond, Create — as the core OS for coaching leaders through deep, identity-level change.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Week 8 · 3 Sessions</span><span><i class="fa-solid fa-wrench"></i>TERC Transformation Wheel</span></div></div>
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-shield-halved"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 08</div><div class="sa-ptag"><i class="fa-solid fa-gem"></i><span>Grit</span></div></div></div><div class="sa-mod-title">Coaching Through Resistance &amp; the Messy Middle</div><div class="sa-mod-tagline">"The greatest test of a generative coach is holding space through the breakdown."</div><div class="sa-mod-desc">Stay present and generative when clients face resistance, regression, and plateau. Advanced tools for defensive behavior, ambivalence, and crisis moments — without rescuing.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Week 9 · 3 Sessions</span><span><i class="fa-solid fa-wrench"></i>Resistance Nav Toolkit</span></div></div>
+      <div class="sa-mod"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-seedling"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 09</div><div class="sa-ptag"><i class="fa-solid fa-seedling"></i><span>Self Efficacy</span></div></div></div><div class="sa-mod-title">Facilitating Self-Efficacy in Leaders</div><div class="sa-mod-tagline">"The highest coaching outcome is a leader who no longer needs you."</div><div class="sa-mod-desc">Grounded in Bandura's Self-Efficacy Theory — systematically build a leader's belief in their own capability through mastery experiences, vicarious modeling, and social persuasion.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Week 10 · 3 Sessions</span><span><i class="fa-solid fa-wrench"></i>4 Levers Framework</span></div></div>
+      <div class="sa-mod cap"><div class="sa-mod-top"><div class="sa-mod-ico"><i class="fa-solid fa-globe"></i></div><div class="sa-mod-meta"><div class="sa-mod-num">Module 10 · Capstone</div><div class="sa-ptag cap"><i class="fa-solid fa-star"></i><span>Generation · Capstone</span></div></div></div><div class="sa-mod-title">The Generative Coaching Ecosystem</div><div class="sa-mod-tagline">"A Generative Leader-Coach doesn't just change individuals — they change the system."</div><div class="sa-mod-desc">Design coaching cultures, facilitate generative team conversations, build peer networks, present your Signature Coaching Framework, and complete the CGL Certification Assessment.</div><div class="sa-mod-foot"><span><i class="fa-regular fa-clock"></i>Weeks 11–12 · 4 Sessions</span><span><i class="fa-solid fa-wrench"></i>Culture Index · Cert Panel</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATION — Navy Mid ──────────────────────────────── -->
+<section class="sec sec-mid" id="certification">
+  <div class="wrap">
+    <div class="c rev">
+      <span class="sa-eye"><i class="fa-solid fa-certificate" style="margin-right:6px;"></i>Xertification — Credential</span>
+      <h2 class="sa-h1" style="color:var(--white);">Earn the <span style="color:var(--gold);">Generative Leader-Coach™</span><br>Credential</h2>
+    </div>
+    <div class="sa-cert-layout rev">
+      <div class="sa-cert-badge">
+        <div class="sa-cert-wm">
+          <div class="wm wm--md wm--on-dark" style="width:180px;">
+            <span class="wm-line">SUCCESS</span>
+            <span class="wm-line">ACADEMY</span>
+            <span class="wm-rule"></span>
+            <span class="wm-sub">Learning Solutions</span>
+          </div>
+        </div>
+        <div class="sa-cert-prog"><i class="fa-solid fa-certificate" style="margin-right:5px;"></i>Xertification · CGL-CC</div>
+        <div class="sa-cert-name">Generative<br>Leader-Coach™</div>
+        <span class="sa-rule c"></span>
+        <p style="font-family:var(--f-sans);font-size:11px;color:rgba(255,255,255,.48);letter-spacing:.06em;position:relative;z-index:1;"><i class="fa-solid fa-graduation-cap" style="color:var(--gold);margin-right:5px;"></i>Awarded by Success Academy Learning Solutions</p>
+        <p class="sa-cert-by"><i class="fa-solid fa-building" style="margin-right:4px;"></i>Powered by Exoasia Innovation Hub</p>
+      </div>
+      <div class="sa-reqs">
+        <div class="sa-req"><i class="fa-solid fa-video"></i><div><h4>80% Session Attendance</h4><p>Minimum 16 of 20 live sessions completed</p></div></div>
+        <div class="sa-req"><i class="fa-solid fa-users"></i><div><h4>24 Documented Coaching Hours</h4><p>With real leaders in real organizational contexts</p></div></div>
+        <div class="sa-req"><i class="fa-solid fa-flask-vial"></i><div><h4>5 Observed Coaching Lab Sessions</h4><p>Demonstrated competency with panel feedback</p></div></div>
+        <div class="sa-req"><i class="fa-solid fa-book-open"></i><div><h4>12 Weekly Self-Mastery Journals</h4><p>Reflective practice submitted each week</p></div></div>
+        <div class="sa-req"><i class="fa-solid fa-star"></i><div><h4>Live Certification Panel Assessment</h4><p>Observed coaching session + Q&amp;A with the CGL panel</p></div></div>
+        <div class="sa-req"><i class="fa-solid fa-pen-nib"></i><div><h4>Signature Coaching Framework Paper</h4><p>2,000-word personal coaching philosophy document</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOUNDER — Deep Navy ────────────────────────────────────── -->
+<section class="sa-founder-sec sa-dots">
+  <div class="wrap">
+    <div class="sa-founder-layout rev">
+      <div class="sa-founder-avatar"><i class="fa-solid fa-user-tie"></i></div>
+      <div>
+        <p class="sa-founder-q">"I move people to see the possibilities and create what is possible so we can live a life of meaning, abundance, and joy."</p>
+        <p class="sa-founder-name">Mack Comandante</p>
+        <p class="sa-founder-sub"><i class="fa-solid fa-graduation-cap" style="color:var(--gold);margin-right:5px;"></i>Founder, Success Academy Learning Solutions · Lead Facilitator, CGL Certification</p>
+        <p class="sa-founder-sub" style="margin-top:7px;"><i class="fa-solid fa-trophy" style="color:var(--gold);margin-right:5px;"></i>1st Place ExO Transformation Awards · 20+ Years Global Leadership · 20,000+ Leaders Coached</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO IS THIS FOR — Off-White ───────────────────────────── -->
+<section class="sec sec-off" id="audience">
+  <div class="wrap">
+    <div class="c rev">
+      <span class="sa-eye"><i class="fa-solid fa-users" style="margin-right:6px;"></i>Who Is This For</span>
+      <h2 class="sa-h1" style="color:var(--navy);">Built for Leaders Who<br><span style="color:var(--gold-dk);">Build Leaders</span></h2>
+      <p style="font-size:15px;color:var(--gray);margin:10px auto 0;max-width:540px;line-height:1.75;">This is not a seminar. This is a Xertification. The standards are high — because the leaders you will coach deserve nothing less.</p>
+    </div>
+    <div class="sa-for-grid rev">
+      <div class="sa-for-card"><div class="sa-for-ico"><i class="fa-solid fa-briefcase"></i></div><div class="sa-for-title">Senior Leaders &amp; Executives</div><div class="sa-for-desc">Who want to coach their teams with mastery — not just manage them. The next level is about developing others.</div></div>
+      <div class="sa-for-card"><div class="sa-for-ico"><i class="fa-solid fa-people-group"></i></div><div class="sa-for-title">HR, L&amp;D &amp; OD Professionals</div><div class="sa-for-desc">Building internal coaching cultures and talent development systems. The credential and methodology to lead the transformation.</div></div>
+      <div class="sa-for-card"><div class="sa-for-ico"><i class="fa-solid fa-comments"></i></div><div class="sa-for-title">Professional Coaches</div><div class="sa-for-desc">Who want a rigorous leadership coaching specialization. Add the GLC credential and command premium market positioning.</div></div>
+      <div class="sa-for-card"><div class="sa-for-ico"><i class="fa-solid fa-rocket"></i></div><div class="sa-for-title">Entrepreneurs &amp; Founders</div><div class="sa-for-desc">Who want to build multiplier organizations where coaching culture generates growth at every level.</div></div>
+      <div class="sa-for-card"><div class="sa-for-ico"><i class="fa-solid fa-chart-line"></i></div><div class="sa-for-title">Consultants &amp; Advisors</div><div class="sa-for-desc">Who want to add certified coaching to their advisory practice — delivering transformation, not just strategy.</div></div>
+      <div class="sa-for-card"><div class="sa-for-ico"><i class="fa-solid fa-graduation-cap"></i></div><div class="sa-for-title">Aspiring Coaching Professionals</div><div class="sa-for-desc">Building a credentialed practice. CGL gives you the rigor, frameworks, and supervised hours to launch with authority.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA — Deep Navy ────────────────────────────────────────── -->
+<section class="sa-cta-sec sa-dots sa-diag" id="enroll">
+  <div class="wrap-sm rev">
+    <div class="sa-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i>A Xertification Program · Success Academy Learning Solutions</div>
+    <h2 class="sa-cta-h"><span class="w">Enter the<br>Crucible.</span><br><span class="g">Emerge<br>Generative.</span></h2>
+    <div class="sa-cta-line"></div>
+    <p class="sa-cta-pull">Where Success Becomes a Discipline.</p>
+    <div class="sa-cta-btns">
+      <a href="mailto:mackcomandante@exoasia.org" class="sa-btn sa-btn-pri" style="font-size:12px;padding:18px 44px;"><i class="fa-solid fa-fire-flame-curved"></i> Apply for the Next Cohort</a>
+      <a href="mailto:officeoftheceo@exoasia.org" class="sa-btn sa-btn-ghost" style="font-size:12px;padding:18px 38px;"><i class="fa-solid fa-envelope"></i> Request Information</a>
+    </div>
+    <p class="sa-cta-note"><i class="fa-solid fa-circle-info" style="color:var(--gold);opacity:.5;margin-right:5px;"></i>Rolling applications · Limited cohort size · mackcomandante@exoasia.org · +63 917 505 2409</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="sa-footer">
+  <div class="sa-footer-left">
+    <div>
+      <div class="wm wm--sm wm--on-dark" style="width:120px;">
+        <span class="wm-line">SUCCESS</span>
+        <span class="wm-line">ACADEMY</span>
+        <span class="wm-rule"></span>
+        <span class="wm-sub">Learning Solutions</span>
+      </div>
+    </div>
+    <p class="sa-footer-tagline">"Where Success Becomes a Discipline." &nbsp;·&nbsp; Makati City, Philippines &nbsp;·&nbsp; www.exoasia.org</p>
+  </div>
+  <div class="sa-footer-links">
+    <a href="#foundation"><i class="fa-solid fa-star"></i>SALS</a>
+    <a href="#pillars"><i class="fa-solid fa-layer-group"></i>Pillars</a>
+    <a href="#modules"><i class="fa-solid fa-book-open"></i>Modules</a>
+    <a href="#certification"><i class="fa-solid fa-award"></i>Cert</a>
+    <a href="#enroll"><i class="fa-solid fa-fire"></i>Enroll</a>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   THREE.JS FORGE — Particle system, hero background
+   Concept: Gold ember particles drawn to cursor (the coach draws
+   leaders into form). Click to ignite a radial burst.
+   Library: Three.js r128 (Cloudflare CDN)
+═══════════════════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function() {
+
+  const canvas  = document.getElementById('cvs');
+  const hero    = document.querySelector('.sa-hero');
+  const COUNT   = 4200;
+
+  // ── Colors (SA Brand) ─────────────────────────────
+  const C_GOLD_DK  = new THREE.Color(0x8A6820);
+  const C_GOLD     = new THREE.Color(0xC9A040);
+  const C_GOLD_LT  = new THREE.Color(0xE8C97A);
+  const C_WHITE    = new THREE.Color(0xFAFAF8);
+  const C_NAVY_LT  = new THREE.Color(0x1B3A5C);
+  const C_NAVY_MID = new THREE.Color(0x0D1B2A);
+
+  // ── Scene ─────────────────────────────────────────
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200);
+  camera.position.z = 40;
+
+  // ── Glow texture (canvas-generated circle) ────────
+  function makeGlowTexture() {
+    const c = document.createElement('canvas');
+    c.width = c.height = 64;
+    const ctx = c.getContext('2d');
+    const r = 32;
+    const g = ctx.createRadialGradient(r, r, 0, r, r, r);
+    g.addColorStop(0,   'rgba(255,255,240,1)');
+    g.addColorStop(0.2, 'rgba(232,201,122,.9)');
+    g.addColorStop(0.5, 'rgba(201,160,64,.5)');
+    g.addColorStop(1,   'rgba(138,104,32,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,64,64);
+    return new THREE.CanvasTexture(c);
+  }
+  const glowTex = makeGlowTexture();
+
+  // ── Particle geometry ─────────────────────────────
+  const geo   = new THREE.BufferGeometry();
+  const pos   = new Float32Array(COUNT * 3);  // current positions
+  const base  = new Float32Array(COUNT * 3);  // home positions
+  const vel   = new Float32Array(COUNT * 3);  // velocities
+  const sizes = new Float32Array(COUNT);
+  const cols  = new Float32Array(COUNT * 3);  // per-particle color
+  const alpha = new Float32Array(COUNT);       // per-particle alpha
+
+  // Spawn in a hemisphere that fills the viewport
+  const spread = 38;
+  const depth  = 20;
+
+  for (let i = 0; i < COUNT; i++) {
+    const i3 = i * 3;
+    // Distribute across a wide volume
+    const theta = Math.random() * Math.PI * 2;
+    const phi   = Math.acos(2 * Math.random() - 1);
+    const r     = Math.pow(Math.random(), .4) * spread;
+
+    const bx = r * Math.sin(phi) * Math.cos(theta);
+    const by = r * Math.sin(phi) * Math.sin(theta) * 0.6 - 4; // slightly lower
+    const bz = (Math.random() - 0.5) * depth;
+
+    base[i3]   = bx;
+    base[i3+1] = by;
+    base[i3+2] = bz;
+    pos[i3]    = bx + (Math.random()-.5)*4;
+    pos[i3+1]  = by + (Math.random()-.5)*4;
+    pos[i3+2]  = bz;
+
+    vel[i3]    = 0;
+    vel[i3+1]  = (Math.random() * .004 + .001); // slow upward drift — heat rising
+    vel[i3+2]  = 0;
+
+    // Size: bigger = brighter/closer feel
+    sizes[i] = Math.random() * 2.8 + .4;
+
+    // Color distribution: mostly gold-dk → gold, few bright
+    const t = Math.random();
+    const c = new THREE.Color();
+    if (t < .45)      c.copy(C_GOLD_DK);
+    else if (t < .75) c.lerpColors(C_GOLD_DK, C_GOLD, Math.random());
+    else if (t < .93) c.lerpColors(C_GOLD, C_GOLD_LT, Math.random());
+    else              c.lerpColors(C_GOLD_LT, C_WHITE, Math.random());
+    cols[i3]   = c.r;
+    cols[i3+1] = c.g;
+    cols[i3+2] = c.b;
+
+    alpha[i] = Math.random() * .6 + .2;
+  }
+
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,  3));
+  geo.setAttribute('color',    new THREE.BufferAttribute(cols, 3));
+  geo.setAttribute('size',     new THREE.BufferAttribute(sizes,1));
+
+  // ── Material ──────────────────────────────────────
+  const mat = new THREE.PointsMaterial({
+    size: 1.8,
+    map: glowTex,
+    vertexColors: true,
+    sizeAttenuation: true,
+    transparent: true,
+    opacity: .72,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
+
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  // ── Resize ────────────────────────────────────────
+  function resize() {
+    const w = hero.clientWidth;
+    const h = hero.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // ── Mouse tracking ────────────────────────────────
+  let mouseX = 9999, mouseY = 9999;
+  let mouse3D = new THREE.Vector3(9999, 9999, 0); // world-space mouse on z=0 plane
+  let isHovering = false;
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const nx = ((e.clientX - rect.left) / rect.width)  * 2 - 1;
+    const ny = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+    isHovering = true;
+    // Unproject to world-space plane at z=0
+    const vec = new THREE.Vector3(nx, ny, 0.5);
+    vec.unproject(camera);
+    vec.sub(camera.position).normalize();
+    const d = -camera.position.z / vec.z;
+    mouse3D.copy(camera.position).addScaledVector(vec, d);
+  });
+  hero.addEventListener('mouseleave', () => { isHovering = false; mouse3D.set(9999,9999,0); });
+
+  // ── Click burst ───────────────────────────────────
+  let burstActive = false;
+  let burstOrigin = new THREE.Vector3();
+  let burstTimer  = 0;
+  const burstForce = new Float32Array(COUNT * 3);
+
+  hero.addEventListener('click', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const nx = ((e.clientX - rect.left) / rect.width)  * 2 - 1;
+    const ny = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+    const vec = new THREE.Vector3(nx, ny, 0.5);
+    vec.unproject(camera);
+    vec.sub(camera.position).normalize();
+    const d = -camera.position.z / vec.z;
+    burstOrigin.copy(camera.position).addScaledVector(vec, d);
+    burstActive = true;
+    burstTimer  = 0;
+    // Pre-compute random burst directions
+    for (let i = 0; i < COUNT; i++) {
+      const i3 = i*3;
+      const angle = Math.random() * Math.PI * 2;
+      const mag   = (Math.random() * .6 + .1);
+      burstForce[i3]   = Math.cos(angle) * mag;
+      burstForce[i3+1] = Math.sin(angle) * mag + .2;
+      burstForce[i3+2] = (Math.random()-.5) * .3;
+    }
+  });
+
+  // ── Slow ambient rotation ─────────────────────────
+  let t = 0;
+
+  // ── Animation loop ────────────────────────────────
+  const ATTRACT_RADIUS  = 12;  // world-space radius of mouse influence
+  const ATTRACT_FORCE   = .048;
+  const RETURN_FORCE    = .018;
+  const DAMPING         = .88;
+  const DRIFT_UP        = .003; // upward thermal drift
+  const DRIFT_WRAP_Y    = 22;   // vertical wrap boundary
+
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.004;
+    burstTimer += 0.035;
+
+    const posArr  = geo.attributes.position.array;
+    const colArr  = geo.attributes.color.array;
+    const sizeArr = geo.attributes.size.array;
+
+    for (let i = 0; i < COUNT; i++) {
+      const i3 = i * 3;
+
+      // Current position
+      let px = posArr[i3],  py = posArr[i3+1], pz = posArr[i3+2];
+      let vx = vel[i3],     vy = vel[i3+1],    vz = vel[i3+2];
+
+      // Burst force
+      if (burstActive && burstTimer < 2.0) {
+        const decay = 1 - burstTimer/2.0;
+        const dist3D = Math.sqrt(
+          Math.pow(px - burstOrigin.x,2) +
+          Math.pow(py - burstOrigin.y,2)
+        );
+        if (dist3D < 18) {
+          vx += burstForce[i3]   * decay * 0.9;
+          vy += burstForce[i3+1] * decay * 0.9;
+          vz += burstForce[i3+2] * decay * 0.5;
+        }
+      }
+
+      // Mouse attraction
+      const dx = mouse3D.x - px;
+      const dy = mouse3D.y - py;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (isHovering && dist < ATTRACT_RADIUS && dist > .1) {
+        const f = (1 - dist/ATTRACT_RADIUS) * ATTRACT_FORCE;
+        vx += dx/dist * f;
+        vy += dy/dist * f;
+        // Brighten nearby particles
+        const bright = 1 - dist/ATTRACT_RADIUS;
+        const c = new THREE.Color(colArr[i3], colArr[i3+1], colArr[i3+2]);
+        c.lerp(C_WHITE, bright * .4);
+        colArr[i3] = c.r; colArr[i3+1] = c.g; colArr[i3+2] = c.b;
+        sizeArr[i] = sizes[i] + bright * 2.5;
+      } else {
+        // Drift color back toward original
+        sizeArr[i] = sizes[i];
+      }
+
+      // Return to base (spring)
+      vx += (base[i3]   - px) * RETURN_FORCE;
+      vy += (base[i3+1] - py) * RETURN_FORCE;
+      vz += (base[i3+2] - pz) * RETURN_FORCE;
+
+      // Thermal upward drift
+      vy += DRIFT_UP;
+
+      // Damping
+      vx *= DAMPING;
+      vy *= DAMPING;
+      vz *= DAMPING;
+
+      // Integrate
+      px += vx; py += vy; pz += vz;
+
+      // Vertical wrap — particles that drift too high respawn at bottom
+      if (py - base[i3+1] > DRIFT_WRAP_Y) {
+        py = base[i3+1] - DRIFT_WRAP_Y;
+        vy = 0;
+      }
+
+      posArr[i3]   = px;
+      posArr[i3+1] = py;
+      posArr[i3+2] = pz;
+      vel[i3]   = vx;
+      vel[i3+1] = vy;
+      vel[i3+2] = vz;
+    }
+
+    if (burstActive && burstTimer >= 2.0) burstActive = false;
+
+    // Slow scene rotation
+    points.rotation.y = Math.sin(t * .12) * .08;
+    points.rotation.x = Math.sin(t * .07) * .04;
+
+    geo.attributes.position.needsUpdate = true;
+    geo.attributes.color.needsUpdate    = true;
+    geo.attributes.size.needsUpdate     = true;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+})();
+</script>
+
+<!-- ── UI SCRIPTS ─────────────────────────────────────────────── -->
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('saNav').classList.toggle('scrolled', window.scrollY > 55);
+});
+function saMenu() {
+  document.getElementById('saMob').classList.toggle('open');
+}
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }});
+}, { threshold: 0.07 });
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+[
+  '.sa-pillars .sa-pillar',
+  '.sa-for-grid .sa-for-card',
+  '.sa-glance .sa-gc',
+  '.sa-values .sa-val',
+  '.sa-mods .sa-mod',
+  '.sa-reqs .sa-req'
+].forEach(sel => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.06}s`;
+    el.classList.add('rev');
+    obs.observe(el);
+  });
+});
+</script>
+</body>
+</html>

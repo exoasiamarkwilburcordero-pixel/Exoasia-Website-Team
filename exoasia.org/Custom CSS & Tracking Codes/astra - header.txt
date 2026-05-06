@@ -1,0 +1,114 @@
+<style>
+/* ════════════════════════════════════════════════
+   ASTRA (MSME AI): GEOMETRIC BREAKOUT & 1-INCH MARGINS
+════════════════════════════════════════════════ */
+
+/* 1. SCROLLBAR OVERFLOW FIX */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+/* 2. SOLID NAVIGATIONAL HEADER (Fixed to Viewport) */
+nav {
+    background-color: #2D0A28 !important; /* Solid deep purple to match Astra theme */
+    backdrop-filter: none !important; 
+    border-bottom: 1px solid rgba(201, 229, 0, 0.15) !important; /* Gold accent border */
+    
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; /* Safely anchors the fixed nav */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    
+    /* Base Mobile/Tablet safe flexible margin */
+    padding-left: 6vw !important; 
+    padding-right: 6vw !important; 
+}
+
+/* 3. GCF ROOT BREAKOUT (KILLS BOUNDING BOXES) 
+   Forces the wrappers to stretch 100vw from the true center */
+.hero, 
+section, 
+.assessment-banner, 
+footer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    box-sizing: border-box !important;
+    
+    /* Base Mobile/Tablet safe flexible margin */
+    padding-left: 6vw !important; 
+    padding-right: 6vw !important; 
+}
+
+/* 4. EXACT 1-INCH MARGIN ON DESKTOP */
+@media (min-width: 1024px) {
+    nav, 
+    .hero, 
+    section, 
+    .assessment-banner, 
+    footer {
+        padding-left: 96px !important; 
+        padding-right: 96px !important; 
+    }
+    
+    /* Locks the floating Hero Orb to the right margin */
+    .hero-orb {
+        right: 96px !important;
+    }
+}
+
+/* 5. WIDE DESKTOP (Above 1392px): Centers content at max 1200px */
+@media (min-width: 1392px) {
+    nav, 
+    .hero, 
+    section, 
+    .assessment-banner, 
+    footer {
+        /* Pushes content into a 1200px center alignment */
+        padding-left: calc(50vw - 600px) !important; 
+        padding-right: calc(50vw - 600px) !important;
+    }
+    
+    /* Keeps the floating Hero Orb aligned with the centered content block */
+    .hero-orb {
+        right: calc(50vw - 600px) !important;
+    }
+}
+
+/* 6. ASSESSMENT BANNER CENTERING & EXPANSION FIX */
+.banner-inner {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    max-width: 1200px !important; /* Expands the container to match the rest of the page */
+    gap: 36px !important;
+}
+
+.banner-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.banner-eyebrow {
+    justify-content: center !important;
+}
+
+.banner-desc {
+    max-width: 800px !important; /* Allows the paragraph to spread out and maximize space */
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.banner-cta {
+    align-items: center !important;
+    width: auto !important;
+}
+</style>

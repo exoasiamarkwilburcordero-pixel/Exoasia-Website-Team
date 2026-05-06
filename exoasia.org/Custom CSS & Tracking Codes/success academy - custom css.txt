@@ -1,0 +1,45 @@
+<style>
+/* ════════════════════════════════════════════════
+   SUCCESS ACADEMY: BULLETPROOF MARGIN & CENTERING FIX
+════════════════════════════════════════════════ */
+
+/* 1. Base (Mobile & Tablet): Safe flexible margins to prevent crushing */
+.nav, 
+.hero-content, 
+.hero-stats, 
+.section, 
+.trust-wrap-bg, 
+.footer-bg {
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. Standard Desktop: Locks in the exact 1-inch (96px) margin */
+@media (min-width: 1024px) {
+    .nav, 
+    .hero-content, 
+    .hero-stats, 
+    .section, 
+    .trust-wrap-bg, 
+    .footer-bg {
+        padding-left: 96px !important;
+        padding-right: 96px !important;
+    }
+}
+
+/* 3. Wide Desktop Monitors (Above 1392px): Centers content at max 1200px */
+/* Screen width (1392px) = 1200px content + 96px left margin + 96px right margin */
+@media (min-width: 1392px) {
+    .nav, 
+    .hero-content, 
+    .hero-stats, 
+    .section, 
+    .trust-wrap-bg, 
+    .footer-bg {
+        /* Calculates 50% of the screen minus half of 1200px to perfectly center */
+        padding-left: calc(50vw - 600px) !important;
+        padding-right: calc(50vw - 600px) !important;
+    }
+}
+</style>

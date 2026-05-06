@@ -1,0 +1,99 @@
+<style>
+/* ════════════════════════════════════════════════
+   MARKETPLACE: GEOMETRIC BREAKOUT & BRANDING FIX
+════════════════════════════════════════════════ */
+
+/* 1. SCROLLBAR OVERFLOW FIX */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+/* 2. GCF ROOT BREAKOUT (KILLS BOUNDING BOXES) */
+.xo-mkt-page {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    /* Overrides the old breakout method in the original code */
+    left: auto !important;
+    transform: none !important;
+    padding: 0 !important;
+    overflow-x: visible !important;
+}
+
+/* 3. BRANDING FIX: HIDE "X" ICON & REWRITE NAME */
+.xo-mkt-nav-mark,
+.xo-mkt-ft-logo-mark {
+    display: none !important;
+ /* Removes the X icon from nav and footer */
+}
+
+.xo-mkt-nav-name {
+    font-size: 0 !important;
+ /* Hides the original "EXOASIA APPS" text */
+}
+
+.xo-mkt-nav-name::after {
+    content: 'EXOASIA APP MARKETPLACE' !important;
+ /* Injects the new name */
+    font-size: 13px !important;
+ /* Restores the readable font size */
+    color: #FFFFFF !important;
+    letter-spacing: 0.07em !important;
+}
+
+/* 4. SOLID NAVIGATIONAL HEADER (Fixed to Viewport) */
+.xo-mkt-nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+ /* Safely anchors the fixed nav */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    /* Base Mobile/Tablet safe flexible margin */
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+}
+
+/* 5. DYNAMIC SECTION HORIZONTAL PADDING */
+.xo-mkt-hero, 
+.xo-mkt-sec, 
+.xo-mkt-cta, 
+.xo-mkt-footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    /* Base Mobile/Tablet safe flexible margin */
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+}
+
+/* 6. EXACT 1-INCH MARGIN ON DESKTOP */
+@media (min-width: 1024px) {
+    .xo-mkt-nav, 
+    .xo-mkt-hero, 
+    .xo-mkt-sec, 
+    .xo-mkt-cta, 
+    .xo-mkt-footer {
+        padding-left: 96px !important;
+        padding-right: 96px !important;
+    }
+}
+
+/* 7. WIDE DESKTOP (Above 1392px): Centers content at max 1200px */
+@media (min-width: 1392px) {
+    .xo-mkt-nav, 
+    .xo-mkt-hero, 
+    .xo-mkt-sec, 
+    .xo-mkt-cta, 
+    .xo-mkt-footer {
+        /* Pushes content into a 1200px center alignment */
+        padding-left: calc(50vw - 600px) !important;
+        padding-right: calc(50vw - 600px) !important;
+    }
+}
+</style>

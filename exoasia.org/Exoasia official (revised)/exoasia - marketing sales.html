@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Marketing, Sales, & Negotiation Mastery | Success Academy Learning Solutions</title>
+
+<!-- ── FULL VIEWPORT ESCAPE ──────────────────────────────────────────────
+     Breaks out of GCF / CMS container (max-width, padding, margins).
+     Must load before all other styles.
+─────────────────────────────────────────────────────────────────────── -->
+<style>
+/* ── NUCLEAR OPTION: Fixed Full-Viewport Overlay ──────────────────────────
+   #page-root sits above the entire CMS DOM. No CMS container can constrain it.
+─────────────────────────────────────────────────────────────────────────── */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important; /* body itself doesn't scroll — #page-root does */
+}
+#page-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 99999;
+  background: #0D1B2A; /* SA Deep Navy — prevents flash before paint */
+}
+</style>
+
+<!-- SA Brand Guide §4: Cormorant Garamond (display) + Montserrat (body/UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+/* ══ SA WORDMARK COMPONENT (from sa-wordmark-board.html) ═══════════════════
+   text-align: justify + text-align-last: justify = pure inter-letter spacing.
+   Glyph shapes are never distorted. "Learning Solutions" is Title Case.
+═══════════════════════════════════════════════════════════════════════════ */
+.wm { display: inline-block; }
+.wm-line {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700;
+  display: block;
+  text-align: justify;
+  text-align-last: justify;
+  line-height: 1.0;
+  white-space: nowrap;
+}
+.wm-rule {
+  display: block;
+  width: 100%;
+  background: linear-gradient(90deg, #8A6820 0%, #C9A040 20%, #E8C97A 50%, #C9A040 80%, #8A6820 100%);
+}
+.wm-sub {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  /* letter-spacing fills the width evenly — no word-space gap */
+  text-align: left;
+  text-transform: uppercase;
+  word-spacing: -0.05em; /* collapse inter-word gap */
+}
+/* Sizes — letter-spacing tuned per size so sub fills wordmark width */
+.wm--nav  .wm-line { font-size: 22px; }
+.wm--nav  .wm-rule { height: 1px;   margin: 5px 0 4px; }
+.wm--nav  .wm-sub  { font-size: 4px;  letter-spacing: 0.28em; }
+.wm--sm  .wm-line { font-size: 30px; }
+.wm--sm  .wm-rule { height: 1px;   margin: 5px 0 4px; }
+.wm--sm  .wm-sub  { font-size: 5px;  letter-spacing: 0.30em; }
+.wm--ft  .wm-line { font-size: 26px; }
+.wm--ft  .wm-rule { height: 1px;   margin: 5px 0 4px; }
+.wm--ft  .wm-sub  { font-size: 4.5px; letter-spacing: 0.29em; }
+/* Color modes */
+.wm--on-light .wm-line { color: #0D1B2A; }
+.wm--on-light .wm-sub  { color: #C9A040; }
+.wm--on-dark  .wm-line { color: #FAFAF8; }
+.wm--on-dark  .wm-sub  { color: #C9A040; }
+.wm--on-dark-muted .wm-line { color: rgba(244,241,235,0.32); }
+.wm--on-dark-muted .wm-sub  { color: rgba(201,160,64,0.45); }
+.wm--on-dark-muted .wm-rule { background: linear-gradient(90deg, rgba(138,104,32,0.4) 0%, rgba(201,160,64,0.5) 50%, rgba(138,104,32,0.4) 100%); }
+
+/* ── SA BRAND TOKENS §3.1–3.2 / §8.2 ──────────────────────────────────── */
+:root {
+  --navy:       #0D1B2A;
+  --gold:       #C9A040;
+  --navy-mid:   #1B3A5C;
+  --gold-light: #E8C97A;
+  --gold-dark:  #8A6820;
+  --off-white:  #F4F1EB;
+  --mist:       #E8E4DC;
+  --body-gray:  #4A4A4A;
+  --white:      #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--white);
+  color: var(--body-gray);
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ─────────────────────────────────────────────────────────────── */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(13,27,42,0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201,160,64,0.15);
+  transition: box-shadow 0.3s;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+}
+/* Wordmark logo — HTML/CSS justified wordmark */
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px; font-weight: 500; color: rgba(244,241,235,0.65);
+  text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+
+/* Primary button — §6.3: Gold fill, Deep Navy text, Montserrat 700, allcaps, 2px letter-spacing, 2px radius */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: var(--navy);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 11px 22px; border-radius: 2px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; border: 1.5px solid rgba(244,241,235,0.25);
+  color: var(--off-white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 11px 22px; border-radius: 2px; text-decoration: none; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+.btn-outline-navy {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; border: 1.5px solid var(--mist);
+  color: var(--navy);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 11px 22px; border-radius: 2px; text-decoration: none; cursor: pointer;
+  transition: all 0.2s; white-space: nowrap;
+}
+.btn-outline-navy:hover { border-color: var(--navy); background: var(--navy); color: var(--off-white); }
+
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--off-white); margin: 5px 0; }
+.mobile-menu { display: none; background: rgba(13,27,42,0.99); border-top: 1px solid rgba(201,160,64,0.12); }
+.mobile-menu.open { display: flex; flex-direction: column; }
+.mobile-menu a {
+  padding: 14px 40px; font-family: 'Montserrat', sans-serif;
+  font-size: 12px; font-weight: 500; color: rgba(244,241,235,0.7);
+  text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.04);
+  letter-spacing: 0.04em;
+}
+
+/* ── TYPE HELPERS §4.3 ──────────────────────────────────────────────────── */
+/* Eyebrow: Montserrat 700, 9–11pt, Gold, allcaps, +180 letter-spacing */
+.eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 10px;
+}
+.eyebrow-line { display: block; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.eyebrow.center { justify-content: center; }
+/* H0: Cormorant Garamond 700, 72–96pt, hero only */
+.h0 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700; line-height: 0.96;
+  color: var(--off-white);
+}
+/* H1: Cormorant Garamond 700, 44–56pt */
+.h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700; font-size: clamp(38px, 4.5vw, 54px);
+  color: var(--navy); line-height: 1.05;
+}
+.h1.light { color: var(--off-white); }
+.h1 em, .h1.light em { font-style: italic; color: var(--gold); }
+/* H2: Montserrat 700, 24–28pt */
+.h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: clamp(16px, 2vw, 20px);
+  color: var(--navy); margin-bottom: 6px;
+}
+/* Body: Montserrat 300–400, 10–11pt, Body Gray */
+.body-copy {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300; font-size: 14px; line-height: 1.8; color: var(--body-gray);
+}
+.body-copy.light { color: rgba(244,241,235,0.6); }
+.body-copy.center { max-width: 620px; margin: 0 auto; text-align: center; }
+/* Pull quote: Cormorant Garamond 600i, 20–26pt */
+.pull-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600; font-style: italic; font-size: clamp(18px, 2vw, 22px);
+  color: rgba(244,241,235,0.72); line-height: 1.65;
+}
+/* Gold horizontal rule §7.3: 0.5–1pt, use sparingly, max 2 per layout */
+.gold-rule { display: block; width: 56px; height: 1px; background: var(--gold); }
+.gold-rule.wide { width: 100%; }
+.gold-rule.center { margin: 0 auto; }
+
+/* ── HERO ──────────────────────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh; background: var(--navy);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding-top: 72px;
+  width: 100%;
+}
+/* §7.3 dot grid: gold dots, 8–15% opacity, navy bg, hero sections only */
+.dot-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(201,160,64,0.11) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+/* §7.3 diagonal lines: 15°, 5–10% opacity, hero only */
+.diag-lines {
+  position: absolute; inset: -300px; pointer-events: none;
+  background-image: repeating-linear-gradient(
+    15deg, transparent, transparent 56px,
+    rgba(201,160,64,0.04) 56px, rgba(201,160,64,0.04) 57px
+  );
+}
+.hero-glow {
+  position: absolute; top: -8%; right: -4%; width: 52%; aspect-ratio: 1;
+  background: radial-gradient(ellipse, rgba(27,58,92,0.65) 0%, transparent 68%);
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  padding: 80px 40px;
+  display: grid; grid-template-columns: 1fr 390px; gap: 64px; align-items: center;
+}
+.hero-eyebrow { margin-bottom: 22px; animation: fadeUp 0.6s ease both; }
+.hero-headline {
+  font-size: clamp(52px, 7vw, 88px);
+  margin-bottom: 0;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+.hero-headline .serif-white { color: var(--off-white); display: block; }
+.hero-headline .serif-gold  { color: var(--gold); font-style: italic; display: block; }
+.hero-rule { margin: 24px 0; animation: fadeUp 0.7s ease 0.2s both; }
+.hero-sub {
+  max-width: 520px; margin-bottom: 36px;
+  animation: fadeUp 0.7s ease 0.25s both;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; animation: fadeUp 0.7s ease 0.3s both; }
+.hero-proof {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px;
+  animation: fadeUp 0.7s ease 0.4s both;
+}
+.proof-pill {
+  display: flex; align-items: center; gap: 7px;
+  border: 1px solid rgba(201,160,64,0.18); border-radius: 2px; padding: 7px 12px;
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 400;
+  color: rgba(244,241,235,0.55); letter-spacing: 0.03em;
+}
+.proof-pill i { color: var(--gold); font-size: 11px; }
+
+/* Hero card */
+.hero-card {
+  background: rgba(27,58,92,0.4); border: 1px solid rgba(201,160,64,0.18);
+  border-radius: 2px; padding: 34px 30px;
+  backdrop-filter: blur(10px);
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+/* §7.3 gold bar accent: 4px vertical gold bar on callout blocks */
+.card-label {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+  border-left: 4px solid var(--gold); padding-left: 12px; margin-bottom: 22px;
+}
+.format-item {
+  display: flex; align-items: flex-start; gap: 13px;
+  padding: 13px 14px; margin-bottom: 9px;
+  border: 1px solid rgba(201,160,64,0.1); border-radius: 1px;
+  background: rgba(13,27,42,0.35); cursor: pointer; transition: all 0.2s;
+}
+.format-item.active, .format-item:hover {
+  background: rgba(201,160,64,0.07); border-color: rgba(201,160,64,0.32);
+}
+.format-icon {
+  width: 36px; height: 36px; background: rgba(201,160,64,0.1); border-radius: 1px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 14px; flex-shrink: 0;
+}
+.format-title {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px;
+  color: var(--off-white); letter-spacing: 0.02em;
+}
+.format-desc { font-size: 11px; color: rgba(244,241,235,0.4); margin-top: 2px; font-weight: 300; }
+.format-price {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 15px; color: var(--gold); margin-top: 4px;
+}
+.card-cta {
+  display: block; width: 100%; text-align: center;
+  background: var(--gold); color: var(--navy);
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 14px; border-radius: 2px; text-decoration: none;
+  margin-top: 18px; transition: background 0.2s;
+}
+.card-cta:hover { background: var(--gold-light); }
+.card-note {
+  text-align: center; font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 300; color: rgba(244,241,235,0.28);
+  margin-top: 10px; letter-spacing: 0.04em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── TRUST BAR ──────────────────────────────────────────────────────────── */
+#trust-bar {
+  background: var(--navy-mid);
+  border-bottom: 1px solid rgba(201,160,64,0.1);
+  padding: 18px 40px;
+}
+.trust-row {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.04em; color: rgba(244,241,235,0.55);
+}
+.trust-item i { color: var(--gold); font-size: 12px; }
+.trust-sep { width: 1px; height: 18px; background: rgba(244,241,235,0.1); }
+
+/* ── SECTIONS ───────────────────────────────────────────────────────────── */
+.section { padding: 96px 40px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-top { margin-bottom: 52px; }
+.section-top.center { text-align: center; }
+.section-top.center .eyebrow { justify-content: center; }
+.section-top.center .h1 { text-align: center; }
+.section-top .h1 { margin: 12px 0 14px; }
+.section-top .body-copy { max-width: 580px; }
+.section-top.center .body-copy { margin: 0 auto; text-align: center; }
+
+/* ── WHO IS THIS FOR ──────────────────────────────────────────────────────*/
+#who { background: var(--off-white); }
+.seg-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+.seg-card {
+  background: var(--white); border: 1px solid var(--mist);
+  border-top: 3px solid transparent; border-radius: 2px; padding: 28px 22px;
+  transition: all 0.3s;
+}
+.seg-card:hover {
+  border-top-color: var(--gold); transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(13,27,42,0.09);
+}
+.seg-icon {
+  width: 48px; height: 48px; background: var(--navy); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 19px; margin-bottom: 16px;
+}
+.seg-title { /* H2 equivalent for cards */
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px;
+  color: var(--navy); margin-bottom: 9px; letter-spacing: 0.01em;
+}
+.seg-desc {
+  font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
+  color: var(--body-gray); line-height: 1.7; margin-bottom: 16px;
+}
+/* §7.3 gold bar accent on callout */
+.seg-win {
+  border-left: 4px solid var(--gold);
+  background: rgba(201,160,64,0.07);
+  padding: 9px 11px 9px 13px;
+  font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+  color: var(--navy); line-height: 1.4;
+}
+
+/* ── OUTCOMES ───────────────────────────────────────────────────────────── */
+#outcomes { background: var(--navy); position: relative; overflow: hidden; }
+#outcomes .dot-grid { position: absolute; }
+.outcomes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.outcome-card {
+  border: 1px solid rgba(201,160,64,0.14); border-radius: 2px;
+  padding: 28px; background: rgba(27,58,92,0.28); transition: all 0.3s;
+}
+.outcome-card:hover {
+  background: rgba(27,58,92,0.5); border-color: rgba(201,160,64,0.32);
+}
+.oc-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+.oc-icon {
+  width: 46px; height: 46px; background: rgba(201,160,64,0.1); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 17px; flex-shrink: 0;
+}
+.oc-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 22px; color: var(--off-white); line-height: 1.1;
+}
+.oc-sub {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+  color: rgba(244,241,235,0.4); margin-top: 2px;
+}
+.oc-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.oc-list li {
+  display: flex; gap: 9px; align-items: flex-start;
+  font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
+  color: rgba(244,241,235,0.68); line-height: 1.55;
+}
+.oc-list li i { color: var(--gold); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+/* ── CURRICULUM ─────────────────────────────────────────────────────────── */
+#curriculum { background: var(--white); }
+.ctabs {
+  display: flex; border-bottom: 1px solid var(--mist);
+  margin: 40px 0 32px;
+}
+.ctab {
+  padding: 11px 28px; background: transparent; border: none;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--body-gray); cursor: pointer;
+  border-bottom: 3px solid transparent; margin-bottom: -1px; transition: all 0.2s;
+}
+.ctab.active, .ctab:hover { color: var(--navy); border-bottom-color: var(--gold); }
+.cur-panel { display: none; }
+.cur-panel.active { display: block; }
+.days-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.day-card { border: 1px solid var(--mist); border-radius: 2px; overflow: hidden; }
+.day-head { background: var(--navy); padding: 18px 20px; }
+.day-tag {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(201,160,64,0.3); display: inline-block;
+  padding: 3px 9px; border-radius: 1px; margin-bottom: 8px;
+}
+.day-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 19px; color: var(--off-white); line-height: 1.15;
+}
+.day-sub {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+  color: rgba(244,241,235,0.42); font-style: italic; margin-top: 4px;
+}
+.day-mods { padding: 16px 20px; display: flex; flex-direction: column; gap: 9px; }
+.mod-row {
+  display: flex; gap: 9px; padding: 10px 11px;
+  background: var(--off-white); border-radius: 1px;
+}
+.mod-badge {
+  min-width: 24px; height: 24px; background: var(--navy); border-radius: 1px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px;
+  color: var(--gold); flex-shrink: 0;
+}
+.mod-name {
+  font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 12px;
+  color: var(--navy); line-height: 1.3;
+}
+.mod-time {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+  color: var(--body-gray); margin-top: 1px;
+}
+/* 8-week table */
+.weeks-tbl { width: 100%; border-collapse: collapse; }
+.weeks-tbl th {
+  background: var(--navy); color: var(--off-white);
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; padding: 13px 18px; text-align: left;
+}
+.weeks-tbl th:first-child { width: 68px; text-align: center; }
+.weeks-tbl td {
+  padding: 13px 18px; font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 400; color: var(--body-gray);
+  border-bottom: 1px solid var(--mist);
+}
+.weeks-tbl tr:last-child td { border-bottom: none; }
+.weeks-tbl tr:nth-child(even) td { background: var(--off-white); }
+.wk-num {
+  width: 32px; height: 32px; border-radius: 50%; margin: 0 auto;
+  background: var(--gold); color: var(--navy);
+  font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+}
+.wk-theme {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; color: var(--navy);
+}
+.wk-del {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-left: 4px solid var(--gold); padding: 3px 10px;
+  background: rgba(201,160,64,0.07);
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: var(--navy-mid);
+}
+
+/* ── ACT MODEL ──────────────────────────────────────────────────────────── */
+#method { background: var(--off-white); }
+.act-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.act-card {
+  background: var(--white); border: 1px solid var(--mist); border-radius: 2px;
+  padding: 36px 28px; text-align: center; transition: all 0.3s; position: relative; overflow: hidden;
+}
+.act-card:hover { box-shadow: 0 16px 40px rgba(13,27,42,0.08); transform: translateY(-4px); }
+.act-bg {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 130px; color: rgba(13,27,42,0.04);
+  position: absolute; right: 4px; top: -14px; line-height: 1; pointer-events: none;
+}
+.act-icon {
+  width: 60px; height: 60px; background: var(--navy); border-radius: 2px;
+  margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 22px;
+}
+.act-pct {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 52px; color: var(--gold); line-height: 1;
+}
+.act-name {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px;
+  color: var(--navy); letter-spacing: 0.08em; text-transform: uppercase;
+  margin: 8px 0 12px;
+}
+.act-desc {
+  font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
+  color: var(--body-gray); line-height: 1.75;
+}
+
+/* ── INVESTMENT ─────────────────────────────────────────────────────────── */
+#investment { background: var(--white); }
+.price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.price-card { border: 1px solid var(--mist); border-radius: 2px; overflow: hidden; transition: all 0.3s; }
+.price-card.featured {
+  border-color: var(--gold);
+  box-shadow: 0 10px 36px rgba(201,160,64,0.14); transform: scale(1.02);
+}
+.price-card:hover { box-shadow: 0 16px 40px rgba(13,27,42,0.1); }
+.price-flag {
+  background: var(--gold); color: var(--navy);
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  text-align: center; padding: 7px;
+}
+.price-head { background: var(--navy); padding: 26px 26px 22px; }
+.price-tier {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 24px; color: var(--off-white); margin-bottom: 5px;
+}
+.price-for {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+  color: rgba(244,241,235,0.42); line-height: 1.6;
+}
+.price-rule-wrap { padding: 12px 0 8px; }
+.price-amount {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 26px; color: var(--gold);
+}
+.price-amount span {
+  font-family: 'Montserrat', sans-serif; font-size: 12px;
+  font-weight: 300; color: rgba(244,241,235,0.38);
+}
+.price-body { padding: 22px 26px; }
+.price-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+.price-list li {
+  display: flex; gap: 9px; font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 400; color: var(--body-gray); line-height: 1.5;
+}
+.price-list li i { color: var(--gold); font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+.price-footnote {
+  text-align: center; margin-top: 18px;
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+  color: var(--body-gray);
+}
+.price-footnote i { color: var(--gold); margin-right: 4px; }
+
+/* ── FACILITATOR ────────────────────────────────────────────────────────── */
+#facilitator { background: var(--navy); position: relative; overflow: hidden; }
+#facilitator .dot-grid { position: absolute; }
+.fac-grid {
+  display: grid; grid-template-columns: 320px 1fr; gap: 56px;
+  align-items: start; position: relative; z-index: 1;
+}
+.fac-card {
+  border: 1px solid rgba(201,160,64,0.18); border-radius: 2px; padding: 30px 26px; text-align: center;
+}
+.fac-avatar {
+  width: 84px; height: 84px; border-radius: 50%; margin: 0 auto 14px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 30px; color: var(--navy);
+  border: 3px solid rgba(201,160,64,0.3);
+}
+.fac-name {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 24px; color: var(--off-white); margin-bottom: 4px;
+}
+.fac-role {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 400;
+  color: var(--gold); line-height: 1.7; margin-bottom: 18px;
+}
+.fac-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.fac-stat {
+  background: rgba(13,27,42,0.5); border: 1px solid rgba(201,160,64,0.1);
+  border-radius: 1px; padding: 11px 6px; text-align: center;
+}
+.fac-stat-n {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 24px; color: var(--gold); line-height: 1;
+}
+.fac-stat-l {
+  font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
+  color: rgba(244,241,235,0.38); margin-top: 2px; letter-spacing: 0.04em;
+}
+.fac-contact {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+  color: rgba(244,241,235,0.3); margin-top: 6px;
+}
+.fac-contact a { color: var(--gold-light); text-decoration: none; }
+.fac-bio { margin-bottom: 26px; }
+.fac-creds { display: flex; flex-direction: column; gap: 11px; }
+/* §7.3 gold bar accent on feature blocks */
+.fac-cred {
+  display: flex; gap: 13px; align-items: flex-start;
+  border-left: 4px solid var(--gold);
+  background: rgba(27,58,92,0.28);
+  padding: 13px 15px 13px 18px; border-radius: 0 2px 2px 0;
+}
+.fac-cred-icon {
+  width: 34px; height: 34px; background: rgba(201,160,64,0.1); border-radius: 1px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 13px; flex-shrink: 0;
+}
+.fac-cred-title {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
+  color: var(--off-white); margin-bottom: 3px;
+}
+.fac-cred-desc {
+  font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 300;
+  color: rgba(244,241,235,0.44); line-height: 1.6;
+}
+
+/* ── TESTIMONIALS ───────────────────────────────────────────────────────── */
+#testimonials { background: var(--off-white); }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+/* §7.3 gold bar accent on testimonials */
+.testi-card {
+  background: var(--white); border: 1px solid var(--mist);
+  border-left: 4px solid var(--gold); border-radius: 2px; padding: 26px;
+  transition: all 0.3s;
+}
+.testi-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(13,27,42,0.08); }
+.testi-stars { color: var(--gold); font-size: 12px; letter-spacing: 3px; margin-bottom: 14px; }
+/* Pull quote §4.3: Cormorant Garamond 600i, 20–26pt */
+.testi-quote {
+  font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic;
+  font-size: 18px; color: var(--navy); line-height: 1.65; margin-bottom: 18px;
+}
+.testi-divider { display: block; width: 28px; height: 1px; background: var(--gold); margin-bottom: 14px; }
+.testi-author { display: flex; align-items: center; gap: 11px; }
+.testi-av {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--navy-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 14px; color: var(--gold);
+}
+.testi-name {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; color: var(--navy);
+}
+.testi-co {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+  color: var(--body-gray); margin-top: 1px;
+}
+
+/* ── FAQ ────────────────────────────────────────────────────────────────── */
+#faq { background: var(--white); }
+.faq-wrap { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 9px; }
+.faq-item { border: 1px solid var(--mist); border-radius: 2px; overflow: hidden; }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 17px 20px; cursor: pointer;
+  font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 14px; color: var(--navy);
+  background: var(--white); transition: background 0.2s; gap: 12px;
+}
+.faq-q:hover { background: var(--off-white); }
+.faq-q i { color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+.faq-item.open .faq-q { background: var(--off-white); }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+.faq-a {
+  display: none; padding: 13px 20px 17px;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 300;
+  color: var(--body-gray); line-height: 1.8;
+  border-top: 1px solid var(--mist);
+}
+.faq-item.open .faq-a { display: block; }
+
+/* ── CTA ────────────────────────────────────────────────────────────────── */
+#cta {
+  background: var(--navy); padding: 96px 40px; text-align: center;
+  position: relative; overflow: hidden;
+}
+#cta .dot-grid { position: absolute; }
+#cta .diag-lines { position: absolute; }
+.cta-inner { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
+.cta-headline {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: clamp(44px, 7vw, 72px); color: var(--off-white);
+  line-height: 1.0; margin: 14px 0 6px;
+}
+.cta-headline em { font-style: italic; color: var(--gold); }
+.cta-tagline {
+  font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic;
+  font-size: 19px; color: rgba(244,241,235,0.52);
+  display: block; margin: 20px 0 34px;
+}
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-contact {
+  margin-top: 26px; font-family: 'Montserrat', sans-serif;
+  font-size: 12px; font-weight: 300; color: rgba(244,241,235,0.3); letter-spacing: 0.03em;
+}
+.cta-contact a { color: var(--gold-light); text-decoration: none; font-weight: 500; }
+
+/* ── FOOTER ─────────────────────────────────────────────────────────────── */
+footer {
+  background: #070F1C; border-top: 1px solid rgba(201,160,64,0.1); padding: 36px 40px;
+}
+.foot-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+}
+.foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.foot-links a {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 400;
+  letter-spacing: 0.05em; color: rgba(244,241,235,0.28); text-decoration: none; transition: color 0.2s;
+}
+.foot-links a:hover { color: var(--gold); }
+.foot-copy {
+  max-width: 1100px; margin: 12px auto 0;
+  font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+  color: rgba(244,241,235,0.18); text-align: center; letter-spacing: 0.04em;
+}
+
+/* ── SCROLL REVEAL ──────────────────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-card { max-width: 480px; }
+  .seg-grid { grid-template-columns: repeat(2,1fr); }
+  .outcomes-grid { grid-template-columns: 1fr 1fr; }
+  .days-grid { grid-template-columns: 1fr; }
+  .act-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .price-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .price-card.featured { transform: none; }
+  .fac-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .seg-grid { grid-template-columns: 1fr; }
+  .outcomes-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .trust-sep { display: none; }
+  .section { padding: 64px 20px; }
+  .hero-inner { padding: 56px 20px; }
+  #trust-bar { padding: 18px 20px; }
+  #cta { padding: 64px 20px; }
+  footer { padding: 32px 20px; }
+}
+/* ── SITEWIDE 3D CANVAS SYSTEM ───────────────────────────────────────────── */
+.sc {                           /* shared section-canvas class */
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; display: block;
+  transition: opacity 0.4s ease;
+}
+/* Readability veils — each section gets appropriate overlay */
+#hero::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 25% 50%, rgba(13,27,42,0.55) 0%, transparent 100%),
+    linear-gradient(to right, rgba(13,27,42,0.72) 0%, rgba(13,27,42,0.28) 55%, rgba(13,27,42,0.08) 100%);
+}
+#outcomes::after, #facilitator::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(13,27,42,0.55) 0%, rgba(13,27,42,0.35) 100%);
+}
+#who::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: rgba(244,241,235,0.72); /* off-white tint — keeps light sections readable */
+}
+#method::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: rgba(244,241,235,0.78);
+}
+#cta::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(13,27,42,0.42) 0%, transparent 100%);
+}
+/* All section content must clear the canvas and veil */
+#who .section-inner, #outcomes .section-inner, #method .section-inner,
+#facilitator .section-inner, #cta .cta-inner {
+  position: relative; z-index: 2;
+}
+/* Sections that get canvases need relative positioning */
+#who, #method, #cta { position: relative; overflow: hidden; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+<div id="page-root">
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <!-- SA Wordmark — HTML/CSS justified, on-dark variant (navy navbar) -->
+    <a href="#hero" class="nav-logo" aria-label="Success Academy Learning Solutions">
+      <div class="wm wm--nav wm--on-dark" style="width:120px;">
+        <span class="wm-line">SUCCESS</span>
+        <span class="wm-line">ACADEMY</span>
+        <span class="wm-rule"></span>
+        <span class="wm-sub">Learning Solutions</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#who">For You</a></li>
+      <li><a href="#curriculum">Curriculum</a></li>
+      <li><a href="#investment">Investment</a></li>
+      <li><a href="#facilitator">Facilitator</a></li>
+      <li><a href="#cta" class="btn-primary" style="padding:10px 20px">Reserve Seat</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#who">For You</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#investment">Investment</a>
+    <a href="#facilitator">Facilitator</a>
+    <a href="#cta">Reserve Seat</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <canvas id="hero-canvas" class="sc" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        Success Academy Flagship Program
+      </div>
+      <h1 class="h0 hero-headline">
+        <span class="serif-white">Marketing, Sales,</span>
+        <span class="serif-white">&amp; Negotiation</span>
+        <span class="serif-gold">Mastery.</span>
+      </h1>
+      <span class="gold-rule hero-rule"></span>
+      <p class="body-copy light hero-sub">
+        The program that closes the full commercial skills gap — from attracting the right customers, to converting them with precision, to winning high-value deals that protect your margins.
+      </p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-primary"><i class="fa-solid fa-arrow-right"></i> Reserve My Seat</a>
+        <a href="#curriculum" class="btn-outline"><i class="fa-regular fa-compass"></i> Explore Curriculum</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-pill"><i class="fa-solid fa-calendar-days"></i> 3-Day Intensive or 8-Week Immersive</div>
+        <div class="proof-pill"><i class="fa-solid fa-users"></i> 4 Audience Tracks</div>
+        <div class="proof-pill"><i class="fa-solid fa-certificate"></i> Certificate of Completion</div>
+        <div class="proof-pill"><i class="fa-solid fa-robot"></i> AI-Integrated Curriculum</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-label"><i class="fa-solid fa-graduation-cap"></i> Choose Your Format</div>
+      <div class="format-item active" onclick="selectFormat(this)">
+        <div class="format-icon"><i class="fa-solid fa-fire"></i></div>
+        <div>
+          <div class="format-title">3-Day Intensive Bootcamp</div>
+          <div class="format-desc">Full immersion — Marketing, Sales &amp; Negotiation</div>
+          <div class="format-price">From ₱15,000 / participant</div>
+        </div>
+      </div>
+      <div class="format-item" onclick="selectFormat(this)">
+        <div class="format-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div>
+          <div class="format-title">8-Week Immersive Program</div>
+          <div class="format-desc">Weekly live sessions + async coaching</div>
+          <div class="format-price">From ₱25,000 / participant</div>
+        </div>
+      </div>
+      <div class="format-item" onclick="selectFormat(this)">
+        <div class="format-icon"><i class="fa-solid fa-building"></i></div>
+        <div>
+          <div class="format-title">Corporate / Enterprise</div>
+          <div class="format-desc">Exclusive in-house cohort, fully customized</div>
+          <div class="format-price">From ₱150,000 / cohort</div>
+        </div>
+      </div>
+      <a href="mailto:mackcomandante@exoasia.org?subject=MSNM Enrollment Inquiry" class="card-cta">
+        <i class="fa-solid fa-envelope"></i> &nbsp;Get Program Details
+      </a>
+      <p class="card-note"><i class="fa-solid fa-shield-halved"></i> &nbsp;50% downpayment secures your date. Net of VAT.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ═══════════════════════════════════════════════════════════ -->
+<div id="trust-bar">
+  <div class="trust-row">
+    <div class="trust-item"><i class="fa-solid fa-users"></i> 30,000+ Leaders Coached</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><i class="fa-solid fa-globe-asia"></i> Philippines &amp; ASEAN</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><i class="fa-solid fa-trophy"></i> Award-Winning Methodology</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><i class="fa-solid fa-briefcase"></i> 20+ Years Enterprise Experience</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><i class="fa-solid fa-robot"></i> AI-Integrated Curriculum</div>
+  </div>
+</div>
+
+<!-- ══ WHO IS THIS FOR ═════════════════════════════════════════════════════ -->
+<section id="who" class="section">
+  <canvas id="cv-who" class="sc" aria-hidden="true"></canvas>
+  <div class="section-inner">
+    <div class="section-top center reveal">
+      <div class="eyebrow center"><span class="eyebrow-line"></span> Who Is This For</div>
+      <h2 class="h1" style="text-align:center">Built for <em>Four Distinct</em> Profiles</h2>
+      <p class="body-copy" style="margin:14px auto 0;text-align:center;max-width:580px">Whether you are growing an MSME or leading a regional sales force, this program meets you where you are — and takes you to the next level.</p>
+    </div>
+    <div class="seg-grid">
+      <div class="seg-card reveal">
+        <div class="seg-icon"><i class="fa-solid fa-store"></i></div>
+        <div class="seg-title">MSMEs &amp; Entrepreneurs</div>
+        <div class="seg-desc">Business owners and founders who need a structured, repeatable way to attract and close customers — without winging it.</div>
+        <div class="seg-win">Build a repeatable revenue machine</div>
+      </div>
+      <div class="seg-card reveal">
+        <div class="seg-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="seg-title">Corporate Sales Teams</div>
+        <div class="seg-desc">Account managers, BDMs, and field reps tired of missed quotas and weak close rates — ready to become consistent top performers.</div>
+        <div class="seg-win">Hit quota and exceed targets with precision</div>
+      </div>
+      <div class="seg-card reveal">
+        <div class="seg-icon"><i class="fa-solid fa-rocket"></i></div>
+        <div class="seg-title">Startup Founders</div>
+        <div class="seg-desc">Product-led builders entering GTM who have a strong solution but struggle to sell the vision and acquire their first 100 paying customers.</div>
+        <div class="seg-win">Acquire customers and pitch investors</div>
+      </div>
+      <div class="seg-card reveal">
+        <div class="seg-icon"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="seg-title">Executives &amp; Leaders</div>
+        <div class="seg-desc">C-Suite, VPs, and GMs who need to command high-stakes negotiations, lead revenue teams, and influence at the boardroom level.</div>
+        <div class="seg-win">Negotiate deals and lead revenue teams</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES ════════════════════════════════════════════════════════════ -->
+<section id="outcomes" class="section">
+  <canvas id="cv-outcomes" class="sc" aria-hidden="true"></canvas>
+  <div class="section-inner">
+    <div class="section-top center reveal">
+      <div class="eyebrow center"><span class="eyebrow-line"></span> What You Will Master</div>
+      <h2 class="h1 light" style="text-align:center">Three Pillars of <em>Commercial Excellence</em></h2>
+      <p class="body-copy light" style="margin:14px auto 0;text-align:center;max-width:580px">Twelve battle-tested competencies that transform how you attract, convert, and win.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal">
+        <div class="oc-head">
+          <div class="oc-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <div><div class="oc-title">Marketing Mastery</div><div class="oc-sub">Attract the right people at scale</div></div>
+        </div>
+        <ul class="oc-list">
+          <li><i class="fa-solid fa-chevron-right"></i> Build magnetic brand positioning and precise customer avatars</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Design a full-funnel content and digital marketing strategy</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Use AI tools to automate lead generation and targeting</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Craft messaging that triggers genuine buying intent</li>
+        </ul>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="oc-head">
+          <div class="oc-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div><div class="oc-title">Sales Mastery</div><div class="oc-sub">Convert leads into loyal customers</div></div>
+        </div>
+        <ul class="oc-list">
+          <li><i class="fa-solid fa-chevron-right"></i> Apply a 7-step consultative selling methodology</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Handle objections with the LAER and ACE frameworks</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Build a high-conversion pipeline with defined KPIs</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Run discovery calls, demos, and closing conversations</li>
+        </ul>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="oc-head">
+          <div class="oc-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div><div class="oc-title">Negotiation Mastery</div><div class="oc-sub">Win high-value deals on your terms</div></div>
+        </div>
+        <ul class="oc-list">
+          <li><i class="fa-solid fa-chevron-right"></i> Deploy anchoring, BATNA, mirroring, and tactical empathy</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Win contracts, partnerships, and procurement deals</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Navigate PH/ASEAN cultural negotiation dynamics</li>
+          <li><i class="fa-solid fa-chevron-right"></i> Protect margins and implement value-based pricing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CURRICULUM ══════════════════════════════════════════════════════════ -->
+<section id="curriculum" class="section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow"><span class="eyebrow-line"></span> Program Curriculum</div>
+      <h2 class="h1" style="margin:12px 0 14px">Two Formats. <em>One Outcome.</em></h2>
+      <p class="body-copy">Choose the intensity and pacing that fits your schedule and learning style.</p>
+    </div>
+    <div class="ctabs reveal">
+      <button class="ctab active" onclick="switchTab('intensive',this)">
+        <i class="fa-solid fa-fire" style="margin-right:6px;color:var(--gold)"></i> 3-Day Intensive
+      </button>
+      <button class="ctab" onclick="switchTab('immersive',this)">
+        <i class="fa-solid fa-layer-group" style="margin-right:6px;color:var(--gold)"></i> 8-Week Immersive
+      </button>
+    </div>
+
+    <div id="panel-intensive" class="cur-panel active reveal">
+      <div class="days-grid">
+        <div class="day-card">
+          <div class="day-head">
+            <div class="day-tag">Day 1</div>
+            <div class="day-title">Marketing That Attracts</div>
+            <div class="day-sub">Building Your Commercial Engine</div>
+          </div>
+          <div class="day-mods">
+            <div class="mod-row"><div class="mod-badge">M1</div><div><div class="mod-name">Brand Positioning &amp; Category Design</div><div class="mod-time">9:00 AM · Blue Ocean, Brand Archetypes</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M2</div><div><div class="mod-name">Ideal Customer Profile &amp; JTBD Framework</div><div class="mod-time">10:30 AM · Psychographic profiling</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M3</div><div><div class="mod-name">Full-Funnel Marketing Strategy</div><div class="mod-time">1:00 PM · AIDA, content, social proof</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M4</div><div><div class="mod-name">AI-Powered Lead Generation</div><div class="mod-time">3:00 PM · ChatGPT, Clay, Apollo, CRM</div></div></div>
+          </div>
+        </div>
+        <div class="day-card">
+          <div class="day-head">
+            <div class="day-tag">Day 2</div>
+            <div class="day-title">Sales That Converts</div>
+            <div class="day-sub">From Lead to Loyal Customer</div>
+          </div>
+          <div class="day-mods">
+            <div class="mod-row"><div class="mod-badge">M5</div><div><div class="mod-name">Sales Mindset Reset &amp; Trust Architecture</div><div class="mod-time">8:00 AM · Conviction, abundance mindset</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M6</div><div><div class="mod-name">The 7-Step Selling System</div><div class="mod-time">9:00 AM · Full consultative framework</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M7</div><div><div class="mod-name">Discovery Mastery &amp; SPIN Selling</div><div class="mod-time">10:30 AM · Power questions + live simulation</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M8</div><div><div class="mod-name">Objection Handling &amp; Closing Techniques</div><div class="mod-time">1:00 PM · LAER, Objection Gauntlet drill</div></div></div>
+          </div>
+        </div>
+        <div class="day-card">
+          <div class="day-head">
+            <div class="day-tag">Day 3</div>
+            <div class="day-title">Negotiation That Wins</div>
+            <div class="day-sub">Command the Room, Control the Outcome</div>
+          </div>
+          <div class="day-mods">
+            <div class="mod-row"><div class="mod-badge">M10</div><div><div class="mod-name">Negotiation Foundations: BATNA &amp; ZOPA</div><div class="mod-time">8:00 AM · Leverage mapping exercise</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M11</div><div><div class="mod-name">Tactical Negotiation — The Voss Method</div><div class="mod-time">9:30 AM · FBI-style negotiation simulation</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M12</div><div><div class="mod-name">Value-Based Pricing &amp; Margin Defense</div><div class="mod-time">11:00 AM · Reprice your offer live</div></div></div>
+            <div class="mod-row"><div class="mod-badge">M13</div><div><div class="mod-name">ASEAN Context &amp; High-Stakes Deals</div><div class="mod-time">1:00 PM · Cross-cultural negotiation</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-immersive" class="cur-panel reveal">
+      <table class="weeks-tbl">
+        <thead>
+          <tr><th>Wk</th><th>Theme</th><th>Key Content</th><th>Deliverable</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><div class="wk-num">1</div></td><td><div class="wk-theme">Commercial Mindset Reset</div></td><td>Identity, market awareness, competitive intelligence</td><td><div class="wk-del"><i class="fa-regular fa-file-lines"></i> Business Commercial Audit</div></td></tr>
+          <tr><td><div class="wk-num">2</div></td><td><div class="wk-theme">Brand Positioning &amp; ICP</div></td><td>Brand canvas, customer avatar, JTBD, value proposition</td><td><div class="wk-del"><i class="fa-regular fa-file-lines"></i> ICP &amp; Brand Positioning Doc</div></td></tr>
+          <tr><td><div class="wk-num">3</div></td><td><div class="wk-theme">Full-Funnel Marketing</div></td><td>Content strategy, digital marketing, email sequences</td><td><div class="wk-del"><i class="fa-regular fa-file-lines"></i> 90-Day Content Calendar</div></td></tr>
+          <tr><td><div class="wk-num">4</div></td><td><div class="wk-theme">AI-Powered Revenue Tools</div></td><td>AI for marketing &amp; sales, CRM automation, lead scoring</td><td><div class="wk-del"><i class="fa-regular fa-file-lines"></i> AI Marketing Stack Setup</div></td></tr>
+          <tr><td><div class="wk-num">5</div></td><td><div class="wk-theme">Consultative Selling System</div></td><td>7-step sales system, discovery, storytelling, proposals</td><td><div class="wk-del"><i class="fa-regular fa-file-lines"></i> Personal Sales Playbook</div></td></tr>
+          <tr><td><div class="wk-num">6</div></td><td><div class="wk-theme">Objection Handling &amp; Closing</div></td><td>LAER, live role plays, closing techniques, follow-up</td><td><div class="wk-del"><i class="fa-regular fa-file-lines"></i> Objection Response Bank</div></td></tr>
+          <tr><td><div class="wk-num">7</div></td><td><div class="wk-theme">Negotiation Fundamentals</div></td><td>BATNA, ZOPA, anchoring, tactical empathy, Voss method</td><td><div class="wk-del"><i class="fa-regular fa-file-lines"></i> Negotiation Prep Template</div></td></tr>
+          <tr><td><div class="wk-num">8</div></td><td><div class="wk-theme">High-Stakes Deals &amp; Graduation</div></td><td>Contract negotiation, pricing defense, 90-Day Revenue Plan</td><td><div class="wk-del"><i class="fa-regular fa-file-lines"></i> 90-Day Revenue Plan</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACT MODEL ═══════════════════════════════════════════════════════════ -->
+<section id="method" class="section">
+  <canvas id="cv-method" class="sc" aria-hidden="true"></canvas>
+  <div class="section-inner">
+    <div class="section-top center reveal">
+      <div class="eyebrow center"><span class="eyebrow-line"></span> Pedagogy</div>
+      <h2 class="h1" style="text-align:center">The <em>ACT Model</em></h2>
+      <p class="body-copy" style="margin:14px auto 0;text-align:center;max-width:580px">Commercial skills are not just learned — they are permanently embedded through deliberate, pressure-tested practice. Every session: a conceptual anchor, live demonstration, practice drill, and personal commitment.</p>
+    </div>
+    <div class="act-grid">
+      <div class="act-card reveal">
+        <div class="act-bg">A</div>
+        <div class="act-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+        <div class="act-pct">30%</div>
+        <div class="act-name">Acquire</div>
+        <div class="act-desc">Expert-led instruction, proven frameworks, and real-world case studies from Philippine and ASEAN markets. Absorb the system before you apply it.</div>
+      </div>
+      <div class="act-card reveal">
+        <div class="act-bg">C</div>
+        <div class="act-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="act-pct">50%</div>
+        <div class="act-name">Challenge</div>
+        <div class="act-desc">Live simulations, role plays, negotiation drills, and high-pressure peer scenarios. You learn to perform when it matters — under real conditions.</div>
+      </div>
+      <div class="act-card reveal">
+        <div class="act-bg">T</div>
+        <div class="act-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+        <div class="act-pct">20%</div>
+        <div class="act-name">Transfer</div>
+        <div class="act-desc">Personalized deliverables, 90-day action plans, accountability partners, and post-program coaching ensure skills become permanent results.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INVESTMENT ══════════════════════════════════════════════════════════ -->
+<section id="investment" class="section">
+  <div class="section-inner">
+    <div class="section-top center reveal">
+      <div class="eyebrow center"><span class="eyebrow-line"></span> Investment</div>
+      <h2 class="h1" style="text-align:center">Choose Your <em>Engagement Level</em></h2>
+      <p class="body-copy" style="margin:14px auto 0;text-align:center;max-width:580px">Three tiers to match every scale — from solo professionals to enterprise-wide transformation.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <div class="price-head">
+          <div class="price-tier">Solo Enrollment</div>
+          <div class="price-for">Individual professionals, MSME owners, startup founders</div>
+          <div class="price-rule-wrap"><span class="gold-rule"></span></div>
+          <div class="price-amount">₱15,000 – ₱25,000 <span>/ participant</span></div>
+        </div>
+        <div class="price-body">
+          <ul class="price-list">
+            <li><i class="fa-solid fa-check"></i> 3-Day Bootcamp or 8-Week Online</li>
+            <li><i class="fa-solid fa-check"></i> Full materials &amp; digital workbooks</li>
+            <li><i class="fa-solid fa-check"></i> Certificate of Completion</li>
+            <li><i class="fa-solid fa-check"></i> Alumni network access</li>
+            <li><i class="fa-solid fa-check"></i> 30-Day Revenue Sprint Group</li>
+          </ul>
+          <a href="mailto:mackcomandante@exoasia.org?subject=Solo Enrollment - MSNM" class="btn-outline-navy" style="width:100%;justify-content:center">Apply for Enrollment</a>
+        </div>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-flag"><i class="fa-solid fa-star" style="margin-right:6px"></i> Most Requested</div>
+        <div class="price-head">
+          <div class="price-tier">Corporate Team</div>
+          <div class="price-for">HR-sponsored cohorts, sales teams of 10–30</div>
+          <div class="price-rule-wrap"><span class="gold-rule"></span></div>
+          <div class="price-amount">₱150,000 – ₱350,000 <span>/ cohort</span></div>
+        </div>
+        <div class="price-body">
+          <ul class="price-list">
+            <li><i class="fa-solid fa-check"></i> Exclusive in-house cohort (3-day or 8-week)</li>
+            <li><i class="fa-solid fa-check"></i> Custom cases for your industry</li>
+            <li><i class="fa-solid fa-check"></i> Pre-work &amp; diagnostic assessment</li>
+            <li><i class="fa-solid fa-check"></i> Manager debrief &amp; reporting</li>
+            <li><i class="fa-solid fa-check"></i> 30-day post-program follow-up</li>
+            <li><i class="fa-solid fa-check"></i> Optional 1:1 coaching at ₱5,000/hr</li>
+          </ul>
+          <a href="mailto:officeoftheceo@exoasia.org?subject=Corporate Proposal - MSNM" class="btn-primary" style="width:100%;justify-content:center">Request Corporate Proposal</a>
+        </div>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-head">
+          <div class="price-tier">Enterprise Custom</div>
+          <div class="price-for">Large enterprises, government programs, accelerators</div>
+          <div class="price-rule-wrap"><span class="gold-rule"></span></div>
+          <div class="price-amount">₱500,000+ <span>/ engagement</span></div>
+        </div>
+        <div class="price-body">
+          <ul class="price-list">
+            <li><i class="fa-solid fa-check"></i> Full custom program design</li>
+            <li><i class="fa-solid fa-check"></i> LMS integration &amp; KPI tracking</li>
+            <li><i class="fa-solid fa-check"></i> Multi-city or multi-batch rollout</li>
+            <li><i class="fa-solid fa-check"></i> Quarterly reinforcement sessions</li>
+            <li><i class="fa-solid fa-check"></i> Retainer coaching for key leaders</li>
+          </ul>
+          <a href="mailto:officeoftheceo@exoasia.org?subject=Enterprise Proposal - MSNM" class="btn-outline-navy" style="width:100%;justify-content:center">Request Enterprise Proposal</a>
+        </div>
+      </div>
+    </div>
+    <p class="price-footnote"><i class="fa-solid fa-info-circle"></i> All fees are net of VAT. 50% downpayment secures your program date. Payment via BPI bank transfer.</p>
+  </div>
+</section>
+
+<!-- ══ FACILITATOR ═════════════════════════════════════════════════════════ -->
+<section id="facilitator" class="section">
+  <canvas id="cv-facilitator" class="sc" aria-hidden="true"></canvas>
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow" style="color:var(--gold)"><span class="eyebrow-line"></span> Your Facilitator</div>
+      <h2 class="h1 light" style="margin:12px 0">Coached by <em>Mack Comandante</em></h2>
+    </div>
+    <div class="fac-grid">
+      <div class="fac-card reveal">
+        <div class="fac-avatar">MC</div>
+        <div class="fac-name">Mack Comandante</div>
+        <div class="fac-role">
+          Founder-CEO, Exoasia Innovation Hub<br>
+          Executive Director, Global AI Council Philippines<br>
+          Founding Trustee, Cybersecurity Council PH
+        </div>
+        <div class="fac-stats">
+          <div class="fac-stat"><div class="fac-stat-n">30K+</div><div class="fac-stat-l">Leaders Coached</div></div>
+          <div class="fac-stat"><div class="fac-stat-n">20+</div><div class="fac-stat-l">Years Leadership</div></div>
+          <div class="fac-stat"><div class="fac-stat-n">4</div><div class="fac-stat-l">EBELI Certifications</div></div>
+          <div class="fac-stat"><div class="fac-stat-n">1st</div><div class="fac-stat-l">EBELI Award</div></div>
+        </div>
+        <div class="fac-contact"><i class="fa-solid fa-envelope" style="color:var(--gold);margin-right:5px"></i><a href="mailto:mackcomandante@exoasia.org">mackcomandante@exoasia.org</a></div>
+        <div class="fac-contact" style="margin-top:5px"><i class="fa-solid fa-phone" style="color:var(--gold);margin-right:5px"></i><a href="tel:+639175052409">+63 917 505 2409</a></div>
+      </div>
+      <div class="reveal">
+        <p class="pull-quote fac-bio">"I have sold across every vertical — MSME, corporate, startup, and government — in the Philippines and across ASEAN. This program is everything I wish I had in one room, twenty years ago."</p>
+        <div class="fac-creds">
+          <div class="fac-cred">
+            <div class="fac-cred-icon"><i class="fa-solid fa-industry"></i></div>
+            <div><div class="fac-cred-title">20+ Years Selling Across Industries</div><div class="fac-cred-desc">Zuellig Pharma, Danone URC, Universal Robina Corporation, JG Summit — FMCG, healthcare, technology, and conglomerates across PH and ASEAN</div></div>
+          </div>
+          <div class="fac-cred">
+            <div class="fac-cred-icon"><i class="fa-solid fa-trophy"></i></div>
+            <div><div class="fac-cred-title">1st Place — EBELI Consulting Award</div><div class="fac-cred-desc">Awarded for transformational work with Gothong Southern Shipping Lines; recognized as among the best innovation consultants in the region</div></div>
+          </div>
+          <div class="fac-cred">
+            <div class="fac-cred-icon"><i class="fa-solid fa-robot"></i></div>
+            <div><div class="fac-cred-title">AI-Integrated Commercial Curriculum</div><div class="fac-cred-desc">Completing the AIM-Emeritus Chief AI &amp; Digital Officer Program; co-founder of wAIz, an AI-powered company builder</div></div>
+          </div>
+          <div class="fac-cred">
+            <div class="fac-cred-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <div><div class="fac-cred-title">Founder, Growth Network Philippines</div><div class="fac-cred-desc">Built a national community of high-performance entrepreneurs; Founder-CEO of Exoasia Innovation Hub, operating in PH and Malaysia</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ════════════════════════════════════════════════════════ -->
+<section id="testimonials" class="section">
+  <div class="section-inner">
+    <div class="section-top center reveal">
+      <div class="eyebrow center"><span class="eyebrow-line"></span> Results</div>
+      <h2 class="h1" style="text-align:center">What Participants <em>Say</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">"I went from inconsistent, gut-feel selling to having a structured system. Within 30 days of the bootcamp, I closed two deals I would have lost before."</div>
+        <span class="testi-divider"></span>
+        <div class="testi-author">
+          <div class="testi-av">JR</div>
+          <div><div class="testi-name">Jason R.</div><div class="testi-co">Founder, E-commerce Brand · Cebu</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">"The negotiation module alone was worth ten times the investment. I stopped discounting reflexively and finally have a framework for high-stakes vendor conversations."</div>
+        <span class="testi-divider"></span>
+        <div class="testi-author">
+          <div class="testi-av">MC</div>
+          <div><div class="testi-name">Maria C.</div><div class="testi-co">VP Sales, Distribution Company · Manila</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">"The ICP and brand positioning work on Day 1 completely changed how I describe my product. Investor conversations became so much more productive after this."</div>
+        <span class="testi-divider"></span>
+        <div class="testi-author">
+          <div class="testi-av">KL</div>
+          <div><div class="testi-name">Kevin L.</div><div class="testi-co">Co-Founder, SaaS Startup · BGC</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══════════════════════════════════════════════════════════════════ -->
+<section id="faq" class="section">
+  <div class="section-inner">
+    <div class="section-top center reveal">
+      <div class="eyebrow center"><span class="eyebrow-line"></span> FAQ</div>
+      <h2 class="h1" style="text-align:center">Common <em>Questions</em></h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is this right for me if I have zero sales background?<i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-a">Absolutely. The program is designed to meet participants at their current level. Whether you are brand-new to selling or a seasoned rep, the frameworks and drills adapt to your context. Many of our most transformed participants came in with no formal sales training at all.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the difference between the 3-Day and 8-Week formats?<i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-a">The 3-Day Intensive is a full-cohort immersion ideal for corporate offsites, accelerator programs, or individuals who want maximum impact in minimum time. The 8-Week Immersive spreads learning across weekly live sessions with async assignments and coaching — allowing for real-time application in your actual business context.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can Success Academy run this exclusively for our company team?<i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-a">Yes. The Corporate Team Package is designed for exclusive in-house cohorts of 10–30. The program is customized to your industry, products, customer profiles, and performance challenges. We also provide a manager debrief and 30-day follow-up report.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What AI tools are covered in the curriculum?<i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-a">Module 4 covers AI-powered lead generation and marketing automation tools including ChatGPT for content creation, Clay and Apollo for prospecting, CRM automation, and Meta Ads AI. Participants leave with a functional AI marketing stack setup — not just theory.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How does payment work?<i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-a">A 50% downpayment secures your program date. The remaining 50% is due one week before program start. All fees are net of VAT. Payment is via BPI Bank Transfer to Mark Philip Comandante. Reach us at mackcomandante@exoasia.org or +63 917 505 2409 to begin enrollment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is there post-program support?<i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-a">Yes. All participants receive access to the 30-Day Revenue Sprint Group, alumni portal with templates and recorded sessions, and an annual MSNM Summit invitation. Optional monthly group coaching retainers with Mack are available at a separate investment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══════════════════════════════════════════════════════════════════ -->
+<section id="cta">
+  <canvas id="cv-cta" class="sc" aria-hidden="true"></canvas>
+  <div class="cta-inner">
+    <div class="eyebrow" style="justify-content:center;margin-bottom:10px">
+      <span class="eyebrow-line"></span>
+      Where Success Becomes a Discipline.
+    </div>
+    <h2 class="cta-headline">Stop Leaving Revenue<br><em>on the Table.</em></h2>
+    <span class="gold-rule center" style="margin:20px auto"></span>
+    <span class="cta-tagline">"Reserve your seat. Cohorts fill quickly."</span>
+    <div class="cta-btns">
+      <a href="mailto:mackcomandante@exoasia.org?subject=MSNM Bootcamp - Enrollment Inquiry" class="btn-primary">
+        <i class="fa-solid fa-envelope"></i> Reserve My Seat
+      </a>
+      <a href="mailto:officeoftheceo@exoasia.org?subject=MSNM Corporate Proposal Request" class="btn-outline">
+        <i class="fa-solid fa-building"></i> Corporate Inquiry
+      </a>
+    </div>
+    <div class="cta-contact">
+      Questions? &nbsp;<a href="mailto:mackcomandante@exoasia.org">mackcomandante@exoasia.org</a> &nbsp;·&nbsp; <a href="tel:+639175052409">+63 917 505 2409</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-inner">
+    <!-- SA Wordmark — HTML/CSS justified, muted on-dark variant for footer -->
+    <div class="foot-logo" aria-label="Success Academy Learning Solutions">
+      <div class="wm wm--ft wm--on-dark-muted" style="width:140px;">
+        <span class="wm-line">SUCCESS</span>
+        <span class="wm-line">ACADEMY</span>
+        <span class="wm-rule"></span>
+        <span class="wm-sub">Learning Solutions</span>
+      </div>
+    </div>
+    <div class="foot-links">
+      <a href="#who">For You</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#investment">Investment</a>
+      <a href="#facilitator">Facilitator</a>
+      <a href="mailto:officeoftheceo@exoasia.org">Contact</a>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 Success Academy Learning Solutions &nbsp;·&nbsp; An Exoasia Innovation Hub company &nbsp;·&nbsp; All fees net of VAT &nbsp;·&nbsp; Makati City, Philippines</div>
+</footer>
+
+<script>
+  // Mobile menu
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'))
+  );
+
+  // Smooth scroll — all anchor links scroll #page-root, not window
+  const root = document.getElementById('page-root');
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target || !root) return;
+      e.preventDefault();
+      const offset = target.getBoundingClientRect().top - root.getBoundingClientRect().top + root.scrollTop;
+      root.scrollTo({ top: offset, behavior: 'smooth' });
+    });
+  });
+
+  // Format selector in hero card
+  function selectFormat(el) {
+    el.closest('.hero-card').querySelectorAll('.format-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Curriculum tabs
+  function switchTab(id, btn) {
+    document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.cur-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + id).classList.add('active');
+  }
+
+  // FAQ accordion
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // Scroll reveal with staggered delay
+  const revEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), (i % 4) * 100);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  revEls.forEach(el => io.observe(el));
+
+  // Navbar shadow — scroll is on #page-root, not window
+  const pageRoot = document.getElementById('page-root');
+  pageRoot.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.boxShadow =
+      pageRoot.scrollTop > 50 ? '0 4px 24px rgba(0,0,0,0.55)' : 'none';
+  });
+</script>
+
+<!-- ══ THREE.JS HERO SCENE — Sales Pipeline / Deal Network ══════════════════
+     Theme: Interconnected 3D crystal deal nodes (icosahedra) representing
+     closed deals and sales relationships, connected by gold wire lines,
+     rising bar columns for revenue growth, and floating gold dust particles.
+     Fully interactive: mouse parallax tilts the scene, scroll fades it.
+═══════════════════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  /* ── Scene / Camera / Renderer ── */
+  const scene    = new THREE.Scene();
+  const W        = () => canvas.offsetWidth;
+  const H        = () => canvas.offsetHeight;
+  const camera   = new THREE.PerspectiveCamera(58, W() / H(), 0.1, 400);
+  camera.position.set(0, 0, 55);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W(), H());
+  renderer.setClearColor(0x000000, 0); // transparent — page bg shows through
+
+  /* ── Colors ── */
+  const C = {
+    navy:      new THREE.Color(0x0D1B2A),
+    navyMid:   new THREE.Color(0x1B3A5C),
+    gold:      new THREE.Color(0xC9A040),
+    goldLight: new THREE.Color(0xE8C97A),
+    goldDark:  new THREE.Color(0x8A6820),
+    offWhite:  new THREE.Color(0xF4F1EB),
+  };
+
+  /* ══ 1. DEAL CRYSTAL NODES (icosahedra) ══════════════════════════════════ */
+  const NODE_COUNT = 22;
+  const nodes      = [];
+  const icoGeom    = new THREE.IcosahedronGeometry(1, 0);
+
+  for (let i = 0; i < NODE_COUNT; i++) {
+    const scale  = Math.random() * 1.3 + 0.35;
+    const depth  = (Math.random() - 0.5) * 50 - 5;
+
+    /* Solid face mesh — gold with subtle emissive */
+    const solidMat = new THREE.MeshPhongMaterial({
+      color:        C.gold.clone().lerp(C.goldDark, Math.random() * 0.5),
+      emissive:     new THREE.Color(0x2A1800),
+      emissiveIntensity: 0.4,
+      shininess:    90,
+      transparent:  true,
+      opacity:      0.55 + Math.random() * 0.3,
+    });
+    const solid = new THREE.Mesh(icoGeom, solidMat);
+
+    /* Wireframe overlay */
+    const wireMat = new THREE.MeshBasicMaterial({
+      color:       C.goldLight,
+      wireframe:   true,
+      transparent: true,
+      opacity:     0.18,
+    });
+    const wire = new THREE.Mesh(icoGeom, wireMat);
+    solid.add(wire);
+
+    solid.scale.setScalar(scale);
+    solid.position.set(
+      (Math.random() - 0.5) * 96,
+      (Math.random() - 0.5) * 62,
+      depth
+    );
+
+    solid.userData = {
+      vx:    (Math.random() - 0.5) * 0.045,
+      vy:    (Math.random() - 0.5) * 0.03,
+      rx:    (Math.random() - 0.5) * 0.008,
+      ry:    (Math.random() - 0.5) * 0.012,
+      phase: Math.random() * Math.PI * 2,
+      baseScale: scale,
+    };
+
+    scene.add(solid);
+    nodes.push(solid);
+  }
+
+  /* ══ 2. CONNECTION LINES (sales relationship network) ════════════════════ */
+  const lineGroup = new THREE.Group();
+  scene.add(lineGroup);
+  const MAX_CONN_DIST = 26;
+
+  function rebuildLines () {
+    /* Dispose old geometries */
+    while (lineGroup.children.length) {
+      const c = lineGroup.children[0];
+      c.geometry.dispose();
+      lineGroup.remove(c);
+    }
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const d = nodes[i].position.distanceTo(nodes[j].position);
+        if (d < MAX_CONN_DIST) {
+          const opacity = (1 - d / MAX_CONN_DIST) * 0.22;
+          const pts     = [nodes[i].position.clone(), nodes[j].position.clone()];
+          const geom    = new THREE.BufferGeometry().setFromPoints(pts);
+          const mat     = new THREE.LineBasicMaterial({
+            color: C.gold, transparent: true, opacity,
+          });
+          lineGroup.add(new THREE.Line(geom, mat));
+        }
+      }
+    }
+  }
+  rebuildLines();
+
+  /* ══ 3. REVENUE BAR COLUMNS (background depth layer) ════════════════════ */
+  const BAR_COUNT = 10;
+  const bars      = [];
+  const boxGeom   = new THREE.BoxGeometry(1, 1, 1); // unit — scale Y for height
+
+  for (let i = 0; i < BAR_COUNT; i++) {
+    const h   = Math.random() * 14 + 4;
+    const mat = new THREE.MeshPhongMaterial({
+      color:       C.navyMid,
+      emissive:    C.navyMid.clone().multiplyScalar(0.3),
+      transparent: true,
+      opacity:     0.28 + Math.random() * 0.18,
+    });
+    /* Thin gold edge glow on top face */
+    const edgeMat  = new THREE.LineBasicMaterial({ color: C.gold, transparent: true, opacity: 0.3 });
+    const edgeGeom = new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1));
+    const edges    = new THREE.LineSegments(edgeGeom, edgeMat);
+
+    const bar = new THREE.Mesh(boxGeom, mat);
+    bar.add(edges);
+    bar.scale.set(2.2, h, 2.2);
+    bar.position.set(
+      (i - BAR_COUNT / 2) * 11 + (Math.random() - 0.5) * 4,
+      -28 + h / 2,
+      -24 + (Math.random() - 0.5) * 8
+    );
+    bar.userData = {
+      baseH:      h,
+      phase:      Math.random() * Math.PI * 2,
+      pulseSpeed: 0.004 + Math.random() * 0.008,
+    };
+    scene.add(bar);
+    bars.push(bar);
+  }
+
+  /* ══ 4. FLOATING GOLD DUST PARTICLES ════════════════════════════════════ */
+  const DUST_COUNT = 260;
+  const dustPositions = new Float32Array(DUST_COUNT * 3);
+  const dustVelocities = [];
+
+  for (let i = 0; i < DUST_COUNT; i++) {
+    dustPositions[i * 3]     = (Math.random() - 0.5) * 120;
+    dustPositions[i * 3 + 1] = (Math.random() - 0.5) * 80;
+    dustPositions[i * 3 + 2] = (Math.random() - 0.5) * 60 - 15;
+    dustVelocities.push({
+      x: (Math.random() - 0.5) * 0.015,
+      y: (Math.random() - 0.5) * 0.015,
+    });
+  }
+
+  const dustGeom = new THREE.BufferGeometry();
+  dustGeom.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+  const dustMat = new THREE.PointsMaterial({
+    color: C.goldLight, size: 0.22,
+    transparent: true, opacity: 0.5,
+    sizeAttenuation: true,
+  });
+  const dust = new THREE.Points(dustGeom, dustMat);
+  scene.add(dust);
+
+  /* ══ 5. LIGHTING ════════════════════════════════════════════════════════ */
+  scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+
+  const keyLight = new THREE.PointLight(0xC9A040, 2.2, 120);
+  keyLight.position.set(30, 25, 30);
+  scene.add(keyLight);
+
+  const fillLight = new THREE.PointLight(0x1B3A5C, 1.5, 100);
+  fillLight.position.set(-35, -15, 15);
+  scene.add(fillLight);
+
+  const rimLight = new THREE.PointLight(0xE8C97A, 0.8, 80);
+  rimLight.position.set(0, 40, -10);
+  scene.add(rimLight);
+
+  /* ══ 6. MOUSE INTERACTION ═══════════════════════════════════════════════ */
+  let rawMX = 0, rawMY = 0;
+  let smoothMX = 0, smoothMY = 0;
+
+  window.addEventListener('mousemove', e => {
+    rawMX =  (e.clientX / window.innerWidth  - 0.5) * 2;
+    rawMY = -(e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  /* Touch support */
+  window.addEventListener('touchmove', e => {
+    if (e.touches.length) {
+      rawMX =  (e.touches[0].clientX / window.innerWidth  - 0.5) * 2;
+      rawMY = -(e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+    }
+  }, { passive: true });
+
+  /* Click / tap burst — ripple the nodes */
+  canvas.parentElement.addEventListener('click', e => {
+    nodes.forEach(n => {
+      n.userData.vx += (Math.random() - 0.5) * 0.18;
+      n.userData.vy += (Math.random() - 0.5) * 0.18;
+    });
+  });
+
+  /* ══ 7. ANIMATION LOOP ═══════════════════════════════════════════════ */
+  let frame = 0;
+  let lineTimer = 0;
+
+  function animate () {
+    requestAnimationFrame(animate);
+    frame++;
+
+    /* Smooth mouse follow */
+    smoothMX += (rawMX - smoothMX) * 0.035;
+    smoothMY += (rawMY - smoothMY) * 0.035;
+
+    /* Tilt entire scene with mouse — subtle parallax */
+    scene.rotation.y =  smoothMX * 0.22;
+    scene.rotation.x = -smoothMY * 0.12;
+
+    /* Animate light position for dynamic reflections */
+    keyLight.position.x = 30 + Math.sin(frame * 0.007) * 12;
+    keyLight.position.y = 25 + Math.cos(frame * 0.009) * 8;
+
+    /* Node drift + pulse */
+    for (let i = 0; i < nodes.length; i++) {
+      const n  = nodes[i];
+      const ud = n.userData;
+
+      n.position.x += ud.vx;
+      n.position.y += ud.vy;
+      n.rotation.x += ud.rx;
+      n.rotation.y += ud.ry;
+
+      /* Bounce off invisible walls */
+      if (Math.abs(n.position.x) > 50) ud.vx *= -1;
+      if (Math.abs(n.position.y) > 34) ud.vy *= -1;
+
+      /* Breathing scale pulse */
+      const pulse = 1 + Math.sin(frame * 0.018 + ud.phase) * 0.07;
+      n.scale.setScalar(ud.baseScale * pulse);
+    }
+
+    /* Rebuild connection lines every 4 frames */
+    lineTimer++;
+    if (lineTimer % 4 === 0) rebuildLines();
+
+    /* Bar column pulse */
+    for (let i = 0; i < bars.length; i++) {
+      const b  = bars[i];
+      const ud = b.userData;
+      const s  = 1 + Math.sin(frame * ud.pulseSpeed + ud.phase) * 0.09;
+      b.scale.y = ud.baseH * s;
+      b.position.y = -28 + (ud.baseH * s) / 2;
+    }
+
+    /* Dust drift */
+    const pos = dustGeom.attributes.position.array;
+    for (let i = 0; i < DUST_COUNT; i++) {
+      pos[i * 3]     += dustVelocities[i].x;
+      pos[i * 3 + 1] += dustVelocities[i].y;
+      if (Math.abs(pos[i * 3])     > 62) dustVelocities[i].x *= -1;
+      if (Math.abs(pos[i * 3 + 1]) > 42) dustVelocities[i].y *= -1;
+    }
+    dustGeom.attributes.position.needsUpdate = true;
+    dust.rotation.z += 0.0003;
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  /* ══ 8. RESIZE ══════════════════════════════════════════════════════════ */
+  const ro = new ResizeObserver(() => {
+    const w = W(), h = H();
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+  ro.observe(canvas.parentElement);
+
+  /* ══ 9. SCROLL FADE — scene dims when user scrolls away from hero ═══════ */
+  const _pageRoot = document.getElementById('page-root');
+  (_pageRoot || window).addEventListener('scroll', () => {
+    const heroH  = canvas.parentElement.offsetHeight;
+    const scroll = _pageRoot ? _pageRoot.scrollTop : window.scrollY;
+    const fade   = Math.max(0, 1 - (scroll / (heroH * 0.6)));
+    renderer.domElement.style.opacity = fade;
+  }, { passive: true });
+
+})();
+</script>
+
+<!-- ══ SITEWIDE SECTION THREE.JS SCENES ════════════════════════════════════
+  Each section gets a unique, content-relevant 3D scene:
+  #who        → 4 floating audience-segment orb clusters (soft, light bg)
+  #outcomes   → 3 orbiting torus rings — Marketing / Sales / Negotiation
+  #method     → A·C·T rising columns with upward particle streams
+  #facilitator→ 30,000-node leadership constellation network
+  #cta        → Gold particle vortex funnel — the revenue outcome
+  All scenes: mouse parallax tilt + IntersectionObserver lazy init + fade
+════════════════════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  if (typeof THREE === 'undefined') return;
+
+  /* ── shared mouse state ─────────────────────────────────────────────── */
+  let mx = 0, my = 0;
+  window.addEventListener('mousemove', e => {
+    mx =  (e.clientX / window.innerWidth  - 0.5) * 2;
+    my = -(e.clientY / window.innerHeight - 0.5) * 2;
+  });
+  window.addEventListener('touchmove', e => {
+    if (e.touches.length) {
+      mx =  (e.touches[0].clientX / window.innerWidth  - 0.5) * 2;
+      my = -(e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+    }
+  }, { passive: true });
+
+  /* ── shared scroll container ────────────────────────────────────────── */
+  const scroller = document.getElementById('page-root') || window;
+
+  /* ── helper: make a renderer for a canvas ───────────────────────────── */
+  function makeRenderer(canvas, alpha) {
+    const r = new THREE.WebGLRenderer({ canvas, alpha: !!alpha, antialias: true });
+    r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    r.setSize(canvas.offsetWidth || canvas.parentElement.offsetWidth,
+              canvas.offsetHeight || canvas.parentElement.offsetHeight);
+    r.setClearColor(0x000000, 0);
+    return r;
+  }
+
+  /* ── helper: resize observer ────────────────────────────────────────── */
+  function watchResize(canvas, camera, renderer) {
+    new ResizeObserver(() => {
+      const w = canvas.parentElement.offsetWidth;
+      const h = canvas.parentElement.offsetHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }).observe(canvas.parentElement);
+  }
+
+  /* ── helper: smooth value lerp ──────────────────────────────────────── */
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  /* ── lazy init via IntersectionObserver ─────────────────────────────── */
+  function lazyScene(canvasId, initFn) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    let started = false;
+    const io = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !started) {
+        started = true;
+        io.disconnect();
+        initFn(canvas);
+      }
+    }, { threshold: 0.05 });
+    io.observe(canvas.parentElement);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     SCENE 1 — #WHO: Audience Segment Orbs
+     Four glowing sphere clusters, one per segment, gently drifting.
+     Light section — very low opacity, gold + navy tones.
+  ═══════════════════════════════════════════════════════════════════════ */
+  lazyScene('cv-who', function (canvas) {
+    const scene    = new THREE.Scene();
+    const camera   = new THREE.PerspectiveCamera(60, 1, 0.1, 200);
+    camera.position.z = 48;
+    const renderer = makeRenderer(canvas, true);
+    watchResize(canvas, camera, renderer);
+
+    /* 4 segment orb clusters: color-coded */
+    const SEGS = [
+      { color: 0xC9A040, x: -20, y:  10, label: 'MSME'        },
+      { color: 0x1B3A5C, x:  20, y:  10, label: 'Corporate'   },
+      { color: 0x8A6820, x: -20, y: -10, label: 'Startup'     },
+      { color: 0x0D1B2A, x:  20, y: -10, label: 'Executive'   },
+    ];
+
+    const groups = [];
+    SEGS.forEach((seg, si) => {
+      const g = new THREE.Group();
+      g.position.set(seg.x, seg.y, 0);
+
+      /* Central sphere */
+      const coreGeo = new THREE.SphereGeometry(2.8, 32, 32);
+      const coreMat = new THREE.MeshPhongMaterial({
+        color: seg.color, transparent: true, opacity: 0.18,
+        shininess: 60,
+      });
+      g.add(new THREE.Mesh(coreGeo, coreMat));
+
+      /* Wireframe shell */
+      const wireGeo = new THREE.IcosahedronGeometry(3.0, 1);
+      const wireMat = new THREE.MeshBasicMaterial({
+        color: 0xC9A040, wireframe: true, transparent: true, opacity: 0.09,
+      });
+      g.add(new THREE.Mesh(wireGeo, wireMat));
+
+      /* 8 orbiting mini-spheres */
+      for (let i = 0; i < 8; i++) {
+        const angle  = (i / 8) * Math.PI * 2;
+        const radius = 5 + Math.random() * 2.5;
+        const m = new THREE.Mesh(
+          new THREE.SphereGeometry(0.28 + Math.random() * 0.3, 8, 8),
+          new THREE.MeshBasicMaterial({ color: 0xC9A040, transparent: true, opacity: 0.22 })
+        );
+        m.position.set(
+          Math.cos(angle) * radius,
+          Math.sin(angle) * radius * 0.5,
+          (Math.random() - 0.5) * 4
+        );
+        m.userData = { angle, radius, speed: 0.004 + Math.random() * 0.006, orbitY: Math.random() * 0.5 };
+        g.add(m);
+      }
+
+      /* Connection lines from center to satellites */
+      g.children.slice(2).forEach(sat => {
+        const pts  = [new THREE.Vector3(0,0,0), sat.position.clone()];
+        const lGeo = new THREE.BufferGeometry().setFromPoints(pts);
+        const lMat = new THREE.LineBasicMaterial({ color: 0xC9A040, transparent: true, opacity: 0.07 });
+        g.add(new THREE.Line(lGeo, lMat));
+      });
+
+      g.userData = { baseX: seg.x, baseY: seg.y, phase: si * Math.PI * 0.5 };
+      scene.add(g);
+      groups.push(g);
+    });
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+    const pt = new THREE.PointLight(0xC9A040, 1.2, 120);
+    pt.position.set(10, 20, 30);
+    scene.add(pt);
+
+    let smx = 0, smy = 0, frame = 0;
+    (function tick() {
+      requestAnimationFrame(tick);
+      frame++;
+      smx = lerp(smx, mx, 0.025);
+      smy = lerp(smy, my, 0.025);
+      scene.rotation.y =  smx * 0.15;
+      scene.rotation.x = -smy * 0.08;
+
+      groups.forEach((g, gi) => {
+        const ud = g.userData;
+        /* Gentle float */
+        g.position.x = ud.baseX + Math.sin(frame * 0.009 + ud.phase) * 1.2;
+        g.position.y = ud.baseY + Math.cos(frame * 0.007 + ud.phase) * 0.8;
+        g.rotation.y += 0.004;
+
+        /* Orbit satellites */
+        g.children.slice(2, 10).forEach(sat => {
+          if (!sat.userData.angle) return;
+          sat.userData.angle += sat.userData.speed;
+          sat.position.x = Math.cos(sat.userData.angle) * sat.userData.radius;
+          sat.position.y = Math.sin(sat.userData.angle) * sat.userData.radius * 0.5;
+        });
+      });
+      renderer.render(scene, camera);
+    })();
+  });
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     SCENE 2 — #OUTCOMES: Three Orbiting Torus Rings
+     Marketing (gold) · Sales (navy) · Negotiation (gold-dark)
+     Three interlocked tori rotating on different axes — commercial mastery.
+  ═══════════════════════════════════════════════════════════════════════ */
+  lazyScene('cv-outcomes', function (canvas) {
+    const scene    = new THREE.Scene();
+    const camera   = new THREE.PerspectiveCamera(58, 1, 0.1, 300);
+    camera.position.z = 60;
+    const renderer = makeRenderer(canvas, true);
+    watchResize(canvas, camera, renderer);
+
+    const RINGS = [
+      { color: 0xC9A040, rx: 0.3,  ry: 0,    rz: 0,    speed: 0.006, radius: 14, tube: 0.9, seg: 160, label: 'Marketing'    },
+      { color: 0x1B3A5C, rx: 0,    ry: 0.3,  rz: 0.5,  speed: 0.009, radius: 10, tube: 1.1, seg: 140, label: 'Sales'        },
+      { color: 0x8A6820, rx: 0.5,  ry: 0.5,  rz: 0,    speed: 0.007, radius: 17, tube: 0.7, seg: 180, label: 'Negotiation'  },
+    ];
+
+    const meshes = [];
+    RINGS.forEach(r => {
+      /* Solid torus */
+      const mat = new THREE.MeshPhongMaterial({
+        color: r.color, emissive: new THREE.Color(r.color).multiplyScalar(0.15),
+        transparent: true, opacity: 0.35, shininess: 80,
+      });
+      const mesh = new THREE.Mesh(new THREE.TorusGeometry(r.radius, r.tube, 16, r.seg), mat);
+      mesh.rotation.set(r.rx, r.ry, r.rz);
+
+      /* Wireframe twin */
+      const wmat = new THREE.MeshBasicMaterial({
+        color: 0xE8C97A, wireframe: true, transparent: true, opacity: 0.06,
+      });
+      const wmesh = new THREE.Mesh(new THREE.TorusGeometry(r.radius, r.tube, 8, 60), wmat);
+      wmesh.rotation.set(r.rx, r.ry, r.rz);
+
+      scene.add(mesh);
+      scene.add(wmesh);
+      meshes.push({ mesh, wmesh, speed: r.speed, axis: new THREE.Vector3(
+        Math.random() - 0.5, Math.random() - 0.5, 0.1
+      ).normalize() });
+    });
+
+    /* Central node — deal closed! */
+    const coreGeo = new THREE.IcosahedronGeometry(2.2, 1);
+    const coreMat = new THREE.MeshPhongMaterial({
+      color: 0xC9A040, emissive: 0x2A1400,
+      transparent: true, opacity: 0.55, shininess: 120,
+    });
+    const core = new THREE.Mesh(coreGeo, coreMat);
+    scene.add(core);
+
+    /* Gold dust */
+    const DPC = 180;
+    const dp  = new Float32Array(DPC * 3);
+    const dv  = [];
+    for (let i = 0; i < DPC; i++) {
+      dp[i*3]   = (Math.random()-0.5)*80;
+      dp[i*3+1] = (Math.random()-0.5)*55;
+      dp[i*3+2] = (Math.random()-0.5)*40-5;
+      dv.push({ x: (Math.random()-0.5)*0.018, y: (Math.random()-0.5)*0.018 });
+    }
+    const dustG = new THREE.BufferGeometry();
+    dustG.setAttribute('position', new THREE.BufferAttribute(dp, 3));
+    scene.add(new THREE.Points(dustG, new THREE.PointsMaterial({
+      color: 0xE8C97A, size: 0.25, transparent: true, opacity: 0.4, sizeAttenuation: true,
+    })));
+
+    const kl = new THREE.PointLight(0xC9A040, 2.5, 150);
+    kl.position.set(25, 20, 35);
+    scene.add(kl);
+    scene.add(new THREE.AmbientLight(0x1B3A5C, 0.5));
+
+    let smx = 0, smy = 0, frame = 0;
+    (function tick() {
+      requestAnimationFrame(tick);
+      frame++;
+      smx = lerp(smx, mx, 0.028);
+      smy = lerp(smy, my, 0.028);
+      scene.rotation.y =  smx * 0.18;
+      scene.rotation.x = -smy * 0.10;
+
+      meshes.forEach(o => {
+        o.mesh.rotateOnAxis(o.axis, o.speed);
+        o.wmesh.rotation.copy(o.mesh.rotation);
+      });
+
+      /* Core pulse */
+      const pulse = 1 + Math.sin(frame * 0.03) * 0.08;
+      core.scale.setScalar(pulse);
+      core.rotation.y += 0.012;
+      kl.intensity = 2 + Math.sin(frame * 0.02) * 0.6;
+
+      /* Dust drift */
+      for (let i = 0; i < DPC; i++) {
+        dp[i*3]   += dv[i].x; dp[i*3+1] += dv[i].y;
+        if (Math.abs(dp[i*3])   > 42) dv[i].x *= -1;
+        if (Math.abs(dp[i*3+1]) > 28) dv[i].y *= -1;
+      }
+      dustG.attributes.position.needsUpdate = true;
+
+      renderer.render(scene, camera);
+    })();
+  });
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     SCENE 3 — #METHOD: ACT Rising Columns with Particle Streams
+     Three illuminated prisms labelled A · C · T rising from the floor,
+     with upward-streaming gold particles representing skill transfer.
+  ═══════════════════════════════════════════════════════════════════════ */
+  lazyScene('cv-method', function (canvas) {
+    const scene    = new THREE.Scene();
+    const camera   = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+    camera.position.set(0, 6, 52);
+    camera.lookAt(0, 0, 0);
+    const renderer = makeRenderer(canvas, true);
+    watchResize(canvas, camera, renderer);
+
+    const COLS = [
+      { x: -16, h: 14, color: 0xC9A040, pct: '30%', label: 'A' },
+      { x:   0, h: 22, color: 0xE8C97A, pct: '50%', label: 'C' },
+      { x:  16, h: 10, color: 0x8A6820, pct: '20%', label: 'T' },
+    ];
+
+    const cols = [];
+    COLS.forEach(c => {
+      /* Column body */
+      const geo  = new THREE.BoxGeometry(5, c.h, 5);
+      const mat  = new THREE.MeshPhongMaterial({
+        color: c.color, emissive: new THREE.Color(c.color).multiplyScalar(0.1),
+        transparent: true, opacity: 0.22, shininess: 60,
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(c.x, -18 + c.h / 2, 0);
+
+      /* Edge glow */
+      const eMat = new THREE.LineBasicMaterial({ color: c.color, transparent: true, opacity: 0.4 });
+      const eGeo = new THREE.EdgesGeometry(geo);
+      mesh.add(new THREE.LineSegments(eGeo, eMat));
+
+      /* Top cap glow plane */
+      const capGeo = new THREE.PlaneGeometry(5.2, 5.2);
+      const capMat = new THREE.MeshBasicMaterial({ color: c.color, transparent: true, opacity: 0.55, side: THREE.DoubleSide });
+      const cap = new THREE.Mesh(capGeo, capMat);
+      cap.position.set(0, c.h / 2 + 0.05, 0);
+      cap.rotation.x = Math.PI / 2;
+      mesh.add(cap);
+
+      scene.add(mesh);
+      cols.push({ mesh, cap, baseH: c.h, phase: Math.random() * Math.PI * 2, color: c.color });
+    });
+
+    /* Upward particle streams — one per column */
+    const STREAMS = COLS.map(c => {
+      const PC   = 60;
+      const pos  = new Float32Array(PC * 3);
+      const vel  = [];
+      for (let i = 0; i < PC; i++) {
+        pos[i*3]   = c.x + (Math.random()-0.5)*4;
+        pos[i*3+1] = -18 + Math.random() * (c.h + 16);
+        pos[i*3+2] = (Math.random()-0.5)*4;
+        vel.push({ speed: 0.04 + Math.random() * 0.06, top: -18 + c.h + 16 });
+      }
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      const pts = new THREE.Points(g, new THREE.PointsMaterial({
+        color: c.color, size: 0.18, transparent: true, opacity: 0.5, sizeAttenuation: true,
+      }));
+      scene.add(pts);
+      return { pos, vel, geo: g, baseX: c.x };
+    });
+
+    /* Floor grid */
+    const gridHelper = new THREE.GridHelper(80, 20, 0x1B3A5C, 0x0D1B2A);
+    gridHelper.position.y = -18;
+    gridHelper.material.transparent = true;
+    gridHelper.material.opacity = 0.25;
+    scene.add(gridHelper);
+
+    /* Lights */
+    scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+    COLS.forEach(c => {
+      const l = new THREE.PointLight(c.color, 1.8, 60);
+      l.position.set(c.x, 10, 10);
+      scene.add(l);
+    });
+
+    let smx = 0, smy = 0, frame = 0;
+    (function tick() {
+      requestAnimationFrame(tick);
+      frame++;
+      smx = lerp(smx, mx, 0.028);
+      smy = lerp(smy, my, 0.015);
+      scene.rotation.y =  smx * 0.14;
+
+      /* Column breathe */
+      cols.forEach((c, i) => {
+        const s = 1 + Math.sin(frame * 0.016 + c.phase) * 0.04;
+        c.mesh.scale.y = s;
+        /* Sync cap position */
+        c.cap.material.opacity = 0.45 + Math.sin(frame * 0.02 + c.phase) * 0.2;
+      });
+
+      /* Particle streams float upward */
+      STREAMS.forEach(s => {
+        for (let i = 0; i < 60; i++) {
+          s.pos[i*3+1] += s.vel[i].speed;
+          if (s.pos[i*3+1] > s.vel[i].top) {
+            s.pos[i*3+1] = -18;
+            s.pos[i*3]   = s.baseX + (Math.random()-0.5)*4;
+          }
+        }
+        s.geo.attributes.position.needsUpdate = true;
+      });
+
+      renderer.render(scene, camera);
+    })();
+  });
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     SCENE 4 — #FACILITATOR: Leadership Constellation Network
+     Thousands of tiny stars connected by thin lines — 30,000+ leaders.
+     Deep, slow rotation. A few large "hub" nodes glow gold.
+  ═══════════════════════════════════════════════════════════════════════ */
+  lazyScene('cv-facilitator', function (canvas) {
+    const scene    = new THREE.Scene();
+    const camera   = new THREE.PerspectiveCamera(62, 1, 0.1, 400);
+    camera.position.z = 70;
+    const renderer = makeRenderer(canvas, true);
+    watchResize(canvas, camera, renderer);
+
+    /* Star field — 1400 tiny points */
+    const SC = 1400;
+    const sp = new Float32Array(SC * 3);
+    for (let i = 0; i < SC; i++) {
+      sp[i*3]   = (Math.random()-0.5) * 160;
+      sp[i*3+1] = (Math.random()-0.5) * 110;
+      sp[i*3+2] = (Math.random()-0.5) * 80 - 20;
+    }
+    const starGeo = new THREE.BufferGeometry();
+    starGeo.setAttribute('position', new THREE.BufferAttribute(sp, 3));
+    scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({
+      color: 0xE8C97A, size: 0.12, transparent: true, opacity: 0.35, sizeAttenuation: true,
+    })));
+
+    /* Hub nodes — large glowing spheres (key leaders / regions) */
+    const HUBS = 28;
+    const hubs = [];
+    for (let i = 0; i < HUBS; i++) {
+      const r   = 0.5 + Math.random() * 1.4;
+      const mat = new THREE.MeshPhongMaterial({
+        color: Math.random() > 0.5 ? 0xC9A040 : 0xE8C97A,
+        emissive: 0x1A0800, transparent: true, opacity: 0.55 + Math.random() * 0.3,
+        shininess: 80,
+      });
+      const m = new THREE.Mesh(new THREE.SphereGeometry(r, 12, 12), mat);
+      m.position.set(
+        (Math.random()-0.5) * 80,
+        (Math.random()-0.5) * 55,
+        (Math.random()-0.5) * 40 - 5
+      );
+      m.userData = { phase: Math.random() * Math.PI * 2, speed: 0.006 + Math.random() * 0.01 };
+      scene.add(m);
+      hubs.push(m);
+    }
+
+    /* Network lines between nearby hubs */
+    const lineGroup = new THREE.Group();
+    scene.add(lineGroup);
+    function buildNet() {
+      while (lineGroup.children.length) {
+        const c = lineGroup.children[0];
+        c.geometry.dispose(); lineGroup.remove(c);
+      }
+      for (let i = 0; i < hubs.length; i++) {
+        for (let j = i+1; j < hubs.length; j++) {
+          const d = hubs[i].position.distanceTo(hubs[j].position);
+          if (d < 28) {
+            const op  = (1 - d/28) * 0.18;
+            const geo = new THREE.BufferGeometry().setFromPoints([
+              hubs[i].position.clone(), hubs[j].position.clone()
+            ]);
+            lineGroup.add(new THREE.Line(geo,
+              new THREE.LineBasicMaterial({ color: 0xC9A040, transparent: true, opacity: op })
+            ));
+          }
+        }
+      }
+    }
+    buildNet();
+
+    const kl = new THREE.PointLight(0xC9A040, 2.0, 200);
+    kl.position.set(20, 15, 40);
+    scene.add(kl);
+    scene.add(new THREE.AmbientLight(0x1B3A5C, 0.4));
+
+    let smx = 0, smy = 0, frame = 0, netTimer = 0;
+    (function tick() {
+      requestAnimationFrame(tick);
+      frame++;
+      smx = lerp(smx, mx, 0.02);
+      smy = lerp(smy, my, 0.02);
+      scene.rotation.y += 0.0008 + smx * 0.003;
+      scene.rotation.x  = -smy * 0.06;
+
+      hubs.forEach(h => {
+        const ud = h.userData;
+        h.position.y += Math.sin(frame * ud.speed + ud.phase) * 0.015;
+        /* Gentle pulse */
+        const s = 1 + Math.sin(frame * 0.02 + ud.phase) * 0.12;
+        h.scale.setScalar(s);
+      });
+
+      netTimer++;
+      if (netTimer % 8 === 0) buildNet();
+
+      kl.position.x = 20 + Math.sin(frame * 0.006) * 14;
+
+      renderer.render(scene, camera);
+    })();
+  });
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     SCENE 5 — #CTA: Gold Revenue Vortex
+     Particles spiral upward in a double-helix funnel — the compounding
+     effect of mastering marketing, sales, and negotiation together.
+     Central deal crystal explodes outward on hover.
+  ═══════════════════════════════════════════════════════════════════════ */
+  lazyScene('cv-cta', function (canvas) {
+    const scene    = new THREE.Scene();
+    const camera   = new THREE.PerspectiveCamera(62, 1, 0.1, 200);
+    camera.position.z = 55;
+    const renderer = makeRenderer(canvas, true);
+    watchResize(canvas, camera, renderer);
+
+    /* Double-helix vortex particle system */
+    const VC   = 500;
+    const vPos = new Float32Array(VC * 3);
+    const vDat = [];
+
+    for (let i = 0; i < VC; i++) {
+      const helix = i % 2;            /* 0 = strand A, 1 = strand B */
+      const t     = (i / VC) * Math.PI * 8;
+      const r     = 6 + Math.sin(t * 0.5) * 4;
+      const offset = helix * Math.PI; /* 180° phase offset for double helix */
+      vPos[i*3]   = Math.cos(t + offset) * r;
+      vPos[i*3+1] = (t / (Math.PI * 8)) * 50 - 25;
+      vPos[i*3+2] = Math.sin(t + offset) * r;
+      vDat.push({ t, r, offset, speed: 0.006 + Math.random() * 0.004 });
+    }
+
+    const vGeo = new THREE.BufferGeometry();
+    vGeo.setAttribute('position', new THREE.BufferAttribute(vPos, 3));
+
+    /* Gold gradient color attribute */
+    const vCol = new Float32Array(VC * 3);
+    for (let i = 0; i < VC; i++) {
+      const frac = i / VC;
+      const c    = new THREE.Color().lerpColors(
+        new THREE.Color(0x8A6820), new THREE.Color(0xE8C97A), frac
+      );
+      vCol[i*3] = c.r; vCol[i*3+1] = c.g; vCol[i*3+2] = c.b;
+    }
+    vGeo.setAttribute('color', new THREE.BufferAttribute(vCol, 3));
+
+    scene.add(new THREE.Points(vGeo, new THREE.PointsMaterial({
+      size: 0.28, vertexColors: true, transparent: true, opacity: 0.7, sizeAttenuation: true,
+    })));
+
+    /* Central deal crystal — large icosahedron */
+    const crystalGeo = new THREE.IcosahedronGeometry(4.5, 1);
+    const crystalMat = new THREE.MeshPhongMaterial({
+      color: 0xC9A040, emissive: 0x2A1200,
+      transparent: true, opacity: 0.5, shininess: 140, wireframe: false,
+    });
+    const crystal = new THREE.Mesh(crystalGeo, crystalMat);
+    scene.add(crystal);
+
+    /* Crystal wireframe overlay */
+    const cwMat = new THREE.MeshBasicMaterial({ color: 0xE8C97A, wireframe: true, transparent: true, opacity: 0.15 });
+    const cwMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(4.6, 1), cwMat);
+    scene.add(cwMesh);
+
+    /* Outer ring halo */
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0xC9A040, side: THREE.DoubleSide, transparent: true, opacity: 0.12 });
+    const ring = new THREE.Mesh(new THREE.RingGeometry(7, 8.5, 64), ringMat);
+    scene.add(ring);
+
+    /* Floating orbiting mini crystals */
+    const orbiters = [];
+    for (let i = 0; i < 6; i++) {
+      const angle = (i/6) * Math.PI * 2;
+      const om = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.7, 0),
+        new THREE.MeshPhongMaterial({ color: 0xE8C97A, emissive: 0x1A0800, transparent: true, opacity: 0.65, shininess: 100 })
+      );
+      om.position.set(Math.cos(angle)*12, (Math.random()-0.5)*4, Math.sin(angle)*12);
+      om.userData = { angle, speed: 0.007 + Math.random() * 0.005 };
+      scene.add(om);
+      orbiters.push(om);
+    }
+
+    /* Lights */
+    const kl = new THREE.PointLight(0xC9A040, 3.5, 120);
+    kl.position.set(0, 10, 30);
+    scene.add(kl);
+    scene.add(new THREE.AmbientLight(0x0D1B2A, 0.4));
+    const fillL = new THREE.PointLight(0xE8C97A, 1.2, 80);
+    fillL.position.set(-20, -10, 10);
+    scene.add(fillL);
+
+    let smx = 0, smy = 0, frame = 0;
+    (function tick() {
+      requestAnimationFrame(tick);
+      frame++;
+      smx = lerp(smx, mx, 0.03);
+      smy = lerp(smy, my, 0.03);
+      scene.rotation.y =  smx * 0.2;
+      scene.rotation.x = -smy * 0.1;
+
+      /* Rotate helix */
+      for (let i = 0; i < VC; i++) {
+        vDat[i].t += vDat[i].speed;
+        const { t, r, offset } = vDat[i];
+        vPos[i*3]   = Math.cos(t + offset) * r;
+        vPos[i*3+1] = ((t % (Math.PI * 8)) / (Math.PI * 8)) * 50 - 25;
+        vPos[i*3+2] = Math.sin(t + offset) * r;
+      }
+      vGeo.attributes.position.needsUpdate = true;
+
+      /* Crystal spin + pulse */
+      crystal.rotation.y  += 0.007;
+      crystal.rotation.x  += 0.004;
+      cwMesh.rotation.copy(crystal.rotation);
+      const pulse = 1 + Math.sin(frame * 0.025) * 0.06;
+      crystal.scale.setScalar(pulse);
+      cwMesh.scale.setScalar(pulse * 1.02);
+
+      /* Ring pulse */
+      ring.rotation.z += 0.003;
+      ring.material.opacity = 0.08 + Math.sin(frame * 0.018) * 0.06;
+
+      /* Orbiters */
+      orbiters.forEach(o => {
+        o.userData.angle += o.userData.speed;
+        o.position.x = Math.cos(o.userData.angle) * 12;
+        o.position.z = Math.sin(o.userData.angle) * 12;
+        o.rotation.y += 0.02;
+      });
+
+      kl.intensity = 3 + Math.sin(frame * 0.022) * 0.8;
+      renderer.render(scene, camera);
+    })();
+  });
+
+})();
+</script>
+</div><!-- /#page-root -->
+</body>
+</html>

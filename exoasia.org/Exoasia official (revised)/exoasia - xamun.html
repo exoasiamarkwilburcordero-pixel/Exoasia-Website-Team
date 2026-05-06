@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exoasia Software Development — Powered by Xamun.AI</title>
+  
+<div class="fullwidth-wrapper">
+  
+<!-- ═══════════ ANNOUNCEMENT ═══════════ -->
+<div class="ann">
+  <div class="adot"></div>
+  <span>Exoasia × <strong>Xamun.AI</strong> — AI-Native Software Delivery · From Vision to Revenue in Weeks, Not Months</span>
+  <div class="adot"></div>
+</div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="xo-nav" id="xo-nav">
+  <a href="https://exoasia.org" class="xo-logo">
+    <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <defs><linearGradient id="xg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7B3FA0"/><stop offset="100%" stop-color="#C9E500"/></linearGradient></defs>
+      <path d="M6 6L18 20L6 34H13L20 25.5L27 34H34L22 20L34 6H27L20 14.5L13 6H6Z" fill="url(#xg1)"/>
+    </svg>
+    <div class="xo-logo-text">EXOASIA<small>SOFTWARE DEV · POWERED BY XAMUN.AI</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#why">Why Xamun</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#plans">Engagement</a></li>
+    <li><a href="#cases">Case Studies</a></li>
+    <li><a href="#" onclick="event.preventDefault(); document.querySelector('.popup-trigger').click();" class="nav-cta">Start Now</a></li>
+  </ul>
+  <button class="xo-hb" id="xo-hb" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="xo-drawer" id="xo-drawer">
+  <a href="#why"    onclick="xoClose()">Why Xamun</a>
+  <a href="#how"    onclick="xoClose()">How It Works</a>
+  <a href="#plans"  onclick="xoClose()">Engagement</a>
+  <a href="#cases"  onclick="xoClose()">Case Studies</a>
+  <a href="#" onclick="event.preventDefault(); document.querySelector('.popup-trigger').click();" class="drawer-cta">Start Now</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-orbs">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+  </div>
+
+  <div class="hc">
+    <div class="eyebrow">
+      <div class="edot"></div>
+      Exoasia × Xamun.AI · AI-Native Software Development
+    </div>
+    <h1>
+      <span class="l1">From Vision</span>
+      <span class="l2">to Working Software</span>
+      <span class="l3">in 30 Days.</span>
+    </h1>
+    <p class="hero-sub">Get production-ready software every 2 weeks. Preserve your capital for validation and growth — not technical execution. Exoasia brings the strategy; Xamun brings the AI-powered engine.</p>
+    <div class="hero-pills">
+      <span class="hpill">3× Faster Delivery</span>
+      <span class="hpill">Compliance Built-In</span>
+      <span class="hpill">Full IP Ownership</span>
+      <span class="hpill">95% Estimation Accuracy</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#" onclick="event.preventDefault(); document.querySelector('.popup-trigger').click();" class="btn btn-cyan">
+        Book a Discovery Call
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#plans" class="ghost">View Engagement Models ↓</a>
+    </div>
+  </div>
+
+  <!-- Desktop floating stat cards -->
+  <div class="hcards" aria-hidden="true">
+    <div class="hcard"><div class="hcard-num">3×</div><div class="hcard-lbl">Faster than Traditional</div></div>
+    <div class="hcard"><div class="hcard-num">95%</div><div class="hcard-lbl">Estimation Accuracy</div></div>
+    <div class="hcard"><div class="hcard-num">30</div><div class="hcard-lbl">Days to Working Software</div></div>
+    <div class="hcard"><div class="hcard-num">100%</div><div class="hcard-lbl">IP Owned by You</div></div>
+  </div>
+</section>
+
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div class="mq" aria-hidden="true">
+  <div class="mi">
+    <span>AI-Powered Development</span><span>HIPAA · GDPR · PCI-DSS</span>
+    <span>2-Week Sprints</span><span>Full IP Ownership</span>
+    <span>No Vendor Lock-In</span><span>95% Estimation Accuracy</span>
+    <span>30 Days to V1</span><span>Production-Ready Code</span>
+    <span>AI-Powered Development</span><span>HIPAA · GDPR · PCI-DSS</span>
+    <span>2-Week Sprints</span><span>Full IP Ownership</span>
+    <span>No Vendor Lock-In</span><span>95% Estimation Accuracy</span>
+    <span>30 Days to V1</span><span>Production-Ready Code</span>
+  </div>
+</div>
+
+<!-- ═══════════ INDUSTRY STATS ═══════════ -->
+<div class="stats rv">
+  <div class="stat">
+    <div class="stat-num red">66%</div>
+    <div class="stat-lbl">Software Projects Fail</div>
+    <div class="stat-note">Standish Report 2020</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num red">189%</div>
+    <div class="stat-lbl">Average Cost Overrun</div>
+    <div class="stat-note">vs. original budget</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num cyan">42%</div>
+    <div class="stat-lbl">Deliver Expected Features</div>
+    <div class="stat-note">of surviving projects</div>
+  </div>
+</div>
+
+<!-- ═══════════ WHY THIS WINS ═══════════ -->
+<section id="why">
+  <div class="rv"><div class="sec-label cyan-label">Why Exoasia × Xamun Wins</div></div>
+  <h2 class="sh rv d1">Every Dimension That Matters.<br>Solved.</h2>
+  <p class="sub rv d2">Traditional agencies, freelancers, and vibe-coding tools all fail in different ways. Exoasia's Xamun-powered offering outperforms on speed, cost, quality, and compliance — simultaneously.</p>
+
+  <div class="adv-grid">
+    <div class="adv rv d1">
+      <div class="adv-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="badge">3× Faster</div>
+      <h3>AI Handles 70–80% of Boilerplate</h3>
+      <p>Xamun's AI generates routine code automatically, freeing human experts to focus entirely on business logic, validation, and quality assurance. Weeks, not months.</p>
+    </div>
+    <div class="adv rv d2">
+      <div class="adv-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#00E5FF" stroke-width="2"/><path d="M12 6v6l4 2" stroke="#00E5FF" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="badge">Preserve 90% of Runway</div>
+      <h3>Stop Burning $20K–$30K/Month</h3>
+      <p>Stop wasting capital on bloated in-house or freelance dev teams. Invest your runway in customer acquisition and market validation instead.</p>
+    </div>
+    <div class="adv rv d3">
+      <div class="adv-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="badge">Compliance Built-In</div>
+      <h3>HIPAA · GDPR · PCI-DSS · NHS</h3>
+      <p>Deep HealthTech and FinTech regulatory experience. Compliance is embedded from day one — not bolted on after the fact.</p>
+    </div>
+    <div class="adv rv d1">
+      <div class="adv-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="badge">95% Accuracy</div>
+      <h3>Predictable Story Point Delivery</h3>
+      <p>No surprise invoices. You know exactly what gets delivered in each 2-week sprint — with 95% estimation accuracy and zero moving targets.</p>
+    </div>
+    <div class="adv rv d2">
+      <div class="adv-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#00E5FF" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="#00E5FF" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="badge">Full Ownership</div>
+      <h3>You Own Everything</h3>
+      <p>Full source code and complete IP transferred to you. Human-readable code with documentation. No vendor lock-in, no hidden dependencies.</p>
+    </div>
+    <div class="adv rv d3">
+      <div class="adv-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="badge">Production-Ready</div>
+      <h3>Quality That Scales With You</h3>
+      <p>Auto-generated tests, static analysis, and expert code review at every sprint. Shipped software that grows with your business from day one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<section id="how" class="how-sec">
+  <div class="rv"><div class="sec-label cyan-label">The Xamun Process</div></div>
+  <h2 class="sh rv d1">Four Steps to<br>Production-Ready Software.</h2>
+  <p class="sub rv d2">Exoasia leads business alignment at every stage. Xamun's AI-native SDLC platform handles the execution layer — from scoping through to production deployment.</p>
+
+  <div class="steps-row rv d3">
+    <div class="step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-who">Exoasia Leads</div>
+      <h4>Discovery &amp; Design</h4>
+      <p>Exoasia facilitates structured client workshops to validate requirements and business outcomes. Xamun's AI creates high-fidelity prototypes based on confirmed scope.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-who">Joint Planning</div>
+      <h4>Sprint Planning</h4>
+      <p>Features are broken into story points. Clients know exactly what gets delivered in each 2-week cycle — no guesswork, no moving targets, full transparency.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-who">Xamun Executes</div>
+      <h4>Build &amp; Deploy</h4>
+      <p>Xamun's AI generates production-ready code while expert developers ensure quality, testing, compliance standards, and seamless deployment.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 04</div>
+      <div class="step-who">Exoasia Guides</div>
+      <h4>Iterate &amp; Scale</h4>
+      <p>Continuous delivery every sprint. Exoasia works alongside you to prioritize the next sprint, refine the product, and plan your scaling strategy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMPARISON TABLE ═══════════ -->
+<section class="cmp-sec">
+  <div class="rv"><div class="sec-label">Competitive Comparison</div></div>
+  <h2 class="sh rv d1">No Traditional Alternative<br>Competes on Every Dimension.</h2>
+  <p class="sub rv d2">Exoasia's Xamun-powered offering outperforms traditional alternatives on every metric that matters to funded founders and enterprise digital teams.</p>
+
+  <div class="cmp-wrap rv d3">
+    <div class="cmp-thead">
+      <span>Dimension</span>
+      <span>Exoasia × Xamun ✦</span>
+      <span>Dev Shops</span>
+      <span>In-House Team</span>
+    </div>
+    <div class="cmp-row">
+      <span class="feature">Time to V1</span>
+      <span class="cmp-cell yes">30 days</span>
+      <span class="cmp-cell no">3–6 months</span>
+      <span class="cmp-cell no">4–6 months</span>
+    </div>
+    <div class="cmp-row">
+      <span class="feature">Monthly Cost</span>
+      <span class="cmp-cell yes">$15K–$60K</span>
+      <span class="cmp-cell no">$30K–$80K</span>
+      <span class="cmp-cell no">$50K–$150K</span>
+    </div>
+    <div class="cmp-row">
+      <span class="feature">Predictable Delivery</span>
+      <span class="cmp-cell yes">✓ YES</span>
+      <span class="cmp-cell no">✗ No</span>
+      <span class="cmp-cell no">✗ No</span>
+    </div>
+    <div class="cmp-row">
+      <span class="feature">Compliance Expertise</span>
+      <span class="cmp-cell yes">✓ YES</span>
+      <span class="cmp-cell no">✗ No</span>
+      <span class="cmp-cell no">✗ No</span>
+    </div>
+    <div class="cmp-row">
+      <span class="feature">Source Code Ownership</span>
+      <span class="cmp-cell yes">✓ YES</span>
+      <span class="cmp-cell yes">✓ YES</span>
+      <span class="cmp-cell yes">✓ YES</span>
+    </div>
+    <div class="cmp-row">
+      <span class="feature">AI Acceleration</span>
+      <span class="cmp-cell yes">✓ YES</span>
+      <span class="cmp-cell no">✗ No</span>
+      <span class="cmp-cell no">✗ No</span>
+    </div>
+    <div class="cmp-row">
+      <span class="feature">Strategic Advisory</span>
+      <span class="cmp-cell yes">✓ Exoasia Layer</span>
+      <span class="cmp-cell no">✗ No</span>
+      <span class="cmp-cell no">✗ No</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ENGAGEMENT MODELS ═══════════ -->
+<section id="plans" class="plans-sec">
+  <div class="rv"><div class="sec-label">Engagement Models</div></div>
+  <h2 class="sh rv d1">Two Paths to<br>Working Software.</h2>
+  <p class="sub rv d2">Both models are powered by Xamun.AI and overseen by Exoasia's strategic advisory layer. Choose the path that fits your stage and goal.</p>
+
+  <div class="plans-grid">
+    <!-- xDD Teams -->
+    <div class="plan plan-a rv d1">
+      <span class="plan-tag">Ongoing · Startup Favourite</span>
+      <h3>xDD Teams</h3>
+      <p style="font-size:13px;color:var(--gray);line-height:1.6">Dedicated AI-Powered Scrum Team</p>
+      <div class="plan-price">$15K+</div>
+      <div class="plan-period">per month · 6-month minimum commitment</div>
+      <p class="plan-desc">Best for startups and growth-stage companies needing ongoing product development with a dedicated team that scales with your velocity.</p>
+      <ul class="plan-feat">
+        <li>Dedicated Business Analyst / Tester + Developers</li>
+        <li>Shared Scrum Master included</li>
+        <li>15 / 30 / 60 story points per month (scalable)</li>
+        <li>Working software delivered every 2 weeks</li>
+        <li>AI-accelerated development with HIPAA/GDPR/PCI-DSS compliance</li>
+        <li>Full source code &amp; IP ownership transferred to client</li>
+        <li>Predictable monthly investment — no surprise invoices</li>
+      </ul>
+      <a href="#" onclick="event.preventDefault(); document.querySelector('.popup-trigger').click();" class="btn btn-plan-a">
+        Start with xDD Teams
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Turnkey -->
+    <div class="plan plan-b rv d2">
+      <span class="plan-tag">Project-Based · Enterprise Ready</span>
+      <h3>Turnkey Service</h3>
+      <p style="font-size:13px;color:var(--gray);line-height:1.6">Full-Cycle Project Delivery, End-to-End</p>
+      <div class="plan-price">$40K–$60K</div>
+      <div class="plan-period">per project · delivered under 2 months</div>
+      <p class="plan-desc">Best for enterprises and organisations requiring a defined-scope digital transformation project delivered from discovery to deployment — end-to-end.</p>
+      <ul class="plan-feat">
+        <li>Complete project delivery: discovery → deployment</li>
+        <li>Exoasia strategic oversight + Xamun execution engine</li>
+        <li>End-to-end project management, design, build, deploy, support</li>
+        <li>Ideal for DX initiatives, internal systems, and new digital products</li>
+        <li>Working prototype in the first 2 weeks</li>
+        <li>Fully compliant and production-ready on delivery</li>
+      </ul>
+      <a href="#" onclick="event.preventDefault(); document.querySelector('.popup-trigger').click();" class="btn btn-plan-b">
+        Start a Turnkey Project
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CASE STUDIES ═══════════ -->
+<section id="cases" class="cs-sec">
+  <div class="rv"><div class="sec-label cyan-label">Case Studies</div></div>
+  <h2 class="sh rv d1">Real Results.<br>Delivered Through Xamun.</h2>
+  <p class="sub rv d2">These are the numbers — not projections. Real projects, real savings, real speed for clients across finance and healthcare.</p>
+
+  <div class="cs-grid">
+    <!-- Case Study A -->
+    <div class="cs rv d1">
+      <div class="cs-tag">Finance Industry</div>
+      <h3>AI Document Extractor for Bookkeeping</h3>
+      <p class="cs-desc">A bookkeeping company needed to automate data extraction and eliminate manual encoding — dramatically reducing operational costs vs. traditional OCR services. 10-page web application with AI-powered OCR.</p>
+
+      <div class="cs-meta">
+        <div class="cs-m">
+          <div class="cs-m-val">~80%</div>
+          <div class="cs-m-lbl">Faster Dev</div>
+        </div>
+        <div class="cs-m">
+          <div class="cs-m-val">~46%</div>
+          <div class="cs-m-lbl">Cost Saved</div>
+        </div>
+        <div class="cs-m">
+          <div class="cs-m-val">3mo</div>
+          <div class="cs-m-lbl">ROI Timeline</div>
+        </div>
+      </div>
+
+      <table class="cs-table">
+        <thead><tr><th>Metric</th><th>Without Xamun</th><th>With Xamun</th></tr></thead>
+        <tbody>
+          <tr><td>Development Time</td><td>16 weeks</td><td class="highlight">3 weeks</td></tr>
+          <tr><td>Team Size</td><td>6 people</td><td class="highlight">3 people</td></tr>
+          <tr><td>Build Cost</td><td>~$35,000</td><td class="highlight">~$19,000</td></tr>
+          <tr><td>Monthly OCR Cost</td><td>$10,000</td><td class="highlight">$1,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Case Study B -->
+    <div class="cs rv d2">
+      <div class="cs-tag">Healthcare Industry</div>
+      <h3>Cancer Patient Care App</h3>
+      <p class="cs-desc">A healthcare organisation needed to accelerate development of a cancer patient care platform — including medicine tracking, symptom logging, and vital signs monitoring. 152-page mobile-friendly web application.</p>
+
+      <div class="cs-meta">
+        <div class="cs-m">
+          <div class="cs-m-val">~77%</div>
+          <div class="cs-m-lbl">Faster Dev</div>
+        </div>
+        <div class="cs-m">
+          <div class="cs-m-val">11.75×</div>
+          <div class="cs-m-lbl">Productivity</div>
+        </div>
+        <div class="cs-m">
+          <div class="cs-m-val">~47%</div>
+          <div class="cs-m-lbl">Cost Saved</div>
+        </div>
+      </div>
+
+      <table class="cs-table">
+        <thead><tr><th>Metric</th><th>Without Xamun</th><th>With Xamun</th></tr></thead>
+        <tbody>
+          <tr><td>Development Time</td><td>~34 weeks</td><td class="highlight">8 weeks</td></tr>
+          <tr><td>Team Size</td><td>~15 people</td><td class="highlight">~5 people</td></tr>
+          <tr><td>Build Cost</td><td>~$350,000+</td><td class="highlight">~$186,000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="clients-strip">
+        <p>Other Notable Clients</p>
+        <div class="client-tags">
+          <span class="ctag">Daikin</span>
+          <span class="ctag">Interport Crew Services</span>
+          <span class="ctag">EON Pharmatek</span>
+          <span class="ctag">BoardPrep</span>
+          <span class="ctag">mWell</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="cta-sec" id="contact">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="rv"><div class="sec-label">Ready to Build?</div></div>
+  <h2 class="rv d1">Vision to <span>Working Software</span><br>in 30 Days.</h2>
+  <p class="cta-sub rv d2">Not another deck. Not another estimate. A real working prototype in your hands within 2 weeks of kickoff. Exoasia and Xamun are ready when you are.</p>
+  <div class="cta-btns rv d3">
+    <a href="#" onclick="event.preventDefault(); document.querySelector('.popup-trigger').click();" class="btn btn-cyan">
+      Book a Discovery Call
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="https://www.exoasia.org" class="outline">Visit exoasia.org</a>
+  </div>
+
+  <div class="contacts-row rv d4">
+    <div class="contact-card">
+      <span class="contact-flag">🇵🇭</span>
+      <div class="contact-country">Philippines</div>
+      <div class="contact-name">Mack Comandante</div>
+      <div class="contact-role">Founder &amp; CEO<br>Exoasia Innovation Hub</div>
+      <a href="mailto:mackcomandante@exoasia.org" class="contact-link">mackcomandante@exoasia.org</a>
+      <a href="https://wa.me/639175052409" class="contact-link">WhatsApp: +63 917 505 2409</a>
+    </div>
+    <div class="contact-card">
+      <span class="contact-flag">🇲🇾</span>
+      <div class="contact-country">Malaysia</div>
+      <div class="contact-name">Tamanna Patel</div>
+      <div class="contact-role">Exoasia Malaysia Representative</div>
+      <a href="mailto:exoasiamalaysia@exoasia.org" class="contact-link">exoasiamalaysia@exoasia.org</a>
+      <a href="https://wa.me/601645264577" class="contact-link">WhatsApp: +60 164 526 457</a>
+    </div>
+    <div class="contact-card">
+      <span class="contact-flag">🤝</span>
+      <div class="contact-country">Next Steps</div>
+      <div class="contact-name">4-Step Onboarding</div>
+      <div class="contact-role" style="text-align:left;padding:0 4px">
+        <div style="margin-bottom:6px;font-size:12px;color:#B095C5;line-height:1.6">1. Discovery Call (45 min)<br>2. Scoping Workshop<br>3. Proposal &amp; Estimation<br>4. Sprint 1 Kick-off → V1 in 2 weeks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="fg">
+    <div class="fb">
+      <h3>EXOASIA</h3>
+      <div class="fb-sub">Software Development · Powered by Xamun.AI</div>
+      <p>Exoasia Innovation Hub partners with Xamun.AI to deliver AI-accelerated, compliance-ready software for founders, enterprises, and digital innovators across the Philippines, Malaysia, and the wider ASEAN region.</p>
+      <div class="fc-info">
+        <div>🌐 <a href="https://www.exoasia.org" target="_blank">www.exoasia.org</a></div>
+        <div>⚡ <a href="https://www.xamun.ai" target="_blank">www.xamun.ai</a></div>
+        <div>✉️ <a href="mailto:mackcomandante@exoasia.org">mackcomandante@exoasia.org</a></div>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#plans">xDD Teams (Dedicated)</a></li>
+        <li><a href="#plans">Turnkey Delivery</a></li>
+        <li><a href="#plans">Discovery Workshop</a></li>
+        <li><a href="#plans">Strategic Advisory</a></li>
+        <li><a href="#plans">Compliance Consulting</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Industries</h4>
+      <ul>
+        <li><a href="#cases">HealthTech</a></li>
+        <li><a href="#cases">FinTech</a></li>
+        <li><a href="#cases">Enterprise DX</a></li>
+        <li><a href="#cases">Startups &amp; Scaleups</a></li>
+        <li><a href="#cases">ASEAN Market Entry</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Exoasia Ecosystem</h4>
+      <ul>
+        <li><a href="https://exoasia.org/">Exoasia Main Site</a></li>
+        <li><a href="https://app.waiz.ai/login">wAiz Platform</a></li>
+        <li><a href="#">Kahu AI Mentor</a></li>
+        <li><a href="#">Penang Hub</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 Exoasia Innovation Hub · Software Development powered by Xamun.AI · All rights reserved.</p>
+    <p>Built on <span>exponential frameworks</span> · ASEAN-ready · Compliance-first</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var nav=document.getElementById('xo-nav');
+  var hb=document.getElementById('xo-hb');
+  var dr=document.getElementById('xo-drawer');
+  function xoClose(){hb.classList.remove('open');dr.classList.remove('open');document.body.style.overflow='';}
+  window.xoClose=xoClose;
+  hb.addEventListener('click',function(){var o=dr.classList.toggle('open');hb.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+  window.addEventListener('resize',function(){if(window.innerWidth>768)xoClose();});
+  function onScroll(){nav.classList[window.scrollY>60?'add':'remove']('sc');}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+    },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add('on');});}
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(this.getAttribute('href'));
+      if(t){e.preventDefault();var off=nav?nav.offsetHeight+12:72;window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-off,behavior:'smooth'});}
+    });
+  });
+})();
+</script>
+</div>
+</body>
+</html>
